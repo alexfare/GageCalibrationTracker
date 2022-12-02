@@ -1,7 +1,13 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.3.4
+' Rev: 3.4.0
 ' Updated: 12/02/2022
+'
+'
+'Update - 3.4.0 - 12/02/2022
+' - Added Password to protect code
+' - Added Login Page (Basic)
+' - Defaults to Login Page
 '
 '
 'Update - 3.3.4 - 12/02/2022
@@ -47,7 +53,7 @@
 ' Planned Updates:
 ' Stop clearing after update - Currently can make this work but if needed to make another update, would need to search again.
 ' Add Save Button
-' Add Login (In-Process)
+' Add Login (In-Process, Basic released)
 
 
 
