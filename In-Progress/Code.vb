@@ -1,11 +1,14 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.4.2
+' Rev: 3.5.0
 ' Updated: 12/**/2022
 '
-'Update - 3.4.2 - 12/**/2022
+'Update - 3.5.0 - 12/**/2022
 ' - Cleaned unused code
 ' - Added permanent date for when a gage is added to the list
+' - Added Last Searched Date
+' - Added Last Updated Date
+' - Added Audit Log
 '
 '
 '
@@ -71,6 +74,7 @@
 ' 3: Minor Feature Added or Minor Bug Fix
 
 
+
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
@@ -85,6 +89,8 @@ Dim Date_Due
 Private Sub Label1_Click()
 
 End Sub
+
+
 
 Private Sub Option1_6_Click() ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
@@ -246,8 +252,13 @@ Set Worksheet_Set = Ws
         aA4 = Ws.Cells(r, "AH")
         aN5 = Ws.Cells(r, "AI")
         aA5 = Ws.Cells(r, "AJ")
+        Ws.Cells(r, "AM") = Now 'Update Last searched
         Update_Button_Enable = True
         Option4_Custom = True
+        
+        lblDateAdded = Ws.Cells(r, "AK")
+        lblDateEdit = Ws.Cells(r, "AL")
+        lbSearchedDate = Ws.Cells(r, "AM")
             
             
         Dim FS
@@ -319,6 +330,9 @@ Private Sub Clear_Form()
         aA4 = ""
         aN5 = ""
         aA5 = ""
+        lblDateAdded = "-"
+        lblDateEdit = "-"
+        lbSearchedDate = "-"
 End Sub
 
 Private Sub Update_Worksheet()
@@ -350,6 +364,7 @@ Ws.Cells(r, "AG") = aN4
 Ws.Cells(r, "AH") = aA4
 Ws.Cells(r, "AI") = aN5
 Ws.Cells(r, "AJ") = aA5
+Ws.Cells(r, "AL") = Now 'Update Last edited
 
 If Option1_6 = True Then                ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
     Due_Date = Date_Due_6mos
