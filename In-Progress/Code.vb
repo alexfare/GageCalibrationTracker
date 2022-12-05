@@ -1,7 +1,21 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.4.1
-' Updated:
+' Rev: 3.4.2
+' Updated: 12/**/2022
+'
+'Update - 3.4.2 - 12/**/2022
+' - Cleaned unused code
+' - Added permanent date for when a gage is added to the list
+'
+'
+'
+'Update - 3.4.1 - 12/05/2022
+' - Add Save Button
+' - Add Login (In-Process, Basic released)
+' - Add Logout Button
+' - Add Save Button
+' - Stared Password
+' - Updated to .xlsm
 '
 '
 'Update - 3.4.0 - 12/02/2022
@@ -45,18 +59,16 @@
 '
 '
 '
-' known Bugs:
-'
-'
-'
-'
 ' Planned Updates:
 ' Stop clearing after update - Currently can make this work but if needed to make another update, would need to search again.
-' Add Save Button
-' Add Login (In-Process, Basic released)
-' Add Logout Button
-' Add Save Button
-
+'
+'
+'
+' Version Control:
+' v1.2.3
+' 1: Major redesign
+' 2: Major Feature Added or Major Bug Fix
+' 3: Minor Feature Added or Minor Bug Fix
 
 
 Dim r As Long           ' variable used for storing row number
@@ -135,6 +147,7 @@ Private Sub Add_Button_Click()
     Ws.Cells(r, "AH") = aA4
     Ws.Cells(r, "AI") = aN5
     Ws.Cells(r, "AJ") = aA5
+    Ws.Cells(r, "AK") = Now
     
     Add_Button.Caption = "Success!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
@@ -198,14 +211,7 @@ Public Sub Search_Button_Click()
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet
-'Dim List_Select
-    
-    'If Left(Gage_Number.Value, 3) = "Inactive" Then
-        'Records_List.Value = "Inactive"
-    'Else
-        'Records_List.Value = "CreatedByAlexFare"
-    'End If
-'Records_List.Value = "CreatedByAlexFare"
+
 List_Select = "CreatedByAlexFare"
 Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
@@ -247,18 +253,8 @@ Set Worksheet_Set = Ws
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
 
-        Dim TextFile_FullPath As String
-        
-        TextFile_FullPath = "*path to pictures*" & Gage_Number & ".jpg"
-        ' Set the *path to pictures* location to the full path containing the pictures!
-        ' Name the pictures the same as the gages. Case sensitive.
-        ' example Gage001 would be named "Gage001.jpg" not gage001.jpg
-        ' example "C:\Calibrations\Records\Pictures\"
-        ' The images are to be 360x270 resolution. 360 wide, 270 tall
         If FS.FileExists(TextFile_FullPath) Then
-            Image1.Picture = LoadPicture("*path to pictures*" & Gage_Number & ".jpg")
             Else
-           ' Image1.Picture = LoadPicture("*path to pictures*EMPTY.jpg") ' an image placeholder for pictures that dont exist or aren't loaded yet
         End If
     End If
 
@@ -409,6 +405,7 @@ Worksheets("Login").Activate
 LoginForm.Show
 ThisWorkbook.Save
 End Sub
+
 
 
 
