@@ -1,3 +1,9 @@
+'Login - Created by Alex Fare
+'Version - 1.0.2
+'Updated - 12/05/2022
+'
+'
+'
 Private Sub btnLogin_Click()
 
 If inputUser.Value = "" Then
@@ -12,15 +18,11 @@ End If
 
 If inputUser.Value = "Admin" And inputPass.Value = "Admin" Then
 Unload Me
-'Sheets(CreatedByAlexFare).Visible = True
-'Sheets(CreatedByAlexFare).Select
 Sheets("CreatedByAlexFare").Activate
-'ActiveSheet.Range("A1").Select
-End If
+UserForm1.Show
+Else
+MsgBox "Login Failed", vbInformation, ""
 End If
 
 End Sub
 
-Private Sub inputUsername_Click()
-
-End Sub
