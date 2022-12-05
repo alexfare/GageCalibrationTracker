@@ -1,3 +1,9 @@
+'Login - Created by Alex Fare
+'Version - 1.0.1
+'Updated - 12/05/2022
+'
+'
+'
 Private Sub btnLogin_Click()
 
 If inputUser.Value = "" Then
@@ -10,17 +16,11 @@ MsgBox "Password Cannot be Blank!", vbInformation, "Password"
 Exit Sub
 End If
 
-If inputUser.Value = "Admin" And inputPass.Value = "Admin" Then
+If inputUser.Value = "Admin" And inputPass.Value = "qwerty" Then
 Unload Me
-'Sheets(CreatedByAlexFare).Visible = True
-'Sheets(CreatedByAlexFare).Select
 Sheets("CreatedByAlexFare").Activate
-'ActiveSheet.Range("A1").Select
-End If
 End If
 
+UserForm1.Show
 End Sub
 
-Private Sub inputUsername_Click()
-
-End Sub
