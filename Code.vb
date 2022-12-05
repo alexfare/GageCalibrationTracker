@@ -1,7 +1,14 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.4.0
-' Updated: 12/02/2022
+' Rev: 3.4.1
+' Updated: 12/05/2022
+'
+''Update - 3.4.1 - 12/05/2022
+' - Add Save Button
+' - Add Login (In-Process, Basic released)
+' - Add Logout Button
+' - Add Save Button
+' - Stared Password
 '
 '
 'Update - 3.4.0 - 12/02/2022
@@ -52,9 +59,9 @@
 '
 ' Planned Updates:
 ' Stop clearing after update - Currently can make this work but if needed to make another update, would need to search again.
-' Add Save Button
-' Add Login (In-Process, Basic released)
-
+'
+'
+'
 
 
 Dim r As Long           ' variable used for storing row number
@@ -396,10 +403,19 @@ End If
 
 End Sub
 
-'Adding Save Button
-'Private Sub btn_Save()
-'
-'End Sub
+
+Private Sub btnSave_click()
+ThisWorkbook.Save
+End Sub
+
+Private Sub btnLogOut_click()
+Unload UserForm1
+Worksheets("Login").Activate
+LoginForm.Show
+ThisWorkbook.Save
+End Sub
+
+
 
 
 
