@@ -1,7 +1,10 @@
 'Login - Created by Alex Fare
-'Version - 1.0.1
+'Version - 1.0.2
 'Updated - 12/05/2022
 '
+'
+' Added Failed Login Warning
+' Removed unused code
 '
 '
 Private Sub btnLogin_Click()
@@ -16,11 +19,13 @@ MsgBox "Password Cannot be Blank!", vbInformation, "Password"
 Exit Sub
 End If
 
-If inputUser.Value = "Admin" And inputPass.Value = "qwerty" Then
+If inputUser.Value = "Admin" And inputPass.Value = "Admin" Then
 Unload Me
 Sheets("CreatedByAlexFare").Activate
+UserForm1.Show
+Else
+MsgBox "Login Failed", vbInformation, ""
 End If
 
-UserForm1.Show
 End Sub
 
