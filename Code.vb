@@ -1,14 +1,25 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.4.1
-' Updated: 12/05/2022
+' Rev: 3.5.0
+' Updated: 12/06/2022
 '
-''Update - 3.4.1 - 12/05/2022
+'Update - 3.5.0 - 12/06/2022
+' - Cleaned unused code
+' - Added permanent date for when a gage is added to the list
+' - Added Last Searched Date
+' - Added Last Updated Date
+' - Added Audit Log
+' - Updated Layout
+'
+'
+'
+'Update - 3.4.1 - 12/05/2022
 ' - Add Save Button
 ' - Add Login (In-Process, Basic released)
 ' - Add Logout Button
 ' - Add Save Button
 ' - Stared Password
+' - Updated to .xlsm
 '
 '
 'Update - 3.4.0 - 12/02/2022
@@ -52,16 +63,17 @@
 '
 '
 '
-' known Bugs:
-'
-'
-'
-'
 ' Planned Updates:
 ' Stop clearing after update - Currently can make this work but if needed to make another update, would need to search again.
 '
 '
 '
+' Version Control:
+' v1.2.3
+' 1: Major redesign
+' 2: Major Feature Added or Major Bug Fix
+' 3: Minor Feature Added or Minor Bug Fix
+
 
 
 Dim r As Long           ' variable used for storing row number
@@ -78,6 +90,8 @@ Dim Date_Due
 Private Sub Label1_Click()
 
 End Sub
+
+
 
 Private Sub Option1_6_Click() ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
@@ -140,8 +154,9 @@ Private Sub Add_Button_Click()
     Ws.Cells(r, "AH") = aA4
     Ws.Cells(r, "AI") = aN5
     Ws.Cells(r, "AJ") = aA5
+    Ws.Cells(r, "AK") = Now
     
-    Add_Button.Caption = "Success!" ' change caption of add button for confirmation
+    Add_Button.Caption = "Added!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
     Add_Button.Caption = "Add"
     Clear_Form
@@ -200,17 +215,14 @@ Public Sub Search_Button_Click()
         aA4 = ""
         aN5 = ""
         aA5 = ""
+        lblDateAdded = ""
+        lblDateEdit = ""
+        lbSearchedDate = ""
+        
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet
-'Dim List_Select
-    
-    'If Left(Gage_Number.Value, 3) = "Inactive" Then
-        'Records_List.Value = "Inactive"
-    'Else
-        'Records_List.Value = "CreatedByAlexFare"
-    'End If
-'Records_List.Value = "CreatedByAlexFare"
+
 List_Select = "CreatedByAlexFare"
 Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
@@ -245,25 +257,20 @@ Set Worksheet_Set = Ws
         aA4 = Ws.Cells(r, "AH")
         aN5 = Ws.Cells(r, "AI")
         aA5 = Ws.Cells(r, "AJ")
+        Ws.Cells(r, "AM") = Now 'Update Last searched
         Update_Button_Enable = True
         Option4_Custom = True
+        
+        lblDateAdded = Ws.Cells(r, "AK")
+        lblDateEdit = Ws.Cells(r, "AL")
+        lbSearchedDate = Ws.Cells(r, "AM")
             
             
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
 
-        Dim TextFile_FullPath As String
-        
-        TextFile_FullPath = "*path to pictures*" & Gage_Number & ".jpg"
-        ' Set the *path to pictures* location to the full path containing the pictures!
-        ' Name the pictures the same as the gages. Case sensitive.
-        ' example Gage001 would be named "Gage001.jpg" not gage001.jpg
-        ' example "C:\Calibrations\Records\Pictures\"
-        ' The images are to be 360x270 resolution. 360 wide, 270 tall
         If FS.FileExists(TextFile_FullPath) Then
-            Image1.Picture = LoadPicture("*path to pictures*" & Gage_Number & ".jpg")
             Else
-           ' Image1.Picture = LoadPicture("*path to pictures*EMPTY.jpg") ' an image placeholder for pictures that dont exist or aren't loaded yet
         End If
     End If
 
@@ -328,6 +335,9 @@ Private Sub Clear_Form()
         aA4 = ""
         aN5 = ""
         aA5 = ""
+        lblDateAdded = "-"
+        lblDateEdit = "-"
+        lbSearchedDate = "-"
 End Sub
 
 Private Sub Update_Worksheet()
@@ -359,6 +369,7 @@ Ws.Cells(r, "AG") = aN4
 Ws.Cells(r, "AH") = aA4
 Ws.Cells(r, "AI") = aN5
 Ws.Cells(r, "AJ") = aA5
+Ws.Cells(r, "AL") = Now 'Update Last edited
 
 If Option1_6 = True Then                ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
     Due_Date = Date_Due_6mos
@@ -414,6 +425,7 @@ Worksheets("Login").Activate
 LoginForm.Show
 ThisWorkbook.Save
 End Sub
+
 
 
 
