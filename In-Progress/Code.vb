@@ -1,14 +1,22 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.5.0
+' Rev: 3.5.1
 ' Updated: 12/**/2022
 '
-'Update - 3.5.0 - 12/**/2022
+'Update - 3.5.1 - 12/**/2022
+' - No Longer Clears When Updating. (Need to fix search error)
+'
+'
+'
+'
+'
+'Update - 3.5.0 - 12/06/2022
 ' - Cleaned unused code
 ' - Added permanent date for when a gage is added to the list
 ' - Added Last Searched Date
 ' - Added Last Updated Date
 ' - Added Audit Log
+' - Updated Layout
 '
 '
 '
@@ -155,7 +163,7 @@ Private Sub Add_Button_Click()
     Ws.Cells(r, "AJ") = aA5
     Ws.Cells(r, "AK") = Now
     
-    Add_Button.Caption = "Success!" ' change caption of add button for confirmation
+    Add_Button.Caption = "Added!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
     Add_Button.Caption = "Add"
     Clear_Form
@@ -214,6 +222,10 @@ Public Sub Search_Button_Click()
         aA4 = ""
         aN5 = ""
         aA5 = ""
+        lblDateAdded = ""
+        lblDateEdit = ""
+        lbSearchedDate = ""
+        
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet
@@ -385,7 +397,7 @@ Ws.Cells(r, "G") = Due_Date
 Update_Button.Caption = "Updated!"
 Application.Wait (Now + TimeValue("0:00:02"))
 Update_Button.Caption = "Update"
-Clear_Form 'Clear form after update
+'Clear_Form 'Clear form after update
 Gage_Number.SetFocus
 
 Else
