@@ -1,17 +1,11 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
 ' Rev: 3.6.0
-' Updated: 12/**/2022
-'
-'Update - 3.6.0 - 12/**/2022
-' - Login Removed
-' - Admin Panel Added (In-Progress)
-'
+' Updated: 12/07/2022
 '
 'Update - 3.5.1 - 12/07/2022
 ' - No Longer Clears When Updating.
 ' - Fixed Search Error
-'
 '
 '
 'Update - 3.5.0 - 12/06/2022
