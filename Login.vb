@@ -1,6 +1,6 @@
 'Login - Created by Alex Fare
-'Version - 1.0.2
-'Updated - 12/05/2022
+'Version - 1.0.3
+'Updated - 12/07/2022
 '
 '
 ' Added Failed Login Warning
@@ -15,7 +15,7 @@ Exit Sub
 End If
 
 If inputPass.Value = "" Then
-MsgBox "Password Cannot be Blank!", vbInformation, "Password"
+MsgBox "Password Cannot be Blank!", vbInformation, ""
 Exit Sub
 End If
 
@@ -24,8 +24,9 @@ Unload Me
 Sheets("CreatedByAlexFare").Activate
 UserForm1.Show
 Else
-MsgBox "Login Failed", vbInformation, ""
+MsgBox "Login Failed, Wrong Password or Username.", vbInformation, ""
 End If
 
 End Sub
+
 
