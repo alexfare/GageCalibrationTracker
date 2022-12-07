@@ -8,6 +8,7 @@
 ' - Admin Panel Added
 '
 '
+'
 'Update - 3.5.1 - 12/07/2022
 ' - No Longer Clears When Updating.
 ' - Fixed Search Error
@@ -96,13 +97,6 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
-
-
-Private Sub Label1_Click()
-
-End Sub
-
-
 
 Private Sub Option1_6_Click() ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
@@ -439,8 +433,8 @@ End Sub
 
 '/Admin Panel - Bring up admin menu to edit audit dates/'
 Private Sub btnAdmin_click()
-Unload Me
-'AdminForm.Show 'broken
+Unload UserForm1
+LoginForm.Show
 End Sub
 
 
