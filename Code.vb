@@ -1,12 +1,16 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.5.1
-' Updated: 12/07/2022
+' Rev: 3.6.0
+' Updated: 12/**/2022
+'
+'Update - 3.6.0 - 12/**/2022
+' - Login Removed
+' - Admin Panel Added (In-Progress)
+'
 '
 'Update - 3.5.1 - 12/07/2022
 ' - No Longer Clears When Updating.
 ' - Fixed Search Error
-'
 '
 '
 '
@@ -433,12 +437,13 @@ LoginForm.Show
 ThisWorkbook.Save
 End Sub
 
-
-
-
 '/Admin Panel - Bring up admin menu to edit audit dates/'
+Private Sub btnAdmin_click()
+Unload Me
+'AdminForm.Show 'broken
+End Sub
 
-'Private Sub btnAdmin_click()
-'Unload UserForm1
-'AdminForm.Show
-'End Sub
+
+
+
+
