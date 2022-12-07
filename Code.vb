@@ -1,7 +1,14 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.5.0
-' Updated: 12/06/2022
+' Rev: 3.5.1
+' Updated: 12/07/2022
+'
+'Update - 3.5.1 - 12/07/2022
+' - No Longer Clears When Updating.
+' - Fixed Search Error
+'
+'
+'
 '
 'Update - 3.5.0 - 12/06/2022
 ' - Cleaned unused code
@@ -390,7 +397,7 @@ Ws.Cells(r, "G") = Due_Date
 Update_Button.Caption = "Updated!"
 Application.Wait (Now + TimeValue("0:00:02"))
 Update_Button.Caption = "Update"
-Clear_Form 'Clear form after update
+'Clear_Form 'Clear form after update
 Gage_Number.SetFocus
 
 Else
@@ -398,7 +405,7 @@ Else
     
 End If
 
-Update_Button_Enable = False
+'Update_Button_Enable = False 'Remove ' if you want to require searching again after an update.
 
 End Sub
 
@@ -429,5 +436,9 @@ End Sub
 
 
 
+'/Admin Panel - Bring up admin menu to edit audit dates/'
 
-
+'Private Sub btnAdmin_click()
+'Unload UserForm1
+'AdminForm.Show
+'End Sub
