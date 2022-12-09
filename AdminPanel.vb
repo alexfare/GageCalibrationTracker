@@ -1,4 +1,9 @@
-' v1.0.0
+'1.1.0
+
+
+'1.1.0
+'Added Update & Clear Button (Need to clean up code, as it was copied from main and most of it is pointless.)
+
 
 
 Dim r As Long           ' variable used for storing row number
@@ -111,5 +116,94 @@ MsgBox ("Gage number already in use"), , "Duplicate"
 Gage_Number.SetFocus
 End Sub
 
+Private Sub Update_Button_Click()
+If Update_Button_Enable = True Then
+    If GN_Verify = Gage_Number Then
+        Update_Worksheet
+    Else
+        MSG_Verify_Update
+    End If
+Else
+     MsgBox ("Must search for entry before updating"), , "Nothing to Update"
+End If
+End Sub
+Private Sub Update_Worksheet()
+If Update_Button_Enable = True Then
+Dim gnString As String
+Set Ws = Worksheet_Set
+    If IsNumeric(Gage_Number) Then
+        gnString = Val(Gage_Number.Value)
+    Else
+        gnString = Gage_Number
+    End If
+Ws.Cells(r, "A") = gnString
+Ws.Cells(r, "B") = PartNumbertxt
+Ws.Cells(r, "AL") = Now 'Update Last edited
 
 
+
+Update_Button.Caption = "Updated!"
+Application.Wait (Now + TimeValue("0:00:02"))
+Update_Button.Caption = "Update"
+'Clear_Form 'Clear form after update
+Gage_Number.SetFocus
+
+Else
+    MsgBox ("Must search for entry before updating"), , "Nothing to Update"
+    
+End If
+
+'Update_Button_Enable = False 'Remove ' if you want to require searching again after an update.
+
+End Sub
+
+Sub MSG_Verify_Update()
+
+MSG1 = MsgBox("Are you sure you want to change the Gage ID?", vbYesNo, "Verify")
+
+If MSG1 = vbYes Then
+  Update_Worksheet
+Else
+  Gage_Number = GN_Verify
+End If
+
+End Sub
+
+Private Sub Clear_Form()
+        Gage_Number = ""
+        PartNumbertxt = ""
+        Descriptiontxt = ""
+        GageType = ""
+        Customer = ""
+        Insp_Date = ""
+        Due_Date = ""
+        Initials = ""
+        Department = ""
+        Comments = ""
+        Statustxt = ""
+        aN1 = ""
+        aA1 = ""
+        aN2 = ""
+        aA2 = ""
+        aN3 = ""
+        aA3 = ""
+        aN4 = ""
+        aA4 = ""
+        aN5 = ""
+        aA5 = ""
+        lblDateAdded = "-"
+        lblDateEdit = "-"
+        lbSearchedDate = "-"
+End Sub
+
+Private Sub btnClear_Click()
+Update_Button_Enable = False
+Clear_Form
+Gage_Number.SetFocus
+End Sub
+
+Private Sub btnLogOut_click()
+Unload AdminForm
+UserForm1.Show
+ThisWorkbook.Save
+End Sub
