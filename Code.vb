@@ -1,19 +1,24 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.6.0
-' Updated: 12/08/2022
+' Rev: 3.7.0
+' Updated: 12/09/2022
+'
+'Update - 3.7.0 - 12/09/2022
+' - Cleaned Code (Again. It gets messy)
+' - Updated Layout (Small Design Change)
+' - Removed Audit Log from home
+' - Updated Admin Panel
+' - Reduced Cells with data from 6977 to 3408. (With 251 current entries)
+' - Reduced Conditional Formatting from 260+ (Count would go up based on amount of entries) to just 3 total
+' - Formatting Issues Fixed
 '
 'Update - 3.6.0 - 12/08/2022
 ' - Added Admin Panel
 ' - Login removed (Admin required only)
 '
-'
-'
 'Update - 3.5.1 - 12/07/2022
 ' - No Longer Clears When Updating.
 ' - Fixed Search Error
-'
-'
 '
 'Update - 3.5.0 - 12/06/2022
 ' - Cleaned unused code
@@ -23,8 +28,6 @@
 ' - Added Audit Log
 ' - Updated Layout
 '
-'
-'
 'Update - 3.4.1 - 12/05/2022
 ' - Add Save Button
 ' - Add Login (In-Process, Basic released)
@@ -33,27 +36,21 @@
 ' - Stared Password
 ' - Updated to .xlsm
 '
-'
 'Update - 3.4.0 - 12/02/2022
 ' - Added Password to protect code
 ' - Added Login Page (Basic)
 ' - Defaults to Login Page
 '
-'
 'Update - 3.3.4 - 12/02/2022
 ' - Corrected CTR-S to save
-'
 '
 'Update - 3.3.3 - 11/30/2022
 ' - Removed old Inactive Tab
 ' - Tabs Hidden
 ' - Updated code
 '
-'
 'Update - 3.3.2 - 11/23/2022
 ' - Fixed overwrite issue (Caused by adding title line, New line was +2, now +3)
-'
-'
 '
 'Update - 3.3.1 - 11/22/2022
 ' - Added Measurement Tracking
@@ -61,24 +58,15 @@
 ' - Redesigned Menu
 ' - Added Gage Status
 '
-'
-'
 'Update - 3.2.0 - 07/29/2022
 ' - Updated Menu (Got rid of the broken query select)
 ' - Fixed / Removed Code that breaks Menu when using or removing query
 '
-'
-'
 ' Update - 3.1.1 - 08/06/2021
 ' - Fixed overwriting error
 '
-'
-'
-'
 ' Planned Updates:
 ' Stop clearing after update - Currently can make this work but if needed to make another update, would need to search again.
-'
-'
 '
 ' Version Control:
 ' v1.2.3
@@ -187,13 +175,6 @@ Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Sh
         Search_Button_Click
         Insp_Date.SetFocus
     End If
-End Sub
-
-
-
-
-Private Sub Records_List_Click()
-
 End Sub
 
 Public Sub Search_Button_Click()
@@ -310,13 +291,6 @@ Gage_Number.SetFocus
 End Sub
 
 
-Private Sub UserForm_Initialize()
-   Records_List.AddItem "CreatedByAlexFare"
-   Records_List.AddItem "Inactive"
-   Records_List.Value = "CreatedByAlexFare"
-   Gage_Number.SetFocus
-   
-End Sub
 
 Private Sub Clear_Form()
         Gage_Number = ""
@@ -436,8 +410,3 @@ Private Sub btnAdmin_click()
 Unload UserForm1
 LoginForm.Show
 End Sub
-
-
-
-
-
