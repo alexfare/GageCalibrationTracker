@@ -1,6 +1,6 @@
 'Login - Created by Alex Fare
 'Version - 1.1.0
-'Updated - 12/**/2022
+'Updated - 12/08/2022
 '
 ' Logging in now redirects to Admin Panel
 ' Added Failed Login Warning
