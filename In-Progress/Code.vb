@@ -1,11 +1,16 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.6.1
-' Updated: 12/**/2022
+' Rev: 3.7.0
+' Updated: 12/09/2022
 '
-'Update - 3.6.1 - 12/**/2022
+'Update - 3.7.0 - 12/09/2022
 ' - Cleaned Code (Again. It gets messy)
-' - Fixed Records List error
+' - Updated Layout (Small Design Change)
+' - Removed Audit Log from home
+' - Updated Admin Panel
+' - Reduced Cells with data from 6977 to 3408. (With 251 current entries)
+' - Reduced Conditional Formatting from 260+ (Count would go up based on amount of entries) to just 3 total
+' - Formatting Issues Fixed
 '
 'Update - 3.6.0 - 12/08/2022
 ' - Added Admin Panel
