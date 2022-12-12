@@ -1,5 +1,7 @@
-'1.1.0
+'1.1.1
 
+'1.1.1
+'Cleaned some code up
 
 '1.1.0
 'Added Update & Clear Button (Need to clean up code, as it was copied from main and most of it is pointless.)
@@ -24,25 +26,6 @@ Public Sub Search_Button_Click()
 ' clear previous data from form, except "Gage Number"
 ' --------------------------------------------------------
         PartNumbertxt = ""
-        Descriptiontxt = ""
-        GageType = ""
-        Customer = ""
-        Insp_Date = ""
-        Due_Date = ""
-        Initials = ""
-        Department = ""
-        Comments = ""
-        Statustxt = ""
-        aN1 = ""
-        aA1 = ""
-        aN2 = ""
-        aA2 = ""
-        aN3 = ""
-        aA3 = ""
-        aN4 = ""
-        aA4 = ""
-        aN5 = ""
-        aA5 = ""
         lblDateAdded = ""
         lblDateEdit = ""
         lbSearchedDate = ""
@@ -172,25 +155,6 @@ End Sub
 Private Sub Clear_Form()
         Gage_Number = ""
         PartNumbertxt = ""
-        Descriptiontxt = ""
-        GageType = ""
-        Customer = ""
-        Insp_Date = ""
-        Due_Date = ""
-        Initials = ""
-        Department = ""
-        Comments = ""
-        Statustxt = ""
-        aN1 = ""
-        aA1 = ""
-        aN2 = ""
-        aA2 = ""
-        aN3 = ""
-        aA3 = ""
-        aN4 = ""
-        aA4 = ""
-        aN5 = ""
-        aA5 = ""
         lblDateAdded = "-"
         lblDateEdit = "-"
         lbSearchedDate = "-"
