@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.7.0
-' Updated: 12/09/2022
+' Rev: 3.7.2
+' Updated: 12/12/2022
 '
 'Update - 3.7.0 - 12/09/2022
 ' - Cleaned Code (Again. It gets messy)
