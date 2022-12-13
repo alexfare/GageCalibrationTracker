@@ -1,3 +1,6 @@
+'Update - 3.8.1 - 12/13/2022
+' - Added ability to change password
+'
 'Update - 3.8.0 - 12/13/2022
 ' - Added Account Creation
 ' - AdminPanel Updated

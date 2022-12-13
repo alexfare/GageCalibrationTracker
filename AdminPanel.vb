@@ -1,7 +1,5 @@
-'1.2.0
+'1.1.0
 
-'1.2.0
-'Added Buttons for Account Creation & Password update
 
 '1.1.0
 'Added Update & Clear Button (Need to clean up code, as it was copied from main and most of it is pointless.)
@@ -198,5 +196,6 @@ End Sub
 
 
 Private Sub btnUpdateUser_click()
-    MsgBox ("Coming Soon")
+    Unload AdminForm
+    ChangePassword.Show
 End Sub
