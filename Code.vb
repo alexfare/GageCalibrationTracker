@@ -1,80 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.7.2
-' Updated: 12/12/2022
-'
-'Update - 3.7.0 - 12/09/2022
-' - Cleaned Code (Again. It gets messy)
-' - Updated Layout (Small Design Change)
-' - Removed Audit Log from home
-' - Updated Admin Panel
-' - Reduced Cells with data from 6977 to 3408. (With 251 current entries)
-' - Reduced Conditional Formatting from 260+ (Count would go up based on amount of entries) to just 3 total
-' - Formatting Issues Fixed
-'
-'Update - 3.6.0 - 12/08/2022
-' - Added Admin Panel
-' - Login removed (Admin required only)
-'
-'Update - 3.5.1 - 12/07/2022
-' - No Longer Clears When Updating.
-' - Fixed Search Error
-'
-'Update - 3.5.0 - 12/06/2022
-' - Cleaned unused code
-' - Added permanent date for when a gage is added to the list
-' - Added Last Searched Date
-' - Added Last Updated Date
-' - Added Audit Log
-' - Updated Layout
-'
-'Update - 3.4.1 - 12/05/2022
-' - Add Save Button
-' - Add Login (In-Process, Basic released)
-' - Add Logout Button
-' - Add Save Button
-' - Stared Password
-' - Updated to .xlsm
-'
-'Update - 3.4.0 - 12/02/2022
-' - Added Password to protect code
-' - Added Login Page (Basic)
-' - Defaults to Login Page
-'
-'Update - 3.3.4 - 12/02/2022
-' - Corrected CTR-S to save
-'
-'Update - 3.3.3 - 11/30/2022
-' - Removed old Inactive Tab
-' - Tabs Hidden
-' - Updated code
-'
-'Update - 3.3.2 - 11/23/2022
-' - Fixed overwrite issue (Caused by adding title line, New line was +2, now +3)
-'
-'Update - 3.3.1 - 11/22/2022
-' - Added Measurement Tracking
-' - Fixed Broken Color
-' - Redesigned Menu
-' - Added Gage Status
-'
-'Update - 3.2.0 - 07/29/2022
-' - Updated Menu (Got rid of the broken query select)
-' - Fixed / Removed Code that breaks Menu when using or removing query
-'
-' Update - 3.1.1 - 08/06/2021
-' - Fixed overwriting error
-'
-' Planned Updates:
-' Stop clearing after update - Currently can make this work but if needed to make another update, would need to search again.
-'
-' Version Control:
-' v1.2.3
-' 1: Major redesign
-' 2: Major Feature Added or Major Bug Fix
-' 3: Minor Feature Added or Minor Bug Fix
-
-
+' Rev: 3.8.0
+' Updated: 12/13/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -410,3 +337,4 @@ Private Sub btnAdmin_click()
 Unload UserForm1
 LoginForm.Show
 End Sub
+
