@@ -1,7 +1,8 @@
 # GageCalibrationTracker
 Gage Calibration Tracker - Excel<br>
 <br>
-Default Username & Password is Admin<br>
+Default Username: Admin<br>
+Default Password: o9!A62sSimZmiHNkQq%3<br>
 <br>
 Gage Calibration Tracker<br>
 ![image](https://user-images.githubusercontent.com/40654995/206725555-ae8a3414-89f1-4cf7-b15b-cf3b9d1ae7bb.png)
