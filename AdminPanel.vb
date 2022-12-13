@@ -1,7 +1,7 @@
-'1.1.1
+'1.2.0
 
-'1.1.1
-'Cleaned some code up
+'1.2.0
+'Added Buttons for Account Creation & Password update
 
 '1.1.0
 'Added Update & Clear Button (Need to clean up code, as it was copied from main and most of it is pointless.)
@@ -155,6 +155,25 @@ End Sub
 Private Sub Clear_Form()
         Gage_Number = ""
         PartNumbertxt = ""
+        Descriptiontxt = ""
+        GageType = ""
+        Customer = ""
+        Insp_Date = ""
+        Due_Date = ""
+        Initials = ""
+        Department = ""
+        Comments = ""
+        Statustxt = ""
+        aN1 = ""
+        aA1 = ""
+        aN2 = ""
+        aA2 = ""
+        aN3 = ""
+        aA3 = ""
+        aN4 = ""
+        aA4 = ""
+        aN5 = ""
+        aA5 = ""
         lblDateAdded = "-"
         lblDateEdit = "-"
         lbSearchedDate = "-"
@@ -170,4 +189,14 @@ Private Sub btnLogOut_click()
 Unload AdminForm
 UserForm1.Show
 ThisWorkbook.Save
+End Sub
+
+Private Sub btnCreateAccount_click()
+Unload AdminForm
+CreateAccount.Show
+End Sub
+
+
+Private Sub btnUpdateUser_click()
+    MsgBox ("Coming Soon")
 End Sub
