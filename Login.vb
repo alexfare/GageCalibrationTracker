@@ -1,7 +1,8 @@
 'Login - Created by Alex Fare
-'Version - 1.2.0
-'Updated - 12/12/2022
+'Version - 1.3.0
+'Updated - 12/13/2022
 '
+' Updated Default Credentials
 ' Added multiple logins (Wrong username will cause crash)
 ' Logging in now redirects to Admin Panel
 ' Added Failed Login Warning
@@ -20,7 +21,7 @@ MsgBox "Password Cannot be Blank!", vbInformation, ""
 Exit Sub
 End If
 
-If inputUser.Value = "Admin" And inputPass.Value = "Admin" Then
+If inputUser.Value = "Admin" And inputPass.Value = "o9!A62sSimZmiHNkQq%3" Then
 Unload Me
 Sheets("CreatedByAlexFare").Activate
 ' UserForm1.Show
@@ -49,6 +50,7 @@ End If
 End Sub
 
 ' Change Login to be Admin Panel only
+
 
 
 
