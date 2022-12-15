@@ -1,5 +1,3 @@
-'ThisWorkbook - AFv1.1.1
-
 Private Sub Workbook_Open()
 
 '/ Require Login to open /
@@ -9,5 +7,6 @@ Private Sub Workbook_Open()
 '/ Skip Login /
     Worksheets("CreatedByAlexFare").Activate
     UserForm1.Show
+    Application.DisplayFullScreen = True
     
 End Sub

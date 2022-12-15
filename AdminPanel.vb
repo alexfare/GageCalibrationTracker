@@ -174,7 +174,7 @@ Private Sub Clear_Form()
         aA5 = ""
         lblDateAdded = "-"
         lblDateEdit = "-"
-        lbSearchedDate = "-"
+        lblSearchedDate = "-"
 End Sub
 
 Private Sub btnClear_Click()
@@ -198,4 +198,9 @@ End Sub
 Private Sub btnUpdateUser_click()
     Unload AdminForm
     ChangePassword.Show
+End Sub
+
+
+Private Sub btnDevMode_click()
+    Application.DisplayFullScreen = False
 End Sub

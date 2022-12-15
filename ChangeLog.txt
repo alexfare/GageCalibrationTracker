@@ -1,3 +1,10 @@
+'Update - 3.8.2
+'Added back button on Login
+' - Updated AdminPanel
+''Fixed error in last searched date not being cleared
+''Fixed error not displaying last edit
+''Added Dev Mode button
+'
 'Update - 3.8.1 - 12/13/2022
 ' - Added ability to change password
 '
@@ -67,11 +74,10 @@
 ' Update - 3.1.1 - 08/06/2021
 ' - Fixed overwriting error
 '
-' Planned Updates:
-' Stop clearing after update - Currently can make this work but if needed to make another update, would need to search again.
+'
 '
 ' Version Control:
 ' v1.2.3
-' 1: Major redesign
+' 1: Major Redesign
 ' 2: Major Feature Added or Major Bug Fix
 ' 3: Minor Feature Added or Minor Bug Fix

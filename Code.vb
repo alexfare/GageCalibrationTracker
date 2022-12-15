@@ -1,6 +1,6 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.8.0
+' Rev: 3.8.1
 ' Updated: 12/13/2022
 
 Dim r As Long           ' variable used for storing row number

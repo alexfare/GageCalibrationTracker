@@ -128,7 +128,3 @@ Private Sub btnBack_click()
 Unload ChangePassword
 AdminForm.Show
 End Sub
-
-
-
-
