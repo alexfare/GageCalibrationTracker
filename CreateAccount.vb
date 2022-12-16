@@ -1,4 +1,4 @@
-Dim r As Long           ' variable used for storing row number
+Dim R As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
@@ -14,7 +14,7 @@ Private Sub btnCreate_Click()
   
     Dim lLastRow As Long    ' lLastRow = variable to store the result of the row count calculation
     lLastRow = Ws.ListObjects.Item(1).ListRows.Count
-    r = lLastRow + 2 ' Add number for every header tab created
+    R = lLastRow + 2 ' Add number for every header tab created
     
                 Dim gnString As String
                     If IsNumeric(inputUser) Then
@@ -23,8 +23,8 @@ Private Sub btnCreate_Click()
                         gnString = inputUser
                     End If
     
-    Ws.Cells(r, "A") = gnString
-    Ws.Cells(r, "B") = inputPass
+    Ws.Cells(R, "A") = gnString
+    Ws.Cells(R, "B") = inputPass
     
     btnCreate.Caption = "Created!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash

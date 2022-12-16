@@ -1,3 +1,6 @@
+'Update - 3.8.3
+'Added Check For Update Button
+'
 'Update - 3.8.2
 'Added back button on Login
 ' - Updated AdminPanel

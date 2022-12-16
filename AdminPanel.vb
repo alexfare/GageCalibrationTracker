@@ -1,11 +1,3 @@
-'1.1.0
-
-
-'1.1.0
-'Added Update & Clear Button (Need to clean up code, as it was copied from main and most of it is pointless.)
-
-
-
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
@@ -182,6 +174,13 @@ Update_Button_Enable = False
 Clear_Form
 Gage_Number.SetFocus
 End Sub
+
+Sub CheckForUpdate_Click()
+    Dim URL As String
+    URL = "https://github.com/alexfare/GageCalibrationTracker"
+    ActiveWorkbook.FollowHyperlink URL
+End Sub
+
 
 Private Sub btnLogOut_click()
 Unload AdminForm
