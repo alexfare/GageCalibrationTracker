@@ -19,6 +19,10 @@ Admin Panel w/ Login<br>
 Future Plans:<br>
 Add more features to Admin Panel - Updated 12/13/22<br>
 Add ability to create multiple accounts - Completed 12/13/22<br>
-Add ability to change the passwordCompleted 12/13/22<br>
-Add Encryption to the passwords<br>
+Add ability to change the password - Completed 12/13/22<br>
+Add Encryption to the passwords - Completed 12/16/22<br>
+Better Encryption<br>
+Report an Issue Button<br>
+Automatic Email logs<br>
+Better/more logs for audit<br>
 <br>
