@@ -1,14 +1,10 @@
-'Login - Created by Alex Fare
-'Version - 1.3.0
-'Updated - 12/13/2022
-'
-' Updated Default Credentials
-' Added multiple logins (Wrong username will cause crash)
-' Logging in now redirects to Admin Panel
-' Added Failed Login Warning
-' Removed unused code
-'
-'
+Sub HashMD5()
+    Dim hashPass As String
+        hashPass = inputPass
+        Debug.Print StringToMD5Hex(hashPass)
+
+End Sub
+
 Private Sub btnLogin_Click()
 
 If inputUser.Value = "" Then
@@ -33,13 +29,14 @@ Dim Password As Variant
 
 inputUsername = inputUser.Value
 Password = Application.WorksheetFunction.VLookup(inputUsername, Sheets("Credentials").Range("A:B"), 2, 0)
+PassCompare = StringToMD5Hex(outstr)
 
-If Password <> inputPass.Value Then
+If Password <> PassCompare Then
 MsgBox "Login Failed, Wrong Password or Username.", vbInformation, "Wrong Password"
 Exit Sub
 End If
 
-If Password = inputPass.Value Then
+If Password = PassCompare Then
 Unload Me
 Sheets("CreatedByAlexFare").Activate
 AdminForm.Show
@@ -54,5 +51,6 @@ Private Sub btnBack_click()
 Unload LoginForm
 UserForm1.Show
 End Sub
+
 
 

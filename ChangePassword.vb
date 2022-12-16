@@ -1,8 +1,14 @@
-Dim r As Long           ' variable used for storing row number
+Dim R As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 Dim btnUpdate_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 
+Sub HashMD5()
+    Dim hashPass As String
+        hashPass = inputPass
+        Debug.Print StringToMD5Hex(hashPass)
+
+End Sub
 
 Private Sub inputUser_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
@@ -33,9 +39,9 @@ Set Worksheet_Set = Ws
             btnUpdate_Enable = False
             ErrMsg
     Else
-        r = Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)
+        R = Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)
         GN_Verify = inputUser
-        inputPass = Ws.Cells(r, "B")
+        inputPass = Ws.Cells(R, "B")
         btnUpdate_Enable = True
             
             
@@ -93,8 +99,8 @@ Set Ws = Worksheet_Set
     Else
         gnString = inputUser
     End If
-Ws.Cells(r, "A") = gnString
-Ws.Cells(r, "B") = inputPass
+Ws.Cells(R, "A") = gnString
+Ws.Cells(R, "B") = StringToMD5Hex(outstr)
 
 
 btnUpdate.Caption = "Updated!"
@@ -128,3 +134,8 @@ Private Sub btnBack_click()
 Unload ChangePassword
 AdminForm.Show
 End Sub
+
+
+
+
+

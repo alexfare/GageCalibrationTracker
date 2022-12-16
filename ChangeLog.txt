@@ -1,3 +1,6 @@
+'Update - 3.9.0
+'Added Encryption to password storing. (Will improve on this more)
+'
 'Update - 3.8.3
 'Added Check For Update Button
 '
