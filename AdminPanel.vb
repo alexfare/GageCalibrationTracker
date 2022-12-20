@@ -112,6 +112,7 @@ Set Ws = Worksheet_Set
 Ws.Cells(r, "A") = gnString
 Ws.Cells(r, "B") = PartNumbertxt
 Ws.Cells(r, "AL") = Now 'Update Last edited
+Ws.Cells(r, "AK") = lblDateAdded 'Date Added
 
 
 

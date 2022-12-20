@@ -1,3 +1,6 @@
+'Update - 3.9.2
+'Fixed Date Added Error
+'
 'Update - 3.9.1
 'Updated Menu Layout
 'Added Audit Log Back To Menu
@@ -6,6 +9,7 @@
 'Updated Change Password Screen Formatting
 'Added Report Issue Button
 'Fixed Password encryption Issue
+'Stronger Encryption
 '
 'Update - 3.9.0
 'Added Encryption to password storing. (Will improve on this more)
