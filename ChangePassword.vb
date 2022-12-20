@@ -1,14 +1,8 @@
-Dim R As Long           ' variable used for storing row number
+Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 Dim btnUpdate_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 
-Sub HashMD5()
-    Dim hashPass As String
-        hashPass = inputPass
-        Debug.Print StringToMD5Hex(hashPass)
-
-End Sub
 
 Private Sub inputUser_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
@@ -39,9 +33,9 @@ Set Worksheet_Set = Ws
             btnUpdate_Enable = False
             ErrMsg
     Else
-        R = Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)
+        r = Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)
         GN_Verify = inputUser
-        inputPass = Ws.Cells(R, "B")
+        'inputPass = Ws.Cells(r, "B")
         btnUpdate_Enable = True
             
             
@@ -99,8 +93,36 @@ Set Ws = Worksheet_Set
     Else
         gnString = inputUser
     End If
-Ws.Cells(R, "A") = gnString
-Ws.Cells(R, "B") = StringToMD5Hex(outstr)
+    
+    
+    '/ Hash /'
+    s = inputPass
+    
+    Dim sIn As String, sOut As String, b64 As Boolean
+    Dim sH As String, sSecret As String
+    
+    'Password to be converted
+    sIn = s
+    sSecret = "" 'secret key for StrToSHA512Salt only
+    
+    'select as required
+    'b64 = False   'output hex
+    b64 = True   'output base-64
+    
+    sH = SHA512(sIn, b64)
+    
+    'message box and immediate window outputs
+    Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
+    ' MsgBox sH & vbNewLine & Len(sH) & " characters in length"
+  savePass = sH
+'/ Hash /'
+    
+    
+    
+    
+    
+Ws.Cells(r, "A") = gnString
+Ws.Cells(r, "B") = savePass
 
 
 btnUpdate.Caption = "Updated!"

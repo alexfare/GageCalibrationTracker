@@ -1,3 +1,12 @@
+'Update - 3.9.1
+'Updated Menu Layout
+'Added Audit Log Back To Menu
+'Updated Login Screen Formatting
+'Updated Create Account Screen Formatting
+'Updated Change Password Screen Formatting
+'Added Report Issue Button
+'Fixed Password encryption Issue
+'
 'Update - 3.9.0
 'Added Encryption to password storing. (Will improve on this more)
 '
