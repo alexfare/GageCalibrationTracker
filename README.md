@@ -21,8 +21,8 @@ Add more features to Admin Panel - Updated 12/16/22<br>
 Add ability to create multiple accounts - Completed 12/13/22<br>
 Add ability to change the password - Completed 12/13/22<br>
 Add Encryption to the passwords - Completed 12/16/22<br>
-Better Encryption<br>
-Report an Issue Button<br>
+Better Encryption - Completed 12/20/22<br>
+Report an Issue Button - Completed 12/19/22<br>
 Automatic Email logs<br>
 Better/more logs for audit<br>
 <br>
