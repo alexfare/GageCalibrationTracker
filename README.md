@@ -1,5 +1,6 @@
 # GageCalibrationTracker
 Gage Calibration Tracker - Excel<br>
+You will need to delete my info as this is actively used by me.>br>
 <br>
 Default Username: Admin<br>
 Default Password: o9!A62sSimZmiHNkQq%3<br>
