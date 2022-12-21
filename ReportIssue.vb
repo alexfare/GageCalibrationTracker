@@ -65,7 +65,7 @@ l1l1l1l1l1ll111l1l1l1l1ll11 = "reukiyyiirchcome"
  NewMail.Configuration = mailConfig
  NewMail.Send
  
- MsgBox "Your email has been sent", vbInformation
+ MsgBox "Your report has been sent. ", vbInformation
 
 Exit_Err:
  'Release object memory

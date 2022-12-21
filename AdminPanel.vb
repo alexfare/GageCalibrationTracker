@@ -204,6 +204,10 @@ Private Sub btnDevMode_click()
     Application.DisplayFullScreen = False
 End Sub
 
+Private Sub btnEditLists_Click()
+    Unload AdminForm
+    Worksheets("Lists").Activate
+End Sub
 
 
 

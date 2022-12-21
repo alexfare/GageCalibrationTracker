@@ -1,5 +1,7 @@
-'Update - 3.9.2
+'Update - 3.9.3
 'Fixed Date Added Error
+'Added Drop down box for Gage Status
+'Added Drop down box for Gage Type
 '
 'Update - 3.9.1
 'Updated Menu Layout

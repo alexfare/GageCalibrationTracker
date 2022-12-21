@@ -1,9 +1,9 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.1
-' Updated: 12/20/2022
+' Rev: 3.9.3
+' Updated: 12/21/2022
 
-Dim R As Long           ' variable used for storing row number
+Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
@@ -12,7 +12,6 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
-
 Private Sub Option1_6_Click() ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
     Date_Due_6mos = Format(Date_Due_6mos, "mm/dd/yyyy")
@@ -44,8 +43,7 @@ Private Sub Add_Button_Click()
   
     Dim lLastRow As Long    ' lLastRow = variable to store the result of the row count calculation
     lLastRow = Ws.ListObjects.Item(1).ListRows.Count
-    R = lLastRow + 3 ' Add number for every header tab created
-    
+    r = lLastRow + 3 ' Add number for every header tab created
                 Dim gnString As String
                     If IsNumeric(Gage_Number) Then
                         gnString = Val(Gage_Number.Value)
@@ -53,28 +51,28 @@ Private Sub Add_Button_Click()
                         gnString = Gage_Number
                     End If
     
-    Ws.Cells(R, "A") = gnString
-    Ws.Cells(R, "B") = PartNumbertxt
-    Ws.Cells(R, "C") = Descriptiontxt
-    Ws.Cells(R, "D") = GageType
-    Ws.Cells(R, "E") = Customer
-    Ws.Cells(R, "F") = Insp_Date
-    Ws.Cells(R, "G") = Due_Date
-    Ws.Cells(R, "H") = Initials
-    Ws.Cells(R, "I") = Department
-    Ws.Cells(R, "J") = Comments
-    Ws.Cells(R, "Z") = Statustxt
-    Ws.Cells(R, "AA") = aN1
-    Ws.Cells(R, "AB") = aA1
-    Ws.Cells(R, "AC") = aN2
-    Ws.Cells(R, "AD") = aA2
-    Ws.Cells(R, "AE") = aN3
-    Ws.Cells(R, "AF") = aA3
-    Ws.Cells(R, "AG") = aN4
-    Ws.Cells(R, "AH") = aA4
-    Ws.Cells(R, "AI") = aN5
-    Ws.Cells(R, "AJ") = aA5
-    Ws.Cells(R, "AK") = Now
+    Ws.Cells(r, "A") = gnString
+    Ws.Cells(r, "B") = PartNumbertxt
+    Ws.Cells(r, "C") = Descriptiontxt
+    Ws.Cells(r, "D") = comboGageType
+    Ws.Cells(r, "E") = Customer
+    Ws.Cells(r, "F") = Insp_Date
+    Ws.Cells(r, "G") = Due_Date
+    Ws.Cells(r, "H") = Initials
+    Ws.Cells(r, "I") = Department
+    Ws.Cells(r, "J") = Comments
+    Ws.Cells(r, "Z") = comboStatus
+    Ws.Cells(r, "AA") = aN1
+    Ws.Cells(r, "AB") = aA1
+    Ws.Cells(r, "AC") = aN2
+    Ws.Cells(r, "AD") = aA2
+    Ws.Cells(r, "AE") = aN3
+    Ws.Cells(r, "AF") = aA3
+    Ws.Cells(r, "AG") = aN4
+    Ws.Cells(r, "AH") = aA4
+    Ws.Cells(r, "AI") = aN5
+    Ws.Cells(r, "AJ") = aA5
+    Ws.Cells(r, "AK") = Now
     
     Add_Button.Caption = "Added!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
@@ -110,14 +108,14 @@ Public Sub Search_Button_Click()
 ' --------------------------------------------------------
         PartNumbertxt = ""
         Descriptiontxt = ""
-        GageType = ""
+        comboGageType = ""
         Customer = ""
         Insp_Date = ""
         Due_Date = ""
         Initials = ""
         Department = ""
         Comments = ""
-        Statustxt = ""
+        comboStatus = ""
         aN1 = ""
         aA1 = ""
         aN2 = ""
@@ -147,36 +145,36 @@ Set Worksheet_Set = Ws
             Update_Button_Enable = False
             ErrMsg
     Else
-        R = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
+        r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
         GN_Verify = Gage_Number
-        PartNumbertxt = Ws.Cells(R, "B")
-        Descriptiontxt = Ws.Cells(R, "C")
-        GageType = Ws.Cells(R, "D")
-        Customer = Ws.Cells(R, "E")
-        Insp_Date = Ws.Cells(R, "F")
-        Due_Date_Original = Ws.Cells(R, "G")
+        PartNumbertxt = Ws.Cells(r, "B")
+        Descriptiontxt = Ws.Cells(r, "C")
+        comboGageType = Ws.Cells(r, "D")
+        Customer = Ws.Cells(r, "E")
+        Insp_Date = Ws.Cells(r, "F")
+        Due_Date_Original = Ws.Cells(r, "G")
         Due_Date = Format(Due_Date_Original, "mm/dd/yyyy")
-        Initials = Ws.Cells(R, "H")
-        Department = Ws.Cells(R, "I")
-        Comments = Ws.Cells(R, "J")
-        Statustxt = Ws.Cells(R, "Z")
-        aN1 = Ws.Cells(R, "AA")
-        aA1 = Ws.Cells(R, "AB")
-        aN2 = Ws.Cells(R, "AC")
-        aA2 = Ws.Cells(R, "AD")
-        aN3 = Ws.Cells(R, "AE")
-        aA3 = Ws.Cells(R, "AF")
-        aN4 = Ws.Cells(R, "AG")
-        aA4 = Ws.Cells(R, "AH")
-        aN5 = Ws.Cells(R, "AI")
-        aA5 = Ws.Cells(R, "AJ")
-        Ws.Cells(R, "AM") = Now 'Update Last searched
+        Initials = Ws.Cells(r, "H")
+        Department = Ws.Cells(r, "I")
+        Comments = Ws.Cells(r, "J")
+        comboStatus = Ws.Cells(r, "Z")
+        aN1 = Ws.Cells(r, "AA")
+        aA1 = Ws.Cells(r, "AB")
+        aN2 = Ws.Cells(r, "AC")
+        aA2 = Ws.Cells(r, "AD")
+        aN3 = Ws.Cells(r, "AE")
+        aA3 = Ws.Cells(r, "AF")
+        aN4 = Ws.Cells(r, "AG")
+        aA4 = Ws.Cells(r, "AH")
+        aN5 = Ws.Cells(r, "AI")
+        aA5 = Ws.Cells(r, "AJ")
+        Ws.Cells(r, "AM") = Now 'Update Last searched
         Update_Button_Enable = True
         Option4_Custom = True
         
-        lblDateAdded = Ws.Cells(R, "AK")
-        lblDateEdit = Ws.Cells(R, "AL")
-        lbSearchedDate = Ws.Cells(R, "AM")
+        lblDateAdded = Ws.Cells(r, "AK")
+        lblDateEdit = Ws.Cells(r, "AL")
+        lbSearchedDate = Ws.Cells(r, "AM")
             
             
         Dim FS
@@ -190,6 +188,7 @@ Set Worksheet_Set = Ws
 Gage_Number.SetFocus
 
 End Sub
+
 
 
 
@@ -223,14 +222,14 @@ Private Sub Clear_Form()
         Gage_Number = ""
         PartNumbertxt = ""
         Descriptiontxt = ""
-        GageType = ""
+        comboGageType = ""
         Customer = ""
         Insp_Date = ""
         Due_Date = ""
         Initials = ""
         Department = ""
         Comments = ""
-        Statustxt = ""
+        comboStatus = ""
         aN1 = ""
         aA1 = ""
         aN2 = ""
@@ -255,27 +254,27 @@ Set Ws = Worksheet_Set
     Else
         gnString = Gage_Number
     End If
-Ws.Cells(R, "A") = gnString
-Ws.Cells(R, "B") = PartNumbertxt
-Ws.Cells(R, "C") = Descriptiontxt
-Ws.Cells(R, "D") = GageType
-Ws.Cells(R, "E") = Customer
-Ws.Cells(R, "F") = Insp_Date
-Ws.Cells(R, "H") = Initials
-Ws.Cells(R, "I") = Department
-Ws.Cells(R, "J") = Comments
-Ws.Cells(R, "Z") = Statustxt
-Ws.Cells(R, "AA") = aN1
-Ws.Cells(R, "AB") = aA1
-Ws.Cells(R, "AC") = aN2
-Ws.Cells(R, "AD") = aA2
-Ws.Cells(R, "AE") = aN3
-Ws.Cells(R, "AF") = aA3
-Ws.Cells(R, "AG") = aN4
-Ws.Cells(R, "AH") = aA4
-Ws.Cells(R, "AI") = aN5
-Ws.Cells(R, "AJ") = aA5
-Ws.Cells(R, "AL") = Now 'Update Last edited
+Ws.Cells(r, "A") = gnString
+Ws.Cells(r, "B") = PartNumbertxt
+Ws.Cells(r, "C") = Descriptiontxt
+Ws.Cells(r, "D") = comboGageType
+Ws.Cells(r, "E") = Customer
+Ws.Cells(r, "F") = Insp_Date
+Ws.Cells(r, "H") = Initials
+Ws.Cells(r, "I") = Department
+Ws.Cells(r, "J") = Comments
+Ws.Cells(r, "Z") = comboStatus
+Ws.Cells(r, "AA") = aN1
+Ws.Cells(r, "AB") = aA1
+Ws.Cells(r, "AC") = aN2
+Ws.Cells(r, "AD") = aA2
+Ws.Cells(r, "AE") = aN3
+Ws.Cells(r, "AF") = aA3
+Ws.Cells(r, "AG") = aN4
+Ws.Cells(r, "AH") = aA4
+Ws.Cells(r, "AI") = aN5
+Ws.Cells(r, "AJ") = aA5
+Ws.Cells(r, "AL") = Now 'Update Last edited
 
 If Option1_6 = True Then                ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
     Due_Date = Date_Due_6mos
@@ -291,7 +290,7 @@ If Option4_Custom = True Then
     Due_Date = Date_Due
     End If
     
-Ws.Cells(R, "G") = Due_Date
+Ws.Cells(r, "G") = Due_Date
 
 Update_Button.Caption = "Updated!"
 Application.Wait (Now + TimeValue("0:00:02"))
@@ -343,4 +342,5 @@ Private Sub btnReportIssue_click()
 Unload UserForm1
 ReportIssue.Show
 End Sub
+
 
