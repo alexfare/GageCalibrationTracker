@@ -1,7 +1,13 @@
+'Update - 3.9.4
+'Added default date of 1/1/1900 to prevent crash
+'Menu format change (Audit Log)
+'Made attributes input boxes larger
+'
 'Update - 3.9.3
 'Fixed Date Added Error
 'Added Drop down box for Gage Status
 'Added Drop down box for Gage Type
+'Added List Menu in Admin Panel
 '
 'Update - 3.9.1
 'Updated Menu Layout

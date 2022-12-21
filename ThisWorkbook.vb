@@ -6,6 +6,8 @@ Private Sub Workbook_Open()
     
 '/ Skip Login /
     Worksheets("CreatedByAlexFare").Activate
+	'MsgBox _
+		'""
     UserForm1.Show
     Application.DisplayFullScreen = True
     
