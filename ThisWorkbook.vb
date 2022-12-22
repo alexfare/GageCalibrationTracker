@@ -6,9 +6,10 @@ Private Sub Workbook_Open()
     
 '/ Skip Login /
     Worksheets("CreatedByAlexFare").Activate
-    'MsgBox _
-       ' ""
-    Menu.Show
     Application.DisplayFullScreen = True
+     'MsgBox ""
+    Menu.Show
     
 End Sub
+
+

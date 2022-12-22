@@ -3,6 +3,7 @@
 'Menu format change (Audit Log)
 'Made attributes input boxes larger
 'Updated Menu form name
+'Fixed Admin Logout Button Error
 '
 'Update - 3.9.3
 'Fixed Date Added Error

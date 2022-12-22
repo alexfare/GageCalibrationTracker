@@ -202,6 +202,7 @@ End Sub
 
 Private Sub btnDevMode_click()
     Application.DisplayFullScreen = False
+    Application.DisplayFormulaBar = True
 End Sub
 
 Private Sub btnEditLists_Click()
