@@ -135,7 +135,7 @@ Public Sub Search_Button_Click()
         aA5 = ""
         lblDateAdded = ""
         lblDateEdit = ""
-        lbSearchedDate = ""
+        lblSearchedDate = ""
         lastUser = ""
         
 ' ---------------------------------------------------------
@@ -183,7 +183,7 @@ Set Worksheet_Set = Ws
         '/ Audit
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
-        lbSearchedDate = Ws.Cells(r, "AM")
+        lblSearchedDate = Ws.Cells(r, "AM")
         lastUser = Ws.Cells(r, "AN")
             
         Dim FS
@@ -251,7 +251,7 @@ Private Sub Clear_Form()
         aA5 = ""
         lblDateAdded = "-"
         lblDateEdit = "-"
-        lbSearchedDate = "-"
+        lblSearchedDate = "-"
         lastUser = "-"
 End Sub
 

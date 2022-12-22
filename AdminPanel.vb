@@ -30,9 +30,6 @@ List_Select = "CreatedByAlexFare"
 Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
 
-
-
-
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
             Update_Button_Enable = False
             ErrMsg
@@ -40,26 +37,6 @@ Set Worksheet_Set = Ws
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = Ws.Cells(r, "B")
-        Descriptiontxt = Ws.Cells(r, "C")
-        GageType = Ws.Cells(r, "D")
-        Customer = Ws.Cells(r, "E")
-        Insp_Date = Ws.Cells(r, "F")
-        Due_Date_Original = Ws.Cells(r, "G")
-        Due_Date = Format(Due_Date_Original, "mm/dd/yyyy")
-        Initials = Ws.Cells(r, "H")
-        Department = Ws.Cells(r, "I")
-        Comments = Ws.Cells(r, "J")
-        Statustxt = Ws.Cells(r, "Z")
-        aN1 = Ws.Cells(r, "AA")
-        aA1 = Ws.Cells(r, "AB")
-        aN2 = Ws.Cells(r, "AC")
-        aA2 = Ws.Cells(r, "AD")
-        aN3 = Ws.Cells(r, "AE")
-        aA3 = Ws.Cells(r, "AF")
-        aN4 = Ws.Cells(r, "AG")
-        aA4 = Ws.Cells(r, "AH")
-        aN5 = Ws.Cells(r, "AI")
-        aA5 = Ws.Cells(r, "AJ")
         Ws.Cells(r, "AM") = Now 'Update Last searched
         Update_Button_Enable = True
         Option4_Custom = True
@@ -68,7 +45,6 @@ Set Worksheet_Set = Ws
         lblDateEdit = Ws.Cells(r, "AL")
         lblSearchedDate = Ws.Cells(r, "AM")
         lastUser = Ws.Cells(r, "AN")
-            
             
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
@@ -121,7 +97,6 @@ currrentUser = Application.UserName
 lastUser = currrentUser
 Ws.Cells(r, "AN") = lastUser
 
-
 Update_Button.Caption = "Updated!"
 Application.Wait (Now + TimeValue("0:00:02"))
 Update_Button.Caption = "Update"
@@ -152,25 +127,6 @@ End Sub
 Private Sub Clear_Form()
         Gage_Number = ""
         PartNumbertxt = ""
-        Descriptiontxt = ""
-        GageType = ""
-        Customer = ""
-        Insp_Date = ""
-        Due_Date = ""
-        Initials = ""
-        Department = ""
-        Comments = ""
-        Statustxt = ""
-        aN1 = ""
-        aA1 = ""
-        aN2 = ""
-        aA2 = ""
-        aN3 = ""
-        aA3 = ""
-        aN4 = ""
-        aA4 = ""
-        aN5 = ""
-        aA5 = ""
         lblDateAdded = "-"
         lblDateEdit = "-"
         lblSearchedDate = "-"
@@ -216,6 +172,7 @@ Private Sub btnEditLists_Click()
     Unload AdminForm
     Worksheets("Lists").Activate
 End Sub
+
 
 
 
