@@ -1,6 +1,6 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.4
+' Rev: 3.9.5
 ' Updated: 12/22/2022
 
 Dim r As Long           ' variable used for storing row number
@@ -12,6 +12,8 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
+Dim currrentUser As String
+
 Private Sub Option1_6_Click() ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
     Date_Due_6mos = Format(Date_Due_6mos, "mm/dd/yyyy")
@@ -74,6 +76,11 @@ Private Sub Add_Button_Click()
     Ws.Cells(r, "AJ") = aA5
     Ws.Cells(r, "AK") = Now
     
+    '/ Audit
+    currrentUser = Application.UserName
+    lastUser = currrentUser
+    Ws.Cells(r, "AN") = lastUser
+    
     Add_Button.Caption = "Added!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
     Add_Button.Caption = "Add"
@@ -129,6 +136,7 @@ Public Sub Search_Button_Click()
         lblDateAdded = ""
         lblDateEdit = ""
         lbSearchedDate = ""
+        lastUser = ""
         
 ' ---------------------------------------------------------
 
@@ -172,10 +180,11 @@ Set Worksheet_Set = Ws
         Update_Button_Enable = True
         Option4_Custom = True
         
+        '/ Audit
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
         lbSearchedDate = Ws.Cells(r, "AM")
-            
+        lastUser = Ws.Cells(r, "AN")
             
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
@@ -243,6 +252,7 @@ Private Sub Clear_Form()
         lblDateAdded = "-"
         lblDateEdit = "-"
         lbSearchedDate = "-"
+        lastUser = "-"
 End Sub
 
 Private Sub Update_Worksheet()
@@ -275,6 +285,13 @@ Ws.Cells(r, "AH") = aA4
 Ws.Cells(r, "AI") = aN5
 Ws.Cells(r, "AJ") = aA5
 Ws.Cells(r, "AL") = Now 'Update Last edited
+
+
+'/ Audit
+    currrentUser = Application.UserName
+    lastUser = currrentUser
+    Ws.Cells(r, "AN") = lastUser
+
 
 If Option1_6 = True Then                ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
     Due_Date = Date_Due_6mos
@@ -342,5 +359,3 @@ Private Sub btnReportIssue_click()
 Unload Menu
 ReportIssue.Show
 End Sub
-
-

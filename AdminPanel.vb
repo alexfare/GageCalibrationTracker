@@ -2,6 +2,7 @@ Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
+Dim currrentUser As String
 
 
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
@@ -18,7 +19,8 @@ Public Sub Search_Button_Click()
         PartNumbertxt = ""
         lblDateAdded = ""
         lblDateEdit = ""
-        lbSearchedDate = ""
+        lblSearchedDate = ""
+        lastUser = ""
         
 ' ---------------------------------------------------------
 
@@ -64,7 +66,8 @@ Set Worksheet_Set = Ws
         
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
-        lbSearchedDate = Ws.Cells(r, "AM")
+        lblSearchedDate = Ws.Cells(r, "AM")
+        lastUser = Ws.Cells(r, "AN")
             
             
         Dim FS
@@ -109,11 +112,14 @@ Set Ws = Worksheet_Set
     Else
         gnString = Gage_Number
     End If
+    '/ Audit
 Ws.Cells(r, "A") = gnString
 Ws.Cells(r, "B") = PartNumbertxt
 Ws.Cells(r, "AL") = Now 'Update Last edited
 Ws.Cells(r, "AK") = lblDateAdded 'Date Added
-
+currrentUser = Application.UserName
+lastUser = currrentUser
+Ws.Cells(r, "AN") = lastUser
 
 
 Update_Button.Caption = "Updated!"
@@ -168,6 +174,7 @@ Private Sub Clear_Form()
         lblDateAdded = "-"
         lblDateEdit = "-"
         lblSearchedDate = "-"
+        lastUser = "-"
 End Sub
 
 Private Sub btnClear_Click()
@@ -209,6 +216,7 @@ Private Sub btnEditLists_Click()
     Unload AdminForm
     Worksheets("Lists").Activate
 End Sub
+
 
 
 
