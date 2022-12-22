@@ -1,7 +1,22 @@
+VERSION 5.00
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
+   Caption         =   "Gage Menu - Created By Alex Fare"
+   ClientHeight    =   6375
+   ClientLeft      =   45
+   ClientTop       =   375
+   ClientWidth     =   12105
+   OleObjectBlob   =   "Menu.frx":0000
+   StartUpPosition =   1  'CenterOwner
+End
+Attribute VB_Name = "Menu"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.4
-' Updated: 12/22/2022
+' Rev: 3.9.3
+' Updated: 12/21/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -342,5 +357,6 @@ Private Sub btnReportIssue_click()
 Unload Menu
 ReportIssue.Show
 End Sub
+
 
 

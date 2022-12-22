@@ -39,7 +39,7 @@ End If
 If inputUser.Value = "Admin" And inputPass.Value = "o9!A62sSimZmiHNkQq%3" Then
 Unload Me
 Sheets("CreatedByAlexFare").Activate
-' UserForm1.Show
+' Menu.Show
 AdminForm.Show
 Else
 
@@ -68,7 +68,7 @@ End Sub
 
 Private Sub btnBack_click()
 Unload LoginForm
-UserForm1.Show
+Menu.Show
 End Sub
 
 

@@ -185,7 +185,7 @@ End Sub
 
 Private Sub btnLogOut_click()
 Unload AdminForm
-UserForm1.Show
+Menu.Show
 ThisWorkbook.Save
 End Sub
 
