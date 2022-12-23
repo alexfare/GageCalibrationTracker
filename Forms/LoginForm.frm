@@ -33,30 +33,21 @@ Private Sub btnLogin_Click()
     
     'message box and immediate window outputs
     Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
-    ' MsgBox sH & vbNewLine & Len(sH) & " characters in length"
+
   savePass = sH
 '/ Hash /'
 
-
-
-
-
+'User set up
 If inputUser.Value = "" Then
 MsgBox "User Cannot be Blank.", vbInformation, ""
 Exit Sub
 End If
 
+'Password set up
 If inputPass.Value = "" Then
 MsgBox "Password Cannot be Blank!", vbInformation, ""
 Exit Sub
 End If
-
-If inputUser.Value = "Admin" And inputPass.Value = "o9!A62sSimZmiHNkQq%3" Then
-Unload Me
-Sheets("CreatedByAlexFare").Activate
-' Menu.Show
-AdminForm.Show
-Else
 
 Dim inputUsername As String
 Dim Password As Variant
@@ -76,16 +67,9 @@ Sheets("CreatedByAlexFare").Activate
 AdminForm.Show
 End If
 End If
-
-
 End Sub
-
 
 Private Sub btnBack_click()
 Unload LoginForm
 Menu.Show
 End Sub
-
-
-
-
