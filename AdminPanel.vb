@@ -93,7 +93,7 @@ Ws.Cells(r, "A") = gnString
 Ws.Cells(r, "B") = PartNumbertxt
 Ws.Cells(r, "AL") = Now 'Update Last edited
 Ws.Cells(r, "AK") = lblDateAdded 'Date Added
-currrentUser = Application.UserName
+currrentUser = Application.userName
 lastUser = currrentUser
 Ws.Cells(r, "AN") = lastUser
 
@@ -173,7 +173,6 @@ Private Sub btnEditLists_Click()
     Worksheets("Lists").Activate
 End Sub
 
-
-
-
-
+Private Sub btnAbout_Click()
+    MsgBox "Code protection password is GageTracker2022"
+End Sub

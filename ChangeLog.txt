@@ -1,3 +1,8 @@
+'Update - 3.9.7
+'Fixed error caused after excel update?
+'Fixed Error in Login
+'Added About under Admin that contains code protection password
+'
 'Update - 3.9.6
 'Removed Default Master Login Stored In Plain Text
 'Cleaned up Login Code

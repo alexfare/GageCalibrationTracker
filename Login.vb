@@ -8,13 +8,15 @@ Private Sub btnLogin_Click()
     
     'Password to be converted
     sIn = s
-    sSecret = "" 'secret key for StrToSHA512Salt only
+    sSecret = "G4g3Tr4ck3r" 'secret key for StrToSHA512Salt only
     
     'select as required
     'b64 = False   'output hex
     b64 = True   'output base-64
     
     sH = SHA512(sIn, b64)
+    'Add salt to the encryption
+    'sH = StrToSHA512Salt(sIn, sSecretKey, b64)
     
     'message box and immediate window outputs
     Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
@@ -50,7 +52,6 @@ If Password = PassCompare Then
 Unload Me
 Sheets("CreatedByAlexFare").Activate
 AdminForm.Show
-End If
 End If
 End Sub
 

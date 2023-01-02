@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.5
-' Updated: 12/22/2022
+' Rev: 3.9.7
+' Updated: 01/02/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -77,7 +77,7 @@ Private Sub Add_Button_Click()
     Ws.Cells(r, "AK") = Now
     
     '/ Audit
-    currrentUser = Application.UserName
+    currrentUser = Application.userName
     lastUser = currrentUser
     Ws.Cells(r, "AN") = lastUser
     
@@ -146,9 +146,6 @@ List_Select = "CreatedByAlexFare"
 Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
 
-
-
-
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
             Update_Button_Enable = False
             ErrMsg
@@ -198,9 +195,6 @@ Gage_Number.SetFocus
 
 End Sub
 
-
-
-
 Private Sub Update_Button_Click()
 If Update_Button_Enable = True Then
     If GN_Verify = Gage_Number Then
@@ -213,8 +207,6 @@ Else
 End If
 End Sub
 
-
-
 Sub ErrMsg()
 MsgBox ("Gage Number Not Found"), , "Not Found"
 Gage_Number.SetFocus
@@ -224,8 +216,6 @@ Sub ErrMsg_Duplicate()
 MsgBox ("Gage number already in use"), , "Duplicate"
 Gage_Number.SetFocus
 End Sub
-
-
 
 Private Sub Clear_Form()
         Gage_Number = ""
@@ -286,12 +276,10 @@ Ws.Cells(r, "AI") = aN5
 Ws.Cells(r, "AJ") = aA5
 Ws.Cells(r, "AL") = Now 'Update Last edited
 
-
 '/ Audit
-    currrentUser = Application.UserName
+    currrentUser = Application.userName
     lastUser = currrentUser
     Ws.Cells(r, "AN") = lastUser
-
 
 If Option1_6 = True Then                ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
     Due_Date = Date_Due_6mos
@@ -317,10 +305,9 @@ Gage_Number.SetFocus
 
 Else
     MsgBox ("Must search for entry before updating"), , "Nothing to Update"
-    
 End If
 
-'Update_Button_Enable = False 'Remove ' if you want to require searching again after an update.
+'Update_Button_Enable = False 'Remove comment if you want to require searching again after an update.
 
 End Sub
 
@@ -335,7 +322,6 @@ Else
 End If
 
 End Sub
-
 
 Private Sub btnSave_click()
 ThisWorkbook.Save
