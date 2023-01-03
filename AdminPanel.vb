@@ -20,8 +20,7 @@ Public Sub Search_Button_Click()
         lblDateAdded = ""
         lblDateEdit = ""
         lblSearchedDate = ""
-        lastUser = ""
-        
+        lastUser = ""      
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet

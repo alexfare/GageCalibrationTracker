@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.7
-' Updated: 01/02/2022
+' Rev: 3.9.8
+' Updated: 01/03/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -14,6 +14,7 @@ Dim Date_Due_2yr
 Dim Date_Due
 Dim currrentUser As String
 
+'/Auto Due Date
 Private Sub Option1_6_Click() ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
     Date_Due_6mos = Format(Date_Due_6mos, "mm/dd/yyyy")
@@ -34,6 +35,7 @@ Date_Due = Format(Due_Date, "mm/dd/yyyy")
 Due_Date = Date_Due
 End Sub
 
+'/ Add Gage
 Private Sub Add_Button_Click()
     Dim Ws As Worksheet
     Dim List_Select
@@ -76,7 +78,7 @@ Private Sub Add_Button_Click()
     Ws.Cells(r, "AJ") = aA5
     Ws.Cells(r, "AK") = Now
     
-    '/ Audit
+    '/ Audit Log
     currrentUser = Application.userName
     lastUser = currrentUser
     Ws.Cells(r, "AN") = lastUser
@@ -88,16 +90,17 @@ Private Sub Add_Button_Click()
     Gage_Number.SetFocus
     Else
         ErrMsg_Duplicate
-    End If
-    
+    End If  
 End Sub
 
+'/ Clear Button
 Private Sub btnClear_Click()
 Update_Button_Enable = False
 Clear_Form
 Gage_Number.SetFocus
 End Sub
 
+'/ Done Button
 Private Sub Done_Button_Click()
 Unload Menu
 End Sub
@@ -109,8 +112,8 @@ Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Sh
     End If
 End Sub
 
+'/ Search Button
 Public Sub Search_Button_Click()
-
 ' clear previous data from form, except "Gage Number"
 ' --------------------------------------------------------
         PartNumbertxt = ""
@@ -136,8 +139,7 @@ Public Sub Search_Button_Click()
         lblDateAdded = ""
         lblDateEdit = ""
         lblSearchedDate = ""
-        lastUser = ""
-        
+        lastUser = ""    
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet
@@ -177,7 +179,7 @@ Set Worksheet_Set = Ws
         Update_Button_Enable = True
         Option4_Custom = True
         
-        '/ Audit
+        '/ Audit Log
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
         lblSearchedDate = Ws.Cells(r, "AM")
@@ -192,9 +194,9 @@ Set Worksheet_Set = Ws
     End If
 
 Gage_Number.SetFocus
-
 End Sub
 
+'/ Update Button
 Private Sub Update_Button_Click()
 If Update_Button_Enable = True Then
     If GN_Verify = Gage_Number Then
@@ -276,7 +278,7 @@ Ws.Cells(r, "AI") = aN5
 Ws.Cells(r, "AJ") = aA5
 Ws.Cells(r, "AL") = Now 'Update Last edited
 
-'/ Audit
+'/ Audit Log
     currrentUser = Application.userName
     lastUser = currrentUser
     Ws.Cells(r, "AN") = lastUser
