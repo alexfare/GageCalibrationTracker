@@ -363,3 +363,7 @@ Unload Menu
 ReportIssue.Show
 End Sub
 
+'/Label Printing /'
+Private Sub btnLabel_Click()
+    MsgBox "Coming Soon"
+End Sub
