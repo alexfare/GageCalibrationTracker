@@ -44,7 +44,7 @@ l1l1l1l1l1ll111l1l1l1l1ll11 = "reukiyyiirchcome"
    .To = "alexfare94@gmail.com"
    .CC = ""
    .BCC = ""
-   .Subject = "Report An Issue"
+   .Subject = "GageTracker - Report An Issue"
    .TextBody = "Name: " + inputName + " Email: " + inputEmail + " Description: " + inputDescription
    '.Addattachment "c:\data\email.xlsx" 'Optional file attachment; remove if not needed.
    '.Addattachment "c:\data\email.pdf" 'Duplicate the line for a second attachment.

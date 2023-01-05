@@ -3,7 +3,6 @@ Dim Worksheet_Set       ' variable used for selecting and storing the active wor
 Dim btnUpdate_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 
-
 Private Sub inputUser_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
         Search_Button_Click
@@ -25,9 +24,6 @@ Dim Ws As Worksheet
 List_Select = "Credentials"
 Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
-
-
-
 
     If IsError(Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)) Then
             btnUpdate_Enable = False
@@ -51,8 +47,6 @@ inputUser.SetFocus
 
 End Sub
 
-
-
 Private Sub btnUpdate_Click()
 If btnUpdate_Enable = True Then
     If GN_Verify = inputUser Then
@@ -65,8 +59,6 @@ Else
 End If
 End Sub
 
-
-
 Sub ErrMsg()
 MsgBox ("Username Not Found"), , "Not Found"
 inputUser.SetFocus
@@ -77,11 +69,10 @@ MsgBox ("Username already in use"), , "Duplicate"
 inputUser.SetFocus
 End Sub
 
-
-
 Private Sub Clear_Form()
         inputUser = ""
         inputPass = ""
+		'inputPassConfirm = ""
 End Sub
 
 Private Sub Update_Worksheet()
@@ -92,8 +83,7 @@ Set Ws = Worksheet_Set
         gnString = Val(inputUser.Value)
     Else
         gnString = inputUser
-    End If
-    
+    End If  
     
     '/ Hash /'
     s = inputPass
@@ -116,14 +106,9 @@ Set Ws = Worksheet_Set
     ' MsgBox sH & vbNewLine & Len(sH) & " characters in length"
   savePass = sH
 '/ Hash /'
-    
-    
-    
-    
-    
+
 Ws.Cells(r, "A") = gnString
 Ws.Cells(r, "B") = savePass
-
 
 btnUpdate.Caption = "Updated!"
 Application.Wait (Now + TimeValue("0:00:02"))

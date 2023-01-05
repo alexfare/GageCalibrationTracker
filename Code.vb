@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.8
-' Updated: 01/03/2022
+' Rev: 3.9.9
+' Updated: 01/05/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -90,7 +90,7 @@ Private Sub Add_Button_Click()
     Gage_Number.SetFocus
     Else
         ErrMsg_Duplicate
-    End If  
+    End If
 End Sub
 
 '/ Clear Button
@@ -139,7 +139,7 @@ Public Sub Search_Button_Click()
         lblDateAdded = ""
         lblDateEdit = ""
         lblSearchedDate = ""
-        lastUser = ""    
+        lastUser = ""
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet
@@ -347,3 +347,4 @@ Private Sub btnReportIssue_click()
 Unload Menu
 ReportIssue.Show
 End Sub
+

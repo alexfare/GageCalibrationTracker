@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
-   Caption         =   "Gage Menu - Created By Alex Fare"
-   ClientHeight    =   6465
+   Caption         =   "GageTracker - Created By Alex Fare"
+   ClientHeight    =   6540
    ClientLeft      =   45
    ClientTop       =   375
    ClientWidth     =   12105
@@ -15,8 +15,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.3
-' Updated: 12/21/2022
+' Rev: 3.9.9
+' Updated: 01/05/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -27,6 +27,9 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
+Dim currrentUser As String
+
+'/Auto Due Date
 Private Sub Option1_6_Click() ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
     Date_Due_6mos = Format(Date_Due_6mos, "mm/dd/yyyy")
@@ -47,6 +50,7 @@ Date_Due = Format(Due_Date, "mm/dd/yyyy")
 Due_Date = Date_Due
 End Sub
 
+'/ Add Gage
 Private Sub Add_Button_Click()
     Dim Ws As Worksheet
     Dim List_Select
@@ -89,6 +93,11 @@ Private Sub Add_Button_Click()
     Ws.Cells(r, "AJ") = aA5
     Ws.Cells(r, "AK") = Now
     
+    '/ Audit Log
+    currrentUser = Application.userName
+    lastUser = currrentUser
+    Ws.Cells(r, "AN") = lastUser
+    
     Add_Button.Caption = "Added!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
     Add_Button.Caption = "Add"
@@ -97,15 +106,16 @@ Private Sub Add_Button_Click()
     Else
         ErrMsg_Duplicate
     End If
-    
 End Sub
 
+'/ Clear Button
 Private Sub btnClear_Click()
 Update_Button_Enable = False
 Clear_Form
 Gage_Number.SetFocus
 End Sub
 
+'/ Done Button
 Private Sub Done_Button_Click()
 Unload Menu
 End Sub
@@ -117,8 +127,8 @@ Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Sh
     End If
 End Sub
 
+'/ Search Button
 Public Sub Search_Button_Click()
-
 ' clear previous data from form, except "Gage Number"
 ' --------------------------------------------------------
         PartNumbertxt = ""
@@ -143,8 +153,8 @@ Public Sub Search_Button_Click()
         aA5 = ""
         lblDateAdded = ""
         lblDateEdit = ""
-        lbSearchedDate = ""
-        
+        lblSearchedDate = ""
+        lastUser = ""
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet
@@ -152,9 +162,6 @@ Dim Ws As Worksheet
 List_Select = "CreatedByAlexFare"
 Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
-
-
-
 
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
             Update_Button_Enable = False
@@ -187,10 +194,11 @@ Set Worksheet_Set = Ws
         Update_Button_Enable = True
         Option4_Custom = True
         
+        '/ Audit Log
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
-        lbSearchedDate = Ws.Cells(r, "AM")
-            
+        lblSearchedDate = Ws.Cells(r, "AM")
+        lastUser = Ws.Cells(r, "AN")
             
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
@@ -201,12 +209,9 @@ Set Worksheet_Set = Ws
     End If
 
 Gage_Number.SetFocus
-
 End Sub
 
-
-
-
+'/ Update Button
 Private Sub Update_Button_Click()
 If Update_Button_Enable = True Then
     If GN_Verify = Gage_Number Then
@@ -219,8 +224,6 @@ Else
 End If
 End Sub
 
-
-
 Sub ErrMsg()
 MsgBox ("Gage Number Not Found"), , "Not Found"
 Gage_Number.SetFocus
@@ -230,8 +233,6 @@ Sub ErrMsg_Duplicate()
 MsgBox ("Gage number already in use"), , "Duplicate"
 Gage_Number.SetFocus
 End Sub
-
-
 
 Private Sub Clear_Form()
         Gage_Number = ""
@@ -257,7 +258,8 @@ Private Sub Clear_Form()
         aA5 = ""
         lblDateAdded = "-"
         lblDateEdit = "-"
-        lbSearchedDate = "-"
+        lblSearchedDate = "-"
+        lastUser = "-"
 End Sub
 
 Private Sub Update_Worksheet()
@@ -291,6 +293,11 @@ Ws.Cells(r, "AI") = aN5
 Ws.Cells(r, "AJ") = aA5
 Ws.Cells(r, "AL") = Now 'Update Last edited
 
+'/ Audit Log
+    currrentUser = Application.userName
+    lastUser = currrentUser
+    Ws.Cells(r, "AN") = lastUser
+
 If Option1_6 = True Then                ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
     Due_Date = Date_Due_6mos
     End If
@@ -315,10 +322,9 @@ Gage_Number.SetFocus
 
 Else
     MsgBox ("Must search for entry before updating"), , "Nothing to Update"
-    
 End If
 
-'Update_Button_Enable = False 'Remove ' if you want to require searching again after an update.
+'Update_Button_Enable = False 'Remove comment if you want to require searching again after an update.
 
 End Sub
 
@@ -333,7 +339,6 @@ Else
 End If
 
 End Sub
-
 
 Private Sub btnSave_click()
 ThisWorkbook.Save
@@ -357,6 +362,4 @@ Private Sub btnReportIssue_click()
 Unload Menu
 ReportIssue.Show
 End Sub
-
-
 
