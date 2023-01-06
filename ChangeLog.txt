@@ -1,3 +1,8 @@
+'Update - 3.10.0
+'Added Label Print Button (3rd Party Client Required For Now)
+'Corrected Part Info Tab Index Order
+'Forms now Center on Screen or Center/Left on Alt Screens
+'
 'Update - 3.9.8
 'Releasing Production Signed Copy
 'Removed Unused Forms

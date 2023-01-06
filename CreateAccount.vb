@@ -3,12 +3,23 @@ Dim Worksheet_Set       ' variable used for selecting and storing the active wor
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 
+'/Positioning /'
+Private Sub UserForm_Initialize()
+Dim sngLeft As Single
+Dim sngTop As Single
+
+    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
+    Me.Left = sngLeft
+    Me.Top = sngTop
+End Sub
+
 Private Sub btnCreate_Click()
     Dim Ws As Worksheet
     Dim List_Select
     List_Select = "Credentials" ' Tab name
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
+
     
     If IsError(Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)) Then
   
@@ -21,7 +32,8 @@ Private Sub btnCreate_Click()
                         Else
                             gnString = inputUser
                         End If
-                                               
+                        
+                        
 '/ Hash /'
     s = inputPass
     
@@ -43,7 +55,8 @@ Private Sub btnCreate_Click()
     ' MsgBox sH & vbNewLine & Len(sH) & " characters in length"
   savePass = sH
 '/ Hash /'
-                                              
+                        
+                        
     Ws.Cells(r, "A") = gnString
     Ws.Cells(r, "B") = savePass
     
@@ -56,8 +69,10 @@ Private Sub btnCreate_Click()
     AdminForm.Show
     Else
         ErrMsg_Duplicate
-    End If 
+    End If
+    
 End Sub
+
 
 Sub ErrMsg()
 MsgBox ("Username Not Found"), , "Not Found"

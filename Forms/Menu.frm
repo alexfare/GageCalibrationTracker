@@ -6,7 +6,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu
    ClientTop       =   375
    ClientWidth     =   12105
    OleObjectBlob   =   "Menu.frx":0000
-   StartUpPosition =   1  'CenterOwner
+   StartUpPosition =   2  'CenterScreen
 End
 Attribute VB_Name = "Menu"
 Attribute VB_GlobalNameSpace = False
@@ -365,5 +365,5 @@ End Sub
 
 '/Label Printing /'
 Private Sub btnLabel_Click()
-    MsgBox "Coming Soon"
+    Label.Show
 End Sub

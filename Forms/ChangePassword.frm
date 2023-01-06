@@ -6,7 +6,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ChangePassword
    ClientTop       =   465
    ClientWidth     =   3585
    OleObjectBlob   =   "ChangePassword.frx":0000
-   StartUpPosition =   1  'CenterOwner
+   StartUpPosition =   2  'CenterScreen
 End
 Attribute VB_Name = "ChangePassword"
 Attribute VB_GlobalNameSpace = False
@@ -18,6 +18,15 @@ Dim Worksheet_Set       ' variable used for selecting and storing the active wor
 Dim btnUpdate_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 
+'/Positioning /'
+Private Sub UserForm_Initialize()
+Dim sngLeft As Single
+Dim sngTop As Single
+
+    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
+    Me.Left = sngLeft
+    Me.Top = sngTop
+End Sub
 
 Private Sub inputUser_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
@@ -171,8 +180,3 @@ Private Sub btnBack_click()
 Unload ChangePassword
 AdminForm.Show
 End Sub
-
-
-
-
-

@@ -6,13 +6,23 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ReportIssue
    ClientTop       =   465
    ClientWidth     =   4560
    OleObjectBlob   =   "ReportIssue.frx":0000
-   StartUpPosition =   1  'CenterOwner
+   StartUpPosition =   2  'CenterScreen
 End
 Attribute VB_Name = "ReportIssue"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+'/Positioning /'
+Private Sub UserForm_Initialize()
+Dim sngLeft As Single
+Dim sngTop As Single
+
+    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
+    Me.Left = sngLeft
+    Me.Top = sngTop
+End Sub
+
 Private Sub btnBack_click()
 Unload Me
 Menu.Show
@@ -59,7 +69,7 @@ l1l1l1l1l1ll111l1l1l1l1ll11 = "reukiyyiirchcome"
    .To = "alexfare94@gmail.com"
    .CC = ""
    .BCC = ""
-   .Subject = "Report An Issue"
+   .Subject = "GageTracker - Report An Issue"
    .TextBody = "Name: " + inputName + " Email: " + inputEmail + " Description: " + inputDescription
    '.Addattachment "c:\data\email.xlsx" 'Optional file attachment; remove if not needed.
    '.Addattachment "c:\data\email.pdf" 'Duplicate the line for a second attachment.
@@ -101,7 +111,3 @@ Err:
  Resume Exit_Err
 
 End Sub
-
-
-
-

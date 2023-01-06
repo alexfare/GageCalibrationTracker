@@ -4,6 +4,15 @@ Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 Dim currrentUser As String
 
+'/Positioning /'
+Private Sub UserForm_Initialize()
+Dim sngLeft As Single
+Dim sngTop As Single
+
+    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
+    Me.Left = sngLeft
+    Me.Top = sngTop
+End Sub
 
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
@@ -20,7 +29,8 @@ Public Sub Search_Button_Click()
         lblDateAdded = ""
         lblDateEdit = ""
         lblSearchedDate = ""
-        lastUser = ""      
+        lastUser = ""
+        
 ' ---------------------------------------------------------
 
 Dim Ws As Worksheet

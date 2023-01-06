@@ -6,7 +6,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} CreateAccount
    ClientTop       =   465
    ClientWidth     =   4065
    OleObjectBlob   =   "CreateAccount.frx":0000
-   StartUpPosition =   1  'CenterOwner
+   StartUpPosition =   2  'CenterScreen
 End
 Attribute VB_Name = "CreateAccount"
 Attribute VB_GlobalNameSpace = False
@@ -18,7 +18,15 @@ Dim Worksheet_Set       ' variable used for selecting and storing the active wor
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 
+'/Positioning /'
+Private Sub UserForm_Initialize()
+Dim sngLeft As Single
+Dim sngTop As Single
 
+    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
+    Me.Left = sngLeft
+    Me.Top = sngTop
+End Sub
 
 Private Sub btnCreate_Click()
     Dim Ws As Worksheet

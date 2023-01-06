@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.9
-' Updated: 01/05/2022
+' Rev: 3.10.0
+' Updated: 01/06/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -13,6 +13,16 @@ Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
 Dim currrentUser As String
+
+'/Positioning /'
+Private Sub UserForm_Initialize()
+Dim sngLeft As Single
+Dim sngTop As Single
+
+    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
+    Me.Left = sngLeft
+    Me.Top = sngTop
+End Sub
 
 '/Auto Due Date
 Private Sub Option1_6_Click() ' auto format for 6 month interval
@@ -350,10 +360,5 @@ End Sub
 
 '/Label Printing /'
 Private Sub btnLabel_Click()
-	MsgBox "Coming Soon"
-End Sub
-
-'/non Admin Settings /'
-Private Sub btnSettings_Click()
-	MsgBox "Coming Soon"
+    Label.Show
 End Sub
