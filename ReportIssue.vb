@@ -13,7 +13,7 @@ Unload Me
 Menu.Show
 End Sub
 
-Private Sub btnSubmit_click()
+Private Sub btnSubmit_Click()
 Send_Emails
 End Sub
 
@@ -23,21 +23,8 @@ Sub Send_Emails()
  Dim fields As Variant
  Dim msConfigURL As String
  On Error GoTo Err:
- 
-Dim l1llll1l1l1l111ll1l1l1l1ll1 As String
-Dim l1l1l1l1ll1l1ll1l11l1l1l1l1 As String
-Dim l1l1l1l1l1l1ll1l1l11l1l1l11 As String
-Dim l1l1l1ll1l1l1l1ll1l1l1ll1l1 As String
-Dim l1l1ll1l11l1l1l1ll1lll1ll11 As String
-Dim l1l1l1l1l1l1l11lll11ll1l1l1 As String
-Dim l1l1l1l1l1ll111l1l1l1l1ll11 As String
-l1llll1l1l1l111ll1l1l1l1ll1 = "reuk1ymy1rchc0we"
-l1l1l1l1ll1l1ll1l11l1l1l1l1 = "reukiymyirchc0we"
-l1l1l1l1l1l1ll1l1l11l1l1l11 = "revkiymyirchcowe"
-l1l1l1ll1l1l1l1ll1l1l1ll1l1 = "reukiymyirchcowe"
-l1l1ll1l11l1l1l1ll1lll1ll11 = "revk1ymm1rchoowe"
-l1l1l1l1l1l1l11lll11ll1l1l1 = "rvvkimmmirchcowe"
-l1l1l1l1l1ll111l1l1l1l1ll11 = "reukiyyiirchcome"
+ Dim pw As String
+ pw = Base64DecodeString("aGN4eGpycHZ0bnR0am5lbQ==")
 
  'early binding
  Set NewMail = New CDO.Message
@@ -69,7 +56,7 @@ l1l1l1l1l1ll111l1l1l1l1ll11 = "reukiyyiirchcome"
    .Item(msConfigURL & "/smtpserverport") = 465 'Set the SMTP port Details
    .Item(msConfigURL & "/sendusing") = 2 'Send using default setting
    .Item(msConfigURL & "/sendusername") = "ninsosoft@gmail.com" 'Your gmail address
-   .Item(msConfigURL & "/sendpassword") = l1l1l1ll1l1l1l1ll1l1l1ll1l1
+   .Item(msConfigURL & "/sendpassword") = pw
    .Update 'Update the configuration fields
  End With
  NewMail.Configuration = mailConfig

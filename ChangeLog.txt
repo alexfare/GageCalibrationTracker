@@ -1,5 +1,7 @@
 'Update - 3.10.1
 'Fixed Printer set up location issue(display).
+'Updated ReportIssue password handling
+'Updated default credentials to admin admin
 '
 'Update - 3.10.0
 'Added Label Print Button (3rd Party Client Required For Now)
