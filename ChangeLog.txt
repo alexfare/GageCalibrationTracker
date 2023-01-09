@@ -1,3 +1,6 @@
+'Update - 3.10.1
+'Fixed Printer set up location issue(display).
+'
 'Update - 3.10.0
 'Added Label Print Button (3rd Party Client Required For Now)
 'Corrected Part Info Tab Index Order
