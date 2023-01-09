@@ -3,7 +3,7 @@ Gage Calibration Tracker - Excel<br>
 You will need to delete my info as this is actively used by me.<br>
 <br>
 Default Username: Admin<br>
-Default Password: o9!A62sSimZmiHNkQq%3<br>
+Default Password: Admin<br>
 <br>
 Gage Calibration Tracker<br>
 ![image](https://user-images.githubusercontent.com/40654995/206725555-ae8a3414-89f1-4cf7-b15b-cf3b9d1ae7bb.png)
@@ -25,5 +25,5 @@ Add Encryption to the passwords - Completed 12/16/22<br>
 Better Encryption - Completed 12/20/22<br>
 Report an Issue Button - Completed 12/19/22<br>
 Automatic Email logs<br>
-Better/more logs for audit<br>
+Label Printing - Completed
 <br>
