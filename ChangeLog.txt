@@ -1,3 +1,6 @@
+'Update - 3.10.2
+'Updated Department to a list
+'
 'Update - 3.10.1
 'Fixed Printer set up location issue(display).
 'Updated ReportIssue password handling

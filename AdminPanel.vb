@@ -185,3 +185,9 @@ End Sub
 Private Sub btnAbout_Click()
     MsgBox "Code protection password is GageTracker2022"
 End Sub
+
+Private Sub btnCustomers_Click()
+    Unload AdminForm
+	'FormCustomer.Show
+	MsgBox "Coming Soon"
+End Sub
