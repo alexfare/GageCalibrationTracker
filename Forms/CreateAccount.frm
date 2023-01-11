@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} CreateAccount 
    Caption         =   "Create Account"
-   ClientHeight    =   1785
+   ClientHeight    =   5610
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4065
+   ClientWidth     =   5175
    OleObjectBlob   =   "CreateAccount.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -74,6 +74,11 @@ Private Sub btnCreate_Click()
                         
     Ws.Cells(r, "A") = gnString
     Ws.Cells(r, "B") = savePass
+    Ws.Cells(r, "C") = userName
+    Ws.Cells(r, "D") = userPhone
+    Ws.Cells(r, "E") = userAddress
+    Ws.Cells(r, "F") = userPosition
+    Ws.Cells(r, "G") = userEmail
     
     btnCreate.Caption = "Created!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
@@ -82,6 +87,23 @@ Private Sub btnCreate_Click()
     inputUser.SetFocus
     Unload CreateAccount
     AdminForm.Show
+    
+    '/Add to Users count/'
+    Dim AddUser As Integer
+
+    List_Select = "Admin" ' Tab name
+    Set Ws = Sheets(List_Select)
+    Set Worksheet_Set = Ws
+
+     AddUser = Ws.Range("B51")
+     AddUserPlusOne = AddUser + 1
+     Ws.Range("B51") = AddUserPlusOne
+     
+     '/Prevent Issues in the future, Call back the Credentials page/'
+     List_Select = "Credentials" ' Tab name
+     Set Ws = Sheets(List_Select)
+     Set Worksheet_Set = Ws
+     
     Else
         ErrMsg_Duplicate
     End If
@@ -102,13 +124,14 @@ End Sub
 Private Sub Clear_Form()
         inputUser = ""
         inputPass = ""
+        userName = ""
+        userPhone = ""
+        userAddress = ""
+        userPosition = ""
+        userEmail = ""
 End Sub
 
 Private Sub btnBack_click()
 Unload CreateAccount
 AdminForm.Show
 End Sub
-
-
-
-

@@ -15,8 +15,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.9.9
-' Updated: 01/05/2022
+' Rev: 3.10.0
+' Updated: 01/06/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -28,6 +28,16 @@ Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
 Dim currrentUser As String
+
+'/Positioning /'
+Private Sub UserForm_Initialize()
+Dim sngLeft As Single
+Dim sngTop As Single
+
+    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
+    Me.Left = sngLeft
+    Me.Top = sngTop
+End Sub
 
 '/Auto Due Date
 Private Sub Option1_6_Click() ' auto format for 6 month interval
@@ -103,6 +113,23 @@ Private Sub Add_Button_Click()
     Add_Button.Caption = "Add"
     Clear_Form
     Gage_Number.SetFocus
+    
+'/Add to Gage Number count/'
+    Dim AddCount As Integer
+
+    List_Select = "Admin" ' Tab name
+    Set Ws = Sheets(List_Select)
+    Set Worksheet_Set = Ws
+
+     AddCount = Ws.Range("B49")
+     AddCountPlusOne = AddCount + 1
+     Ws.Range("B49") = AddCountPlusOne
+     
+     '/Prevent Issues in the future, Call back the main page/'
+     List_Select = "CreatedByAlexFare" ' Tab name
+     Set Ws = Sheets(List_Select)
+     Set Worksheet_Set = Ws
+     
     Else
         ErrMsg_Duplicate
     End If
@@ -320,6 +347,22 @@ Update_Button.Caption = "Update"
 'Clear_Form 'Clear form after update
 Gage_Number.SetFocus
 
+'/Add to update count/'
+    Dim UpdateCount As Integer
+
+    List_Select = "Admin" ' Tab name
+    Set Ws = Sheets(List_Select)
+    Set Worksheet_Set = Ws
+
+     UpdateCount = Ws.Range("B50")
+     UpdateCountPlusOne = UpdateCount + 1
+     Ws.Range("B50") = UpdateCountPlusOne
+     
+     '/Prevent Issues in the future, Call back the main page/'
+     List_Select = "CreatedByAlexFare" ' Tab name
+     Set Ws = Sheets(List_Select)
+     Set Worksheet_Set = Ws
+
 Else
     MsgBox ("Must search for entry before updating"), , "Nothing to Update"
 End If
@@ -367,3 +410,4 @@ End Sub
 Private Sub btnLabel_Click()
     Label.Show
 End Sub
+

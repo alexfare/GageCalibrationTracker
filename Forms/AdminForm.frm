@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   4035
+   ClientHeight    =   5160
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   9120.001
@@ -27,6 +27,25 @@ Dim sngTop As Single
     Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
     Me.Left = sngLeft
     Me.Top = sngTop
+    
+'/ Display Admin Audit Log/'
+Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
+Dim Ws As Worksheet
+Dim List_Select
+List_Select = "Admin" ' Tab name
+Set Ws = Sheets(List_Select)
+Set Worksheet_Set = Ws
+
+txtWorkbookOpened = Ws.Range("B47")
+txtLogins = Ws.Range("B48")
+txtGageCount = Ws.Range("B49")
+txtGageUpdates = Ws.Range("B50")
+txtUserCounts = Ws.Range("B51")
+
+'/Prevent Issues in the future, Call back the main page/'
+List_Select = "CreatedByAlexFare" ' Tab name
+Set Ws = Sheets(List_Select)
+Set Worksheet_Set = Ws
 End Sub
 
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
@@ -199,4 +218,15 @@ End Sub
 
 Private Sub btnAbout_Click()
     MsgBox "Code protection password is GageTracker2022"
+End Sub
+
+Private Sub btnCustomers_Click()
+    'Unload AdminForm
+    'FormCustomer.Show
+    MsgBox "Coming Soon"
+End Sub
+
+Private Sub btnCompanyProfile_Click()
+    'Unload AdminForm
+    CompanyProfile.Show
 End Sub

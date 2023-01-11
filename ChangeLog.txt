@@ -1,3 +1,10 @@
+'Update - 3.11.0 (WIP)
+'Added Company Profile
+'Added User Profile (WIP)
+'Added Admin Audit Log (Stats)
+'Updated Admin Panel Layout
+'Updated Account Creation Layout
+'
 'Update - 3.10.2
 'Updated Department to a list
 '

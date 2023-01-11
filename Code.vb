@@ -98,6 +98,23 @@ Private Sub Add_Button_Click()
     Add_Button.Caption = "Add"
     Clear_Form
     Gage_Number.SetFocus
+	
+'/Add to Gage Number count/'
+    Dim AddCount As Integer
+
+    List_Select = "Admin" ' Tab name
+    Set Ws = Sheets(List_Select)
+    Set Worksheet_Set = Ws
+
+     AddCount = Ws.Range("B49")
+     AddCountPlusOne = AddCount + 1
+     Ws.Range("B49") = AddCountPlusOne
+	 
+	 '/Prevent Issues in the future, Call back the main page/'
+	 List_Select = "CreatedByAlexFare" ' Tab name
+	 Set Ws = Sheets(List_Select)
+	 Set Worksheet_Set = Ws
+	 
     Else
         ErrMsg_Duplicate
     End If
@@ -314,6 +331,22 @@ Application.Wait (Now + TimeValue("0:00:02"))
 Update_Button.Caption = "Update"
 'Clear_Form 'Clear form after update
 Gage_Number.SetFocus
+
+'/Add to update count/'
+    Dim UpdateCount As Integer
+
+    List_Select = "Admin" ' Tab name
+    Set Ws = Sheets(List_Select)
+    Set Worksheet_Set = Ws
+
+     UpdateCount = Ws.Range("B50")
+     UpdateCountPlusOne = UpdateCount + 1
+     Ws.Range("B50") = UpdateCountPlusOne
+	 
+	 '/Prevent Issues in the future, Call back the main page/'
+	 List_Select = "CreatedByAlexFare" ' Tab name
+	 Set Ws = Sheets(List_Select)
+	 Set Worksheet_Set = Ws
 
 Else
     MsgBox ("Must search for entry before updating"), , "Nothing to Update"

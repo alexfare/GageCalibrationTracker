@@ -77,6 +77,20 @@ If Password = PassCompare Then
 Unload Me
 Sheets("CreatedByAlexFare").Activate
 AdminForm.Show
+
+'/Add to the login count /'
+Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
+Dim LoginCount As Integer
+
+Dim Ws As Worksheet
+Dim List_Select
+List_Select = "Admin" ' Tab name
+Set Ws = Sheets(List_Select)
+Set Worksheet_Set = Ws
+
+LoginCount = Ws.Range("B48")
+LoginCountPlusOne = LoginCount + 1
+Ws.Range("B48") = LoginCountPlusOne
 End If
 End Sub
 
@@ -84,3 +98,4 @@ Private Sub btnBack_click()
 Unload LoginForm
 Menu.Show
 End Sub
+
