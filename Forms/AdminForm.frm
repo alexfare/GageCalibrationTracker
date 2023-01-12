@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   5160
+   ClientHeight    =   5310
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   9120.001
@@ -41,6 +41,7 @@ txtLogins = Ws.Range("B48")
 txtGageCount = Ws.Range("B49")
 txtGageUpdates = Ws.Range("B50")
 txtUserCounts = Ws.Range("B51")
+txtCustomerCount = Ws.Range("B53")
 
 '/Prevent Issues in the future, Call back the main page/'
 List_Select = "CreatedByAlexFare" ' Tab name
@@ -222,11 +223,12 @@ End Sub
 
 Private Sub btnCustomers_Click()
     'Unload AdminForm
-    'FormCustomer.Show
-    MsgBox "Coming Soon"
+    FormCustomer.Show
+    'MsgBox "Coming Soon"
 End Sub
 
 Private Sub btnCompanyProfile_Click()
     'Unload AdminForm
     CompanyProfile.Show
 End Sub
+

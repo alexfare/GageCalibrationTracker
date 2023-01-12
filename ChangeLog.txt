@@ -4,6 +4,7 @@
 'Added Admin Audit Log (Stats)
 'Updated Admin Panel Layout
 'Updated Account Creation Layout
+'Added Customer Directory
 '
 'Update - 3.10.2
 'Updated Department to a list

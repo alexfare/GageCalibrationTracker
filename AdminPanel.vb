@@ -26,6 +26,7 @@ txtLogins = Ws.Range("B48")
 txtGageCount = Ws.Range("B49")
 txtGageUpdates = Ws.Range("B50")
 txtUserCounts = Ws.Range("B51")
+txtCustomerCount = Ws.Range("B53")
 
 '/Prevent Issues in the future, Call back the main page/'
 List_Select = "CreatedByAlexFare" ' Tab name
@@ -207,8 +208,8 @@ End Sub
 
 Private Sub btnCustomers_Click()
     'Unload AdminForm
-    'FormCustomer.Show
-    MsgBox "Coming Soon"
+    FormCustomer.Show
+    'MsgBox "Coming Soon"
 End Sub
 
 Private Sub btnCompanyProfile_Click()

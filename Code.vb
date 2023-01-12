@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.10.0
-' Updated: 01/06/2022
+' Rev: 3.11.0
+' Updated: 01/12/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet

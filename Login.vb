@@ -76,6 +76,7 @@ Set Worksheet_Set = Ws
 LoginCount = Ws.Range("B48")
 LoginCountPlusOne = LoginCount + 1
 Ws.Range("B48") = LoginCountPlusOne
+Ws.Range("B52") = inputUsername
 End If
 End Sub
 

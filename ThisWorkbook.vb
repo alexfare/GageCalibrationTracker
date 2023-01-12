@@ -10,7 +10,8 @@ Private Sub Workbook_Open()
 
      WorkBookCount = Ws.Range("B47")
      WorkBookPlusOne = WorkBookCount + 1
-     Ws.Range("B47") = WorkBookPlusOne 
+     Ws.Range("B47") = WorkBookPlusOne
+	 Ws.Range("B52") = "" 'Clears logged in user.
 
 '/ Require Login to open /
     'Worksheets("Login").Activate
@@ -21,5 +22,4 @@ Private Sub Workbook_Open()
     Application.DisplayFullScreen = True
      'MsgBox ""
     Menu.Show
-    
 End Sub
