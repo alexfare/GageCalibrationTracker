@@ -18,12 +18,15 @@ Admin Panel w/ Login<br>
 
 
 Future Plans:<br>
+Automatic Email logs<br>
+Customer Directory<br>
+Persistent Logins<br>
+<br>
 Add more features to Admin Panel - Updated 12/16/22<br>
 Add ability to create multiple accounts - Completed 12/13/22<br>
 Add ability to change the password - Completed 12/13/22<br>
 Add Encryption to the passwords - Completed 12/16/22<br>
 Better Encryption - Completed 12/20/22<br>
 Report an Issue Button - Completed 12/19/22<br>
-Automatic Email logs<br>
-Label Printing - Completed
+Label Printing - Completed<br>
 <br>
