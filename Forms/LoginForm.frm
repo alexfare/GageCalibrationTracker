@@ -23,6 +23,12 @@ Dim sngTop As Single
     Me.Top = sngTop
 End Sub
 
+Private Sub inputPass_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
+    If KeyCode = vbKeyReturn Then
+        btnLogin_Click
+    End If
+End Sub
+
 Private Sub btnLogin_Click()
 
 '/ Hash /'
@@ -91,6 +97,7 @@ Set Worksheet_Set = Ws
 LoginCount = Ws.Range("B48")
 LoginCountPlusOne = LoginCount + 1
 Ws.Range("B48") = LoginCountPlusOne
+Ws.Range("B52") = inputUsername
 End If
 End Sub
 

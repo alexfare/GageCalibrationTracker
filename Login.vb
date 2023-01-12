@@ -8,6 +8,12 @@ Dim sngTop As Single
     Me.Top = sngTop
 End Sub
 
+Private Sub inputPass_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
+    If KeyCode = vbKeyReturn Then
+        btnLogin_Click
+    End If
+End Sub
+
 Private Sub btnLogin_Click()
 
 '/ Hash /'
@@ -84,3 +90,4 @@ Private Sub btnBack_click()
 Unload LoginForm
 Menu.Show
 End Sub
+

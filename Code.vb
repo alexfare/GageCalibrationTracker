@@ -98,7 +98,7 @@ Private Sub Add_Button_Click()
     Add_Button.Caption = "Add"
     Clear_Form
     Gage_Number.SetFocus
-	
+    
 '/Add to Gage Number count/'
     Dim AddCount As Integer
 
@@ -109,12 +109,12 @@ Private Sub Add_Button_Click()
      AddCount = Ws.Range("B49")
      AddCountPlusOne = AddCount + 1
      Ws.Range("B49") = AddCountPlusOne
-	 
-	 '/Prevent Issues in the future, Call back the main page/'
-	 List_Select = "CreatedByAlexFare" ' Tab name
-	 Set Ws = Sheets(List_Select)
-	 Set Worksheet_Set = Ws
-	 
+     
+     '/Prevent Issues in the future, Call back the main page/'
+     List_Select = "CreatedByAlexFare" ' Tab name
+     Set Ws = Sheets(List_Select)
+     Set Worksheet_Set = Ws
+     
     Else
         ErrMsg_Duplicate
     End If
@@ -135,7 +135,7 @@ End Sub
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
         Search_Button_Click
-        Insp_Date.SetFocus
+        Gage_Number.SetFocus
     End If
 End Sub
 
@@ -342,11 +342,11 @@ Gage_Number.SetFocus
      UpdateCount = Ws.Range("B50")
      UpdateCountPlusOne = UpdateCount + 1
      Ws.Range("B50") = UpdateCountPlusOne
-	 
-	 '/Prevent Issues in the future, Call back the main page/'
-	 List_Select = "CreatedByAlexFare" ' Tab name
-	 Set Ws = Sheets(List_Select)
-	 Set Worksheet_Set = Ws
+     
+     '/Prevent Issues in the future, Call back the main page/'
+     List_Select = "CreatedByAlexFare" ' Tab name
+     Set Ws = Sheets(List_Select)
+     Set Worksheet_Set = Ws
 
 Else
     MsgBox ("Must search for entry before updating"), , "Nothing to Update"

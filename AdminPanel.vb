@@ -34,10 +34,10 @@ Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
 End Sub
 
+'/ Pressing Enter will instantly search /'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
         Search_Button_Click
-        Insp_Date.SetFocus
     End If
 End Sub
 
@@ -216,3 +216,4 @@ Private Sub btnCompanyProfile_Click()
     'Unload AdminForm
     CompanyProfile.Show
 End Sub
+

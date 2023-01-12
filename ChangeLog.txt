@@ -1,4 +1,9 @@
-'Update - 3.11.0 (WIP)
+'Update - 3.11.1
+' Fixed Crash in AdminPanel after pressing enter
+' Fixed Enter action in main menu
+' Fixed Login Screen not accepting Enter the first press (Required 2)
+'
+'Update - 3.11.0
 'Added Company Profile
 'Added User Profile (WIP)
 'Added Admin Audit Log (Stats)

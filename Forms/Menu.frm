@@ -150,7 +150,7 @@ End Sub
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
         Search_Button_Click
-        Insp_Date.SetFocus
+        Gage_Number.SetFocus
     End If
 End Sub
 
