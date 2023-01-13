@@ -2,6 +2,8 @@
 ' Fixed Crash in AdminPanel after pressing enter
 ' Fixed Enter action in main menu
 ' Fixed Login Screen not accepting Enter the first press (Required 2)
+' Added Customer Manager (This will improve with future releases)
+' Added Code for persistant logins (Coming soon, You won't need to relog in everytime you go from the menu to admin panel)
 '
 'Update - 3.11.0
 'Added Company Profile

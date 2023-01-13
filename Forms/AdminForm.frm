@@ -193,6 +193,13 @@ End Sub
 Private Sub btnLogOut_click()
 Unload AdminForm
 Menu.Show
+
+'/Remove Logged In User /'
+List_Select = "Admin" ' Tab name
+Set Ws = Sheets(List_Select)
+Set Worksheet_Set = Ws
+Ws.Range("B52") = ""
+
 ThisWorkbook.Save
 End Sub
 
@@ -222,14 +229,14 @@ Private Sub btnAbout_Click()
 End Sub
 
 Private Sub btnCustomers_Click()
-    'Unload AdminForm
+    Unload AdminForm
+    Worksheets("Customers").Activate
     FormCustomer.Show
-    'MsgBox "Coming Soon"
 End Sub
 
 Private Sub btnCompanyProfile_Click()
     'Unload AdminForm
-    CompanyProfile.Show
+    'CompanyProfile.Show
 End Sub
 
 
