@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.11.0
-' Updated: 01/12/2022
+' Rev: 3.11.2
+' Updated: 01/13/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -381,8 +381,29 @@ End Sub
 
 '/Admin Panel - Bring up admin menu to edit audit dates/'
 Private Sub btnAdmin_click()
-Unload Menu
-LoginForm.Show
+    '/Add to the login count /'
+Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
+Dim LoginCount As Integer
+
+Dim Ws As Worksheet
+Dim List_Select
+Dim TempLogin As Integer
+List_Select = "Admin" ' Tab name
+Set Ws = Sheets(List_Select)
+Set Worksheet_Set = Ws
+'ActiveWorkbook.RefreshAll
+Persistent_Login = Ws.Range("B55")
+
+    If Persistent_Login = "1" Then
+        Unload Menu
+        LoginForm.Show
+    End If
+    
+    If Persistent_Login = "2" Then
+        Sheets("CreatedByAlexFare").Activate
+        Unload Menu
+        AdminForm.Show
+    End If
 End Sub
 
 '/Report Issue Panel /'
@@ -395,3 +416,5 @@ End Sub
 Private Sub btnLabel_Click()
     Label.Show
 End Sub
+
+

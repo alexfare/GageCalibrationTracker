@@ -1,3 +1,12 @@
+VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+END
+Attribute VB_Name = "ThisWorkbook"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = True
 Private Sub Workbook_Open()
     Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
     Dim WorkBookCount As Integer
@@ -24,4 +33,5 @@ Private Sub Workbook_Open()
      'MsgBox ""
     Menu.Show
 End Sub
+
 

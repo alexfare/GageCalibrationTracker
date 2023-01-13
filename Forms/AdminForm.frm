@@ -190,15 +190,16 @@ Sub CheckForUpdate_Click()
 End Sub
 
 
-Private Sub btnLogOut_click()
+Private Sub btnClose_click()
 Unload AdminForm
-Menu.Show
+'Menu.Show
 
 '/Remove Logged In User /'
 List_Select = "Admin" ' Tab name
 Set Ws = Sheets(List_Select)
 Set Worksheet_Set = Ws
 Ws.Range("B52") = ""
+Ws.Range("B55") = "2"
 
 ThisWorkbook.Save
 End Sub
@@ -236,7 +237,5 @@ End Sub
 
 Private Sub btnCompanyProfile_Click()
     'Unload AdminForm
-    'CompanyProfile.Show
+    CompanyProfile.Show
 End Sub
-
-

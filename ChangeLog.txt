@@ -1,3 +1,7 @@
+'Update - 3.11.2
+' Fixed Company Profile Tab (V3.11.2 broke this.)
+' Added persistent login now. (Will add a logout button but for now you will need to reopen the program.)
+'
 'Update - 3.11.1
 ' Fixed Crash in AdminPanel after pressing enter
 ' Fixed Enter action in main menu

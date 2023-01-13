@@ -65,7 +65,7 @@ Exit Sub
 End If
 
 If Password = PassCompare Then
-Unload Me
+Unload LoginForm
 Sheets("CreatedByAlexFare").Activate
 AdminForm.Show
 
@@ -83,6 +83,7 @@ LoginCount = Ws.Range("B48")
 LoginCountPlusOne = LoginCount + 1
 Ws.Range("B48") = LoginCountPlusOne
 Ws.Range("B52") = inputUsername
+Ws.Range("B55") = "2"
 End If
 End Sub
 
