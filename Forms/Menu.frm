@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   6540
+   ClientHeight    =   6525
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   12105
+   ClientWidth     =   12465
    OleObjectBlob   =   "Menu.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -15,8 +15,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.11.2
-' Updated: 01/13/2022
+' Rev: 3.11.3
+' Updated: 01/16/2022
 
 Dim r As Long           ' variable used for storing row number
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
@@ -37,6 +37,32 @@ Dim sngTop As Single
     Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
     Me.Left = sngLeft
     Me.Top = sngTop
+    
+'/Code Confirm for production /
+Dim CodeCompare As Integer
+Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
+Dim LoginCount As Integer
+Dim Ws As Worksheet
+Dim List_Select
+
+List_Select = "Admin" ' Tab name
+Set Ws = Sheets(List_Select)
+Set Worksheet_Set = Ws
+CodeCompare = Ws.Range("B56")
+If CodeCompare = "1" Then
+Application.Wait (Now + TimeValue("0:00:02"))
+Unload Menu
+CodeConfirm.Show
+End If
+
+If CodeCompare = "2" Then
+End If
+
+'/Prevent Issues in the future, Call back the main page/'
+List_Select = "CreatedByAlexFare" ' Tab name
+Set Ws = Sheets(List_Select)
+Set Worksheet_Set = Ws
+
 End Sub
 
 '/Auto Due Date

@@ -1,5 +1,9 @@
+'Update - 3.11.3
+' Added Logged In As: Admin Panel
+' Updated Menu Layout (Still WIP)
+'
 'Update - 3.11.2
-' Fixed Company Profile Tab (V3.11.2 broke this.)
+' Fixed Company Profile Tab (V3.11.1 broke this.)
 ' Added persistent login now. (Will add a logout button but for now you will need to reopen the program.)
 '
 'Update - 3.11.1

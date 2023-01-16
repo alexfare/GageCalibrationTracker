@@ -23,15 +23,8 @@ Private Sub Workbook_Open()
      Ws.Range("B52") = "" 'Clears logged in user.
      Ws.Range("B55") = "1"
 
-'/ Require Login to open /
-    'Worksheets("Login").Activate
-    'LoginForm.Show
-    
-'/ Skip Login /
     Worksheets("CreatedByAlexFare").Activate
     Application.DisplayFullScreen = True
-     'MsgBox ""
     Menu.Show
+
 End Sub
-
-

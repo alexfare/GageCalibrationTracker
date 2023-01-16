@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   5310
+   ClientHeight    =   5640
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   9120.001
@@ -42,7 +42,7 @@ txtGageCount = Ws.Range("B49")
 txtGageUpdates = Ws.Range("B50")
 txtUserCounts = Ws.Range("B51")
 txtCustomerCount = Ws.Range("B53")
-
+lblLoggedUser = Ws.Range("B52")
 '/Prevent Issues in the future, Call back the main page/'
 List_Select = "CreatedByAlexFare" ' Tab name
 Set Ws = Sheets(List_Select)
