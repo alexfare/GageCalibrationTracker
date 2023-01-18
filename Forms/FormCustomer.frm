@@ -102,5 +102,5 @@ Private Sub Clear_Form()
         Customer_Name = ""
         inCAddress = ""
         inCPhoneNumber = ""
-        inCWebsite
+        inCWebsite = ""
 End Sub

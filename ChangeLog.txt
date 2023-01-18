@@ -1,3 +1,7 @@
+'Update - 3.11.4
+' Added temp fix to Inspected Date after you clear it (Added 1/1/1900). Prevents crash
+'
+'
 'Update - 3.11.3
 ' Added Logged In As: Admin Panel
 ' Updated Menu Layout (Still WIP)
