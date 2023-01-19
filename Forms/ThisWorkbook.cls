@@ -21,10 +21,11 @@ Private Sub Workbook_Open()
      WorkBookPlusOne = WorkBookCount + 1
      Ws.Range("B47") = WorkBookPlusOne
      Ws.Range("B52") = "" 'Clears logged in user.
-     Ws.Range("B55") = "1"
+     Ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
 
     Worksheets("CreatedByAlexFare").Activate
     Application.DisplayFullScreen = True
     Menu.Show
 
 End Sub
+

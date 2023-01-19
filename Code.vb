@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.11.4
-' Updated: 01/18/2022
+' Rev: 3.11.5
+' Updated: 01/19/2022
 
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -53,21 +53,21 @@ End Sub
 '/Auto Due Date
 Private Sub Option1_6_Click()        ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
-    Date_Due_6mos = Format(Date_Due_6mos, "mm/dd/yyyy")
+    Date_Due_6mos = Format(Date_Due_6mos, "m/dd/yyyy")
     Due_Date = Date_Due_6mos
 End Sub
 Private Sub Option2_12_Click()        ' auto format for 1 year interval
     Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
-    Date_Due_1yr = Format(Date_Due_1yr, "mm/dd/yyyy")
+    Date_Due_1yr = Format(Date_Due_1yr, "m/dd/yyyy")
     Due_Date = Date_Due_1yr
 End Sub
 Private Sub Option3_24_Click()        ' auto format for 2 year interval
     Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
-    Date_Due_2yr = Format(Date_Due_2yr, "mm/dd/yyyy")
+    Date_Due_2yr = Format(Date_Due_2yr, "m/dd/yyyy")
     Due_Date = Date_Due_2yr
 End Sub
 Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
-    Date_Due = Format(Due_Date, "mm/dd/yyyy")
+    Date_Due = Format(Due_Date, "m/dd/yyyy")
     Due_Date = Date_Due
 End Sub
 
@@ -148,7 +148,7 @@ End Sub
 
 '/ Clear Button
 Private Sub btnClear_Click()
-    Update_Button_Enable = FALSE
+    Update_Button_Enable = False
     Clear_Form
     Gage_Number.SetFocus
 End Sub
@@ -173,7 +173,7 @@ Public Sub Search_Button_Click()
     Descriptiontxt = ""
     comboGageType = ""
     Customer = ""
-    Insp_Date = ""
+    Insp_Date = "1/1/1900"
     Due_Date = ""
     Initials = ""
     Department = ""
@@ -189,10 +189,10 @@ Public Sub Search_Button_Click()
     aA4 = ""
     aN5 = ""
     aA5 = ""
-    lblDateAdded = ""
-    lblDateEdit = ""
-    lblSearchedDate = ""
-    lastUser = ""
+    lblDateAdded = "-"
+    lblDateEdit = "-"
+    lblSearchedDate = "-"
+    lastUser = "-"
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -202,7 +202,7 @@ Public Sub Search_Button_Click()
     Set Worksheet_Set = Ws
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
-        Update_Button_Enable = FALSE
+        Update_Button_Enable = False
         ErrMsg
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
@@ -229,8 +229,8 @@ Public Sub Search_Button_Click()
         aN5 = Ws.Cells(r, "AI")
         aA5 = Ws.Cells(r, "AJ")
         Ws.Cells(r, "AM") = Now        'Update Last searched
-        Update_Button_Enable = TRUE
-        Option4_Custom = TRUE
+        Update_Button_Enable = True
+        Option4_Custom = True
         
         '/ Audit Log
         lblDateAdded = Ws.Cells(r, "AK")
@@ -251,7 +251,7 @@ End Sub
 
 '/ Update Button
 Private Sub Update_Button_Click()
-    If Update_Button_Enable = TRUE Then
+    If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then
             Update_Worksheet
         Else
@@ -301,7 +301,7 @@ Private Sub Clear_Form()
 End Sub
 
 Private Sub Update_Worksheet()
-    If Update_Button_Enable = TRUE Then
+    If Update_Button_Enable = True Then
         Dim gnString As String
         Set Ws = Worksheet_Set
         If IsNumeric(Gage_Number) Then
@@ -336,16 +336,16 @@ Private Sub Update_Worksheet()
         lastUser = currrentUser
         Ws.Cells(r, "AN") = lastUser
         
-        If Option1_6 = TRUE Then        ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
+        If Option1_6 = True Then        ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
         Due_Date = Date_Due_6mos
     End If
-    If Option2_12 = TRUE Then
+    If Option2_12 = True Then
         Due_Date = Date_Due_1yr
     End If
-    If Option3_24 = TRUE Then
+    If Option3_24 = True Then
         Due_Date = Date_Due_2yr
     End If
-    If Option4_Custom = TRUE Then
+    If Option4_Custom = True Then
         Option4_Custom_Click
         Due_Date = Date_Due
     End If
@@ -417,7 +417,6 @@ Private Sub btnAdmin_click()
     List_Select = "Admin"        ' Tab name
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
-    'ActiveWorkbook.RefreshAll
     Persistent_Login = Ws.Range("B55")
     
     If Persistent_Login = "1" Then

@@ -8,11 +8,11 @@ Option Explicit
     Declare PtrSafe Function GetDeviceCaps Lib "gdi32" (ByVal hDC As Long, ByVal Index As Long) As Long
     Declare PtrSafe Function GetWindowRect Lib "user32" (ByVal hWnd As Long, ByRef lpRect As udtRECT) As Long
 #Else
-    Declare Function GetSystemMetrics Lib "user32" (ByVal Index As Long) As Long
-    Declare Function GetDC Lib "user32" (ByVal hWnd As Long) As Long
-    Declare Function ReleaseDC Lib "user32" (ByVal hWnd As Long, ByVal hDC As Long) As Long
-    Declare Function GetDeviceCaps Lib "gdi32" (ByVal hDC As Long, ByVal Index As Long) As Long
-    Declare Function GetWindowRect Lib "user32" (ByVal hWnd As Long, ByRef lpRect As udtRECT) As Long
+    'Declare Function GetSystemMetrics Lib "user32" (ByVal Index As Long) As Long
+    'Declare Function GetDC Lib "user32" (ByVal hWnd As Long) As Long
+    'Declare Function ReleaseDC Lib "user32" (ByVal hWnd As Long, ByVal hDC As Long) As Long
+    'Declare Function GetDeviceCaps Lib "gdi32" (ByVal hDC As Long, ByVal Index As Long) As Long
+    'Declare Function GetWindowRect Lib "user32" (ByVal hWnd As Long, ByRef lpRect As udtRECT) As Long
 #End If
 
 Type udtRECT

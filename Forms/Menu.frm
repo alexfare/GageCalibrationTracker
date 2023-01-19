@@ -15,8 +15,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.11.4
-' Updated: 01/18/2022
+' Rev: 3.11.5
+' Updated: 01/19/2022
 
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -68,21 +68,21 @@ End Sub
 '/Auto Due Date
 Private Sub Option1_6_Click()        ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
-    Date_Due_6mos = Format(Date_Due_6mos, "mm/dd/yyyy")
+    Date_Due_6mos = Format(Date_Due_6mos, "m/dd/yyyy")
     Due_Date = Date_Due_6mos
 End Sub
 Private Sub Option2_12_Click()        ' auto format for 1 year interval
     Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
-    Date_Due_1yr = Format(Date_Due_1yr, "mm/dd/yyyy")
+    Date_Due_1yr = Format(Date_Due_1yr, "m/dd/yyyy")
     Due_Date = Date_Due_1yr
 End Sub
 Private Sub Option3_24_Click()        ' auto format for 2 year interval
     Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
-    Date_Due_2yr = Format(Date_Due_2yr, "mm/dd/yyyy")
+    Date_Due_2yr = Format(Date_Due_2yr, "m/dd/yyyy")
     Due_Date = Date_Due_2yr
 End Sub
 Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
-    Date_Due = Format(Due_Date, "mm/dd/yyyy")
+    Date_Due = Format(Due_Date, "m/dd/yyyy")
     Due_Date = Date_Due
 End Sub
 
@@ -188,7 +188,7 @@ Public Sub Search_Button_Click()
     Descriptiontxt = ""
     comboGageType = ""
     Customer = ""
-    Insp_Date = ""
+    Insp_Date = "1/1/1900"
     Due_Date = ""
     Initials = ""
     Department = ""
@@ -204,10 +204,10 @@ Public Sub Search_Button_Click()
     aA4 = ""
     aN5 = ""
     aA5 = ""
-    lblDateAdded = ""
-    lblDateEdit = ""
-    lblSearchedDate = ""
-    lastUser = ""
+    lblDateAdded = "-"
+    lblDateEdit = "-"
+    lblSearchedDate = "-"
+    lastUser = "-"
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -432,7 +432,6 @@ Private Sub btnAdmin_click()
     List_Select = "Admin"        ' Tab name
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
-    'ActiveWorkbook.RefreshAll
     Persistent_Login = Ws.Range("B55")
     
     If Persistent_Login = "1" Then

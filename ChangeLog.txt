@@ -1,6 +1,8 @@
+'Update - 3.11.5
+' Another temp fix to Inspected Date. (If you search for a Gage that doesn't exist).
+'
 'Update - 3.11.4
 ' Added temp fix to Inspected Date after you clear it (Added 1/1/1900). Prevents crash
-'
 '
 'Update - 3.11.3
 ' Added Logged In As: Admin Panel
