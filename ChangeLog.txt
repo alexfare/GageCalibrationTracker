@@ -1,3 +1,6 @@
+'Update - 3.11.6
+' Updated date format, Help prevent issues with conditional formatting not updating automatically
+'
 'Update - 3.11.5
 ' Another temp fix to Inspected Date. (If you search for a Gage that doesn't exist).
 '

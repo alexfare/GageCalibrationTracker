@@ -15,8 +15,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.11.5
-' Updated: 01/19/2022
+' Rev: 3.11.6
+' Updated: 01/23/2022
 
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -68,21 +68,21 @@ End Sub
 '/Auto Due Date
 Private Sub Option1_6_Click()        ' auto format for 6 month interval
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
-    Date_Due_6mos = Format(Date_Due_6mos, "m/dd/yyyy")
+    Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
     Due_Date = Date_Due_6mos
 End Sub
 Private Sub Option2_12_Click()        ' auto format for 1 year interval
     Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
-    Date_Due_1yr = Format(Date_Due_1yr, "m/dd/yyyy")
+    Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
     Due_Date = Date_Due_1yr
 End Sub
 Private Sub Option3_24_Click()        ' auto format for 2 year interval
     Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
-    Date_Due_2yr = Format(Date_Due_2yr, "m/dd/yyyy")
+    Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
     Due_Date = Date_Due_2yr
 End Sub
 Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
-    Date_Due = Format(Due_Date, "m/dd/yyyy")
+    Date_Due = Format(Due_Date, "m/d/yyyy")
     Due_Date = Date_Due
 End Sub
 
