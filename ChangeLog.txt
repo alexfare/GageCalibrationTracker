@@ -1,3 +1,6 @@
+'Update - 3.11.7
+' Updated Customer Manager Menu
+'
 'Update - 3.11.6
 ' Updated date format, Help prevent issues with conditional formatting not updating automatically
 '
