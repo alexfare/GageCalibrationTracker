@@ -60,15 +60,15 @@ Public Sub Search_Button_Click()
     Set Worksheet_Set = Ws
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
-        Update_Button_Enable = FALSE
+        Update_Button_Enable = False
         ErrMsg
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = Ws.Cells(r, "B")
         Ws.Cells(r, "AM") = Now        'Update Last searched
-        Update_Button_Enable = TRUE
-        Option4_Custom = TRUE
+        Update_Button_Enable = True
+        Option4_Custom = True
         
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
@@ -98,7 +98,7 @@ Sub ErrMsg_Duplicate()
 End Sub
 
 Private Sub Update_Button_Click()
-    If Update_Button_Enable = TRUE Then
+    If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then
             Update_Worksheet
         Else
@@ -109,7 +109,7 @@ Private Sub Update_Button_Click()
     End If
 End Sub
 Private Sub Update_Worksheet()
-    If Update_Button_Enable = TRUE Then
+    If Update_Button_Enable = True Then
         Dim gnString As String
         Set Ws = Worksheet_Set
         If IsNumeric(Gage_Number) Then
@@ -128,7 +128,7 @@ Private Sub Update_Worksheet()
         
         Update_Button.Caption = "Updated!"
         Application.Wait (Now + TimeValue("0:00:02"))
-        Update_Button.Caption = "Update"
+        Update_Button.Caption = ""
         'Clear_Form 'Clear form after update
         Gage_Number.SetFocus
         
@@ -163,7 +163,7 @@ Private Sub Clear_Form()
 End Sub
 
 Private Sub btnClear_Click()
-    Update_Button_Enable = FALSE
+    Update_Button_Enable = False
     Clear_Form
     Gage_Number.SetFocus
 End Sub
@@ -199,8 +199,8 @@ Private Sub btnUpdateUser_click()
 End Sub
 
 Private Sub btnDevMode_click()
-    Application.DisplayFullScreen = FALSE
-    Application.DisplayFormulaBar = TRUE
+    Application.DisplayFullScreen = False
+    Application.DisplayFormulaBar = True
 End Sub
 
 Private Sub btnEditLists_Click()

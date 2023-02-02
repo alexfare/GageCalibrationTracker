@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.11.6
-' Updated: 01/23/2022
+' Rev: 3.12.0
+' Updated: 2/2/2022
 
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -121,7 +121,7 @@ Private Sub Add_Button_Click()
         
         Add_Button.Caption = "Added!"        ' change caption of add button for confirmation
         Application.Wait (Now + TimeValue("0:00:02"))        ' Wait to avoid crash
-        Add_Button.Caption = "Add"
+        Add_Button.Caption = ""
         Clear_Form
         Gage_Number.SetFocus
         
@@ -354,7 +354,7 @@ Private Sub Update_Worksheet()
     
     Update_Button.Caption = "Updated!"
     Application.Wait (Now + TimeValue("0:00:02"))
-    Update_Button.Caption = "Update"
+    Update_Button.Caption = ""
     'Clear_Form 'Clear form after update
     Gage_Number.SetFocus
     

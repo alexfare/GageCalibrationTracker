@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   5640
+   ClientHeight    =   6390
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   9120.001
+   ClientWidth     =   8625.001
    OleObjectBlob   =   "AdminForm.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -143,7 +143,7 @@ Private Sub Update_Worksheet()
         
         Update_Button.Caption = "Updated!"
         Application.Wait (Now + TimeValue("0:00:02"))
-        Update_Button.Caption = "Update"
+        Update_Button.Caption = ""
         'Clear_Form 'Clear form after update
         Gage_Number.SetFocus
         

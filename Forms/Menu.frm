@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   6525
+   ClientHeight    =   8760.001
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   12465
+   ClientWidth     =   9990.001
    OleObjectBlob   =   "Menu.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -15,8 +15,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.11.6
-' Updated: 01/23/2022
+' Rev: 3.12.0
+' Updated: 2/2/2022
 
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -136,7 +136,7 @@ Private Sub Add_Button_Click()
         
         Add_Button.Caption = "Added!"        ' change caption of add button for confirmation
         Application.Wait (Now + TimeValue("0:00:02"))        ' Wait to avoid crash
-        Add_Button.Caption = "Add"
+        Add_Button.Caption = ""
         Clear_Form
         Gage_Number.SetFocus
         
@@ -369,7 +369,7 @@ Private Sub Update_Worksheet()
     
     Update_Button.Caption = "Updated!"
     Application.Wait (Now + TimeValue("0:00:02"))
-    Update_Button.Caption = "Update"
+    Update_Button.Caption = ""
     'Clear_Form 'Clear form after update
     Gage_Number.SetFocus
     
