@@ -14,7 +14,7 @@ Menu<br>
 ![image](https://user-images.githubusercontent.com/40654995/216606804-6ea8019c-a989-46e1-90fe-2fac8e3db0d1.png)
 <br>
 Admin Panel w/ Login<br>
-![image](https://user-images.githubusercontent.com/40654995/208902728-43edfdf3-8d27-4d88-87e5-111a5c3225ee.png)
+![image](https://user-images.githubusercontent.com/40654995/216607303-bb1055b3-a55a-416c-97af-877c01245291.png)
 <br>
 ![image](https://user-images.githubusercontent.com/40654995/216606899-379d128a-5071-48f1-8239-c95777809eba.png)
 <br>
