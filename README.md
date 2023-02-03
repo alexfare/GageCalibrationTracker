@@ -16,7 +16,7 @@ Menu<br>
 Admin Panel w/ Login<br>
 ![image](https://user-images.githubusercontent.com/40654995/216607303-bb1055b3-a55a-416c-97af-877c01245291.png)
 <br>
-![image](https://user-images.githubusercontent.com/40654995/216606899-379d128a-5071-48f1-8239-c95777809eba.png)
+![image](https://user-images.githubusercontent.com/40654995/216673400-4be37d79-174c-47fc-83ea-fe80142fecbd.png)
 <br>
 
 Future Plans:<br>
