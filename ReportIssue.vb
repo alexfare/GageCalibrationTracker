@@ -50,7 +50,7 @@ Sub Send_Emails()
     msConfigURL = "http://schemas.microsoft.com/cdo/configuration"
     
     With fields
-        .Item(msConfigURL & "/smtpusessl") = TRUE        'Enable SSL Authentication
+        .Item(msConfigURL & "/smtpusessl") = True        'Enable SSL Authentication
         .Item(msConfigURL & "/smtpauthenticate") = 1        'SMTP authentication Enabled
         .Item(msConfigURL & "/smtpserver") = "smtp.gmail.com"        'Set the SMTP server details
         .Item(msConfigURL & "/smtpserverport") = 465        'Set the SMTP port Details
@@ -63,14 +63,15 @@ Sub Send_Emails()
     NewMail.Send
     
     MsgBox "Your report has been sent. ", vbInformation
+    Menu.Show
     
-    Exit_Err:
+Exit_Err:
     'Release object memory
     Set NewMail = Nothing
     Set mailConfig = Nothing
     End
     
-    Err:
+Err:
     Select Case Err.Number
         Case -2147220973        'Could be because of Internet Connection
             MsgBox "Check your internet connection." & vbNewLine & Err.Number & ": " & Err.Description

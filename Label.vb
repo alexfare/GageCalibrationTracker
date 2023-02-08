@@ -22,6 +22,7 @@ Private Sub btnLargeLabel_Click()
         Path = Ws.Range("C27")
         'MsgBox (Path) 'Confirms the path works
         x = Shell("explorer.exe " + Path, vbNormalFocus) 'explorer.exe is needed due to vba expecting a .exe
+        Unload Me
 End Sub
 
 Private Sub btnSmallLabel_Click()
@@ -36,6 +37,7 @@ Private Sub btnSmallLabel_Click()
         Path = Ws.Range("C26")
         'MsgBox (Path) 'Confirms the path works
         x = Shell("explorer.exe " + Path, vbNormalFocus) 'explorer.exe is needed due to vba expecting a .exe
+        Unload Me
 End Sub
 
 Private Sub btnSetUp_Click()
@@ -46,6 +48,3 @@ End Sub
 Private Sub btnBack_click()
     Unload Me
 End Sub
-
-
-

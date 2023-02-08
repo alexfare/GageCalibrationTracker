@@ -78,6 +78,7 @@ Sub Send_Emails()
     NewMail.Send
     
     MsgBox "Your report has been sent. ", vbInformation
+    Menu.Show
     
 Exit_Err:
     'Release object memory

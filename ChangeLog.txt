@@ -1,3 +1,7 @@
+'Update - 3.12.1
+' Updated Label Manager to auto close menu when clicked
+' Updated Report Issue Menu to display menu after sending email
+'
 'Update - 3.12.0
 ' Updated Main Menu Layout / Icons
 ' Updated Admin Menu Layout / Icons
