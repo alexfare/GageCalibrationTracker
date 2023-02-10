@@ -1,3 +1,8 @@
+'Update - 3.12.2
+' Fixed issue where Logged in user's name disappeared
+' Fixed wording on customer menu
+' Working on Gage R&R - Coming Soon
+'
 'Update - 3.12.1
 ' Updated Label Manager to auto close menu when clicked
 ' Updated Report Issue Menu to display menu after sending email

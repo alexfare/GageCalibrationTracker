@@ -46,7 +46,7 @@ Private Sub Add_Button_Click()
     'Clear_Form
     Customer_Name.SetFocus
     
-	'/Add to Gage Number count/'
+    '/Add to Gage Number count/'
     Dim AddCustomer As Integer
 
     List_Select = "Admin" ' Tab name
@@ -70,22 +70,22 @@ End Sub
 Private Sub btnClear_Click()
 Update_Button_Enable = False
 Clear_Form
-Gage_Number.SetFocus
+Customer_Number.SetFocus
 End Sub
 
 Sub ErrMsg()
 MsgBox ("Customer Not Found"), , "Not Found"
-Gage_Number.SetFocus
+Customer_Number.SetFocus
 End Sub
 
 Sub ErrMsg_Duplicate()
 MsgBox ("Customer already added"), , "Duplicate"
-Gage_Number.SetFocus
+Customer_Number.SetFocus
 End Sub
 
 Private Sub Clear_Form()
         Customer_Name = ""
         inCAddress = ""
         inCPhoneNumber = ""
-		inCWebsite
+        inCWebsite = ""
 End Sub

@@ -191,16 +191,12 @@ End Sub
 
 Private Sub btnClose_click()
     Unload AdminForm
-    'Menu.Show
     
     '/Remove Logged In User /'
     List_Select = "Admin"        ' Tab name
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
-    Ws.Range("B52") = ""
     Ws.Range("B55") = "2"
-    
-    ThisWorkbook.Save
 End Sub
 
 Private Sub btnCreateAccount_click()

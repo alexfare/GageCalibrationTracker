@@ -85,17 +85,17 @@ End Sub
 Private Sub btnClear_Click()
 Update_Button_Enable = False
 Clear_Form
-Gage_Number.SetFocus
+Customer_Number.SetFocus
 End Sub
 
 Sub ErrMsg()
 MsgBox ("Customer Not Found"), , "Not Found"
-Gage_Number.SetFocus
+Customer_Number.SetFocus
 End Sub
 
 Sub ErrMsg_Duplicate()
 MsgBox ("Customer already added"), , "Duplicate"
-Gage_Number.SetFocus
+Customer_Number.SetFocus
 End Sub
 
 Private Sub Clear_Form()
@@ -104,3 +104,4 @@ Private Sub Clear_Form()
         inCPhoneNumber = ""
         inCWebsite = ""
 End Sub
+
