@@ -21,7 +21,8 @@ Admin Panel w/ Login<br>
 
 Future Plans:<br>
 Automatic Email logs<br>
-Gage R&R<br>
+Gage R&R - WIP<br>
+Quality Dashboard - Coming Soon
 <br>
 Add more features to Admin Panel - Completed<br>
 Add ability to create multiple accounts - Completed<br>
