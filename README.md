@@ -24,6 +24,8 @@ Automatic Email logs<br>
 Gage R&R - WIP<br>
 Quality Dashboard - Coming Soon
 <br>
+<br>
+Completed: <br>
 Add more features to Admin Panel - Completed<br>
 Add ability to create multiple accounts - Completed<br>
 Add ability to change the password - Completed<br>
