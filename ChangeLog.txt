@@ -2,6 +2,8 @@
 ' Updated Report Issue layout
 ' Updated Search Icon
 ' Added Gage R&R button (Coming Soon)
+' Fixed glitch that would break the database (This caused logs and measurement data to lose order anytime a filter was used)
+' Deleted many unused tables
 '
 'Update - 3.12.2
 ' Fixed issue where Logged in user's name disappeared
