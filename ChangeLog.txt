@@ -1,3 +1,8 @@
+'Update - 3.12.3
+' Updated Report Issue layout
+' Updated Search Icon
+' Added Gage R&R button (Coming Soon)
+'
 'Update - 3.12.2
 ' Fixed issue where Logged in user's name disappeared
 ' Fixed wording on customer menu
