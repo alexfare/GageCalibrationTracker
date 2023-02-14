@@ -1,3 +1,7 @@
+'Update - 3.12.4
+' Update time is now instant (Previously had a noticeable delay)
+' Updated Menu visuals based on feedback
+'
 'Update - 3.12.3
 ' Updated Report Issue layout
 ' Updated Search Icon

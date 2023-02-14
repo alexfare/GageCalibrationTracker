@@ -1,7 +1,7 @@
 ' Gage Tracker
 ' Managed By: Alex Fare
-' Rev: 3.12.3
-' Updated: 2/13/2022
+' Rev: 3.12.4
+' Updated: 2/14/2022
 
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -12,7 +12,7 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
-Dim currrentUser    As String
+Dim currrentUser As String
 
 '/Positioning /'
 Private Sub UserForm_Initialize()
@@ -120,7 +120,7 @@ Private Sub Add_Button_Click()
         Ws.Cells(r, "AN") = lastUser
         
         Add_Button.Caption = "Added!"        ' change caption of add button for confirmation
-        Application.Wait (Now + TimeValue("0:00:02"))        ' Wait to avoid crash
+        Application.Wait (Now + TimeValue("0:00:01"))        ' Wait to avoid crash
         Add_Button.Caption = ""
         Clear_Form
         Gage_Number.SetFocus
@@ -352,13 +352,9 @@ Private Sub Update_Worksheet()
     
     Ws.Cells(r, "G") = Due_Date
     
-    Update_Button.Caption = "Updated!"
-    Application.Wait (Now + TimeValue("0:00:02"))
-    Update_Button.Caption = ""
-    'Clear_Form 'Clear form after update
-    Gage_Number.SetFocus
+    Gage_Number.SetFocus 'Clear_Form 'Clear form after update
     
-    '/Add to update count/'
+    '/Audit Log/'
     Dim UpdateCount As Integer
     
     List_Select = "Admin"        ' Tab name
@@ -373,7 +369,7 @@ Private Sub Update_Worksheet()
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
-    
+    '/ End Audit Log /'
 Else
     MsgBox ("Must search For entry before updating"), , "Nothing To Update"
 End If
