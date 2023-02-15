@@ -1,18 +1,3 @@
-VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
-   Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   6210
-   ClientLeft      =   120
-   ClientTop       =   465
-   ClientWidth     =   10050
-   OleObjectBlob   =   "AdminForm.frx":0000
-   StartUpPosition =   2  'CenterScreen
-End
-Attribute VB_Name = "AdminForm"
-Attribute VB_GlobalNameSpace = False
-Attribute VB_Creatable = False
-Attribute VB_PredeclaredId = True
-Attribute VB_Exposed = False
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
@@ -27,26 +12,7 @@ Private Sub UserForm_Initialize()
     Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
     Me.Left = sngLeft
     Me.Top = sngTop
-    
-    '/ Display Admin Audit Log/'
-    Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
-    Dim Ws          As Worksheet
-    Dim List_Select
-    List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
-    
-    txtWorkbookOpened = Ws.Range("B47")
-    txtLogins = Ws.Range("B48")
-    txtGageCount = Ws.Range("B49")
-    txtGageUpdates = Ws.Range("B50")
-    txtUserCounts = Ws.Range("B51")
-    txtCustomerCount = Ws.Range("B53")
-    lblLoggedUser = Ws.Range("B52")
-    '/Prevent Issues in the future, Call back the main page/'
-    List_Select = "CreatedByAlexFare"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+
 End Sub
 
 '/ Pressing Enter will instantly search /'
@@ -61,16 +27,28 @@ Public Sub Search_Button_Click()
     ' clear previous data from form, except "Gage Number"
     ' --------------------------------------------------------
     PartNumbertxt = ""
-    lblDateAdded = ""
-    lblDateEdit = ""
-    lblSearchedDate = ""
-    lastUser = ""
+    Ap2Name = ""
+    Ap3Name = ""
     
+    '/ Gage R&R Appraiser 1 /*
+        Ap1Name = ""
+        
+    'Trial 1
+        A1T1P1 = ""
+        A1T1P2 = ""
+        A1T1P3 = ""
+        A1T1P4 = ""
+        A1T1P5 = ""
+        A1T1P6 = ""
+        A1T1P7 = ""
+        A1T1P8 = ""
+        A1T1P9 = ""
+        A1T1P10 = ""
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
     
-    List_Select = "CreatedByAlexFare"
+    List_Select = "GageRnR"
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
     
@@ -81,14 +59,41 @@ Public Sub Search_Button_Click()
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = Ws.Cells(r, "B")
-        Ws.Cells(r, "AM") = Now        'Update Last searched
+        PartNametxt = Ws.Cells(r, "C")
         Update_Button_Enable = True
         Option4_Custom = True
         
-        lblDateAdded = Ws.Cells(r, "AK")
-        lblDateEdit = Ws.Cells(r, "AL")
-        lblSearchedDate = Ws.Cells(r, "AM")
-        lastUser = Ws.Cells(r, "AN")
+        '/ Gage R&R Appraiser 1 /*
+        Ap1Name = Ws.Cells(r, "D")
+        'Trial 1
+        A1T1P1 = Ws.Cells(r, "E")
+        A1T1P2 = Ws.Cells(r, "F")
+        A1T1P3 = Ws.Cells(r, "G")
+        A1T1P4 = Ws.Cells(r, "H")
+        A1T1P5 = Ws.Cells(r, "I")
+        A1T1P6 = Ws.Cells(r, "J")
+        A1T1P7 = Ws.Cells(r, "K")
+        A1T1P8 = Ws.Cells(r, "L")
+        A1T1P9 = Ws.Cells(r, "M")
+        A1T1P10 = Ws.Cells(r, "N")
+        
+        'Trial 2
+        A1T2P1 = Ws.Cells(r, "O")
+        A1T2P2 = Ws.Cells(r, "P")
+        A1T2P3 = Ws.Cells(r, "Q")
+        A1T2P4 = Ws.Cells(r, "R")
+        A1T2P5 = Ws.Cells(r, "S")
+        A1T2P6 = Ws.Cells(r, "T")
+        A1T2P7 = Ws.Cells(r, "U")
+        A1T2P8 = Ws.Cells(r, "V")
+        A1T2P9 = Ws.Cells(r, "W")
+        A1T2P10 = Ws.Cells(r, "X")
+        
+        '/ Gage R&R Appraiser 2 /*
+        Ap2Name = Ws.Cells(r, "AX")
+        
+        '/ Gage R&R Appraiser 3 /*
+        Ap3Name = Ws.Cells(r, "AY")
         
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
@@ -169,12 +174,85 @@ Sub MSG_Verify_Update()
 End Sub
 
 Private Sub Clear_Form()
-    Gage_Number = ""
-    PartNumbertxt = ""
-    lblDateAdded = "-"
-    lblDateEdit = "-"
-    lblSearchedDate = "-"
-    lastUser = "-"
+    '/ Gage R&R Appraiser 1 /*
+        Ap1Name = ""
+        
+    'Trial 1
+        A1T1P1 = ""
+        A1T1P2 = ""
+        A1T1P3 = ""
+        A1T1P4 = ""
+        A1T1P5 = ""
+        A1T1P6 = ""
+        A1T1P7 = ""
+        A1T1P8 = ""
+        A1T1P9 = ""
+        A1T1P10 = ""
+        
+    'Trial 2
+        A1T2P1 = ""
+        A1T2P2 = ""
+        A1T2P3 = ""
+        A1T2P4 = ""
+        A1T2P5 = ""
+        A1T2P6 = ""
+        A1T2P7 = ""
+        A1T2P8 = ""
+        A1T2P9 = ""
+        A1T2P10 = ""
+        
+    'Trial 3
+        A1T3P1 = ""
+        A1T3P2 = ""
+        A1T3P3 = ""
+        A1T3P4 = ""
+        A1T3P5 = ""
+        A1T3P6 = ""
+        A1T3P7 = ""
+        A1T3P8 = ""
+        A1T3P9 = ""
+        A1T3P10 = ""
+        
+'/ Gage R&R Appraiser 2 /*
+        Ap2Name = ""
+        
+'Trial 1
+        A2T1P1 = ""
+        A2T1P2 = ""
+        A2T1P3 = ""
+        A2T1P4 = ""
+        A2T1P5 = ""
+        A2T1P6 = ""
+        A2T1P7 = ""
+        A2T1P8 = ""
+        A2T1P9 = ""
+        A2T1P10 = ""
+        
+    'Trial 2
+        A2T2P1 = ""
+        A2T2P2 = ""
+        A2T2P3 = ""
+        A2T2P4 = ""
+        A2T2P5 = ""
+        A2T2P6 = ""
+        A2T2P7 = ""
+        A2T2P8 = ""
+        A2T2P9 = ""
+        A2T2P10 = ""
+        
+    'Trial 3
+        A2T3P1 = ""
+        A2T3P2 = ""
+        A2T3P3 = ""
+        A2T3P4 = ""
+        A2T3P5 = ""
+        A2T3P6 = ""
+        A2T3P7 = ""
+        A2T3P8 = ""
+        A2T3P9 = ""
+        A2T3P10 = ""
+'/ Gage R&R Appraiser 3 /*
+        Ap3Name = ""
 End Sub
 
 Private Sub btnClear_Click()
@@ -183,53 +261,7 @@ Private Sub btnClear_Click()
     Gage_Number.SetFocus
 End Sub
 
-Sub CheckForUpdate_Click()
-    Dim URL         As String
-    URL = "https://github.com/alexfare/GageCalibrationTracker"
-    ActiveWorkbook.FollowHyperlink URL
-End Sub
-
-Private Sub btnClose_click()
-    Unload AdminForm
-    
-    '/Remove Logged In User /'
-    List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
-    Ws.Range("B55") = "2"
-End Sub
-
-Private Sub btnCreateAccount_click()
-    Unload AdminForm
-    CreateAccount.Show
-End Sub
-
-Private Sub btnUpdateUser_click()
-    Unload AdminForm
-    ChangePassword.Show
-End Sub
-
-Private Sub btnDevMode_click()
-    Application.DisplayFullScreen = False
-    Application.DisplayFormulaBar = True
-End Sub
-
-Private Sub btnEditLists_Click()
-    Unload AdminForm
-    Worksheets("Lists").Activate
-End Sub
-
-Private Sub btnAbout_Click()
-    MsgBox "Code protection password Is GageTracker2022"
-End Sub
-
-Private Sub btnCustomers_Click()
-    Unload AdminForm
-    Worksheets("Customers").Activate
-    FormCustomer.Show
-End Sub
-
-Private Sub btnCompanyProfile_Click()
-    'Unload AdminForm
-    CompanyProfile.Show
+Private Sub btnClose_Click()
+    Unload Me
+    Menu.Show
 End Sub

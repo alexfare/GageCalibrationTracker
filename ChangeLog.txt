@@ -1,6 +1,9 @@
 'Update - 3.12.4
-' Update time is now instant (Previously had a noticeable delay)
+' Update time is now instant (Previously had a delay)
 ' Updated Menu visuals based on feedback
+' Creating a new account is now instant. (Previously had a delay)
+' Fixed some formatting errors on the Admin Panel
+' Gage R&R updated (50% completed, Launching with v3.13.0)
 '
 'Update - 3.12.3
 ' Updated Report Issue layout

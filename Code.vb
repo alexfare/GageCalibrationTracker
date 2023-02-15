@@ -1,7 +1,5 @@
 ' Gage Tracker
-' Managed By: Alex Fare
-' Rev: 3.12.4
-' Updated: 2/14/2022
+' Created By: Alex Fare
 
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -440,5 +438,6 @@ End Sub
 
 '/Gage R&R /'
 Private Sub btnGageRR_Click()
-    MsgBox "Coming Soon"
+    MsgBox "Coming Soon!"
+    'GageRnR.Show
 End Sub
