@@ -19,8 +19,8 @@ Private Sub btnLogin_Click()
     '/ Hash /'
     s = inputPass
     
-    Dim sIn         As String, sOut As String, b64 As Boolean
-    Dim sH          As String, sSecret As String
+    Dim sIn As String, sOut As String, b64 As Boolean
+    Dim sH As String, sSecret As String
     
     'Password to be converted
     sIn = s

@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} GageRnR 
    Caption         =   "Gage R& R"
-   ClientHeight    =   9750.001
+   ClientHeight    =   6120
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   21345
+   ClientWidth     =   10980
    OleObjectBlob   =   "GageRnR.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -13,16 +13,16 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim r               As Long        ' variable used for storing row number
+Dim r As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
-Dim currrentUser    As String
+Dim currrentUser As String
 
 '/Positioning /'
 Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
+    Dim sngLeft As Single
+    Dim sngTop As Single
     
     Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
     Me.Left = sngLeft
@@ -59,6 +59,30 @@ Public Sub Search_Button_Click()
         A1T1P8 = ""
         A1T1P9 = ""
         A1T1P10 = ""
+        
+    'Trial 2
+        A1T2P1 = ""
+        A1T2P2 = ""
+        A1T2P3 = ""
+        A1T2P4 = ""
+        A1T2P5 = ""
+        A1T2P6 = ""
+        A1T2P7 = ""
+        A1T2P8 = ""
+        A1T2P9 = ""
+        A1T2P10 = ""
+        
+        'Trial 3
+        A1T2P1 = ""
+        A1T2P2 = ""
+        A1T2P3 = ""
+        A1T2P4 = ""
+        A1T2P5 = ""
+        A1T2P6 = ""
+        A1T2P7 = ""
+        A1T2P8 = ""
+        A1T2P9 = ""
+        A1T2P10 = ""
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -104,8 +128,20 @@ Public Sub Search_Button_Click()
         A1T2P9 = Ws.Cells(r, "W")
         A1T2P10 = Ws.Cells(r, "X")
         
+        'Trial 3
+        A1T2P1 = Ws.Cells(r, "Y")
+        A1T2P2 = Ws.Cells(r, "Z")
+        A1T2P3 = Ws.Cells(r, "AA")
+        A1T2P4 = Ws.Cells(r, "AB")
+        A1T2P5 = Ws.Cells(r, "AC")
+        A1T2P6 = Ws.Cells(r, "AD")
+        A1T2P7 = Ws.Cells(r, "AE")
+        A1T2P8 = Ws.Cells(r, "AF")
+        A1T2P9 = Ws.Cells(r, "AG")
+        A1T2P10 = Ws.Cells(r, "AH")
+        
         '/ Gage R&R Appraiser 2 /*
-        Ap2Name = Ws.Cells(r, "AX")
+        Ap2Name = Ws.Cells(r, "AI")
         
         '/ Gage R&R Appraiser 3 /*
         Ap3Name = Ws.Cells(r, "AY")
@@ -162,7 +198,7 @@ Private Sub Update_Worksheet()
         Ws.Cells(r, "AN") = lastUser
         
         Update_Button.Caption = "Updated!"
-        Application.Wait (Now + TimeValue("0:00:02"))
+        Application.Wait (Now + TimeValue("0:00:01"))
         Update_Button.Caption = ""
         'Clear_Form 'Clear form after update
         Gage_Number.SetFocus
@@ -280,3 +316,4 @@ Private Sub btnClose_Click()
     Unload Me
     Menu.Show
 End Sub
+

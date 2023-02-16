@@ -13,15 +13,15 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim r               As Long        ' variable used for storing row number
+Dim r As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim btnUpdate_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
 
 '/Positioning /'
 Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
+    Dim sngLeft As Single
+    Dim sngTop As Single
     
     Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
     Me.Left = sngLeft
@@ -30,8 +30,7 @@ End Sub
 
 Private Sub inputUser_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
-        Search_Button_Click
-        Insp_Date.SetFocus
+        btnUpdate_Click
     End If
 End Sub
 
@@ -41,10 +40,9 @@ Public Sub Search_Button_Click()
     ' --------------------------------------------------------
     inputPass = ""
     Descriptiontxt = ""
-    
     ' ---------------------------------------------------------
     
-    Dim Ws          As Worksheet
+    Dim Ws As Worksheet
     
     List_Select = "Credentials"
     Set Ws = Sheets(List_Select)
@@ -56,7 +54,6 @@ Public Sub Search_Button_Click()
     Else
         r = Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)
         GN_Verify = inputUser
-        'inputPass = Ws.Cells(r, "B")
         btnUpdate_Enable = True
         
         Dim FS
@@ -66,9 +63,7 @@ Public Sub Search_Button_Click()
         Else
         End If
     End If
-    
     inputUser.SetFocus
-    
 End Sub
 
 Private Sub btnUpdate_Click()
@@ -111,14 +106,13 @@ Private Sub Update_Worksheet()
         '/ Hash /'
         s = inputPass
         
-        Dim sIn     As String, sOut As String, b64 As Boolean
-        Dim sH      As String, sSecret As String
+        Dim sIn As String, sOut As String, b64 As Boolean
+        Dim sH As String, sSecret As String
         
         'Password to be converted
         sIn = s
         sSecret = ""        'secret key for StrToSHA512Salt only
         
-        'select     as required
         'b64 = False   'output hex
         b64 = True        'output base-64
         
@@ -134,7 +128,7 @@ Private Sub Update_Worksheet()
         Ws.Cells(r, "B") = savePass
         
         btnUpdate.Caption = "Updated!"
-        Application.Wait (Now + TimeValue("0:00:02"))
+        Application.Wait (Now + TimeValue("0:00:01"))
         btnUpdate.Caption = "Update"
         'Clear_Form 'Clear form after update
         inputUser.SetFocus
@@ -149,18 +143,16 @@ Private Sub Update_Worksheet()
 End Sub
 
 Sub MSG_Verify_Update()
-    
-    MSG1 = MsgBox("Are you sure you want To change the Gage ID?", vbYesNo, "Verify")
-    
+    MSG1 = MsgBox("Are you sure you want To change the Username?", vbYesNo, "Verify")
     If MSG1 = vbYes Then
         Update_Worksheet
     Else
         inputUser = GN_Verify
     End If
-    
 End Sub
 
 Private Sub btnBack_click()
     Unload ChangePassword
     AdminForm.Show
 End Sub
+

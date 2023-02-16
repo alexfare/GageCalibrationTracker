@@ -50,7 +50,7 @@ Private Sub btnSubmit_Click()
     Ws.Range("C27") = inputLargeLabel
     
     btnSubmit.Caption = "Updated!" ' change caption of add button for confirmation
-    Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
+    Application.Wait (Now + TimeValue("0:00:01")) ' Wait to avoid crash
     btnSubmit.Caption = "Update"
 End Sub
 

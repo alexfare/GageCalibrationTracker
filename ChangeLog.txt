@@ -1,3 +1,8 @@
+'Update - 3.12.5
+' Fixed Crash After Pressing Enter In The Change Password Menu
+' Various changes throughout the program to help speed things up. (Removing delays, etc)
+' Gage R&R Updates - You can now preview the Gage R&R Menu
+'
 'Update - 3.12.4
 ' Update time is now instant (Previously had a delay)
 ' Updated Menu visuals based on feedback
