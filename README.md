@@ -12,12 +12,12 @@ Gage Calibration Tracker<br>
 ![image](https://user-images.githubusercontent.com/40654995/216606990-a387920d-f55f-42d6-a73b-12f4bbfadc9c.png)
 <br>
 Menu<br>
-![image](https://user-images.githubusercontent.com/40654995/216606804-6ea8019c-a989-46e1-90fe-2fac8e3db0d1.png)
+![image](https://user-images.githubusercontent.com/40654995/219362897-2b244bf3-0884-4c13-b716-bc9c049b7b20.png)
 <br>
 Admin Panel w/ Login<br>
 ![image](https://user-images.githubusercontent.com/40654995/216607303-bb1055b3-a55a-416c-97af-877c01245291.png)
 <br>
-![image](https://user-images.githubusercontent.com/40654995/216673400-4be37d79-174c-47fc-83ea-fe80142fecbd.png)
+![image](https://user-images.githubusercontent.com/40654995/219362980-ddbfad4e-693d-4f04-b575-c00664c9d695.png)
 <br>
 
 Future Plans:<br>
