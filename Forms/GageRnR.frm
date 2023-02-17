@@ -83,6 +83,84 @@ Public Sub Search_Button_Click()
         A1T2P8 = ""
         A1T2P9 = ""
         A1T2P10 = ""
+        
+        '/ Gage R&R Appraiser 2 /*
+        Ap2Name = ""
+        
+    'Trial 1
+        A2T1P1 = ""
+        A2T1P2 = ""
+        A2T1P3 = ""
+        A2T1P4 = ""
+        A2T1P5 = ""
+        A2T1P6 = ""
+        A2T1P7 = ""
+        A2T1P8 = ""
+        A2T1P9 = ""
+        A2T1P10 = ""
+        
+    'Trial 2
+        A2T2P1 = ""
+        A2T2P2 = ""
+        A2T2P3 = ""
+        A2T2P4 = ""
+        A2T2P5 = ""
+        A2T2P6 = ""
+        A2T2P7 = ""
+        A2T2P8 = ""
+        A2T2P9 = ""
+        A2T2P10 = ""
+        
+    'Trial 3
+        A2T3P1 = ""
+        A2T3P2 = ""
+        A2T3P3 = ""
+        A2T3P4 = ""
+        A2T3P5 = ""
+        A2T3P6 = ""
+        A2T3P7 = ""
+        A2T3P8 = ""
+        A2T3P9 = ""
+        A2T3P10 = ""
+        
+    '/ Gage R&R Appraiser 3 /*
+        Ap3Name = ""
+        
+    'Trial 1
+        A3T1P1 = ""
+        A3T1P2 = ""
+        A3T1P3 = ""
+        A3T1P4 = ""
+        A3T1P5 = ""
+        A3T1P6 = ""
+        A3T1P7 = ""
+        A3T1P8 = ""
+        A3T1P9 = ""
+        A3T1P10 = ""
+        
+    'Trial 2
+        A3T2P1 = ""
+        A3T2P2 = ""
+        A3T2P3 = ""
+        A3T2P4 = ""
+        A3T2P5 = ""
+        A3T2P6 = ""
+        A3T2P7 = ""
+        A3T2P8 = ""
+        A3T2P9 = ""
+        A3T2P10 = ""
+        
+    'Trial 3
+        A3T3P1 = ""
+        A3T3P2 = ""
+        A3T3P3 = ""
+        A3T3P4 = ""
+        A3T3P5 = ""
+        A3T3P6 = ""
+        A3T3P7 = ""
+        A3T3P8 = ""
+        A3T3P9 = ""
+        A3T3P10 = ""
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -129,19 +207,55 @@ Public Sub Search_Button_Click()
         A1T2P10 = Ws.Cells(r, "X")
         
         'Trial 3
-        A1T2P1 = Ws.Cells(r, "Y")
-        A1T2P2 = Ws.Cells(r, "Z")
-        A1T2P3 = Ws.Cells(r, "AA")
-        A1T2P4 = Ws.Cells(r, "AB")
-        A1T2P5 = Ws.Cells(r, "AC")
-        A1T2P6 = Ws.Cells(r, "AD")
-        A1T2P7 = Ws.Cells(r, "AE")
-        A1T2P8 = Ws.Cells(r, "AF")
-        A1T2P9 = Ws.Cells(r, "AG")
-        A1T2P10 = Ws.Cells(r, "AH")
+        A1T3P1 = Ws.Cells(r, "Y")
+        A1T3P2 = Ws.Cells(r, "Z")
+        A1T3P3 = Ws.Cells(r, "AA")
+        A1T3P4 = Ws.Cells(r, "AB")
+        A1T3P5 = Ws.Cells(r, "AC")
+        A1T3P6 = Ws.Cells(r, "AD")
+        A1T3P7 = Ws.Cells(r, "AE")
+        A1T3P8 = Ws.Cells(r, "AF")
+        A1T3P9 = Ws.Cells(r, "AG")
+        A1T3P10 = Ws.Cells(r, "AH")
         
         '/ Gage R&R Appraiser 2 /*
         Ap2Name = Ws.Cells(r, "AI")
+        
+        'Trial 1
+        A2T1P1 = Ws.Cells(r, "AJ")
+        A2T1P2 = Ws.Cells(r, "AK")
+        A2T1P3 = Ws.Cells(r, "AL")
+        A2T1P4 = Ws.Cells(r, "AM")
+        A2T1P5 = Ws.Cells(r, "AN")
+        A2T1P6 = Ws.Cells(r, "AO")
+        A2T1P7 = Ws.Cells(r, "AP")
+        A2T1P8 = Ws.Cells(r, "AQ")
+        A2T1P9 = Ws.Cells(r, "AR")
+        A2T1P10 = Ws.Cells(r, "AS")
+        
+    'Trial 2
+        A2T2P1 = Ws.Cells(r, "AT")
+        A2T2P2 = Ws.Cells(r, "AU")
+        A2T2P3 = Ws.Cells(r, "AV")
+        A2T2P4 = Ws.Cells(r, "AW")
+        A2T2P5 = Ws.Cells(r, "AX")
+        A2T2P6 = Ws.Cells(r, "AY")
+        A2T2P7 = Ws.Cells(r, "AZ")
+        A2T2P8 = Ws.Cells(r, "BA")
+        A2T2P9 = Ws.Cells(r, "BB")
+        A2T2P10 = Ws.Cells(r, "BC")
+        
+    'Trial 3
+        A2T3P1 = Ws.Cells(r, "BD")
+        A2T3P2 = Ws.Cells(r, "BE")
+        A2T3P3 = Ws.Cells(r, "BF")
+        A2T3P4 = Ws.Cells(r, "BG")
+        A2T3P5 = Ws.Cells(r, "BH")
+        A2T3P6 = Ws.Cells(r, "BI")
+        A2T3P7 = Ws.Cells(r, "BJ")
+        A2T3P8 = Ws.Cells(r, "BK")
+        A2T3P9 = Ws.Cells(r, "BL")
+        A2T3P10 = Ws.Cells(r, "BM")
         
         '/ Gage R&R Appraiser 3 /*
         Ap3Name = Ws.Cells(r, "AY")
@@ -267,7 +381,7 @@ Private Sub Clear_Form()
 '/ Gage R&R Appraiser 2 /*
         Ap2Name = ""
         
-'Trial 1
+    'Trial 1
         A2T1P1 = ""
         A2T1P2 = ""
         A2T1P3 = ""
@@ -302,8 +416,45 @@ Private Sub Clear_Form()
         A2T3P8 = ""
         A2T3P9 = ""
         A2T3P10 = ""
+        
 '/ Gage R&R Appraiser 3 /*
         Ap3Name = ""
+        
+    'Trial 1
+        A3T1P1 = ""
+        A3T1P2 = ""
+        A3T1P3 = ""
+        A3T1P4 = ""
+        A3T1P5 = ""
+        A3T1P6 = ""
+        A3T1P7 = ""
+        A3T1P8 = ""
+        A3T1P9 = ""
+        A3T1P10 = ""
+        
+    'Trial 2
+        A3T2P1 = ""
+        A3T2P2 = ""
+        A3T2P3 = ""
+        A3T2P4 = ""
+        A3T2P5 = ""
+        A3T2P6 = ""
+        A3T2P7 = ""
+        A3T2P8 = ""
+        A3T2P9 = ""
+        A3T2P10 = ""
+        
+    'Trial 3
+        A3T3P1 = ""
+        A3T3P2 = ""
+        A3T3P3 = ""
+        A3T3P4 = ""
+        A3T3P5 = ""
+        A3T3P6 = ""
+        A3T3P7 = ""
+        A3T3P8 = ""
+        A3T3P9 = ""
+        A3T3P10 = ""
 End Sub
 
 Private Sub btnClear_Click()
@@ -313,7 +464,6 @@ Private Sub btnClear_Click()
 End Sub
 
 Private Sub btnClose_Click()
-    Unload Me
-    Menu.Show
+    Unload GageRnR
 End Sub
 

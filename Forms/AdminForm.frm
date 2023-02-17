@@ -189,14 +189,14 @@ Sub CheckForUpdate_Click()
     ActiveWorkbook.FollowHyperlink URL
 End Sub
 
-Private Sub btnClose_click()
+Private Sub btnClose_Click()
     Unload AdminForm
     
-    '/Remove Logged In User /'
+    '/Save Logged In User For The Session /'
     List_Select = "Admin"        ' Tab name
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
-    Ws.Range("B55") = "2"
+    Ws.Range("B55") = "2"       ' 1 = Required | 2 = Not Required
 End Sub
 
 Private Sub btnCreateAccount_click()
