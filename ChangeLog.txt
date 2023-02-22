@@ -1,3 +1,8 @@
+'Update - 3.12.6
+' Added Alt text to be displayed when hovering over a button (Removing Title in the future)
+' Gage R&R Updates (Add button added and working, No update button yet)
+' Gage R&R Updates (Tab order & Clearing working)
+'
 'Update - 3.12.5
 ' Fixed Crash After Pressing Enter In The Change Password Menu
 ' Various changes throughout the program to help speed things up. (Removing delays, etc)

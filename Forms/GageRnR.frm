@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} GageRnR 
-   Caption         =   "Gage R& R"
-   ClientHeight    =   6120
+   Caption         =   "Gage R&R"
+   ClientHeight    =   6105
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   10980
+   ClientWidth     =   10665
    OleObjectBlob   =   "GageRnR.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -28,6 +28,39 @@ Private Sub UserForm_Initialize()
     Me.Left = sngLeft
     Me.Top = sngTop
 
+End Sub
+
+'/ Add Gage
+Private Sub Add_Button_Click()
+    Dim Ws          As Worksheet
+    Dim List_Select
+    List_Select = "GageRnR"        ' Tab name
+    Set Ws = Sheets(List_Select)
+    Set Worksheet_Set = Ws
+    
+    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
+        
+        Dim lLastRow As Long        ' lLastRow = variable to store the result of the row count calculation
+        lLastRow = Ws.ListObjects.Item(1).ListRows.Count
+        r = lLastRow + 3        ' Add number for every header tab created
+        Dim gnString As String
+        If IsNumeric(Gage_Number) Then
+            gnString = Val(Gage_Number.Value)
+        Else
+            gnString = Gage_Number
+        End If
+        
+        Ws.Cells(r, "A") = gnString
+        Ws.Cells(r, "B") = PartNumbertxt
+        
+        Add_Button.Caption = "Added!"        ' change caption of add button for confirmation
+        Application.Wait (Now + TimeValue("0:00:01"))        ' Wait to avoid crash
+        Add_Button.Caption = ""
+        Clear_Form
+        Gage_Number.SetFocus
+    Else
+        ErrMsg_Duplicate
+    End If
 End Sub
 
 '/ Pressing Enter will instantly search /'
@@ -258,7 +291,43 @@ Public Sub Search_Button_Click()
         A2T3P10 = Ws.Cells(r, "BM")
         
         '/ Gage R&R Appraiser 3 /*
-        Ap3Name = Ws.Cells(r, "AY")
+        Ap3Name = Ws.Cells(r, "BN")
+        
+        'Trial 1
+        A3T1P1 = Ws.Cells(r, "BO")
+        A3T1P2 = Ws.Cells(r, "BP")
+        A3T1P3 = Ws.Cells(r, "BQ")
+        A3T1P4 = Ws.Cells(r, "BR")
+        A3T1P5 = Ws.Cells(r, "BS")
+        A3T1P6 = Ws.Cells(r, "BT")
+        A3T1P7 = Ws.Cells(r, "BU")
+        A3T1P8 = Ws.Cells(r, "BV")
+        A3T1P9 = Ws.Cells(r, "BW")
+        A3T1P10 = Ws.Cells(r, "BX")
+        
+    'Trial 2
+        A3T2P1 = Ws.Cells(r, "BY")
+        A3T2P2 = Ws.Cells(r, "BZ")
+        A3T2P3 = Ws.Cells(r, "CA")
+        A3T2P4 = Ws.Cells(r, "CB")
+        A3T2P5 = Ws.Cells(r, "CC")
+        A3T2P6 = Ws.Cells(r, "CD")
+        A3T2P7 = Ws.Cells(r, "CE")
+        A3T2P8 = Ws.Cells(r, "CF")
+        A3T2P9 = Ws.Cells(r, "CG")
+        A3T2P10 = Ws.Cells(r, "CH")
+        
+    'Trial 3
+        A3T3P1 = Ws.Cells(r, "CI")
+        A3T3P2 = Ws.Cells(r, "CJ")
+        A3T3P3 = Ws.Cells(r, "CK")
+        A3T3P4 = Ws.Cells(r, "CL")
+        A3T3P5 = Ws.Cells(r, "CM")
+        A3T3P6 = Ws.Cells(r, "CN")
+        A3T3P7 = Ws.Cells(r, "CO")
+        A3T3P8 = Ws.Cells(r, "CP")
+        A3T3P9 = Ws.Cells(r, "CQ")
+        A3T3P10 = Ws.Cells(r, "CR")
         
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
@@ -339,6 +408,8 @@ Sub MSG_Verify_Update()
 End Sub
 
 Private Sub Clear_Form()
+        Gage_Number = ""
+        PartNumbertxt = ""
     '/ Gage R&R Appraiser 1 /*
         Ap1Name = ""
         
