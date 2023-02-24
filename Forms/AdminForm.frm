@@ -43,6 +43,8 @@ Private Sub UserForm_Initialize()
     txtUserCounts = Ws.Range("B51")
     txtCustomerCount = Ws.Range("B53")
     lblLoggedUser = Ws.Range("B52")
+    txtGageRnRCount = Ws.Range("B54")
+    
     '/Prevent Issues in the future, Call back the main page/'
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set Ws = Sheets(List_Select)

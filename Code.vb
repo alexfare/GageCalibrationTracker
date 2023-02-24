@@ -1,7 +1,8 @@
+
 ' Gage Tracker
 ' Created By: Alex Fare
 
-Dim r As Long        ' variable used for storing row number
+Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
@@ -14,8 +15,8 @@ Dim currrentUser As String
 
 '/Positioning /'
 Private Sub UserForm_Initialize()
-    Dim sngLeft As Single
-    Dim sngTop As Single
+    Dim sngLeft     As Single
+    Dim sngTop      As Single
     
     Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
     Me.Left = sngLeft
@@ -25,7 +26,7 @@ Private Sub UserForm_Initialize()
     Dim CodeCompare As Integer
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim LoginCount  As Integer
-    Dim Ws As Worksheet
+    Dim Ws          As Worksheet
     Dim List_Select
     
     List_Select = "Admin"        ' Tab name
@@ -33,7 +34,7 @@ Private Sub UserForm_Initialize()
     Set Worksheet_Set = Ws
     CodeCompare = Ws.Range("B56")
     If CodeCompare = "1" Then
-        Application.Wait (Now + TimeValue("0:00:01"))
+        Application.Wait (Now + TimeValue("0:00:02"))
         Unload Menu
         CodeConfirm.Show
     End If
@@ -71,7 +72,7 @@ End Sub
 
 '/ Add Gage
 Private Sub Add_Button_Click()
-    Dim Ws As Worksheet
+    Dim Ws          As Worksheet
     Dim List_Select
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set Ws = Sheets(List_Select)
@@ -438,6 +439,6 @@ End Sub
 
 '/Gage R&R /'
 Private Sub btnGageRR_Click()
-    MsgBox "Coming Soon!"
-    'GageRnR.Show
+    MsgBox "NOTE: This is a WIP preview."
+    GageRnR.Show
 End Sub

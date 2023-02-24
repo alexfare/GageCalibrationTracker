@@ -13,6 +13,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 ' Gage Tracker
 ' Created By: Alex Fare
 
@@ -453,6 +454,6 @@ End Sub
 
 '/Gage R&R /'
 Private Sub btnGageRR_Click()
-    MsgBox "NOTE: This is a non functioning preview."
+    MsgBox "NOTE: This is a WIP preview."
     GageRnR.Show
 End Sub
