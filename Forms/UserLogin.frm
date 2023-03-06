@@ -1,18 +1,19 @@
 VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} LoginForm 
-   Caption         =   "Admin Login"
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} UserLogin 
+   Caption         =   "User Login"
    ClientHeight    =   2025
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   3825
-   OleObjectBlob   =   "LoginForm.frx":0000
+   OleObjectBlob   =   "UserLogin.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
-Attribute VB_Name = "LoginForm"
+Attribute VB_Name = "UserLogin"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 '/Positioning /'
 Private Sub UserForm_Initialize()
     Dim sngLeft     As Single
@@ -80,9 +81,8 @@ Private Sub btnLogin_Click()
     End If
     
     If Password = PassCompare Then
-        Unload LoginForm
+        Unload UserLogin
         Sheets("CreatedByAlexFare").Activate
-        AdminForm.Show
         
         '/Add to the login count /'
         Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -98,11 +98,6 @@ Private Sub btnLogin_Click()
         LoginCountPlusOne = LoginCount + 1
         Ws.Range("B48") = LoginCountPlusOne
         Ws.Range("B52") = inputUsername
-        Ws.Range("B55") = "2"
+        Ws.Range("B55") = "1"
     End If
-End Sub
-
-Private Sub btnBack_click()
-    Unload LoginForm
-    Menu.Show
 End Sub

@@ -1,3 +1,14 @@
+'Update - 3.12.8
+' Added startup DevMode in Admin settings.
+' Added ability to require login.
+' Gage R&R updates.
+' Added stealth mode for Admin Panel searching. (No longer updates last searhed when using Admin Panel)
+'
+'Update - 3.12.7
+' Gage R&R Updates (Preview is fully functioning, Working on cleaning up code & Calculations for the results tab.)
+' Added Gage R&R list
+' Added Gage R&R Count to Audit Log under Admin Panel
+'
 'Update - 3.12.6
 ' Added Alt text to be displayed when hovering over a button (Removing Title in the future)
 ' Gage R&R Updates (Add button added and working, No update button yet)

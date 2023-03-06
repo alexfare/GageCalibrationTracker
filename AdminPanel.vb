@@ -68,15 +68,14 @@ Public Sub Search_Button_Click()
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = Ws.Cells(r, "B")
-        Ws.Cells(r, "AM") = Now        'Update Last searched
-        Update_Button_Enable = True
-        Option4_Custom = True
-        
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
         lblSearchedDate = Ws.Cells(r, "AM")
         lastUser = Ws.Cells(r, "AN")
         
+        'Below might be doing nothing anymore? Check into this
+        Update_Button_Enable = True
+        Option4_Custom = True
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
         
@@ -129,9 +128,8 @@ Private Sub Update_Worksheet()
         Ws.Cells(r, "AN") = lastUser
         
         Update_Button.Caption = "Updated!"
-        Application.Wait (Now + TimeValue("0:00:02"))
+        Application.Wait (Now + TimeValue("0:00:01"))
         Update_Button.Caption = ""
-        'Clear_Form 'Clear form after update
         Gage_Number.SetFocus
         
     Else
@@ -217,6 +215,5 @@ Private Sub btnCustomers_Click()
 End Sub
 
 Private Sub btnCompanyProfile_Click()
-    'Unload AdminForm
     CompanyProfile.Show
 End Sub

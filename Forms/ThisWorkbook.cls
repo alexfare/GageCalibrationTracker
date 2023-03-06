@@ -22,10 +22,24 @@ Private Sub Workbook_Open()
      Ws.Range("B47") = WorkBookPlusOne
      Ws.Range("B52") = "" 'Clears logged in user.
      Ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
-
-    Worksheets("CreatedByAlexFare").Activate
-    Application.DisplayFullScreen = True
-    Menu.Show
+     
+     Dim requireLogin As Integer
+     requireLogin = Ws.Range("B59")
+     If requireLogin = "1" Then
+        Worksheets("Login").Activate
+        UserLogin.Show
+     Else
+        Worksheets("CreatedByAlexFare").Activate
+        Menu.Show
+    End If
+    
+    Dim skipDevMode As Integer
+    skipDevMode = Ws.Range("B61")
+    If skipDevMode = "1" Then
+        Application.DisplayFullScreen = False
+    Else
+        Application.DisplayFullScreen = True
+    End If
 
 End Sub
 
