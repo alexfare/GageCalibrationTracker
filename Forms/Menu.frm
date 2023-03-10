@@ -13,11 +13,10 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
 ' Gage Tracker
 ' Created By: Alex Fare
 
-Dim r               As Long        ' variable used for storing row number
+Dim r As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
@@ -28,16 +27,18 @@ Dim Date_Due_2yr
 Dim Date_Due
 Dim currrentUser As String
 
-'/Positioning /'
+'/Start up script /'
 Private Sub UserForm_Initialize()
+'/Positioning /'
     Dim sngLeft     As Single
     Dim sngTop      As Single
     
     Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
     Me.Left = sngLeft
     Me.Top = sngTop
+'/End Positioning /'
     
-    '/Code Confirm for production /
+'/Code Confirm for production use only/'
     Dim CodeCompare As Integer
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim LoginCount  As Integer
@@ -56,9 +57,10 @@ Private Sub UserForm_Initialize()
     
     If CodeCompare = "2" Then
     End If
-    
-    '/Prevent Issues in the future, Call back the main page/'
-    List_Select = "CreatedByAlexFare"        ' Tab name
+'/ End code confirm /'
+
+'/Prevent Issues in the future, Call back the main page/'
+    List_Select = "CreatedByAlexFare"
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
     
@@ -66,28 +68,44 @@ End Sub
 
 '/Auto Due Date
 Private Sub Option1_6_Click()        ' auto format for 6 month interval
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
     Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
     Due_Date = Date_Due_6mos
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
 End Sub
 Private Sub Option2_12_Click()        ' auto format for 1 year interval
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
     Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
     Due_Date = Date_Due_1yr
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
 End Sub
-Private Sub Option3_24_Click()        ' auto format for 2 year interval
+Private Sub Option3_24_Click()
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
     Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
     Due_Date = Date_Due_2yr
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
 End Sub
 Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due = Format(Due_Date, "m/d/yyyy")
     Due_Date = Date_Due
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
 End Sub
 
 '/ Add Gage
 Private Sub Add_Button_Click()
-    Dim Ws          As Worksheet
+    Dim Ws As Worksheet
     Dim List_Select
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set Ws = Sheets(List_Select)
@@ -187,7 +205,7 @@ Public Sub Search_Button_Click()
     Descriptiontxt = ""
     comboGageType = ""
     Customer = ""
-    Insp_Date = "1/1/1900"
+    Insp_Date = ""
     Due_Date = ""
     Initials = ""
     Department = ""
@@ -203,10 +221,10 @@ Public Sub Search_Button_Click()
     aA4 = ""
     aN5 = ""
     aA5 = ""
-    lblDateAdded = "-"
-    lblDateEdit = "-"
-    lblSearchedDate = "-"
-    lastUser = "-"
+    lblDateAdded = ""
+    lblDateEdit = ""
+    lblSearchedDate = ""
+    lastUser = ""
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -227,7 +245,7 @@ Public Sub Search_Button_Click()
         Customer = Ws.Cells(r, "E")
         Insp_Date = Ws.Cells(r, "F")
         Due_Date_Original = Ws.Cells(r, "G")
-        Due_Date = Format(Due_Date_Original, "mm/dd/yyyy")
+        Due_Date = Format(Due_Date_Original, "m/d/yyyy")
         Initials = Ws.Cells(r, "H")
         Department = Ws.Cells(r, "I")
         Comments = Ws.Cells(r, "J")
@@ -292,7 +310,7 @@ Private Sub Clear_Form()
     Descriptiontxt = ""
     comboGageType = ""
     Customer = ""
-    Insp_Date = "1/1/1900"
+    Insp_Date = ""
     Due_Date = ""
     Initials = ""
     Department = ""
@@ -308,10 +326,10 @@ Private Sub Clear_Form()
     aA4 = ""
     aN5 = ""
     aA5 = ""
-    lblDateAdded = "-"
-    lblDateEdit = "-"
-    lblSearchedDate = "-"
-    lastUser = "-"
+    lblDateAdded = ""
+    lblDateEdit = ""
+    lblSearchedDate = ""
+    lastUser = ""
 End Sub
 
 Private Sub Update_Worksheet()
@@ -457,3 +475,4 @@ Private Sub btnGageRR_Click()
     MsgBox "NOTE: This is a WIP preview."
     GageRnR.Show
 End Sub
+

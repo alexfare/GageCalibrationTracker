@@ -1,8 +1,13 @@
+'Update - 3.12.9
+' Fixed Due Date format issue.
+' Added Error handling to incorrectly formatted dates.
+' Added stealth mode for Admin Panel editing.
+'
 'Update - 3.12.8
 ' Added startup DevMode in Admin settings.
 ' Added ability to require login.
 ' Gage R&R updates.
-' Added stealth mode for Admin Panel searching. (No longer updates last searhed when using Admin Panel)
+' Added stealth mode for Admin Panel searching. (No longer updates last searched when using Admin Panel)
 '
 'Update - 3.12.7
 ' Gage R&R Updates (Preview is fully functioning, Working on cleaning up code & Calculations for the results tab.)

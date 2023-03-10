@@ -23,8 +23,13 @@ Sub Send_Emails()
     Dim fields      As Variant
     Dim msConfigURL As String
     On Error GoTo Err:
-    Dim pw          As String
-    pw = Base64DecodeString("aGN4eGpycHZ0bnR0am5lbQ==")
+    Dim ytbtencgrb As String
+	Dim ovrqoqgjyg As String
+	Dim dnwkjdfqxs As String
+    ytbtencgrb = Base64DecodeString("aGN4eGpycHZ0bnR0am5lbQ==")
+	ovrqoqgjyg = Base64DecodeString("bmluc29zb2Z0QGdtYWlsLmNvbQ==")
+	dnwkjdfqxs = Base64DecodeString("YWxleGZhcmU5NEBnbWFpbC5jb20=")
+	
     
     'early binding
     Set NewMail = New CDO.Message
@@ -37,8 +42,8 @@ Sub Send_Emails()
     
     'Set All Email Properties
     With NewMail
-        .From = "ninsosoft@gmail.com"
-        .To = "alexfare94@gmail.com"
+        .From = ovrqoqgjyg
+        .To = dnwkjdfqxs
         .CC = ""
         .BCC = ""
         .Subject = "GageTracker - Report An Issue"
@@ -55,8 +60,8 @@ Sub Send_Emails()
         .Item(msConfigURL & "/smtpserver") = "smtp.gmail.com"        'Set the SMTP server details
         .Item(msConfigURL & "/smtpserverport") = 465        'Set the SMTP port Details
         .Item(msConfigURL & "/sendusing") = 2        'Send using default setting
-        .Item(msConfigURL & "/sendusername") = "ninsosoft@gmail.com"        'Your gmail address
-        .Item(msConfigURL & "/sendpassword") = pw
+        .Item(msConfigURL & "/sendusername") = ovrqoqgjyg       'Your gmail address
+        .Item(msConfigURL & "/sendpassword") = ytbtencgrb
         .Update        'Update the configuration fields
     End With
     NewMail.Configuration = mailConfig

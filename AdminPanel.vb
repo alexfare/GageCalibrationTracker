@@ -121,7 +121,7 @@ Private Sub Update_Worksheet()
         '/ Audit
         Ws.Cells(r, "A") = gnString
         Ws.Cells(r, "B") = PartNumbertxt
-        Ws.Cells(r, "AL") = Now        'Update Last edited
+        'Ws.Cells(r, "AL") = Now        'Update Last edited
         Ws.Cells(r, "AK") = lblDateAdded        'Date Added
         currrentUser = Application.userName
         lastUser = currrentUser
@@ -156,10 +156,10 @@ End Sub
 Private Sub Clear_Form()
     Gage_Number = ""
     PartNumbertxt = ""
-    lblDateAdded = "-"
+    lblDateAdded = ""
     lblDateEdit = "-"
-    lblSearchedDate = "-"
-    lastUser = "-"
+    lblSearchedDate = ""
+    lastUser = ""
 End Sub
 
 Private Sub btnClear_Click()
