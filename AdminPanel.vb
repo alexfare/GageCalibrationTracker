@@ -4,15 +4,7 @@ Dim Update_Button_Enable As Boolean        ' to store update enable flag after s
 Dim GN_Verify
 Dim currrentUser    As String
 
-'/Positioning /'
 Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
-    
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
-    
     '/ Display Admin Audit Log/'
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim Ws          As Worksheet
@@ -34,6 +26,13 @@ Private Sub UserForm_Initialize()
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
+End Sub
+
+Private Sub UserForm_Activate()
+'/Positioning /'
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 '/ Pressing Enter will instantly search /'
@@ -216,4 +215,8 @@ End Sub
 
 Private Sub btnCompanyProfile_Click()
     CompanyProfile.Show
+End Sub
+
+Private Sub AdminSettings_Click()
+    MsgBox ("Coming Soon")
 End Sub

@@ -1,3 +1,6 @@
+'Update - 3.13.1
+' Fixed Window Center Issue
+'
 'Update - 3.12.9
 ' Fixed Due Date format issue.
 ' Added Error handling to incorrectly formatted dates.

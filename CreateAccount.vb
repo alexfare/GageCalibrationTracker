@@ -3,14 +3,11 @@ Dim Worksheet_Set ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 
+Private Sub UserForm_Activate()
 '/Positioning /'
-Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
-    
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 Private Sub btnCreate_Click()
@@ -42,7 +39,7 @@ Private Sub btnCreate_Click()
         sIn = s
         sSecret = "" 'secret key for StrToSHA512Salt only
         
-        b64 = TRUE 'output base-64
+        b64 = True 'output base-64
         
         sH = SHA512(sIn, b64)
         

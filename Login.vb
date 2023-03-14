@@ -1,11 +1,8 @@
+Private Sub UserForm_Activate()
 '/Positioning /'
-Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
-    
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 Private Sub inputPass_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
@@ -15,7 +12,6 @@ Private Sub inputPass_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shif
 End Sub
 
 Private Sub btnLogin_Click()
-    
     '/ Hash /'
     s = inputPass
     
@@ -28,7 +24,7 @@ Private Sub btnLogin_Click()
     
     'select         as required
     'b64 = False   'output hex
-    b64 = TRUE        'output base-64
+    b64 = True        'output base-64
     
     sH = SHA512(sIn, b64)
     'Add salt to the encryption

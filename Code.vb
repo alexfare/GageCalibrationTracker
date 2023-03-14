@@ -14,15 +14,6 @@ Dim currrentUser As String
 
 '/Start up script /'
 Private Sub UserForm_Initialize()
-'/Positioning /'
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
-    
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
-'/End Positioning /'
-    
 '/Code Confirm for production use only/'
     Dim CodeCompare As Integer
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -49,6 +40,12 @@ Private Sub UserForm_Initialize()
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
     
+End Sub
+Private Sub UserForm_Activate()
+'/Positioning /'
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 '/Auto Due Date

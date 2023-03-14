@@ -6,13 +6,6 @@ Dim currrentUser    As String
 
 '/Positioning /'
 Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
-    
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
-    
     Dim Ws          As Worksheet
     Dim List_Select
     List_Select = "GageRnR"        ' Tab name
@@ -21,9 +14,16 @@ Private Sub UserForm_Initialize()
     
     Dim rng         As Range
     For Each rng In Ws.Range("A3:A50")
-        Me.GageRnR_List.AddItem rng.Value
+    Me.GageRnR_List.AddItem rng.Value
     Next rng
     
+End Sub
+
+Private Sub UserForm_Activate()
+'/Positioning /'
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 '/ Add Gage
@@ -206,6 +206,10 @@ Public Sub Search_Button_Click()
     A3T3P8 = ""
     A3T3P9 = ""
     A3T3P10 = ""
+    
+    '/ Calculation --------------------------------------------
+    
+
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -215,15 +219,15 @@ Public Sub Search_Button_Click()
     Set Worksheet_Set = Ws
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
-        Update_Button_Enable = FALSE
+        Update_Button_Enable = False
         ErrMsg
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = Ws.Cells(r, "B")
         PartNametxt = Ws.Cells(r, "C")
-        Update_Button_Enable = TRUE
-        Option4_Custom = TRUE
+        Update_Button_Enable = True
+        Option4_Custom = True
         
         '/ Gage R&R Appraiser 1 /*
         Ap1Name = Ws.Cells(r, "D")
@@ -341,6 +345,16 @@ Public Sub Search_Button_Click()
         A3T3P9 = Ws.Cells(r, "CQ")
         A3T3P10 = Ws.Cells(r, "CR")
         
+        
+        '/ Calculation
+        Dim A1P1R As Integer
+        Dim A1T1P1i As Integer
+        Dim A1T2P1i As Integer
+        A1T1P1i = A1T1P1
+        A1T2P1i = A1T2P1
+        A1P1R = A1T1P1i + A1T2P1i
+        Range12 = A1P1R
+        
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
         
@@ -364,7 +378,7 @@ Sub ErrMsg_Duplicate()
 End Sub
 
 Private Sub Update_Button_Click()
-    If Update_Button_Enable = TRUE Then
+    If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then
             Update_Worksheet
         Else
@@ -375,7 +389,7 @@ Private Sub Update_Button_Click()
     End If
 End Sub
 Private Sub Update_Worksheet()
-    If Update_Button_Enable = TRUE Then
+    If Update_Button_Enable = True Then
         Dim gnString As String
         Set Ws = Worksheet_Set
         If IsNumeric(Gage_Number) Then
@@ -652,7 +666,7 @@ Private Sub Clear_Form()
 End Sub
 
 Private Sub btnClear_Click()
-    Update_Button_Enable = FALSE
+    Update_Button_Enable = False
     Clear_Form
     Gage_Number.SetFocus
 End Sub

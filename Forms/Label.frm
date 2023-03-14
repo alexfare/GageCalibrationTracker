@@ -15,14 +15,11 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 
+Private Sub UserForm_Activate()
 '/Positioning /'
-Private Sub UserForm_Initialize()
-Dim sngLeft As Single
-Dim sngTop As Single
-
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 Private Sub btnLargeLabel_Click()

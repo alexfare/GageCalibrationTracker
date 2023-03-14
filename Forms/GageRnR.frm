@@ -21,13 +21,6 @@ Dim currrentUser    As String
 
 '/Positioning /'
 Private Sub UserForm_Initialize()
-    Dim sngLeft     As Single
-    Dim sngTop      As Single
-    
-    Call ReturnPosition_CenterScreen(Me.Height, Me.Width, sngLeft, sngTop)
-    Me.Left = sngLeft
-    Me.Top = sngTop
-    
     Dim Ws          As Worksheet
     Dim List_Select
     List_Select = "GageRnR"        ' Tab name
@@ -39,6 +32,13 @@ Private Sub UserForm_Initialize()
     Me.GageRnR_List.AddItem rng.Value
     Next rng
     
+End Sub
+
+Private Sub UserForm_Activate()
+'/Positioning /'
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
 End Sub
 
 '/ Add Gage
@@ -221,6 +221,10 @@ Public Sub Search_Button_Click()
     A3T3P8 = ""
     A3T3P9 = ""
     A3T3P10 = ""
+    
+    '/ Calculation --------------------------------------------
+    
+
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -355,6 +359,16 @@ Public Sub Search_Button_Click()
         A3T3P8 = Ws.Cells(r, "CP")
         A3T3P9 = Ws.Cells(r, "CQ")
         A3T3P10 = Ws.Cells(r, "CR")
+        
+        
+        '/ Calculation
+        Dim A1P1R As Integer
+        Dim A1T1P1i As Integer
+        Dim A1T2P1i As Integer
+        A1T1P1i = A1T1P1
+        A1T2P1i = A1T2P1
+        A1P1R = A1T1P1i + A1T2P1i
+        Range12 = A1P1R
         
         Dim FS
         Set FS = CreateObject("Scripting.FileSystemObject")
