@@ -1,18 +1,3 @@
-VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
-   Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   8760.001
-   ClientLeft      =   45
-   ClientTop       =   375
-   ClientWidth     =   9990.001
-   OleObjectBlob   =   "Menu.frx":0000
-   StartUpPosition =   2  'CenterScreen
-End
-Attribute VB_Name = "Menu"
-Attribute VB_GlobalNameSpace = False
-Attribute VB_Creatable = False
-Attribute VB_PredeclaredId = True
-Attribute VB_Exposed = False
 ' Gage Tracker
 ' Created By: Alex Fare
 
@@ -41,6 +26,7 @@ Private Sub UserForm_Initialize()
     Set Worksheet_Set = Ws
     CodeCompare = Ws.Range("B56")
     If CodeCompare = "1" Then
+        Application.Wait (Now + TimeValue("0:00:01"))
         Unload Menu
         CodeConfirm.Show
     End If
@@ -144,9 +130,9 @@ Private Sub Add_Button_Click()
         lastUser = currrentUser
         Ws.Cells(r, "AN") = lastUser
         
-        Add_Button.Caption = "Added!"        'change caption of add button for confirmation
-        Application.Wait (Now + TimeValue("0:00:01"))
-        Add_Button.Caption = "" 'change caption back to blank
+        Add_Button.Caption = "Added!"        ' change caption of add button for confirmation
+        Application.Wait (Now + TimeValue("0:00:01"))        ' Wait to avoid crash
+        Add_Button.Caption = ""
         Clear_Form
         Gage_Number.SetFocus
         

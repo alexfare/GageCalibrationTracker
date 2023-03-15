@@ -60,8 +60,6 @@ Sub Send_Emails()
         .BCC = ""
         .Subject = "GageTracker - Report An Issue"
         .TextBody = "Name: " + inputName + " Email: " + inputEmail + " Description: " + inputDescription
-        '.Addattachment "c:\data\email.xlsx" 'Optional file attachment; remove if not needed.
-        '.Addattachment "c:\data\email.pdf" 'Duplicate the line for a second attachment.
     End With
     
     msConfigURL = "http://schemas.microsoft.com/cdo/configuration"
@@ -72,7 +70,7 @@ Sub Send_Emails()
         .Item(msConfigURL & "/smtpserver") = "smtp.gmail.com"        'Set the SMTP server details
         .Item(msConfigURL & "/smtpserverport") = 465        'Set the SMTP port Details
         .Item(msConfigURL & "/sendusing") = 2        'Send using default setting
-        .Item(msConfigURL & "/sendusername") = ovrqoqgjyg       'Your gmail address
+        .Item(msConfigURL & "/sendusername") = ovrqoqgjyg
         .Item(msConfigURL & "/sendpassword") = ytbtencgrb
         .Update        'Update the configuration fields
     End With
@@ -101,4 +99,3 @@ Err:
     Resume Exit_Err
     
 End Sub
-

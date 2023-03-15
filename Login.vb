@@ -1,3 +1,5 @@
+'/Admin Panel Login /'
+
 Private Sub UserForm_Activate()
 '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
@@ -87,3 +89,4 @@ Private Sub btnBack_click()
     Unload LoginForm
     Menu.Show
 End Sub
+
