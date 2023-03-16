@@ -21,8 +21,7 @@ Admin Panel w/ Login<br>
 <br>
 
 Future Plans:<br>
-Automatic Email logs<br>
-Gage R&R - Releasing with v3.13.0<br>
+Gage R&R - WIP<br>
 Quality Dashboard - Coming Soon
 <br>
 <br>
