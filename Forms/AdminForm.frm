@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   6405
+   ClientHeight    =   6765
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   10020
+   ClientWidth     =   10710
    OleObjectBlob   =   "AdminForm.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -18,6 +18,7 @@ Dim Worksheet_Set        ' variable used for selecting and storing the active wo
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
 Dim currrentUser    As String
+Dim rlStatus As Integer
 
 Private Sub UserForm_Initialize()
     '/ Display Admin Audit Log/'
@@ -232,6 +233,20 @@ Private Sub btnCompanyProfile_Click()
     CompanyProfile.Show
 End Sub
 
-Private Sub AdminSettings_Click()
-    MsgBox ("Coming Soon")
+'/ Settings Tab /'
+Private Sub btnRequireLogin_click()
+    List_Select = "Admin"        ' Tab name
+    Set Ws = Sheets(List_Select)
+    Set Worksheet_Set = Ws
+    rlStatus = Ws.Range("B59")
+    
+    If rlStatus = "1" Then
+        Ws.Range("B59") = "2"
+        btnRequireLogin.Caption = "Off"
+    End If
+    If rlStatus = "2" Then
+        Ws.Range("B59") = "1"
+        btnRequireLogin.Caption = "On"
+    End If
 End Sub
+

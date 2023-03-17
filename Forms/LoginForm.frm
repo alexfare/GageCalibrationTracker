@@ -13,6 +13,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+'/Admin Panel Login /'
+
 Private Sub UserForm_Activate()
 '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
