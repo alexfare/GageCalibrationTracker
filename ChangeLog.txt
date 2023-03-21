@@ -1,6 +1,12 @@
+'Update - 3.13.4
+' Added Drop Down box for Gage Number
+' Update last search time to the search prior to current search
+' Updated / Cleaned Code
+'
 'Update - 3.13.3
 ' Updates to Admin Panel. (Tabs)
 ' Added Require Login button (WIP)
+' Fixed Admin Default Credentials
 '
 'Update - 3.13.2
 ' Small code fixes / changes

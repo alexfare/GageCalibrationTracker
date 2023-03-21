@@ -13,9 +13,9 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim r               As Long        ' variable used for storing row number
-Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
-Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
+Dim r As Long ' variable used for storing row number
+Dim Worksheet_Set ' variable used for selecting and storing the active worksheet
+Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
 Dim currrentUser    As String
 Dim rlStatus As Integer

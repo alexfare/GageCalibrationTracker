@@ -4,7 +4,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu
    ClientHeight    =   8760.001
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   9990.001
+   ClientWidth     =   9960.001
    OleObjectBlob   =   "Menu.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -192,35 +192,16 @@ End Sub
 
 '/ Search Button
 Public Sub Search_Button_Click()
+    Dim Ws          As Worksheet
+    Dim DateEdit 'Update Last searched
+    Dim Gage_Number_Save
+    
     ' clear previous data from form, except "Gage Number"
     ' --------------------------------------------------------
-    PartNumbertxt = ""
-    Descriptiontxt = ""
-    comboGageType = ""
-    Customer = ""
-    Insp_Date = ""
-    Due_Date = ""
-    Initials = ""
-    Department = ""
-    Comments = ""
-    comboStatus = ""
-    aN1 = ""
-    aA1 = ""
-    aN2 = ""
-    aA2 = ""
-    aN3 = ""
-    aA3 = ""
-    aN4 = ""
-    aA4 = ""
-    aN5 = ""
-    aA5 = ""
-    lblDateAdded = ""
-    lblDateEdit = ""
-    lblSearchedDate = ""
-    lastUser = ""
+    Gage_Number_Save = Gage_Number
+    Clear_Form
+    Gage_Number = Gage_Number_Save
     ' ---------------------------------------------------------
-    
-    Dim Ws          As Worksheet
     
     List_Select = "CreatedByAlexFare"
     Set Ws = Sheets(List_Select)
@@ -253,6 +234,7 @@ Public Sub Search_Button_Click()
         aA4 = Ws.Cells(r, "AH")
         aN5 = Ws.Cells(r, "AI")
         aA5 = Ws.Cells(r, "AJ")
+        DateEdit = Ws.Cells(r, "AM") 'Update Last searched
         Ws.Cells(r, "AM") = Now        'Update Last searched
         Update_Button_Enable = True
         Option4_Custom = True
@@ -260,17 +242,9 @@ Public Sub Search_Button_Click()
         '/ Audit Log
         lblDateAdded = Ws.Cells(r, "AK")
         lblDateEdit = Ws.Cells(r, "AL")
-        lblSearchedDate = Ws.Cells(r, "AM")
+        lblSearchedDate = DateEdit 'Update Last searched
         lastUser = Ws.Cells(r, "AN")
-        
-        Dim FS
-        Set FS = CreateObject("Scripting.FileSystemObject")
-        
-        If FS.FileExists(TextFile_FullPath) Then
-        Else
-        End If
     End If
-    
     Gage_Number.SetFocus
 End Sub
 
@@ -468,4 +442,3 @@ Private Sub btnGageRR_Click()
     MsgBox "NOTE: This is a WIP preview."
     GageRnR.Show
 End Sub
-
