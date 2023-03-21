@@ -4,6 +4,7 @@ GageCalibrationTracker is a gage calibration management software solution that m
 <br>
 This is a WIP & Is in use at my facility, If you want a clean & clear copy download the latest release.<br>
 Note: Please use v3.12.3 and up. v3.12.3 fixed an issue with the database losing or mixing up information.<br>
+v3.13.3 & up fixed Admin Default Credentials. <br>
 <br>
 Default Username: Admin<br>
 Default Password: Admin<br>
