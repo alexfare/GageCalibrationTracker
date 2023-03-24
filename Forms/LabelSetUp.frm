@@ -23,8 +23,8 @@ Private Sub UserForm_Initialize()
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
     
-    inputSmallLabel = Ws.Range("C26")
-    inputLargeLabel = Ws.Range("C27")
+    inputSmallLabel = Ws.Range("B26")
+    inputLargeLabel = Ws.Range("B27")
 End Sub
 
 Private Sub UserForm_Activate()
@@ -46,12 +46,10 @@ Private Sub btnSubmit_Click()
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
     
-    Ws.Range("C26") = inputSmallLabel
-    Ws.Range("C27") = inputLargeLabel
+    Ws.Range("B26") = inputSmallLabel
+    Ws.Range("B27") = inputLargeLabel
     
     btnSubmit.Caption = "Updated!" ' change caption of add button for confirmation
     Application.Wait (Now + TimeValue("0:00:01")) ' Wait to avoid crash
     btnSubmit.Caption = "Update"
 End Sub
-
-

@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   8760.001
+   ClientHeight    =   8895.001
    ClientLeft      =   45
    ClientTop       =   375
    ClientWidth     =   9960.001
@@ -144,9 +144,6 @@ Private Sub Add_Button_Click()
         lastUser = currrentUser
         Ws.Cells(r, "AN") = lastUser
         
-        Add_Button.Caption = "Added!"        'change caption of add button for confirmation
-        Application.Wait (Now + TimeValue("0:00:01"))
-        Add_Button.Caption = "" 'change caption back to blank
         Clear_Form
         Gage_Number.SetFocus
         
@@ -166,6 +163,10 @@ Private Sub Add_Button_Click()
         Set Ws = Sheets(List_Select)
         Set Worksheet_Set = Ws
         
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Added"
+        Status
     Else
         ErrMsg_Duplicate
     End If
@@ -244,6 +245,12 @@ Public Sub Search_Button_Click()
         lblDateEdit = Ws.Cells(r, "AL")
         lblSearchedDate = DateEdit 'Update Last searched
         lastUser = Ws.Cells(r, "AN")
+                
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Searching"
+        Status
+        
     End If
     Gage_Number.SetFocus
 End Sub
@@ -369,6 +376,11 @@ Private Sub Update_Worksheet()
     Set Ws = Sheets(List_Select)
     Set Worksheet_Set = Ws
     '/ End Audit Log /'
+    
+    '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Updated"
+        Status
 Else
     MsgBox ("Must search For entry before updating"), , "Nothing To Update"
 End If
@@ -441,4 +453,20 @@ End Sub
 Private Sub btnGageRR_Click()
     MsgBox "NOTE: This is a WIP preview."
     GageRnR.Show
+End Sub
+
+Private Sub Status()
+    Dim startTime As Date
+    Dim elapsedTime As Long
+    Dim waitTimeInSeconds As Long
+    
+    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
+    
+    startTime = Now
+    Do While elapsedTime < waitTimeInSeconds
+        DoEvents 'allow the program to process any pending events
+        elapsedTime = DateDiff("s", startTime, Now)
+    Loop
+        statusLabel.Caption = ""
+        statusLabelLog.Caption = ""
 End Sub

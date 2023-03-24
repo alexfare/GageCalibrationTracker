@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   6765
+   ClientHeight    =   6900
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   10710
@@ -62,12 +62,10 @@ Public Sub Search_Button_Click()
     
     ' clear previous data from form, except "Gage Number"
     ' --------------------------------------------------------
-    PartNumbertxt = ""
-    lblDateAdded = ""
-    lblDateEdit = ""
-    lblSearchedDate = ""
-    lastUser = ""
-    
+    Dim Gage_Number_Save
+    Gage_Number_Save = Gage_Number
+    Clear_Form
+    Gage_Number = Gage_Number_Save
     ' ---------------------------------------------------------
     
     Dim Ws          As Worksheet
@@ -88,6 +86,11 @@ Public Sub Search_Button_Click()
         lblSearchedDate = Ws.Cells(r, "AM")
         lastUser = Ws.Cells(r, "AN")
         
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Searching"
+        Status
+        
         'Below might be doing nothing anymore? Check into this
         Update_Button_Enable = True
         Option4_Custom = True
@@ -98,9 +101,7 @@ Public Sub Search_Button_Click()
         Else
         End If
     End If
-    
     Gage_Number.SetFocus
-    
 End Sub
 
 Sub ErrMsg()
@@ -141,11 +142,12 @@ Private Sub Update_Worksheet()
         currrentUser = Application.userName
         lastUser = currrentUser
         Ws.Cells(r, "AN") = lastUser
-        
-        Update_Button.Caption = "Updated!"
-        Application.Wait (Now + TimeValue("0:00:01"))
-        Update_Button.Caption = ""
         Gage_Number.SetFocus
+        
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Updated"
+        Status
         
     Else
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
@@ -250,3 +252,23 @@ Private Sub btnRequireLogin_click()
     End If
 End Sub
 
+Private Sub Status()
+    Dim startTime As Date
+    Dim elapsedTime As Long
+    Dim waitTimeInSeconds As Long
+    
+    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
+    
+    startTime = Now
+    Do While elapsedTime < waitTimeInSeconds
+        DoEvents 'allow the program to process any pending events
+        elapsedTime = DateDiff("s", startTime, Now)
+    Loop
+        statusLabel.Caption = ""
+        statusLabelLog.Caption = ""
+End Sub
+
+Private Sub btnFormat_Click()
+    Unload AdminForm
+    Worksheets("Format").Activate
+End Sub
