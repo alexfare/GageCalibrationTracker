@@ -1,10 +1,7 @@
 # GageCalibrationTracker
-Gage Calibration Tracker - Excel<br>
-GageCalibrationTracker is a gage calibration management software solution that makes maintaining tool calibration records easy and free running off Microsoft Excel. <br>
-<br>
-This is a WIP & Is in use at my facility, If you want a clean & clear copy download the latest release.<br>
-Note: Please use v3.12.3 and up. v3.12.3 fixed an issue with the database losing or mixing up information.<br>
-v3.13.3 & up fixed Admin Default Credentials. <br>
+Introducing Gage Calibration Tracker, a sophisticated gage calibration management software solution designed to simplify the task of maintaining tool calibration records. This user-friendly software is seamlessly integrated with Microsoft Excel, offering a highly efficient and free-running experience.
+
+We suggest using version 3.12.3 or higher, as version 3.12.3 resolved a critical issue with the database that could potentially result in data loss or information mixing. Furthermore, we are pleased to inform you that version 3.13.3 and above have fixed the issue with Admin Default Credentials.
 <br>
 Default Username: Admin<br>
 Default Password: Admin<br>
