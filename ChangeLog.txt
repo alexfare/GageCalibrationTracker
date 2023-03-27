@@ -1,3 +1,8 @@
+'Update - 3.13.6
+' Fixed Error when attempting to sign in with a non existing username.
+' Fixed Login Macro
+' Small updates to Gage R&R. (Reduced to 5 parts)
+'
 'Update - 3.13.5
 ' Added status bar at the bottom (Menu & Admin Panel).
 ' Added Format button under Admin Panel Settings.

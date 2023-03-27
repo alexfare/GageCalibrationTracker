@@ -13,6 +13,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+'/Admin Panel Login /'
+
 Private Sub UserForm_Activate()
 '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
@@ -27,7 +29,6 @@ Private Sub inputPass_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shif
 End Sub
 
 Private Sub btnLogin_Click()
-    
     '/ Hash /'
     s = inputPass
     
@@ -43,8 +44,7 @@ Private Sub btnLogin_Click()
     b64 = True        'output base-64
     
     sH = SHA512(sIn, b64)
-    'Add salt to the encryption
-    'sH = StrToSHA512Salt(sIn, sSecretKey, b64)
+    'sH = StrToSHA512Salt(sIn, sSecretKey, b64) 'Add salt to the encryption
     
     'message box and immediate window outputs
     Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
@@ -65,14 +65,44 @@ Private Sub btnLogin_Click()
     End If
     
     Dim inputUsername As String
-    Dim Password    As Variant
+    Dim Password As Variant
     
     inputUsername = inputUser.Value
+    
+    Dim searchValue As String
+    Dim lastRow As Long
+    Dim i As Long
+    Dim ws As Worksheet
+    Dim une As Boolean
+    
+    'Set the worksheet to search in
+    Set ws = ThisWorkbook.Worksheets("Credentials")
+    une = False
+    
+    'Set the value to search for
+    searchValue = inputUsername
+    
+    'Get the last row in Column A
+    lastRow = ws.Cells(Rows.Count, "A").End(xlUp).Row
+    
+    'Loop through each cell in Column A and check if the value matches the search value
+    For i = 1 To lastRow
+        If ws.Cells(i, "A").Value = searchValue Then
+            'If the value exists, display a message box and exit the sub
+            'MsgBox "Value exists in Column A."
+            une = True
+        End If
+    Next i
+    If une = False Then
+        MsgBox "Login Failed, Wrong Username Or Password."
+        Exit Sub
+    End If
+        
     Password = Application.WorksheetFunction.VLookup(inputUsername, Sheets("Credentials").Range("A:B"), 2, 0)
     PassCompare = savePass
     
     If Password <> PassCompare Then
-        MsgBox "Login Failed, Wrong Password Or Username.", vbInformation, "Wrong Password"
+        MsgBox "Login Failed, Wrong Username Or Password", vbInformation, "Wrong Password"
         Exit Sub
     End If
     
@@ -84,16 +114,15 @@ Private Sub btnLogin_Click()
         Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
         Dim LoginCount As Integer
         
-        Dim Ws      As Worksheet
         Dim List_Select
         List_Select = "Admin"        ' Tab name
-        Set Ws = Sheets(List_Select)
-        Set Worksheet_Set = Ws
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
         
-        LoginCount = Ws.Range("B48")
+        LoginCount = ws.Range("B48")
         LoginCountPlusOne = LoginCount + 1
-        Ws.Range("B48") = LoginCountPlusOne
-        Ws.Range("B52") = inputUsername
-        Ws.Range("B55") = "1"
+        ws.Range("B48") = LoginCountPlusOne
+        ws.Range("B52") = inputUsername
+        ws.Range("B55") = "1"
     End If
 End Sub
