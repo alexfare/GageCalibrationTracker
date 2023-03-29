@@ -8,25 +8,25 @@ Dim rlStatus As Integer
 Private Sub UserForm_Initialize()
     '/ Display Admin Audit Log/'
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
-    Dim Ws          As Worksheet
+    Dim ws          As Worksheet
     Dim List_Select
     List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    txtWorkbookOpened = Ws.Range("B47")
-    txtLogins = Ws.Range("B48")
-    txtGageCount = Ws.Range("B49")
-    txtGageUpdates = Ws.Range("B50")
-    txtUserCounts = Ws.Range("B51")
-    txtCustomerCount = Ws.Range("B53")
-    lblLoggedUser = Ws.Range("B52")
-    txtGageRnRCount = Ws.Range("B54")
+    txtWorkbookOpened = ws.Range("B47")
+    txtLogins = ws.Range("B48")
+    txtGageCount = ws.Range("B49")
+    txtGageUpdates = ws.Range("B50")
+    txtUserCounts = ws.Range("B51")
+    txtCustomerCount = ws.Range("B53")
+    lblLoggedUser = ws.Range("B52")
+    txtGageRnRCount = ws.Range("B54")
     
     '/Prevent Issues in the future, Call back the main page/'
     List_Select = "CreatedByAlexFare"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
 End Sub
 
 Private Sub UserForm_Activate()
@@ -53,23 +53,23 @@ Public Sub Search_Button_Click()
     Gage_Number = Gage_Number_Save
     ' ---------------------------------------------------------
     
-    Dim Ws          As Worksheet
+    Dim ws          As Worksheet
     
     List_Select = "CreatedByAlexFare"
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
+    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         Update_Button_Enable = False
         ErrMsg
     Else
-        r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
+        r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
-        PartNumbertxt = Ws.Cells(r, "B")
-        lblDateAdded = Ws.Cells(r, "AK")
-        lblDateEdit = Ws.Cells(r, "AL")
-        lblSearchedDate = Ws.Cells(r, "AM")
-        lastUser = Ws.Cells(r, "AN")
+        PartNumbertxt = ws.Cells(r, "B")
+        lblDateAdded = ws.Cells(r, "AK")
+        lblDateEdit = ws.Cells(r, "AL")
+        lblSearchedDate = ws.Cells(r, "AM")
+        lastUser = ws.Cells(r, "AN")
         
         '/Status/'
         statusLabel.Caption = "Status:"
@@ -113,20 +113,20 @@ End Sub
 Private Sub Update_Worksheet()
     If Update_Button_Enable = True Then
         Dim gnString As String
-        Set Ws = Worksheet_Set
+        Set ws = Worksheet_Set
         If IsNumeric(Gage_Number) Then
             gnString = Val(Gage_Number.Value)
         Else
             gnString = Gage_Number
         End If
         '/ Audit
-        Ws.Cells(r, "A") = gnString
-        Ws.Cells(r, "B") = PartNumbertxt
+        ws.Cells(r, "A") = gnString
+        ws.Cells(r, "B") = PartNumbertxt
         'Ws.Cells(r, "AL") = Now        'Update Last edited
-        Ws.Cells(r, "AK") = lblDateAdded        'Date Added
+        ws.Cells(r, "AK") = lblDateAdded        'Date Added
         currrentUser = Application.userName
         lastUser = currrentUser
-        Ws.Cells(r, "AN") = lastUser
+        ws.Cells(r, "AN") = lastUser
         Gage_Number.SetFocus
         
         '/Status/'
@@ -159,7 +159,7 @@ Private Sub Clear_Form()
     Gage_Number = ""
     PartNumbertxt = ""
     lblDateAdded = ""
-    lblDateEdit = "-"
+    lblDateEdit = ""
     lblSearchedDate = ""
     lastUser = ""
 End Sub
@@ -181,9 +181,9 @@ Private Sub btnClose_Click()
     
     '/Save Logged In User For The Session /'
     List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
-    Ws.Range("B55") = "2"       ' 1 = Required | 2 = Not Required
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    ws.Range("B55") = "2"       ' 1 = Required | 2 = Not Required
 End Sub
 
 Private Sub btnCreateAccount_click()
@@ -223,16 +223,16 @@ End Sub
 '/ Settings Tab /'
 Private Sub btnRequireLogin_click()
     List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
-    rlStatus = Ws.Range("B59")
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    rlStatus = ws.Range("B59")
     
     If rlStatus = "1" Then
-        Ws.Range("B59") = "2"
+        ws.Range("B59") = "2"
         btnRequireLogin.Caption = "Off"
     End If
     If rlStatus = "2" Then
-        Ws.Range("B59") = "1"
+        ws.Range("B59") = "1"
         btnRequireLogin.Caption = "On"
     End If
 End Sub
@@ -256,4 +256,11 @@ End Sub
 Private Sub btnFormat_Click()
     Unload AdminForm
     Worksheets("Format").Activate
+End Sub
+Private Sub btnLogout_Click()
+        List_Select = "Admin"        ' Tab name
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
+        ws.Range("B55") = "1"
+		Unload AdminForm
 End Sub
