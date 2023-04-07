@@ -18,13 +18,13 @@ Private Sub UserForm_Initialize()
     Dim CodeCompare As Integer
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim LoginCount  As Integer
-    Dim Ws          As Worksheet
+    Dim ws          As Worksheet
     Dim List_Select
     
     List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
-    CodeCompare = Ws.Range("B56")
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    CodeCompare = ws.Range("B56")
     If CodeCompare = "1" Then
         Unload Menu
         CodeConfirm.Show
@@ -33,8 +33,8 @@ Private Sub UserForm_Initialize()
 
 '/Prevent Issues in the future, Call back the main page/'
     List_Select = "CreatedByAlexFare"
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
 End Sub
 Private Sub UserForm_Activate()
@@ -83,16 +83,16 @@ End Sub
 
 '/ Add Gage
 Private Sub Add_Button_Click()
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "CreatedByAlexFare"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
+    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         
         Dim lLastRow As Long        ' lLastRow = variable to store the result of the row count calculation
-        lLastRow = Ws.ListObjects.Item(1).ListRows.Count
+        lLastRow = ws.ListObjects.Item(1).ListRows.Count
         r = lLastRow + 3        ' Add number for every header tab created
         Dim gnString As String
         If IsNumeric(Gage_Number) Then
@@ -101,33 +101,33 @@ Private Sub Add_Button_Click()
             gnString = Gage_Number
         End If
         
-        Ws.Cells(r, "A") = gnString
-        Ws.Cells(r, "B") = PartNumbertxt
-        Ws.Cells(r, "C") = Descriptiontxt
-        Ws.Cells(r, "D") = comboGageType
-        Ws.Cells(r, "E") = Customer
-        Ws.Cells(r, "F") = Insp_Date
-        Ws.Cells(r, "G") = Due_Date
-        Ws.Cells(r, "H") = Initials
-        Ws.Cells(r, "I") = Department
-        Ws.Cells(r, "J") = Comments
-        Ws.Cells(r, "Z") = comboStatus
-        Ws.Cells(r, "AA") = aN1
-        Ws.Cells(r, "AB") = aA1
-        Ws.Cells(r, "AC") = aN2
-        Ws.Cells(r, "AD") = aA2
-        Ws.Cells(r, "AE") = aN3
-        Ws.Cells(r, "AF") = aA3
-        Ws.Cells(r, "AG") = aN4
-        Ws.Cells(r, "AH") = aA4
-        Ws.Cells(r, "AI") = aN5
-        Ws.Cells(r, "AJ") = aA5
-        Ws.Cells(r, "AK") = Now
+        ws.Cells(r, "A") = gnString
+        ws.Cells(r, "B") = PartNumbertxt
+        ws.Cells(r, "C") = Descriptiontxt
+        ws.Cells(r, "D") = comboGageType
+        ws.Cells(r, "E") = Customer
+        ws.Cells(r, "F") = Insp_Date
+        ws.Cells(r, "G") = Due_Date
+        ws.Cells(r, "H") = Initials
+        ws.Cells(r, "I") = Department
+        ws.Cells(r, "J") = Comments
+        ws.Cells(r, "Z") = comboStatus
+        ws.Cells(r, "AA") = aN1
+        ws.Cells(r, "AB") = aA1
+        ws.Cells(r, "AC") = aN2
+        ws.Cells(r, "AD") = aA2
+        ws.Cells(r, "AE") = aN3
+        ws.Cells(r, "AF") = aA3
+        ws.Cells(r, "AG") = aN4
+        ws.Cells(r, "AH") = aA4
+        ws.Cells(r, "AI") = aN5
+        ws.Cells(r, "AJ") = aA5
+        ws.Cells(r, "AK") = Now
         
         '/ Audit Log
         currrentUser = Application.userName
         lastUser = currrentUser
-        Ws.Cells(r, "AN") = lastUser
+        ws.Cells(r, "AN") = lastUser
         
         Clear_Form
         Gage_Number.SetFocus
@@ -136,21 +136,21 @@ Private Sub Add_Button_Click()
         Dim AddCount As Integer
         
         List_Select = "Admin"        ' Tab name
-        Set Ws = Sheets(List_Select)
-        Set Worksheet_Set = Ws
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
         
-        AddCount = Ws.Range("B49")
+        AddCount = ws.Range("B49")
         AddCountPlusOne = AddCount + 1
-        Ws.Range("B49") = AddCountPlusOne
+        ws.Range("B49") = AddCountPlusOne
         
         '/Prevent Issues in the future, Call back the main page/'
         List_Select = "CreatedByAlexFare"        ' Tab name
-        Set Ws = Sheets(List_Select)
-        Set Worksheet_Set = Ws
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
         
         '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Added"
+        statusLabelLog.Caption = "Adding..."
         Status
     Else
         ErrMsg_Duplicate
@@ -178,7 +178,7 @@ End Sub
 
 '/ Search Button
 Public Sub Search_Button_Click()
-    Dim Ws          As Worksheet
+    Dim ws          As Worksheet
     Dim DateEdit 'Update Last searched
     Dim Gage_Number_Save
     
@@ -190,50 +190,50 @@ Public Sub Search_Button_Click()
     ' ---------------------------------------------------------
     
     List_Select = "CreatedByAlexFare"
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)) Then
+    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         Update_Button_Enable = False
         ErrMsg
     Else
-        r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), Ws.Columns(1), 0)
+        r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
-        PartNumbertxt = Ws.Cells(r, "B")
-        Descriptiontxt = Ws.Cells(r, "C")
-        comboGageType = Ws.Cells(r, "D")
-        Customer = Ws.Cells(r, "E")
-        Insp_Date = Ws.Cells(r, "F")
-        Due_Date_Original = Ws.Cells(r, "G")
+        PartNumbertxt = ws.Cells(r, "B")
+        Descriptiontxt = ws.Cells(r, "C")
+        comboGageType = ws.Cells(r, "D")
+        Customer = ws.Cells(r, "E")
+        Insp_Date = ws.Cells(r, "F")
+        Due_Date_Original = ws.Cells(r, "G")
         Due_Date = Format(Due_Date_Original, "m/d/yyyy")
-        Initials = Ws.Cells(r, "H")
-        Department = Ws.Cells(r, "I")
-        Comments = Ws.Cells(r, "J")
-        comboStatus = Ws.Cells(r, "Z")
-        aN1 = Ws.Cells(r, "AA")
-        aA1 = Ws.Cells(r, "AB")
-        aN2 = Ws.Cells(r, "AC")
-        aA2 = Ws.Cells(r, "AD")
-        aN3 = Ws.Cells(r, "AE")
-        aA3 = Ws.Cells(r, "AF")
-        aN4 = Ws.Cells(r, "AG")
-        aA4 = Ws.Cells(r, "AH")
-        aN5 = Ws.Cells(r, "AI")
-        aA5 = Ws.Cells(r, "AJ")
-        DateEdit = Ws.Cells(r, "AM") 'Update Last searched
-        Ws.Cells(r, "AM") = Now        'Update Last searched
+        Initials = ws.Cells(r, "H")
+        Department = ws.Cells(r, "I")
+        Comments = ws.Cells(r, "J")
+        comboStatus = ws.Cells(r, "Z")
+        aN1 = ws.Cells(r, "AA")
+        aA1 = ws.Cells(r, "AB")
+        aN2 = ws.Cells(r, "AC")
+        aA2 = ws.Cells(r, "AD")
+        aN3 = ws.Cells(r, "AE")
+        aA3 = ws.Cells(r, "AF")
+        aN4 = ws.Cells(r, "AG")
+        aA4 = ws.Cells(r, "AH")
+        aN5 = ws.Cells(r, "AI")
+        aA5 = ws.Cells(r, "AJ")
+        DateEdit = ws.Cells(r, "AM") 'Update Last searched
+        ws.Cells(r, "AM") = Now        'Update Last searched
         Update_Button_Enable = True
         Option4_Custom = True
         
         '/ Audit Log
-        lblDateAdded = Ws.Cells(r, "AK")
-        lblDateEdit = Ws.Cells(r, "AL")
+        lblDateAdded = ws.Cells(r, "AK")
+        lblDateEdit = ws.Cells(r, "AL")
         lblSearchedDate = DateEdit 'Update Last searched
-        lastUser = Ws.Cells(r, "AN")
+        lastUser = ws.Cells(r, "AN")
                 
         '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Searching"
+        statusLabelLog.Caption = "Searching..."
         Status
         
     End If
@@ -294,38 +294,38 @@ End Sub
 Private Sub Update_Worksheet()
     If Update_Button_Enable = True Then
         Dim gnString As String
-        Set Ws = Worksheet_Set
+        Set ws = Worksheet_Set
         If IsNumeric(Gage_Number) Then
             gnString = Val(Gage_Number.Value)
         Else
             gnString = Gage_Number
         End If
-        Ws.Cells(r, "A") = gnString
-        Ws.Cells(r, "B") = PartNumbertxt
-        Ws.Cells(r, "C") = Descriptiontxt
-        Ws.Cells(r, "D") = comboGageType
-        Ws.Cells(r, "E") = Customer
-        Ws.Cells(r, "F") = Insp_Date
-        Ws.Cells(r, "H") = Initials
-        Ws.Cells(r, "I") = Department
-        Ws.Cells(r, "J") = Comments
-        Ws.Cells(r, "Z") = comboStatus
-        Ws.Cells(r, "AA") = aN1
-        Ws.Cells(r, "AB") = aA1
-        Ws.Cells(r, "AC") = aN2
-        Ws.Cells(r, "AD") = aA2
-        Ws.Cells(r, "AE") = aN3
-        Ws.Cells(r, "AF") = aA3
-        Ws.Cells(r, "AG") = aN4
-        Ws.Cells(r, "AH") = aA4
-        Ws.Cells(r, "AI") = aN5
-        Ws.Cells(r, "AJ") = aA5
-        Ws.Cells(r, "AL") = Now        'Update Last edited
+        ws.Cells(r, "A") = gnString
+        ws.Cells(r, "B") = PartNumbertxt
+        ws.Cells(r, "C") = Descriptiontxt
+        ws.Cells(r, "D") = comboGageType
+        ws.Cells(r, "E") = Customer
+        ws.Cells(r, "F") = Insp_Date
+        ws.Cells(r, "H") = Initials
+        ws.Cells(r, "I") = Department
+        ws.Cells(r, "J") = Comments
+        ws.Cells(r, "Z") = comboStatus
+        ws.Cells(r, "AA") = aN1
+        ws.Cells(r, "AB") = aA1
+        ws.Cells(r, "AC") = aN2
+        ws.Cells(r, "AD") = aA2
+        ws.Cells(r, "AE") = aN3
+        ws.Cells(r, "AF") = aA3
+        ws.Cells(r, "AG") = aN4
+        ws.Cells(r, "AH") = aA4
+        ws.Cells(r, "AI") = aN5
+        ws.Cells(r, "AJ") = aA5
+        ws.Cells(r, "AL") = Now        'Update Last edited
         
         '/ Audit Log
         currrentUser = Application.userName
         lastUser = currrentUser
-        Ws.Cells(r, "AN") = lastUser
+        ws.Cells(r, "AN") = lastUser
         
         If Option1_6 = True Then        ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
         Due_Date = Date_Due_6mos
@@ -341,7 +341,7 @@ Private Sub Update_Worksheet()
         Due_Date = Date_Due
     End If
     
-    Ws.Cells(r, "G") = Due_Date
+    ws.Cells(r, "G") = Due_Date
     
     Gage_Number.SetFocus 'Clear_Form 'Clear form after update
     
@@ -349,22 +349,22 @@ Private Sub Update_Worksheet()
     Dim UpdateCount As Integer
     
     List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    UpdateCount = Ws.Range("B50")
+    UpdateCount = ws.Range("B50")
     UpdateCountPlusOne = UpdateCount + 1
-    Ws.Range("B50") = UpdateCountPlusOne
+    ws.Range("B50") = UpdateCountPlusOne
     
     '/Prevent Issues in the future, Call back the main page/'
     List_Select = "CreatedByAlexFare"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     '/ End Audit Log /'
     
     '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Updated"
+        statusLabelLog.Caption = "Updating..."
         Status
 Else
     MsgBox ("Must search For entry before updating"), , "Nothing To Update"
@@ -388,9 +388,14 @@ End Sub
 
 Private Sub btnSave_click()
     ThisWorkbook.Save
+    
+    '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Saving..."
+        Status
 End Sub
 
-Private Sub btnLogOut_click()
+Private Sub btnLogout_Click()
     Unload Menu
     Worksheets("Login").Activate
     LoginForm.Show
@@ -403,13 +408,13 @@ Private Sub btnAdmin_click()
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim LoginCount  As Integer
     
-    Dim Ws          As Worksheet
+    Dim ws          As Worksheet
     Dim List_Select
     Dim TempLogin   As Integer
     List_Select = "Admin"        ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
-    Persistent_Login = Ws.Range("B55")
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    Persistent_Login = ws.Range("B55")
     
     If Persistent_Login = "1" Then
         Unload Menu
@@ -436,7 +441,7 @@ End Sub
 
 '/Gage R&R /'
 Private Sub btnGageRR_Click()
-    MsgBox "NOTE: This is a WIP preview."
+    MsgBox "NOTE: This is a WIP preview. Calculation formula is not displaying correctly!"
     GageRnR.Show
 End Sub
 

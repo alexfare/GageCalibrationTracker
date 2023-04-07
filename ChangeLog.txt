@@ -1,3 +1,7 @@
+'Update - 3.13.8
+' Updates to Gage R&R. (This will be released next update)
+' Added Back button back & Logout button at the bottom.
+'
 'Update - 3.13.7
 ' Added Logout in Admin Panel.
 '

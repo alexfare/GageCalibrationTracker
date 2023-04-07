@@ -165,7 +165,7 @@ Private Sub Add_Button_Click()
         
         '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Added"
+        statusLabelLog.Caption = "Adding..."
         Status
     Else
         ErrMsg_Duplicate
@@ -248,7 +248,7 @@ Public Sub Search_Button_Click()
                 
         '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Searching"
+        statusLabelLog.Caption = "Searching..."
         Status
         
     End If
@@ -379,7 +379,7 @@ Private Sub Update_Worksheet()
     
     '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Updated"
+        statusLabelLog.Caption = "Updating..."
         Status
 Else
     MsgBox ("Must search For entry before updating"), , "Nothing To Update"
@@ -403,6 +403,11 @@ End Sub
 
 Private Sub btnSave_click()
     ThisWorkbook.Save
+    
+    '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Saving..."
+        Status
 End Sub
 
 Private Sub btnLogout_Click()
@@ -451,7 +456,7 @@ End Sub
 
 '/Gage R&R /'
 Private Sub btnGageRR_Click()
-    MsgBox "NOTE: This is a WIP preview."
+    MsgBox "NOTE: This is a WIP preview. Calculation formula is not displaying correctly!"
     GageRnR.Show
 End Sub
 

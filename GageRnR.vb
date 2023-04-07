@@ -119,123 +119,174 @@ Public Sub Search_Button_Click()
         A1T1P3 = ws.Cells(r, "G")
         A1T1P4 = ws.Cells(r, "H")
         A1T1P5 = ws.Cells(r, "I")
-        A1T1P6 = ws.Cells(r, "J")
-        A1T1P7 = ws.Cells(r, "K")
-        A1T1P8 = ws.Cells(r, "L")
-        A1T1P9 = ws.Cells(r, "M")
-        A1T1P10 = ws.Cells(r, "N")
-        
+     
         'Trial 2
-        A1T2P1 = ws.Cells(r, "O")
-        A1T2P2 = ws.Cells(r, "P")
-        A1T2P3 = ws.Cells(r, "Q")
-        A1T2P4 = ws.Cells(r, "R")
-        A1T2P5 = ws.Cells(r, "S")
-        A1T2P6 = ws.Cells(r, "T")
-        A1T2P7 = ws.Cells(r, "U")
-        A1T2P8 = ws.Cells(r, "V")
-        A1T2P9 = ws.Cells(r, "W")
-        A1T2P10 = ws.Cells(r, "X")
+        A1T2P1 = ws.Cells(r, "J")
+        A1T2P2 = ws.Cells(r, "K")
+        A1T2P3 = ws.Cells(r, "L")
+        A1T2P4 = ws.Cells(r, "M")
+        A1T2P5 = ws.Cells(r, "N")
         
         'Trial 3
-        A1T3P1 = ws.Cells(r, "Y")
-        A1T3P2 = ws.Cells(r, "Z")
-        A1T3P3 = ws.Cells(r, "AA")
-        A1T3P4 = ws.Cells(r, "AB")
-        A1T3P5 = ws.Cells(r, "AC")
-        A1T3P6 = ws.Cells(r, "AD")
-        A1T3P7 = ws.Cells(r, "AE")
-        A1T3P8 = ws.Cells(r, "AF")
-        A1T3P9 = ws.Cells(r, "AG")
-        A1T3P10 = ws.Cells(r, "AH")
+        A1T3P1 = ws.Cells(r, "O")
+        A1T3P2 = ws.Cells(r, "P")
+        A1T3P3 = ws.Cells(r, "Q")
+        A1T3P4 = ws.Cells(r, "R")
+        A1T3P5 = ws.Cells(r, "S")
         
         '/ Gage R&R Appraiser 2 /*
-        Ap2Name = ws.Cells(r, "AI")
+        Ap2Name = ws.Cells(r, "T")
         
         'Trial 1
-        A2T1P1 = ws.Cells(r, "AJ")
-        A2T1P2 = ws.Cells(r, "AK")
-        A2T1P3 = ws.Cells(r, "AL")
-        A2T1P4 = ws.Cells(r, "AM")
-        A2T1P5 = ws.Cells(r, "AN")
-        A2T1P6 = ws.Cells(r, "AO")
-        A2T1P7 = ws.Cells(r, "AP")
-        A2T1P8 = ws.Cells(r, "AQ")
-        A2T1P9 = ws.Cells(r, "AR")
-        A2T1P10 = ws.Cells(r, "AS")
+        A2T1P1 = ws.Cells(r, "U")
+        A2T1P2 = ws.Cells(r, "V")
+        A2T1P3 = ws.Cells(r, "W")
+        A2T1P4 = ws.Cells(r, "X")
+        A2T1P5 = ws.Cells(r, "Y")
         
         'Trial 2
-        A2T2P1 = ws.Cells(r, "AT")
-        A2T2P2 = ws.Cells(r, "AU")
-        A2T2P3 = ws.Cells(r, "AV")
-        A2T2P4 = ws.Cells(r, "AW")
-        A2T2P5 = ws.Cells(r, "AX")
-        A2T2P6 = ws.Cells(r, "AY")
-        A2T2P7 = ws.Cells(r, "AZ")
-        A2T2P8 = ws.Cells(r, "BA")
-        A2T2P9 = ws.Cells(r, "BB")
-        A2T2P10 = ws.Cells(r, "BC")
+        A2T2P1 = ws.Cells(r, "Z")
+        A2T2P2 = ws.Cells(r, "AA")
+        A2T2P3 = ws.Cells(r, "AB")
+        A2T2P4 = ws.Cells(r, "AC")
+        A2T2P5 = ws.Cells(r, "AD")
         
         'Trial 3
-        A2T3P1 = ws.Cells(r, "BD")
-        A2T3P2 = ws.Cells(r, "BE")
-        A2T3P3 = ws.Cells(r, "BF")
-        A2T3P4 = ws.Cells(r, "BG")
-        A2T3P5 = ws.Cells(r, "BH")
-        A2T3P6 = ws.Cells(r, "BI")
-        A2T3P7 = ws.Cells(r, "BJ")
-        A2T3P8 = ws.Cells(r, "BK")
-        A2T3P9 = ws.Cells(r, "BL")
-        A2T3P10 = ws.Cells(r, "BM")
+        A2T3P1 = ws.Cells(r, "AE")
+        A2T3P2 = ws.Cells(r, "AF")
+        A2T3P3 = ws.Cells(r, "AG")
+        A2T3P4 = ws.Cells(r, "AH")
+        A2T3P5 = ws.Cells(r, "AI")
         
         '/ Gage R&R Appraiser 3 /*
-        Ap3Name = ws.Cells(r, "BN")
+        Ap3Name = ws.Cells(r, "AJ")
         
         'Trial 1
-        A3T1P1 = ws.Cells(r, "BO")
-        A3T1P2 = ws.Cells(r, "BP")
-        A3T1P3 = ws.Cells(r, "BQ")
-        A3T1P4 = ws.Cells(r, "BR")
-        A3T1P5 = ws.Cells(r, "BS")
-        A3T1P6 = ws.Cells(r, "BT")
-        A3T1P7 = ws.Cells(r, "BU")
-        A3T1P8 = ws.Cells(r, "BV")
-        A3T1P9 = ws.Cells(r, "BW")
-        A3T1P10 = ws.Cells(r, "BX")
+        A3T1P1 = ws.Cells(r, "AK")
+        A3T1P2 = ws.Cells(r, "AL")
+        A3T1P3 = ws.Cells(r, "AM")
+        A3T1P4 = ws.Cells(r, "AN")
+        A3T1P5 = ws.Cells(r, "AO")
         
         'Trial 2
-        A3T2P1 = ws.Cells(r, "BY")
-        A3T2P2 = ws.Cells(r, "BZ")
-        A3T2P3 = ws.Cells(r, "CA")
-        A3T2P4 = ws.Cells(r, "CB")
-        A3T2P5 = ws.Cells(r, "CC")
-        A3T2P6 = ws.Cells(r, "CD")
-        A3T2P7 = ws.Cells(r, "CE")
-        A3T2P8 = ws.Cells(r, "CF")
-        A3T2P9 = ws.Cells(r, "CG")
-        A3T2P10 = ws.Cells(r, "CH")
+        A3T2P1 = ws.Cells(r, "AP")
+        A3T2P2 = ws.Cells(r, "AQ")
+        A3T2P3 = ws.Cells(r, "AR")
+        A3T2P4 = ws.Cells(r, "AS")
+        A3T2P5 = ws.Cells(r, "AT")
         
         'Trial 3
-        A3T3P1 = ws.Cells(r, "CI")
-        A3T3P2 = ws.Cells(r, "CJ")
-        A3T3P3 = ws.Cells(r, "CK")
-        A3T3P4 = ws.Cells(r, "CL")
-        A3T3P5 = ws.Cells(r, "CM")
-        A3T3P6 = ws.Cells(r, "CN")
-        A3T3P7 = ws.Cells(r, "CO")
-        A3T3P8 = ws.Cells(r, "CP")
-        A3T3P9 = ws.Cells(r, "CQ")
-        A3T3P10 = ws.Cells(r, "CR")
+        A3T3P1 = ws.Cells(r, "AU")
+        A3T3P2 = ws.Cells(r, "AV")
+        A3T3P3 = ws.Cells(r, "AW")
+        A3T3P4 = ws.Cells(r, "AX")
+        A3T3P5 = ws.Cells(r, "AY")
         
         
         '/ Calculation
-        Dim A1P1R As Integer
-        Dim A1T1P1i As Integer
-        Dim A1T2P1i As Integer
-        A1T1P1i = A1T1P1
-        A1T2P1i = A1T2P1
-        A1P1R = A1T1P1i + A1T2P1i
-        Range12 = A1P1R
+        'GageRnR
+        List_Select = "Calculations"        ' Tab name
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
+        
+        'A1 Trial 1
+        ws.Range("C3") = A1T1P1
+        ws.Range("C4") = A1T1P2
+        ws.Range("C5") = A1T1P3
+        ws.Range("C6") = A1T1P4
+        ws.Range("C7") = A1T1P5
+        
+        'A1 Trial 2
+        ws.Range("D3") = A1T2P1
+        ws.Range("D4") = A1T2P2
+        ws.Range("D5") = A1T2P3
+        ws.Range("D6") = A1T2P4
+        ws.Range("D7") = A1T2P5
+        
+        'A1 Trial 3
+        ws.Range("E3") = A1T3P1
+        ws.Range("E4") = A1T3P2
+        ws.Range("E5") = A1T3P3
+        ws.Range("E6") = A1T3P4
+        ws.Range("E7") = A1T3P5
+        
+        'A2 Trial 1
+        ws.Range("C8") = A2T1P1
+        ws.Range("C9") = A2T1P2
+        ws.Range("C10") = A2T1P3
+        ws.Range("C11") = A2T1P4
+        ws.Range("C12") = A2T1P5
+        
+        'A2 Trial 2
+        ws.Range("D8") = A2T2P1
+        ws.Range("D9") = A2T2P2
+        ws.Range("D10") = A2T2P3
+        ws.Range("D11") = A2T2P4
+        ws.Range("D12") = A2T2P5
+        
+        'A2 Trial 3
+        ws.Range("E8") = A2T3P1
+        ws.Range("E9") = A2T3P2
+        ws.Range("E10") = A2T3P3
+        ws.Range("E11") = A2T3P4
+        ws.Range("E12") = A2T3P5
+        
+        'A3 Trial 1
+        ws.Range("C13") = A3T1P1
+        ws.Range("C14") = A3T1P2
+        ws.Range("C15") = A3T1P3
+        ws.Range("C16") = A3T1P4
+        ws.Range("C17") = A3T1P5
+        
+        'A3 Trial 2
+        ws.Range("D13") = A3T2P1
+        ws.Range("D14") = A3T2P2
+        ws.Range("D15") = A3T2P3
+        ws.Range("D16") = A3T2P4
+        ws.Range("D17") = A3T2P5
+        
+        'A3 Trial 3
+        ws.Range("E13") = A3T3P1
+        ws.Range("E14") = A3T3P2
+        ws.Range("E15") = A3T3P3
+        ws.Range("E16") = A3T3P4
+        ws.Range("E17") = A3T3P5
+        
+        'Calculations
+        
+        calR = ws.Range("B25")
+        cald2 = ws.Range("B26")
+        calk1 = ws.Range("B27")
+        calEV = ws.Range("B28")
+        calxdiff = ws.Range("B30")
+        caln = ws.Range("B31")
+        calrValue = ws.Range("B32")
+        cald2Value = ws.Range("B33")
+        calk2 = ws.Range("B34")
+        calAV = ws.Range("B37")
+        calRR = ws.Range("B38")
+        
+        '/ convert score to percentage
+        Dim pScore As Double
+        pScore = ws.Range("B39")
+        calScore = FormatPercent(pScore, 2)
+        
+        '/Convert Range to numbers
+        Dim rng As Range
+        Set rng = ws.Range("C3:E17") ' change the range as per your requirement
+        
+         Dim cell As Range
+         For Each cell In rng
+            If IsNumeric(cell.Value) Then
+            cell.Value = Val(cell.Value)
+         End If
+         Next cell
+    
+        '/Change back to GageRnR Worksheet
+        List_Select = "GageRnR"        ' Tab name
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
+        
     End If
     
     Gage_Number.SetFocus
@@ -284,113 +335,68 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "G") = A1T1P3
         ws.Cells(r, "H") = A1T1P4
         ws.Cells(r, "I") = A1T1P5
-        ws.Cells(r, "J") = A1T1P6
-        ws.Cells(r, "K") = A1T1P7
-        ws.Cells(r, "L") = A1T1P8
-        ws.Cells(r, "M") = A1T1P9
-        ws.Cells(r, "N") = A1T1P10
         
         'Trial 2
-        ws.Cells(r, "O") = A1T2P1
-        ws.Cells(r, "P") = A1T2P2
-        ws.Cells(r, "Q") = A1T2P3
-        ws.Cells(r, "R") = A1T2P4
-        ws.Cells(r, "S") = A1T2P5
-        ws.Cells(r, "T") = A1T2P6
-        ws.Cells(r, "U") = A1T2P7
-        ws.Cells(r, "V") = A1T2P8
-        ws.Cells(r, "W") = A1T2P9
-        ws.Cells(r, "X") = A1T2P10
+        ws.Cells(r, "J") = A1T2P1
+        ws.Cells(r, "K") = A1T2P2
+        ws.Cells(r, "L") = A1T2P3
+        ws.Cells(r, "M") = A1T2P4
+        ws.Cells(r, "N") = A1T2P5
         
         'Trial 3
-        ws.Cells(r, "Y") = A1T3P1
-        ws.Cells(r, "Z") = A1T3P2
-        ws.Cells(r, "AA") = A1T3P3
-        ws.Cells(r, "AB") = A1T3P4
-        ws.Cells(r, "AC") = A1T3P5
-        ws.Cells(r, "AD") = A1T3P6
-        ws.Cells(r, "AE") = A1T3P7
-        ws.Cells(r, "AF") = A1T3P8
-        ws.Cells(r, "AG") = A1T3P9
-        ws.Cells(r, "AH") = A1T3P10
+        ws.Cells(r, "O") = A1T3P1
+        ws.Cells(r, "P") = A1T3P2
+        ws.Cells(r, "Q") = A1T3P3
+        ws.Cells(r, "R") = A1T3P4
+        ws.Cells(r, "S") = A1T3P5
         
         '/ Gage R&R Appraiser 2 /*
-        ws.Cells(r, "AI") = Ap2Name
+        ws.Cells(r, "T") = Ap2Name
         
         'Trial 1
-        ws.Cells(r, "AJ") = A2T1P1
-        ws.Cells(r, "AK") = A2T1P2
-        ws.Cells(r, "AL") = A2T1P3
-        ws.Cells(r, "AM") = A2T1P4
-        ws.Cells(r, "AN") = A2T1P5
-        ws.Cells(r, "AO") = A2T1P6
-        ws.Cells(r, "AP") = A2T1P7
-        ws.Cells(r, "AQ") = A2T1P8
-        ws.Cells(r, "AR") = A2T1P9
-        ws.Cells(r, "AS") = A2T1P10
+        ws.Cells(r, "U") = A2T1P1
+        ws.Cells(r, "V") = A2T1P2
+        ws.Cells(r, "W") = A2T1P3
+        ws.Cells(r, "X") = A2T1P4
+        ws.Cells(r, "Y") = A2T1P5
         
         'Trial 2
-        ws.Cells(r, "AT") = A2T2P1
-        ws.Cells(r, "AU") = A2T2P2
-        ws.Cells(r, "AV") = A2T2P3
-        ws.Cells(r, "AW") = A2T2P4
-        ws.Cells(r, "AX") = A2T2P5
-        ws.Cells(r, "AY") = A2T2P6
-        ws.Cells(r, "AZ") = A2T2P7
-        ws.Cells(r, "BA") = A2T2P8
-        ws.Cells(r, "BB") = A2T2P9
-        ws.Cells(r, "BC") = A2T2P10
+        ws.Cells(r, "Z") = A2T2P1
+        ws.Cells(r, "AA") = A2T2P2
+        ws.Cells(r, "AB") = A2T2P3
+        ws.Cells(r, "AC") = A2T2P4
+        ws.Cells(r, "AD") = A2T2P5
         
         'Trial 3
-        ws.Cells(r, "BD") = A2T3P1
-        ws.Cells(r, "BE") = A2T3P2
-        ws.Cells(r, "BF") = A2T3P3
-        ws.Cells(r, "BG") = A2T3P4
-        ws.Cells(r, "BH") = A2T3P5
-        ws.Cells(r, "BI") = A2T3P6
-        ws.Cells(r, "BJ") = A2T3P7
-        ws.Cells(r, "BK") = A2T3P8
-        ws.Cells(r, "BL") = A2T3P9
-        ws.Cells(r, "BM") = A2T3P10
+        ws.Cells(r, "AE") = A2T3P1
+        ws.Cells(r, "AF") = A2T3P2
+        ws.Cells(r, "AG") = A2T3P3
+        ws.Cells(r, "AH") = A2T3P4
+        ws.Cells(r, "AI") = A2T3P5
         
         '/ Gage R&R Appraiser 3 /*
-        ws.Cells(r, "BN") = Ap3Name
+        ws.Cells(r, "AJ") = Ap3Name
         
         'Trial 1
-        ws.Cells(r, "BO") = A3T1P1
-        ws.Cells(r, "BP") = A3T1P2
-        ws.Cells(r, "BQ") = A3T1P3
-        ws.Cells(r, "BR") = A3T1P4
-        ws.Cells(r, "BS") = A3T1P5
-        ws.Cells(r, "BT") = A3T1P6
-        ws.Cells(r, "BU") = A3T1P7
-        ws.Cells(r, "BV") = A3T1P8
-        ws.Cells(r, "BW") = A3T1P9
-        ws.Cells(r, "BX") = A3T1P10
+        ws.Cells(r, "AK") = A3T1P1
+        ws.Cells(r, "AL") = A3T1P2
+        ws.Cells(r, "AM") = A3T1P3
+        ws.Cells(r, "AN") = A3T1P4
+        ws.Cells(r, "AO") = A3T1P5
         
         'Trial 2
-        ws.Cells(r, "BY") = A3T2P1
-        ws.Cells(r, "BZ") = A3T2P2
-        ws.Cells(r, "CA") = A3T2P3
-        ws.Cells(r, "CB") = A3T2P4
-        ws.Cells(r, "CC") = A3T2P5
-        ws.Cells(r, "CD") = A3T2P6
-        ws.Cells(r, "CE") = A3T2P7
-        ws.Cells(r, "CF") = A3T2P8
-        ws.Cells(r, "CG") = A3T2P9
-        ws.Cells(r, "CH") = A3T2P10
+        ws.Cells(r, "AP") = A3T2P1
+        ws.Cells(r, "AQ") = A3T2P2
+        ws.Cells(r, "AR") = A3T2P3
+        ws.Cells(r, "AS") = A3T2P4
+        ws.Cells(r, "AT") = A3T2P5
         
         'Trial 3
-        ws.Cells(r, "CI") = A3T3P1
-        ws.Cells(r, "CJ") = A3T3P2
-        ws.Cells(r, "CK") = A3T3P3
-        ws.Cells(r, "CL") = A3T3P4
-        ws.Cells(r, "CM") = A3T3P5
-        ws.Cells(r, "CN") = A3T3P6
-        ws.Cells(r, "CO") = A3T3P7
-        ws.Cells(r, "CP") = A3T3P8
-        ws.Cells(r, "CQ") = A3T3P9
-        ws.Cells(r, "CR") = A3T3P10
+        ws.Cells(r, "AU") = A3T3P1
+        ws.Cells(r, "AV") = A3T3P2
+        ws.Cells(r, "AW") = A3T3P3
+        ws.Cells(r, "AX") = A3T3P4
+        ws.Cells(r, "AY") = A3T3P5
         
         Update_Button.Caption = "Updated!"
         Application.Wait (Now + TimeValue("0:00:01"))
@@ -431,11 +437,6 @@ Private Sub Clear_Form()
     A1T1P3 = ""
     A1T1P4 = ""
     A1T1P5 = ""
-    A1T1P6 = ""
-    A1T1P7 = ""
-    A1T1P8 = ""
-    A1T1P9 = ""
-    A1T1P10 = ""
     
     'Trial 2
     A1T2P1 = ""
@@ -443,11 +444,6 @@ Private Sub Clear_Form()
     A1T2P3 = ""
     A1T2P4 = ""
     A1T2P5 = ""
-    A1T2P6 = ""
-    A1T2P7 = ""
-    A1T2P8 = ""
-    A1T2P9 = ""
-    A1T2P10 = ""
     
     'Trial 3
     A1T3P1 = ""
@@ -455,11 +451,6 @@ Private Sub Clear_Form()
     A1T3P3 = ""
     A1T3P4 = ""
     A1T3P5 = ""
-    A1T3P6 = ""
-    A1T3P7 = ""
-    A1T3P8 = ""
-    A1T3P9 = ""
-    A1T3P10 = ""
     
     '/ Gage R&R Appraiser 2 /*
     Ap2Name = ""
@@ -470,11 +461,6 @@ Private Sub Clear_Form()
     A2T1P3 = ""
     A2T1P4 = ""
     A2T1P5 = ""
-    A2T1P6 = ""
-    A2T1P7 = ""
-    A2T1P8 = ""
-    A2T1P9 = ""
-    A2T1P10 = ""
     
     'Trial 2
     A2T2P1 = ""
@@ -482,11 +468,6 @@ Private Sub Clear_Form()
     A2T2P3 = ""
     A2T2P4 = ""
     A2T2P5 = ""
-    A2T2P6 = ""
-    A2T2P7 = ""
-    A2T2P8 = ""
-    A2T2P9 = ""
-    A2T2P10 = ""
     
     'Trial 3
     A2T3P1 = ""
@@ -494,11 +475,6 @@ Private Sub Clear_Form()
     A2T3P3 = ""
     A2T3P4 = ""
     A2T3P5 = ""
-    A2T3P6 = ""
-    A2T3P7 = ""
-    A2T3P8 = ""
-    A2T3P9 = ""
-    A2T3P10 = ""
     
     '/ Gage R&R Appraiser 3 /*
     Ap3Name = ""
@@ -509,11 +485,6 @@ Private Sub Clear_Form()
     A3T1P3 = ""
     A3T1P4 = ""
     A3T1P5 = ""
-    A3T1P6 = ""
-    A3T1P7 = ""
-    A3T1P8 = ""
-    A3T1P9 = ""
-    A3T1P10 = ""
     
     'Trial 2
     A3T2P1 = ""
@@ -521,11 +492,6 @@ Private Sub Clear_Form()
     A3T2P3 = ""
     A3T2P4 = ""
     A3T2P5 = ""
-    A3T2P6 = ""
-    A3T2P7 = ""
-    A3T2P8 = ""
-    A3T2P9 = ""
-    A3T2P10 = ""
     
     'Trial 3
     A3T3P1 = ""
@@ -533,11 +499,21 @@ Private Sub Clear_Form()
     A3T3P3 = ""
     A3T3P4 = ""
     A3T3P5 = ""
-    A3T3P6 = ""
-    A3T3P7 = ""
-    A3T3P8 = ""
-    A3T3P9 = ""
-    A3T3P10 = ""
+    
+    'Cal
+    calR = ""
+    cald2 = ""
+    calk1 = ""
+    calEV = ""
+    calxdiff = ""
+    caln = ""
+    calrValue = ""
+    cald2Value = ""
+    calk2 = ""
+    calAV = ""
+    calRR = ""
+    calScore = ""
+    
 End Sub
 
 Private Sub btnClear_Click()
