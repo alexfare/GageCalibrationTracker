@@ -1,4 +1,8 @@
-Update - 3.14.0
+'Update - 3.14.1
+' Fixed crash on start up
+' Fixed Format Error
+'
+'Update - 3.14.0
 ' Moving to update only the code under .frm (deleted all .vb)
 ' Gage R&R released!
 '
