@@ -17,9 +17,11 @@ Admin Panel w/ Login<br>
 <br>
 ![image](https://user-images.githubusercontent.com/40654995/219362980-ddbfad4e-693d-4f04-b575-c00664c9d695.png)
 <br>
-
+Gage R&R <br>
+![image](https://user-images.githubusercontent.com/40654995/231155516-9229eaca-3c2f-4fee-8737-0d02b308b770.png)
+<br>
 Future Plans:<br>
-Gage R&R - WIP (Releasing with v3.14)<br>
+
 Quality Dashboard - Coming Soon
 <br>
 <br>
@@ -33,4 +35,5 @@ Report an Issue Button - Completed<br>
 Label Printing - Completed<br>
 Persistent Logins - Completed<br>
 Customer Directory - Completed<br>
+Gage R&R - Completed<br>
 <br>
