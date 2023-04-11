@@ -1,3 +1,7 @@
+Update - 3.14.0
+' Moving to update only the code under .frm (deleted all .vb)
+' Gage R&R released!
+'
 'Update - 3.13.8
 ' Updates to Gage R&R. (This will be released next update)
 ' Added Back button back & Logout button at the bottom.
@@ -16,7 +20,7 @@
 '
 'Update - 3.13.4
 ' Added Drop Down box for Gage Number
-' Update last search time to the search prior to current search
+' Updated last searched to show the last search, prior to the current search.
 ' Updated / Cleaned Code
 '
 'Update - 3.13.3
