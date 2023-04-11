@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} GageRnR 
    Caption         =   "Gage R&R"
-   ClientHeight    =   7020
+   ClientHeight    =   7230
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   8850.001
+   ClientWidth     =   8700.001
    OleObjectBlob   =   "GageRnR.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -27,18 +27,18 @@ Private Sub UserForm_Initialize()
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     
-    Dim rng         As Range
-    For Each rng In ws.Range("A3:A50")
-    Me.GageRnR_List.AddItem rng.Value
-    Next rng
+    'Dim rng         As Range
+    'For Each rng In ws.Range("A3:A50")
+        'Me.GageRnR_List.AddItem rng.Value
+    'Next rng
     
 End Sub
 
 Private Sub UserForm_Activate()
-'/Positioning /'
+    '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
-'/End Positioning /'
+    '/End Positioning /'
 End Sub
 
 '/ Add Gage
@@ -106,7 +106,6 @@ Public Sub Search_Button_Click()
     Gage_Number = Gage_Number_Save
     '/ Calculation --------------------------------------------
     
-
     ' ---------------------------------------------------------
     
     Dim ws          As Worksheet
@@ -134,7 +133,7 @@ Public Sub Search_Button_Click()
         A1T1P3 = ws.Cells(r, "G")
         A1T1P4 = ws.Cells(r, "H")
         A1T1P5 = ws.Cells(r, "I")
-     
+        
         'Trial 2
         A1T2P1 = ws.Cells(r, "J")
         A1T2P2 = ws.Cells(r, "K")
@@ -196,7 +195,6 @@ Public Sub Search_Button_Click()
         A3T3P3 = ws.Cells(r, "AW")
         A3T3P4 = ws.Cells(r, "AX")
         A3T3P5 = ws.Cells(r, "AY")
-        
         
         '/ Calculation
         'GageRnR
@@ -267,8 +265,19 @@ Public Sub Search_Button_Click()
         ws.Range("E16") = A3T3P4
         ws.Range("E17") = A3T3P5
         
-        'Calculations
+        '/Convert Range to numbers
+        Dim rng     As Range
+        Dim cell    As Range
         
+        Set rng = ws.Range("C3:E17")        ' change the range as per your requirement
+        
+        For Each cell In rng
+            If IsNumeric(cell.Value) Then
+                cell.Value = Val(cell.Value)
+            End If
+        Next cell
+        
+        'Calculations
         calR = ws.Range("B25")
         cald2 = ws.Range("B26")
         calk1 = ws.Range("B27")
@@ -282,21 +291,15 @@ Public Sub Search_Button_Click()
         calRR = ws.Range("B38")
         
         '/ convert score to percentage
-        Dim pScore As Double
+        Dim pScore  As Double
         pScore = ws.Range("B39")
         calScore = FormatPercent(pScore, 2)
         
-        '/Convert Range to numbers
-        Dim rng As Range
-        Set rng = ws.Range("C3:E17") ' change the range as per your requirement
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Searching..."
+        Status
         
-         Dim cell As Range
-         For Each cell In rng
-            If IsNumeric(cell.Value) Then
-            cell.Value = Val(cell.Value)
-         End If
-         Next cell
-    
         '/Change back to GageRnR Worksheet
         List_Select = "GageRnR"        ' Tab name
         Set ws = Sheets(List_Select)
@@ -329,6 +332,7 @@ Private Sub Update_Button_Click()
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
     End If
 End Sub
+
 Private Sub Update_Worksheet()
     If Update_Button_Enable = True Then
         Dim gnString As String
@@ -413,10 +417,11 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "AX") = A3T3P4
         ws.Cells(r, "AY") = A3T3P5
         
-        Update_Button.Caption = "Updated!"
-        Application.Wait (Now + TimeValue("0:00:01"))
-        Update_Button.Caption = ""
-        'Clear_Form 'Clear form after update
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Updating..."
+        Status
+        Search_Button_Click
         Gage_Number.SetFocus
         
     Else
@@ -539,4 +544,20 @@ End Sub
 
 Private Sub btnClose_Click()
     Unload GageRnR
+End Sub
+
+Private Sub Status()
+    Dim startTime As Date
+    Dim elapsedTime As Long
+    Dim waitTimeInSeconds As Long
+    
+    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
+    
+    startTime = Now
+    Do While elapsedTime < waitTimeInSeconds
+        DoEvents 'allow the program to process any pending events
+        elapsedTime = DateDiff("s", startTime, Now)
+    Loop
+        statusLabel.Caption = ""
+        statusLabelLog.Caption = ""
 End Sub

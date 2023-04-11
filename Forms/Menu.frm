@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   8895.001
+   ClientHeight    =   9150.001
    ClientLeft      =   45
    ClientTop       =   375
    ClientWidth     =   9960.001
@@ -456,7 +456,7 @@ End Sub
 
 '/Gage R&R /'
 Private Sub btnGageRR_Click()
-    MsgBox "NOTE: This is a WIP preview. Calculation formula is not displaying correctly!"
+    'MsgBox "NOTE: This is a WIP preview. Calculation formula is not displaying correctly!"
     GageRnR.Show
 End Sub
 

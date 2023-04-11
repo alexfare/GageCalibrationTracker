@@ -186,9 +186,9 @@ Private Sub btnClear_Click()
 End Sub
 
 Sub CheckForUpdate_Click()
-    Dim URL         As String
-    URL = "https://github.com/alexfare/GageCalibrationTracker"
-    ActiveWorkbook.FollowHyperlink URL
+    Dim url         As String
+    url = "https://github.com/alexfare/GageCalibrationTracker"
+    ActiveWorkbook.FollowHyperlink url
 End Sub
 
 Private Sub btnClose_Click()
