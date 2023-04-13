@@ -15,8 +15,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim r As Long ' variable used for storing row number
 Dim Worksheet_Set ' variable used for selecting and storing the active worksheet
-Dim Update_Button_Enable As Boolean ' to store update enable flag after search
-Dim GN_Verify
 
 Private Sub UserForm_Activate()
 '/Positioning /'
@@ -26,20 +24,20 @@ Private Sub UserForm_Activate()
 End Sub
 
 Private Sub btnCreate_Click()
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "Credentials" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    If IsError(Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)) Then
+    If IsError(Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), ws.Columns(1), 0)) Then
         
         Dim lLastRow As Long ' lLastRow = variable to store the result of the row count calculation
-        lLastRow = Ws.ListObjects.Item(1).ListRows.Count
+        lLastRow = ws.ListObjects.Item(1).ListRows.Count
         r = lLastRow + 2 ' Add number for every header tab created
         Dim gnString As String
         If IsNumeric(inputUser) Then
-            gnString = Val(inputUser.Value)
+            gnString = inputUser.Value
         Else
             gnString = inputUser
         End If
@@ -64,13 +62,13 @@ Private Sub btnCreate_Click()
         savePass = sH
         '/ Hash /'
         
-        Ws.Cells(r, "A") = gnString
-        Ws.Cells(r, "B") = savePass
-        Ws.Cells(r, "C") = userName
-        Ws.Cells(r, "D") = userPhone
-        Ws.Cells(r, "E") = userAddress
-        Ws.Cells(r, "F") = userPosition
-        Ws.Cells(r, "G") = userEmail
+        ws.Cells(r, "A") = gnString
+        ws.Cells(r, "B") = savePass
+        ws.Cells(r, "C") = userName
+        ws.Cells(r, "D") = userPhone
+        ws.Cells(r, "E") = userAddress
+        ws.Cells(r, "F") = userPosition
+        ws.Cells(r, "G") = userEmail
         
         Clear_Form
         inputUser.SetFocus
@@ -81,17 +79,17 @@ Private Sub btnCreate_Click()
         Dim AddUser As Integer
         
         List_Select = "Admin"        ' Tab name
-        Set Ws = Sheets(List_Select)
-        Set Worksheet_Set = Ws
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
         
-        AddUser = Ws.Range("B51")
+        AddUser = ws.Range("B51")
         AddUserPlusOne = AddUser + 1
-        Ws.Range("B51") = AddUserPlusOne
+        ws.Range("B51") = AddUserPlusOne
         
         '/Prevent Issues in the future, Call back the Credentials page/'
         List_Select = "Credentials"        ' Tab name
-        Set Ws = Sheets(List_Select)
-        Set Worksheet_Set = Ws
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
         
     Else
         ErrMsg_Duplicate
@@ -123,3 +121,4 @@ Private Sub btnBack_click()
     Unload CreateAccount
     AdminForm.Show
 End Sub
+

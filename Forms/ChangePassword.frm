@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ChangePassword 
    Caption         =   "Change Password"
-   ClientHeight    =   2505
+   ClientHeight    =   2925
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3585
+   ClientWidth     =   3615
    OleObjectBlob   =   "ChangePassword.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -39,26 +39,24 @@ Public Sub Search_Button_Click()
     Descriptiontxt = ""
     ' ---------------------------------------------------------
     
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     
     List_Select = "Credentials"
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    If IsError(Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)) Then
+    If IsError(Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), ws.Columns(1), 0)) Then
         btnUpdate_Enable = False
         ErrMsg
     Else
-        r = Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), Ws.Columns(1), 0)
+        r = Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), ws.Columns(1), 0)
         GN_Verify = inputUser
         btnUpdate_Enable = True
         
-        Dim FS
-        Set FS = CreateObject("Scripting.FileSystemObject")
-        
-        If FS.FileExists(TextFile_FullPath) Then
-        Else
-        End If
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Searching..."
+        Status
     End If
     inputUser.SetFocus
 End Sub
@@ -93,7 +91,7 @@ End Sub
 Private Sub Update_Worksheet()
     If btnUpdate_Enable = True Then
         Dim gnString As String
-        Set Ws = Worksheet_Set
+        Set ws = Worksheet_Set
         If IsNumeric(inputUser) Then
             gnString = Val(inputUser.Value)
         Else
@@ -121,14 +119,13 @@ Private Sub Update_Worksheet()
         savePass = sH
         '/ Hash /'
         
-        Ws.Cells(r, "A") = gnString
-        Ws.Cells(r, "B") = savePass
+        ws.Cells(r, "A") = gnString
+        ws.Cells(r, "B") = savePass
         
-        btnUpdate.Caption = "Updated!"
-        Application.Wait (Now + TimeValue("0:00:01"))
-        btnUpdate.Caption = "Update"
-        'Clear_Form 'Clear form after update
-        inputUser.SetFocus
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Password Updated!"
+        Status
         
     Else
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
@@ -153,3 +150,18 @@ Private Sub btnBack_click()
     AdminForm.Show
 End Sub
 
+Private Sub Status()
+    Dim startTime As Date
+    Dim elapsedTime As Long
+    Dim waitTimeInSeconds As Long
+    
+    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
+    
+    startTime = Now
+    Do While elapsedTime < waitTimeInSeconds
+        DoEvents 'allow the program to process any pending events
+        elapsedTime = DateDiff("s", startTime, Now)
+    Loop
+        statusLabel.Caption = ""
+        statusLabelLog.Caption = ""
+End Sub
