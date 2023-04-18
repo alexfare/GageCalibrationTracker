@@ -381,6 +381,9 @@ Private Sub Update_Worksheet()
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Updating..."
         Status
+        
+    '/Update Menu
+    Search_Button_Click
 Else
     MsgBox ("Must search For entry before updating"), , "Nothing To Update"
 End If

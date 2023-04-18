@@ -31,7 +31,6 @@ Private Sub UserForm_Initialize()
     'For Each rng In ws.Range("A3:A50")
         'Me.GageRnR_List.AddItem rng.Value
     'Next rng
-    
 End Sub
 
 Private Sub UserForm_Activate()
@@ -64,9 +63,6 @@ Private Sub Add_Button_Click()
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
         
-        Add_Button.Caption = "Added!"        ' change caption of add button for confirmation
-        Application.Wait (Now + TimeValue("0:00:01"))        ' Wait to avoid crash
-        Add_Button.Caption = ""
         Clear_Form
         Gage_Number.SetFocus
         
@@ -85,6 +81,11 @@ Private Sub Add_Button_Click()
         List_Select = "GageRnR"        ' Tab name
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
+        
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Adding..."
+        Status
     Else
         ErrMsg_Duplicate
     End If
@@ -201,7 +202,6 @@ Public Sub Search_Button_Click()
         List_Select = "Calculations"        ' Tab name
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
-        
         'A1 Trial 1
         ws.Range("C3") = A1T1P1
         ws.Range("C4") = A1T1P2
@@ -269,14 +269,14 @@ Public Sub Search_Button_Click()
         Dim rng     As Range
         Dim cell    As Range
         
-        Set rng = ws.Range("C3:E17")        ' change the range as per your requirement
+        Set rng = ws.Range("C3:E17")
         
         For Each cell In rng
             If IsNumeric(cell.Value) Then
                 cell.Value = Val(cell.Value)
             End If
         Next cell
-        
+
         'Calculations
         calR = ws.Range("B25")
         cald2 = ws.Range("B26")
@@ -561,3 +561,4 @@ Private Sub Status()
         statusLabel.Caption = ""
         statusLabelLog.Caption = ""
 End Sub
+
