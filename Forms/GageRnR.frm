@@ -63,6 +63,77 @@ Private Sub Add_Button_Click()
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
         
+        '/ Gage R&R Appraiser 1 /*
+        ws.Cells(r, "D") = Ap1Name
+        'Trial 1
+        ws.Cells(r, "E") = A1T1P1
+        ws.Cells(r, "F") = A1T1P2
+        ws.Cells(r, "G") = A1T1P3
+        ws.Cells(r, "H") = A1T1P4
+        ws.Cells(r, "I") = A1T1P5
+        
+        'Trial 2
+        ws.Cells(r, "J") = A1T2P1
+        ws.Cells(r, "K") = A1T2P2
+        ws.Cells(r, "L") = A1T2P3
+        ws.Cells(r, "M") = A1T2P4
+        ws.Cells(r, "N") = A1T2P5
+        
+        'Trial 3
+        ws.Cells(r, "O") = A1T3P1
+        ws.Cells(r, "P") = A1T3P2
+        ws.Cells(r, "Q") = A1T3P3
+        ws.Cells(r, "R") = A1T3P4
+        ws.Cells(r, "S") = A1T3P5
+        
+        '/ Gage R&R Appraiser 2 /*
+        ws.Cells(r, "T") = Ap2Name
+        
+        'Trial 1
+        ws.Cells(r, "U") = A2T1P1
+        ws.Cells(r, "V") = A2T1P2
+        ws.Cells(r, "W") = A2T1P3
+        ws.Cells(r, "X") = A2T1P4
+        ws.Cells(r, "Y") = A2T1P5
+        
+        'Trial 2
+        ws.Cells(r, "Z") = A2T2P1
+        ws.Cells(r, "AA") = A2T2P2
+        ws.Cells(r, "AB") = A2T2P3
+        ws.Cells(r, "AC") = A2T2P4
+        ws.Cells(r, "AD") = A2T2P5
+        
+        'Trial 3
+        ws.Cells(r, "AE") = A2T3P1
+        ws.Cells(r, "AF") = A2T3P2
+        ws.Cells(r, "AG") = A2T3P3
+        ws.Cells(r, "AH") = A2T3P4
+        ws.Cells(r, "AI") = A2T3P5
+        
+        '/ Gage R&R Appraiser 3 /*
+        ws.Cells(r, "AJ") = Ap3Name
+        
+        'Trial 1
+        ws.Cells(r, "AK") = A3T1P1
+        ws.Cells(r, "AL") = A3T1P2
+        ws.Cells(r, "AM") = A3T1P3
+        ws.Cells(r, "AN") = A3T1P4
+        ws.Cells(r, "AO") = A3T1P5
+        
+        'Trial 2
+        ws.Cells(r, "AP") = A3T2P1
+        ws.Cells(r, "AQ") = A3T2P2
+        ws.Cells(r, "AR") = A3T2P3
+        ws.Cells(r, "AS") = A3T2P4
+        ws.Cells(r, "AT") = A3T2P5
+        
+        'Trial 3
+        ws.Cells(r, "AU") = A3T3P1
+        ws.Cells(r, "AV") = A3T3P2
+        ws.Cells(r, "AW") = A3T3P3
+        ws.Cells(r, "AX") = A3T3P4
+        ws.Cells(r, "AY") = A3T3P5
+        
         Clear_Form
         Gage_Number.SetFocus
         
@@ -81,11 +152,12 @@ Private Sub Add_Button_Click()
         List_Select = "GageRnR"        ' Tab name
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
-        
+
         '/Status/'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Adding..."
         Status
+        
     Else
         ErrMsg_Duplicate
     End If
@@ -561,4 +633,5 @@ Private Sub Status()
         statusLabel.Caption = ""
         statusLabelLog.Caption = ""
 End Sub
+
 
