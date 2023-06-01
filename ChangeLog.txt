@@ -1,3 +1,7 @@
+'Update - 4.0.0
+' Menu layout
+' Added Serial # under Admin Panel for generating QR Codes - Adding QR Label generator in the future.
+'
 'Update - 3.14.4
 ' Fixed Tab order in Menu
 '

@@ -42,6 +42,7 @@ Private Sub UserForm_Initialize()
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
+    
 End Sub
 
 Private Sub UserForm_Activate()
@@ -81,6 +82,7 @@ Public Sub Search_Button_Click()
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = ws.Cells(r, "B")
+        serialNumberTxt = ws.Cells(r, "K")
         lblDateAdded = ws.Cells(r, "AK")
         lblDateEdit = ws.Cells(r, "AL")
         lblSearchedDate = ws.Cells(r, "AM")
@@ -137,6 +139,7 @@ Private Sub Update_Worksheet()
         '/ Audit
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
+        ws.Cells(r, "K") = serialNumberTxt
         'Ws.Cells(r, "AL") = Now        'Update Last edited
         ws.Cells(r, "AK") = lblDateAdded        'Date Added
         currrentUser = Application.userName
@@ -173,6 +176,7 @@ End Sub
 Private Sub Clear_Form()
     Gage_Number = ""
     PartNumbertxt = ""
+    serialNumberTxt = ""
     lblDateAdded = ""
     lblDateEdit = ""
     lblSearchedDate = ""
