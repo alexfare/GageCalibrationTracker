@@ -82,16 +82,29 @@ Public Sub Search_Button_Click()
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = ws.Cells(r, "B")
-        serialNumberTxt = ws.Cells(r, "K")
         lblDateAdded = ws.Cells(r, "AK")
         lblDateEdit = ws.Cells(r, "AL")
         lblSearchedDate = ws.Cells(r, "AM")
         lastUser = ws.Cells(r, "AN")
+        Insp_Date = ws.Cells(r, "F")
+        Department = ws.Cells(r, "I")
+        comboGageType = ws.Cells(r, "D")
+        Due_Date = ws.Cells(r, "G")
         
         '/Status/'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Searching"
         Status
+        
+        '/ Serial Number /'
+        Dim serialNumberGen As String
+        Dim iDate As String
+        Dim calDate As String
+        
+        iDate = Insp_Date
+        calDate = Due_Date
+        serialNumberGen = Gage_Number_Save + "-" + PartNumbertxt + "-" + comboGageType + "-" + Department + "-" + iDate + "-" + calDate
+        serialNumberTxt = serialNumberGen
         
         'Below might be doing nothing anymore? Check into this
         Update_Button_Enable = True
