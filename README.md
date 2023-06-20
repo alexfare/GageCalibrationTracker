@@ -10,19 +10,19 @@ Gage Calibration Tracker<br>
 ![image](https://user-images.githubusercontent.com/40654995/216606990-a387920d-f55f-42d6-a73b-12f4bbfadc9c.png)
 <br>
 Menu<br>
-![image](https://user-images.githubusercontent.com/40654995/219362897-2b244bf3-0884-4c13-b716-bc9c049b7b20.png)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/28db39fc-a2d2-462c-a0e7-7f0479d51607)
 <br>
 Admin Panel w/ Login<br>
-![image](https://user-images.githubusercontent.com/40654995/216607303-bb1055b3-a55a-416c-97af-877c01245291.png)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/bb1b40c9-1a30-4536-9af4-248e1e63687c)
 <br>
 ![image](https://user-images.githubusercontent.com/40654995/219362980-ddbfad4e-693d-4f04-b575-c00664c9d695.png)
 <br>
 Gage R&R <br>
-![image](https://user-images.githubusercontent.com/40654995/231155516-9229eaca-3c2f-4fee-8737-0d02b308b770.png)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/b7a09091-aa7b-49a5-9926-abbac4f5ad55)
 <br>
 Future Plans:<br>
 
-Quality Dashboard - Coming Soon
+Quality Dashboard - Future
 <br>
 <br>
 Completed: <br>
