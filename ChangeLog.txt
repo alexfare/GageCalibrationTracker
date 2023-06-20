@@ -1,5 +1,9 @@
+'Update - 4.0.2
+' Added Application pause between events to prevent issues.
+'
 'Update - 4.0.1
-' Fixed crashing on start up caused by bad formula in v4. 
+' Fixed crashing on start up caused by bad formula in v4.
+'
 'Update - 4.0.0
 ' Menu layout
 ' Added Serial # under Admin Panel for generating QR Codes - Adding QR Label generator in the future.

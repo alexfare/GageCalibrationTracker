@@ -628,6 +628,7 @@ Private Sub Status()
     startTime = Now
     Do While elapsedTime < waitTimeInSeconds
         DoEvents 'allow the program to process any pending events
+        Application.Wait (Now + TimeValue("0:00:02"))
         elapsedTime = DateDiff("s", startTime, Now)
     Loop
         statusLabel.Caption = ""
