@@ -337,50 +337,64 @@ Public Sub Search_Button_Click()
         ws.Range("E16") = A3T3P4
         ws.Range("E17") = A3T3P5
         
-        '/Convert Range to numbers
-        Dim rng     As Range
-        Dim cell    As Range
-        
-        Set rng = ws.Range("C3:E17")
-        
-        For Each cell In rng
-            If IsNumeric(cell.Value) Then
-                cell.Value = Val(cell.Value)
-            End If
-        Next cell
+        '/ Convert Range to numbers
+Dim rng As Range
+Dim cell As Range
 
-        'Calculations
-        calR = ws.Range("B25")
-        cald2 = ws.Range("B26")
-        calk1 = ws.Range("B27")
-        calEV = ws.Range("B28")
-        calxdiff = ws.Range("B30")
-        caln = ws.Range("B31")
-        calrValue = ws.Range("B32")
-        cald2Value = ws.Range("B33")
-        calk2 = ws.Range("B34")
-        calAV = ws.Range("B37")
-        calRR = ws.Range("B38")
-        
-        '/ convert score to percentage
-        Dim pScore  As Double
-        pScore = ws.Range("B39")
-        calScore = FormatPercent(pScore, 2)
-        
-        '/Status/'
-        statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Searching..."
-        Status
-        
-        '/Change back to GageRnR Worksheet
-        List_Select = "GageRnR"        ' Tab name
-        Set ws = Sheets(List_Select)
-        Set Worksheet_Set = ws
-        
+Set rng = ws.Range("C3:E17")
+
+On Error Resume Next ' Ignore errors and continue execution
+For Each cell In rng
+    If IsNumeric(cell.Value) Then
+        cell.Value = Val(cell.Value)
     End If
-    
+Next cell
+On Error GoTo 0 ' Disable error handling
+
+' Calculations
+On Error Resume Next ' Ignore errors and continue execution
+calR = ws.Range("B25")
+cald2 = ws.Range("B26")
+calk1 = ws.Range("B27")
+calEV = ws.Range("B28")
+calxdiff = ws.Range("B30")
+caln = ws.Range("B31")
+calrValue = ws.Range("B32")
+cald2Value = ws.Range("B33")
+calk2 = ws.Range("B34")
+calAV = ws.Range("B37")
+calRR = ws.Range("B38")
+On Error GoTo 0 ' Disable error handling
+
+'/ Convert score to percentage
+Dim pScore As Double
+On Error Resume Next ' Ignore errors and continue execution
+pScore = ws.Range("B39")
+If Not IsError(pScore) Then
+    calScore = FormatPercent(pScore, 2)
+End If
+On Error GoTo 0 ' Disable error handling
+
+'/ Status
+On Error Resume Next ' Ignore errors and continue execution
+statusLabel.Caption = "Status:"
+statusLabelLog.Caption = "Searching..."
+Status
+On Error GoTo 0 ' Disable error handling
+
+'/ Change back to GageRnR Worksheet
+On Error Resume Next ' Ignore errors and continue execution
+List_Select = "GageRnR" ' Tab name
+Set ws = Sheets(List_Select)
+If Not ws Is Nothing Then
+    Set Worksheet_Set = ws
+Else
+    ' Handle the case when the worksheet is not found
+    MsgBox "Worksheet 'GageRnR' not found!"
+End If
+On Error GoTo 0 ' Disable error handling
     Gage_Number.SetFocus
-    
+End If
 End Sub
 
 Sub ErrMsg()
