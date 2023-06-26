@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Label 
    Caption         =   "Print Labels"
-   ClientHeight    =   1575
+   ClientHeight    =   2370
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3765
+   ClientWidth     =   3930
    OleObjectBlob   =   "Label.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -23,30 +23,30 @@ Private Sub UserForm_Activate()
 End Sub
 
 Private Sub btnLargeLabel_Click()
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
     Dim x As Variant
     Dim Path As String
-        Path = Ws.Range("B27")
+        Path = ws.Range("B27")
         'MsgBox (Path) 'Confirms the path works
         x = Shell("explorer.exe " + Path, vbNormalFocus) 'explorer.exe is needed due to vba expecting a .exe
         Unload Me
 End Sub
 
 Private Sub btnSmallLabel_Click()
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
     Dim x As Variant
     Dim Path As String
-        Path = Ws.Range("B26")
+        Path = ws.Range("B26")
         'MsgBox (Path) 'Confirms the path works
         x = Shell("explorer.exe " + Path, vbNormalFocus) 'explorer.exe is needed due to vba expecting a .exe
         Unload Me
@@ -59,4 +59,8 @@ End Sub
 
 Private Sub btnBack_click()
     Unload Me
+End Sub
+
+Private Sub btnCert_Click()
+    MsgBox ("Coming Soon")
 End Sub

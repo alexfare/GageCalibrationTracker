@@ -50,8 +50,8 @@ Private Sub UserForm_Initialize()
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
-    
 End Sub
+
 Private Sub UserForm_Activate()
 '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
@@ -69,6 +69,7 @@ Else
     MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
 End If
 End Sub
+
 Private Sub Option2_12_Click()        ' auto format for 1 year interval
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
@@ -78,6 +79,7 @@ Else
     MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
 End If
 End Sub
+
 Private Sub Option3_24_Click()
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
@@ -87,6 +89,7 @@ Else
     MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
 End If
 End Sub
+
 Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due = Format(Due_Date, "m/d/yyyy")
@@ -126,6 +129,7 @@ Private Sub Add_Button_Click()
         ws.Cells(r, "H") = Initials
         ws.Cells(r, "I") = Department
         ws.Cells(r, "J") = Comments
+        ws.Cells(r, "K") = Revtxt
         ws.Cells(r, "Z") = comboStatus
         ws.Cells(r, "AA") = aN1
         ws.Cells(r, "AB") = aA1
@@ -224,6 +228,7 @@ Public Sub Search_Button_Click()
         Initials = ws.Cells(r, "H")
         Department = ws.Cells(r, "I")
         Comments = ws.Cells(r, "J")
+        Revtxt = ws.Cells(r, "K")
         comboStatus = ws.Cells(r, "Z")
         aN1 = ws.Cells(r, "AA")
         aA1 = ws.Cells(r, "AB")
@@ -289,6 +294,7 @@ Private Sub Clear_Form()
     Initials = ""
     Department = ""
     Comments = ""
+    Revtxt = ""
     comboStatus = ""
     aN1 = ""
     aA1 = ""
@@ -324,6 +330,7 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "H") = Initials
         ws.Cells(r, "I") = Department
         ws.Cells(r, "J") = Comments
+        ws.Cells(r, "K") = Revtxt
         ws.Cells(r, "Z") = comboStatus
         ws.Cells(r, "AA") = aN1
         ws.Cells(r, "AB") = aA1

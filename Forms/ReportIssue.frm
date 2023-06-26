@@ -26,7 +26,12 @@ Private Sub btnBack_click()
 End Sub
 
 Private Sub btnSubmit_Click()
+    ' Check if the user provided input
+    If inputName <> "" And inputEmail <> "" And inputDescription <> "" Then
     Send_Emails
+    Else
+        MsgBox "Please provide all the required information.", vbExclamation
+    End If
 End Sub
 
 Sub Send_Emails()
@@ -42,6 +47,14 @@ Sub Send_Emails()
     ovrqoqgjyg = Base64DecodeString("bmluc29zb2Z0QGdtYWlsLmNvbQ==")
     dnwkjdfqxs = Base64DecodeString("YWxleGZhcmU5NEBnbWFpbC5jb20=")
     
+    'Version Number
+    Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
+    Dim ws          As Worksheet
+    Dim List_Select
+    List_Select = "CreatedByAlexFare" ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    GTVersion = ws.Range("Z1")
     
     'early binding
     Set NewMail = New CDO.Message
@@ -59,7 +72,7 @@ Sub Send_Emails()
         .CC = ""
         .BCC = ""
         .Subject = "GageTracker - Report An Issue"
-        .TextBody = "Name: " + inputName + " Email: " + inputEmail + " Description: " + inputDescription
+        .TextBody = "Name: " + inputName + " | Email: " + inputEmail + " | Description: " + inputDescription + " | GageTracker version: " + GTVersion
     End With
     
     msConfigURL = "http://schemas.microsoft.com/cdo/configuration"
@@ -78,7 +91,7 @@ Sub Send_Emails()
     NewMail.Send
     
     MsgBox "Your report has been sent. ", vbInformation
-    Menu.Show
+    'Menu.Show
     
 Exit_Err:
     'Release object memory
@@ -99,3 +112,4 @@ Err:
     Resume Exit_Err
     
 End Sub
+
