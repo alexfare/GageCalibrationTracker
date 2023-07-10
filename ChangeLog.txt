@@ -1,3 +1,8 @@
+'Update - 4.0.5
+' Fixed database issue with Part Rev & Serial Number Mixing
+' Fixed Application freeze while performing an action issue (This was added to prevent Gage Number overwrites/changes but this issue has also been corrected by removing GageNumber Focus.
+' Updated Menu dropbox styling
+'
 'Update - 4.0.4
 ' Added Part Rev.
 ' Updated ReportIssue to prevent users sending reports with no information entered.

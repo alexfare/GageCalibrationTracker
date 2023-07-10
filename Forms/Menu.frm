@@ -29,13 +29,13 @@ Dim currrentUser As String
 
 '/Start up script /'
 Private Sub UserForm_Initialize()
-'/Code Confirm for production use only/'
-    Dim CodeCompare As Integer
+    Dim CodeCompare As Integer 'Compare user key (Production use only)
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
-    Dim LoginCount  As Integer
+    Dim LoginCount  As Integer 'Track login counts
     Dim ws          As Worksheet
     Dim List_Select
     
+'/ Start code confirm /'
     List_Select = "Admin"        ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
@@ -59,47 +59,7 @@ Private Sub UserForm_Activate()
 '/End Positioning /'
 End Sub
 
-'/Auto Due Date
-Private Sub Option1_6_Click()        ' auto format for 6 month interval
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due_6mos = DateAdd("m", 6, Insp_Date)
-    Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
-    Due_Date = Date_Due_6mos
-Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
-End If
-End Sub
-
-Private Sub Option2_12_Click()        ' auto format for 1 year interval
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
-    Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
-    Due_Date = Date_Due_1yr
-Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
-End If
-End Sub
-
-Private Sub Option3_24_Click()
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
-    Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
-    Due_Date = Date_Due_2yr
-Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
-End If
-End Sub
-
-Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due = Format(Due_Date, "m/d/yyyy")
-    Due_Date = Date_Due
-Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
-End If
-End Sub
-
-'/ Add Gage
+'/------- Add Gage -------/'
 Private Sub Add_Button_Click()
     Dim ws As Worksheet
     Dim List_Select
@@ -149,7 +109,6 @@ Private Sub Add_Button_Click()
         ws.Cells(r, "AN") = lastUser
         
         Clear_Form
-        Gage_Number.SetFocus
         
         '/Add to Gage Number count/'
         Dim AddCount As Integer
@@ -176,26 +135,25 @@ Private Sub Add_Button_Click()
     End If
 End Sub
 
-'/ Clear Button
+'/------- Clear Button -------/'
 Private Sub btnClear_Click()
     Update_Button_Enable = False
     Clear_Form
-    Gage_Number.SetFocus
 End Sub
 
-'/ Done Button
+'/------- Done Button -------/'
 Private Sub Done_Button_Click()
     Unload Menu
 End Sub
 
+'/------- Press Enter -------/'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
         Search_Button_Click
-        Gage_Number.SetFocus
     End If
 End Sub
 
-'/ Search Button
+'/------- Search Button -------/'
 Public Sub Search_Button_Click()
     Dim ws          As Worksheet
     Dim DateEdit 'Update Last searched
@@ -257,10 +215,9 @@ Public Sub Search_Button_Click()
         Status
         
     End If
-    Gage_Number.SetFocus
 End Sub
 
-'/ Update Button
+'/------- Update Button
 Private Sub Update_Button_Click()
     If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then
@@ -271,45 +228,6 @@ Private Sub Update_Button_Click()
     Else
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
     End If
-End Sub
-
-Sub ErrMsg()
-    MsgBox ("Gage Number Not Found"), , "Not Found"
-    Gage_Number.SetFocus
-End Sub
-
-Sub ErrMsg_Duplicate()
-    MsgBox ("Gage number already in use"), , "Duplicate"
-    Gage_Number.SetFocus
-End Sub
-
-Private Sub Clear_Form()
-    Gage_Number = ""
-    PartNumbertxt = ""
-    Descriptiontxt = ""
-    comboGageType = ""
-    Customer = ""
-    Insp_Date = ""
-    Due_Date = ""
-    Initials = ""
-    Department = ""
-    Comments = ""
-    Revtxt = ""
-    comboStatus = ""
-    aN1 = ""
-    aA1 = ""
-    aN2 = ""
-    aA2 = ""
-    aN3 = ""
-    aA3 = ""
-    aN4 = ""
-    aA4 = ""
-    aN5 = ""
-    aA5 = ""
-    lblDateAdded = ""
-    lblDateEdit = ""
-    lblSearchedDate = ""
-    lastUser = ""
 End Sub
 
 Private Sub Update_Worksheet()
@@ -365,8 +283,6 @@ Private Sub Update_Worksheet()
     
     ws.Cells(r, "G") = Due_Date
     
-    Gage_Number.SetFocus 'Clear_Form 'Clear form after update
-    
     '/Audit Log/'
     Dim UpdateCount As Integer
     
@@ -389,14 +305,50 @@ Private Sub Update_Worksheet()
         statusLabelLog.Caption = "Updating..."
         Status
         
-    '/Update Menu
     Search_Button_Click
 Else
     MsgBox ("Must search For entry before updating"), , "Nothing To Update"
 End If
+End Sub
 
-'Update_Button_Enable = False 'Remove comment if you want to require searching again after an update.
+'/------- Error Handling -------/'
+Sub ErrMsg()
+    MsgBox ("Gage Number Not Found"), , "Not Found"
+    Gage_Number.SetFocus
+End Sub
 
+Sub ErrMsg_Duplicate()
+    MsgBox ("Gage number already in use"), , "Duplicate"
+End Sub
+
+'/------- Clear Form -------/'
+Private Sub Clear_Form()
+    Gage_Number = ""
+    PartNumbertxt = ""
+    Descriptiontxt = ""
+    comboGageType = ""
+    Customer = ""
+    Insp_Date = ""
+    Due_Date = ""
+    Initials = ""
+    Department = ""
+    Comments = ""
+    Revtxt = ""
+    comboStatus = ""
+    aN1 = ""
+    aA1 = ""
+    aN2 = ""
+    aA2 = ""
+    aN3 = ""
+    aA3 = ""
+    aN4 = ""
+    aA4 = ""
+    aN5 = ""
+    aA5 = ""
+    lblDateAdded = ""
+    lblDateEdit = ""
+    lblSearchedDate = ""
+    lastUser = ""
 End Sub
 
 Sub MSG_Verify_Update()
@@ -427,7 +379,7 @@ Private Sub btnLogout_Click()
     ThisWorkbook.Save
 End Sub
 
-'/Admin Panel - Bring up admin menu to edit audit dates/'
+'/------- Admin Panel - Bring up admin menu to edit audit dates -------/'
 Private Sub btnAdmin_click()
     '/Add to the login count /'
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -464,12 +416,12 @@ Private Sub btnLabel_Click()
     Label.Show
 End Sub
 
-'/Gage R&R /'
+'/------- Gage R&R -------/'
 Private Sub btnGageRR_Click()
-    'MsgBox "NOTE: This is a WIP preview. Calculation formula is not displaying correctly!"
     GageRnR.Show
 End Sub
 
+'/------- Status -------/'
 Private Sub Status()
     Dim startTime As Date
     Dim elapsedTime As Long
@@ -480,9 +432,49 @@ Private Sub Status()
     startTime = Now
     Do While elapsedTime < waitTimeInSeconds
         DoEvents 'allow the program to process any pending events
-        Application.Wait (Now + TimeValue("0:00:02"))
         elapsedTime = DateDiff("s", startTime, Now)
     Loop
         statusLabel.Caption = ""
         statusLabelLog.Caption = ""
 End Sub
+
+'/Auto Due Date
+Private Sub Option1_6_Click()        ' auto format for 6 month interval
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due_6mos = DateAdd("m", 6, Insp_Date)
+    Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
+    Due_Date = Date_Due_6mos
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
+End Sub
+
+Private Sub Option2_12_Click()        ' auto format for 1 year interval
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
+    Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
+    Due_Date = Date_Due_1yr
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
+End Sub
+
+Private Sub Option3_24_Click()
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
+    Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
+    Due_Date = Date_Due_2yr
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
+End Sub
+
+Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due = Format(Due_Date, "m/d/yyyy")
+    Due_Date = Date_Due
+Else
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+End If
+End Sub
+

@@ -11,30 +11,30 @@ Private Sub Workbook_Open()
     Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
     Dim WorkBookCount As Integer
 
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
 
-     WorkBookCount = Ws.Range("B47")
+     WorkBookCount = ws.Range("B47")
      WorkBookPlusOne = WorkBookCount + 1
-     Ws.Range("B47") = WorkBookPlusOne
-     Ws.Range("B52") = "" 'Clears logged in user.
-     Ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
+     ws.Range("B47") = WorkBookPlusOne
+     ws.Range("B52") = "" 'Clears logged in user.
+     ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
      
-     Dim requireLogin As Integer
-     requireLogin = Ws.Range("B59")
-     If requireLogin = "1" Then
+     Dim requirelogin As Integer
+     requirelogin = ws.Range("B59")
+     If requirelogin = "1" Then
         Worksheets("Login").Activate
         UserLogin.Show
      Else
         Worksheets("CreatedByAlexFare").Activate
-        Menu.Show
+        showMenu
     End If
-    
+
     Dim skipDevMode As Integer
-    skipDevMode = Ws.Range("B61")
+    skipDevMode = ws.Range("B61")
     If skipDevMode = "1" Then
         Application.DisplayFullScreen = False
     Else
@@ -43,3 +43,6 @@ Private Sub Workbook_Open()
 
 End Sub
 
+Sub showMenu()
+    Menu.Show
+End Sub

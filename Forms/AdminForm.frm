@@ -59,6 +59,7 @@ Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Sh
     End If
 End Sub
 
+'/------- Search Button -------/'
 Public Sub Search_Button_Click()
     
     ' clear previous data from form, except "Gage Number"
@@ -69,7 +70,7 @@ Public Sub Search_Button_Click()
     Gage_Number = Gage_Number_Save
     ' ---------------------------------------------------------
     
-    Dim ws          As Worksheet
+    Dim ws As Worksheet
     
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
@@ -106,29 +107,21 @@ Public Sub Search_Button_Click()
         serialNumberGen = Gage_Number_Save + "-" + PartNumbertxt + "-" + comboGageType + "-" + Department + "-" + iDate + "-" + calDate
         serialNumberTxt = serialNumberGen
         
-        'Below might be doing nothing anymore? Check into this
         Update_Button_Enable = True
         Option4_Custom = True
-        Dim FS
-        Set FS = CreateObject("Scripting.FileSystemObject")
-        
-        If FS.FileExists(TextFile_FullPath) Then
-        Else
-        End If
     End If
-    Gage_Number.SetFocus
 End Sub
 
+'/------- Error Handling -------/'
 Sub ErrMsg()
     MsgBox ("Gage Number Not Found"), , "Not Found"
-    Gage_Number.SetFocus
 End Sub
 
 Sub ErrMsg_Duplicate()
     MsgBox ("Gage number already in use"), , "Duplicate"
-    Gage_Number.SetFocus
 End Sub
 
+'/------- Update Button -------/'
 Private Sub Update_Button_Click()
     If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then
@@ -140,6 +133,7 @@ Private Sub Update_Button_Click()
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
     End If
 End Sub
+
 Private Sub Update_Worksheet()
     If Update_Button_Enable = True Then
         Dim gnString As String
@@ -149,16 +143,16 @@ Private Sub Update_Worksheet()
         Else
             gnString = Gage_Number
         End If
-        '/ Audit
+
+        '/------- Audit -------/'
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
-        ws.Cells(r, "K") = serialNumberTxt
-        'Ws.Cells(r, "AL") = Now        'Update Last edited
+        ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "L") = serialNumberTxt
         ws.Cells(r, "AK") = lblDateAdded        'Date Added
         currrentUser = Application.userName
         lastUser = currrentUser
         ws.Cells(r, "AN") = lastUser
-        Gage_Number.SetFocus
         
         '/Status/'
         statusLabel.Caption = "Status:"
@@ -167,11 +161,7 @@ Private Sub Update_Worksheet()
         
     Else
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
-        
     End If
-    
-    'Update_Button_Enable = False 'Remove ' if you want to require searching again after an update.
-    
 End Sub
 
 Sub MSG_Verify_Update()
@@ -183,9 +173,9 @@ Sub MSG_Verify_Update()
     Else
         Gage_Number = GN_Verify
     End If
-    
 End Sub
 
+'/------- Clear -------/'
 Private Sub Clear_Form()
     Gage_Number = ""
     PartNumbertxt = ""
@@ -196,10 +186,10 @@ Private Sub Clear_Form()
     lastUser = ""
 End Sub
 
+'/------- Clear Button -------/'
 Private Sub btnClear_Click()
     Update_Button_Enable = False
     Clear_Form
-    Gage_Number.SetFocus
 End Sub
 
 Sub CheckForUpdate_Click()
@@ -269,6 +259,7 @@ Private Sub btnRequireLogin_click()
     End If
 End Sub
 
+'/------- Status -------/'
 Private Sub Status()
     Dim startTime As Date
     Dim elapsedTime As Long
@@ -290,6 +281,7 @@ Private Sub btnFormat_Click()
     Unload AdminForm
     Worksheets("Format").Activate
 End Sub
+
 Private Sub btnLogout_Click()
         List_Select = "Admin"        ' Tab name
         Set ws = Sheets(List_Select)
@@ -297,4 +289,3 @@ Private Sub btnLogout_Click()
         ws.Range("B55") = "1"
         Unload AdminForm
 End Sub
-
