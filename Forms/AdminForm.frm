@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   7170
+   ClientHeight    =   7140
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   10650
@@ -91,6 +91,7 @@ Public Sub Search_Button_Click()
         Department = ws.Cells(r, "I")
         comboGageType = ws.Cells(r, "D")
         Due_Date = ws.Cells(r, "G")
+        Ownertxt = ws.Cells(r, "M")
         
         '/Status/'
         statusLabel.Caption = "Status:"
@@ -144,7 +145,7 @@ Private Sub Update_Worksheet()
             gnString = Gage_Number
         End If
 
-        '/------- Audit -------/'
+        '/------- Gage Info -------/'
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
         ws.Cells(r, "K") = Revtxt
@@ -153,6 +154,7 @@ Private Sub Update_Worksheet()
         currrentUser = Application.userName
         lastUser = currrentUser
         ws.Cells(r, "AN") = lastUser
+        ws.Cells(r, "M") = Ownertxt
         
         '/Status/'
         statusLabel.Caption = "Status:"
@@ -165,7 +167,6 @@ Private Sub Update_Worksheet()
 End Sub
 
 Sub MSG_Verify_Update()
-    
     MSG1 = MsgBox("Are you sure you want To change the Gage ID?", vbYesNo, "Verify")
     
     If MSG1 = vbYes Then
@@ -184,6 +185,7 @@ Private Sub Clear_Form()
     lblDateEdit = ""
     lblSearchedDate = ""
     lastUser = ""
+    Ownertxt = ""
 End Sub
 
 '/------- Clear Button -------/'
@@ -270,7 +272,6 @@ Private Sub Status()
     startTime = Now
     Do While elapsedTime < waitTimeInSeconds
         DoEvents 'allow the program to process any pending events
-        Application.Wait (Now + TimeValue("0:00:02"))
         elapsedTime = DateDiff("s", startTime, Now)
     Loop
         statusLabel.Caption = ""

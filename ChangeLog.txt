@@ -1,7 +1,12 @@
+'Update - 4.0.6
+' Changes to Admin Menu (Moved Logs to Audit Log tab).
+' Removed delay between actions on Admin Menu.
+' Added Input to track who owns the gage. 
+'
 'Update - 4.0.5
-' Fixed database issue with Part Rev & Serial Number Mixing
+' Fixed database issue with Part Rev & Serial Number Mixing.
 ' Fixed Application freeze while performing an action issue (This was added to prevent Gage Number overwrites/changes but this issue has also been corrected by removing GageNumber Focus.
-' Updated Menu dropbox styling
+' Updated Menu dropbox styling.
 '
 'Update - 4.0.4
 ' Added Part Rev.
