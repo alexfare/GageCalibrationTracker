@@ -92,6 +92,7 @@ Public Sub Search_Button_Click()
         comboGageType = ws.Cells(r, "D")
         Due_Date = ws.Cells(r, "G")
         Ownertxt = ws.Cells(r, "M")
+        Revtxt = ws.Cells(r, "K")
         
         '/Status/'
         statusLabel.Caption = "Status:"
@@ -155,12 +156,25 @@ Private Sub Update_Worksheet()
         lastUser = currrentUser
         ws.Cells(r, "AN") = lastUser
         ws.Cells(r, "M") = Ownertxt
+        ws.Cells(r, "K") = Revtxt
         
         '/Status/'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Updated"
         Status
         
+    Else
+        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+    End If
+End Sub
+
+Private Sub Update_Button_Log_Click()
+    If Update_Button_Enable = True Then
+        If GN_Verify = Gage_Number Then
+            Update_Worksheet
+        Else
+            MSG_Verify_Update
+        End If
     Else
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
     End If
@@ -186,6 +200,7 @@ Private Sub Clear_Form()
     lblSearchedDate = ""
     lastUser = ""
     Ownertxt = ""
+    Revtxt = ""
 End Sub
 
 '/------- Clear Button -------/'
@@ -289,4 +304,13 @@ Private Sub btnLogout_Click()
         Set Worksheet_Set = ws
         ws.Range("B55") = "1"
         Unload AdminForm
+End Sub
+
+Private Sub btnSave_click()
+    ThisWorkbook.Save
+    
+    '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Saving..."
+        Status
 End Sub

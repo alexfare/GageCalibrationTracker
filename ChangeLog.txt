@@ -1,3 +1,8 @@
+'Update - 4.0.7
+' Updated Admin Menu Button Layout
+' Added Save button to Admin Menu
+' Fixed issue with Admin Menu clearing Part Rev.
+'
 'Update - 4.0.6
 ' Changes to Admin Menu (Moved Logs to Audit Log tab).
 ' Removed delay between actions on Admin Menu.
@@ -302,8 +307,6 @@
 '
 ' Update - 3.1.1 - 08/06/2021
 ' - Fixed overwriting error
-'
-'
 '
 ' Version Control:
 ' v1.2.3
