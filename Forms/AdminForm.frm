@@ -17,7 +17,7 @@ Dim r As Long ' variable used for storing row number
 Dim Worksheet_Set ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean ' to store update enable flag after search
 Dim GN_Verify
-Dim currrentUser    As String
+Dim currentUser    As String
 Dim rlStatus As Integer
 
 Private Sub UserForm_Initialize()
@@ -152,8 +152,8 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "K") = Revtxt
         ws.Cells(r, "L") = serialNumberTxt
         ws.Cells(r, "AK") = lblDateAdded        'Date Added
-        currrentUser = Application.userName
-        lastUser = currrentUser
+        currentUser = Application.userName
+        lastUser = currentUser
         ws.Cells(r, "AN") = lastUser
         ws.Cells(r, "M") = Ownertxt
         ws.Cells(r, "K") = Revtxt

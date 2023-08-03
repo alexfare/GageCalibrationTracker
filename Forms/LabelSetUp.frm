@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} LabelSetUp 
    Caption         =   "Label Printer Set Up"
-   ClientHeight    =   3345
+   ClientHeight    =   4140
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4560
+   ClientWidth     =   4785
    OleObjectBlob   =   "LabelSetUp.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -17,14 +17,14 @@ Dim Worksheet_Set       ' variable used for selecting and storing the active wor
 
 '/Positioning /'
 Private Sub UserForm_Initialize()
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    inputSmallLabel = Ws.Range("B26")
-    inputLargeLabel = Ws.Range("B27")
+    inputSmallLabel = ws.Range("B26")
+    inputLargeLabel = ws.Range("B27")
 End Sub
 
 Private Sub UserForm_Activate()
@@ -40,16 +40,34 @@ Private Sub btnBack_click()
 End Sub
 
 Private Sub btnSubmit_Click()
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    Ws.Range("B26") = inputSmallLabel
-    Ws.Range("B27") = inputLargeLabel
+    ws.Range("B26") = inputSmallLabel
+    ws.Range("B27") = inputLargeLabel
     
-    btnSubmit.Caption = "Updated!" ' change caption of add button for confirmation
-    Application.Wait (Now + TimeValue("0:00:01")) ' Wait to avoid crash
-    btnSubmit.Caption = "Update"
+    '/Status/'
+    statusLabel.Caption = "Status:"
+    statusLabelLog.Caption = "Updating..."
+    Status
+End Sub
+
+'/------- Status -------/'
+Private Sub Status()
+    Dim startTime As Date
+    Dim elapsedTime As Long
+    Dim waitTimeInSeconds As Long
+    
+    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
+    
+    startTime = Now
+    Do While elapsedTime < waitTimeInSeconds
+        DoEvents 'allow the program to process any pending events
+        elapsedTime = DateDiff("s", startTime, Now)
+    Loop
+        statusLabel.Caption = ""
+        statusLabelLog.Caption = ""
 End Sub

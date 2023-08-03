@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} FormCustomer 
    Caption         =   "Customer Manager"
-   ClientHeight    =   3135
+   ClientHeight    =   3690
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4560
+   ClientWidth     =   5820
    OleObjectBlob   =   "FormCustomer.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -29,16 +29,16 @@ Private Sub btnBack_click()
     Unload Me
 End Sub
 Private Sub Add_Button_Click()
-    Dim Ws As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     List_Select = "Customers" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
     
-    If IsError(Application.Match(IIf(IsNumeric(Customer_Name), Val(Customer_Name), Customer_Name), Ws.Columns(1), 0)) Then
+    If IsError(Application.Match(IIf(IsNumeric(Customer_Name), Val(Customer_Name), Customer_Name), ws.Columns(1), 0)) Then
   
     Dim lLastRow As Long    ' lLastRow = variable to store the result of the row count calculation
-    lLastRow = Ws.ListObjects.Item(1).ListRows.Count
+    lLastRow = ws.ListObjects.Item(1).ListRows.Count
     r = lLastRow + 2 ' Add number for every header tab created
                 Dim cnString As String
                     If IsNumeric(Customer_Name) Then
@@ -47,32 +47,31 @@ Private Sub Add_Button_Click()
                         cnString = Customer_Name
                     End If
     
-    Ws.Cells(r, "A") = cnString
-    Ws.Cells(r, "B") = inCAddress
-    Ws.Cells(r, "C") = inCPhoneNumber
-    Ws.Cells(r, "D") = inCWebsite
+    ws.Cells(r, "A") = cnString
+    ws.Cells(r, "B") = inCAddress
+    ws.Cells(r, "C") = inCPhoneNumber
+    ws.Cells(r, "D") = inCWebsite
     
-    Add_Button.Caption = "Added!" ' change caption of add button for confirmation
-    Application.Wait (Now + TimeValue("0:00:02")) ' Wait to avoid crash
-    Add_Button.Caption = "Add"
-    'Clear_Form
-    Customer_Name.SetFocus
+    '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Adding..."
+        Status
     
     '/Add to Gage Number count/'
     Dim AddCustomer As Integer
 
     List_Select = "Admin" ' Tab name
-    Set Ws = Sheets(List_Select)
-    Set Worksheet_Set = Ws
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
 
-     AddCustomer = Ws.Range("B53")
+     AddCustomer = ws.Range("B53")
      AddCustomerPlusOne = AddCustomer + 1
-     Ws.Range("B53") = AddCustomerPlusOne
+     ws.Range("B53") = AddCustomerPlusOne
      
      '/Prevent Issues in the future, Call back the main page/'
      List_Select = "Customers" ' Tab name
-     Set Ws = Sheets(List_Select)
-     Set Worksheet_Set = Ws
+     Set ws = Sheets(List_Select)
+     Set Worksheet_Set = ws
     Else
         'ErrMsg_Duplicate
     End If
@@ -82,17 +81,14 @@ End Sub
 Private Sub btnClear_Click()
 Update_Button_Enable = False
 Clear_Form
-Customer_Number.SetFocus
 End Sub
 
 Sub ErrMsg()
 MsgBox ("Customer Not Found"), , "Not Found"
-Customer_Number.SetFocus
 End Sub
 
 Sub ErrMsg_Duplicate()
 MsgBox ("Customer already added"), , "Duplicate"
-Customer_Number.SetFocus
 End Sub
 
 Private Sub Clear_Form()
@@ -102,3 +98,19 @@ Private Sub Clear_Form()
         inCWebsite = ""
 End Sub
 
+'/------- Status -------/'
+Private Sub Status()
+    Dim startTime As Date
+    Dim elapsedTime As Long
+    Dim waitTimeInSeconds As Long
+    
+    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
+    
+    startTime = Now
+    Do While elapsedTime < waitTimeInSeconds
+        DoEvents 'allow the program to process any pending events
+        elapsedTime = DateDiff("s", startTime, Now)
+    Loop
+        statusLabel.Caption = ""
+        statusLabelLog.Caption = ""
+End Sub

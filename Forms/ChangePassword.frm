@@ -58,7 +58,6 @@ Public Sub Search_Button_Click()
         statusLabelLog.Caption = "Searching..."
         Status
     End If
-    inputUser.SetFocus
 End Sub
 
 Private Sub btnUpdate_Click()
@@ -75,12 +74,10 @@ End Sub
 
 Sub ErrMsg()
     MsgBox ("Username Not Found"), , "Not Found"
-    inputUser.SetFocus
 End Sub
 
 Sub ErrMsg_Duplicate()
     MsgBox ("Username already in use"), , "Duplicate"
-    inputUser.SetFocus
 End Sub
 
 Private Sub Clear_Form()
@@ -106,16 +103,14 @@ Private Sub Update_Worksheet()
         
         'Password to be converted
         sIn = s
-        sSecret = ""        'secret key for StrToSHA512Salt only
+        sSecret = ""
         
-        'b64 = False   'output hex
         b64 = True        'output base-64
         
         sH = SHA512(sIn, b64)
         
         'message box and immediate window outputs
         Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
-        ' MsgBox sH & vbNewLine & Len(sH) & " characters in length"
         savePass = sH
         '/ Hash /'
         
@@ -129,11 +124,7 @@ Private Sub Update_Worksheet()
         
     Else
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
-        
     End If
-    
-    'btnUpdate_Enable = False 'Remove ' if you want to require searching again after an update.
-    
 End Sub
 
 Sub MSG_Verify_Update()

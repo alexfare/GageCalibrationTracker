@@ -25,7 +25,7 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
-Dim currrentUser As String
+Dim currentUser As String
 
 '/Start up script /'
 Private Sub UserForm_Initialize()
@@ -104,8 +104,8 @@ Private Sub Add_Button_Click()
         ws.Cells(r, "AK") = Now
         
         '/ Audit Log
-        currrentUser = Application.userName
-        lastUser = currrentUser
+        currentUser = Application.userName
+        lastUser = currentUser
         ws.Cells(r, "AN") = lastUser
         
         Clear_Form
@@ -263,8 +263,8 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "AL") = Now        'Update Last edited
         
         '/ Audit Log
-        currrentUser = Application.userName
-        lastUser = currrentUser
+        currentUser = Application.userName
+        lastUser = currentUser
         ws.Cells(r, "AN") = lastUser
         
         If Option1_6 = True Then        ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
