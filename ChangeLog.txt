@@ -1,3 +1,8 @@
+'Update - 4.1.2
+' Removed some startup scripts (Causing more crashing issues).
+' Removed Require Login Button - Admin Panel.
+' Removed Ability to Auto open Menu - Admin Panel.
+'
 'Update - 4.1.1
 ' Fixed startup crash caused by a Removed Feature in excel.
 ' Menu no longer opens automatically on startup. (By popular demand due to crashing issues, Will add this feature back as an option).

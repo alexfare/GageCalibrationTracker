@@ -22,13 +22,4 @@ Private Sub Workbook_Open()
      ws.Range("B47") = WorkBookPlusOne
      ws.Range("B52") = "" 'Clears logged in user.
      ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
-     
-     Dim requirelogin As Integer
-     requirelogin = ws.Range("B59")
-     If requirelogin = "1" Then
-        Worksheets("Login").Activate
-        UserLogin.Show
-     Else
-        Worksheets("CreatedByAlexFare").Activate
-    End If
 End Sub

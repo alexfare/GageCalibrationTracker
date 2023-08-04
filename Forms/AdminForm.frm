@@ -262,23 +262,6 @@ Private Sub btnCompanyProfile_Click()
     CompanyProfile.Show
 End Sub
 
-'/ Settings Tab /'
-Private Sub btnRequireLogin_click()
-    List_Select = "Admin"        ' Tab name
-    Set ws = Sheets(List_Select)
-    Set Worksheet_Set = ws
-    rlStatus = ws.Range("B59")
-    
-    If rlStatus = "1" Then
-        ws.Range("B59") = "2"
-        btnRequireLogin.Caption = "Off"
-    End If
-    If rlStatus = "2" Then
-        ws.Range("B59") = "1"
-        btnRequireLogin.Caption = "On"
-    End If
-End Sub
-
 '/------- Status -------/'
 Private Sub Status()
     Dim startTime As Date
