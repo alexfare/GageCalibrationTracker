@@ -1,3 +1,10 @@
+'Update - 4.1.1
+' Fixed startup crash caused by a Removed Feature in excel.
+' Menu no longer opens automatically on startup. (By popular demand due to crashing issues, Will add this feature back as an option).
+' Removed Dev mode.
+' Removed auto fullscreening.
+' Updated Admin Panel Layout. 
+'
 'Update - 4.1.0
 ' Fixed typos & some formatting in code.
 ' Updated CompanyProfile tab. (Updated format & Updated Status)

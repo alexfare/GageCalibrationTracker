@@ -30,19 +30,5 @@ Private Sub Workbook_Open()
         UserLogin.Show
      Else
         Worksheets("CreatedByAlexFare").Activate
-        showMenu
     End If
-
-    Dim skipDevMode As Integer
-    skipDevMode = ws.Range("B61")
-    If skipDevMode = "1" Then
-        Application.DisplayFullScreen = False
-    Else
-        Application.DisplayFullScreen = True
-    End If
-
-End Sub
-
-Sub showMenu()
-    Menu.Show
 End Sub
