@@ -239,17 +239,13 @@ Private Sub btnDevMode_click()
     MsgBox ("DevMode has been removed as it is no longer needed.")
 End Sub
 
-Private Sub btnStartupMenu_Click()
-    MsgBox ("Coming Soon!")
-End Sub
-
 Private Sub btnEditLists_Click()
     Unload AdminForm
     Worksheets("Lists").Activate
 End Sub
 
 Private Sub btnAbout_Click()
-    MsgBox "Code protection password Is GageTracker2022"
+    MsgBox "Gage Calibration Tracker, a simple yet sophisticated gage calibration management software solution designed to simplify the task of maintaining tool calibration records. This user-friendly software is seamlessly integrated with Microsoft Excel, offering a highly efficient and free-running experience."
 End Sub
 
 Private Sub btnCustomers_Click()
@@ -280,8 +276,7 @@ Private Sub Status()
 End Sub
 
 Private Sub btnFormat_Click()
-    Unload AdminForm
-    Worksheets("Format").Activate
+    Format_Form.Show
 End Sub
 
 Private Sub btnLogout_Click()

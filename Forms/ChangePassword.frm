@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ChangePassword 
    Caption         =   "Change Password"
-   ClientHeight    =   2925
+   ClientHeight    =   2595
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3615
+   ClientWidth     =   4560
    OleObjectBlob   =   "ChangePassword.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -36,7 +36,6 @@ Public Sub Search_Button_Click()
     ' clear previous data from form, except "Gage Number"
     ' --------------------------------------------------------
     inputPass = ""
-    Descriptiontxt = ""
     ' ---------------------------------------------------------
     
     Dim ws As Worksheet
@@ -68,16 +67,16 @@ Private Sub btnUpdate_Click()
             MSG_Verify_Update
         End If
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        MsgBox ("Must search for user before updating password."), , "Nothing To Update"
     End If
 End Sub
 
 Sub ErrMsg()
-    MsgBox ("Username Not Found"), , "Not Found"
+    MsgBox ("Username not found."), , "Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
-    MsgBox ("Username already in use"), , "Duplicate"
+    MsgBox ("Username already in use."), , "Duplicate"
 End Sub
 
 Private Sub Clear_Form()
@@ -123,12 +122,12 @@ Private Sub Update_Worksheet()
         Status
         
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        MsgBox ("Must search for user before updating password."), , "Nothing To Update"
     End If
 End Sub
 
 Sub MSG_Verify_Update()
-    MSG1 = MsgBox("Are you sure you want To change the Username?", vbYesNo, "Verify")
+    MSG1 = MsgBox("Are you sure you want to change the Username?", vbYesNo, "Verify")
     If MSG1 = vbYes Then
         Update_Worksheet
     Else
