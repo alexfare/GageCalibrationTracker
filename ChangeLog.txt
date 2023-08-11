@@ -1,3 +1,16 @@
+'Update - 4.1.4
+' Fixed Due Date Format on Menu.
+' Updated back button on Admin Panel to reopen Main Menu.
+' Fixed Admin stealth update showing what admin last updated the gage.
+' Removed Dev Mode button from Admin Panel.
+' Condensed tabs in Admin Panel.
+' Small layout change to Gage R&R form.
+' Fixed setFocus errors in Gage R&R.
+' Added Acceptable, Not Acceptable scale to Gage R&R.
+' Fixed setFocus error in Main Menu.
+' Removed unused code in Main Menu.
+' Fixed Issue causing log outs.
+'
 'Update - 4.1.3
 ' Updated Format Menu.
 ' Updated AdminPanel layout.

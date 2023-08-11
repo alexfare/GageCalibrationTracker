@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   7245
+   ClientHeight    =   6915
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   10695
@@ -152,9 +152,6 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "K") = Revtxt
         ws.Cells(r, "L") = serialNumberTxt
         ws.Cells(r, "AK") = lblDateAdded        'Date Added
-        currentUser = Application.userName
-        lastUser = currentUser
-        ws.Cells(r, "AN") = lastUser
         ws.Cells(r, "M") = Ownertxt
         ws.Cells(r, "K") = Revtxt
         
@@ -217,12 +214,7 @@ End Sub
 
 Private Sub btnClose_Click()
     Unload AdminForm
-    
-    '/Save Logged In User For The Session /'
-    List_Select = "Admin"        ' Tab name
-    Set ws = Sheets(List_Select)
-    Set Worksheet_Set = ws
-    ws.Range("B55") = "2"       ' 1 = Required | 2 = Not Required
+    'Menu.Show
 End Sub
 
 Private Sub btnCreateAccount_click()
@@ -233,10 +225,6 @@ End Sub
 Private Sub btnUpdateUser_click()
     Unload AdminForm
     ChangePassword.Show
-End Sub
-
-Private Sub btnDevMode_click()
-    MsgBox ("DevMode has been removed as it is no longer needed.")
 End Sub
 
 Private Sub btnEditLists_Click()
@@ -295,3 +283,4 @@ Private Sub btnSave_click()
         statusLabelLog.Caption = "Saving..."
         Status
 End Sub
+

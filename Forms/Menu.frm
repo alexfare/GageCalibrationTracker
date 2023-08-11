@@ -314,7 +314,6 @@ End Sub
 '/------- Error Handling -------/'
 Sub ErrMsg()
     MsgBox ("Gage Number Not Found"), , "Not Found"
-    Gage_Number.SetFocus
 End Sub
 
 Sub ErrMsg_Duplicate()
@@ -370,13 +369,6 @@ Private Sub btnSave_click()
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Saving..."
         Status
-End Sub
-
-Private Sub btnLogout_Click()
-    Unload Menu
-    Worksheets("Login").Activate
-    LoginForm.Show
-    ThisWorkbook.Save
 End Sub
 
 '/------- Admin Panel - Bring up admin menu to edit audit dates -------/'
@@ -477,4 +469,5 @@ Else
     MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
 End If
 End Sub
+
 

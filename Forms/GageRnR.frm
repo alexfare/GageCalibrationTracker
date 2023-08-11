@@ -26,11 +26,6 @@ Private Sub UserForm_Initialize()
     List_Select = "GageRnR"        ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
-    
-    'Dim rng         As Range
-    'For Each rng In ws.Range("A3:A50")
-        'Me.GageRnR_List.AddItem rng.Value
-    'Next rng
 End Sub
 
 Private Sub UserForm_Activate()
@@ -135,7 +130,6 @@ Private Sub Add_Button_Click()
         ws.Cells(r, "AY") = A3T3P5
         
         Clear_Form
-        Gage_Number.SetFocus
         
         '/Add to Gage Number count/'
         Dim AddGageRnR As Integer
@@ -375,6 +369,20 @@ If Not IsError(pScore) Then
 End If
 On Error GoTo 0 ' Disable error handling
 
+'/ Score
+Dim scoreCal As Double
+scoreCal = calRR * 100
+
+If scoreCal <= 10 Then
+    txtGageRRStatus = "Acceptable!"
+End If
+If scoreCal > 10 Then
+    txtGageRRStatus = "Acceptable, But Needs Work!"
+End If
+If scoreCal > 29 Then
+    txtGageRRStatus = "Not Acceptable!"
+End If
+    
 '/ Status
 On Error Resume Next ' Ignore errors and continue execution
 statusLabel.Caption = "Status:"
@@ -393,18 +401,15 @@ Else
     MsgBox "Worksheet 'GageRnR' not found!"
 End If
 On Error GoTo 0 ' Disable error handling
-    Gage_Number.SetFocus
 End If
 End Sub
 
 Sub ErrMsg()
     MsgBox ("Gage Number Not Found"), , "Not Found"
-    Gage_Number.SetFocus
 End Sub
 
 Sub ErrMsg_Duplicate()
     MsgBox ("Gage number already in use"), , "Duplicate"
-    Gage_Number.SetFocus
 End Sub
 
 Private Sub Update_Button_Click()
@@ -508,15 +513,9 @@ Private Sub Update_Worksheet()
         statusLabelLog.Caption = "Updating..."
         Status
         Search_Button_Click
-        Gage_Number.SetFocus
-        
     Else
         MsgBox ("Must search For entry before updating"), , "Nothing To Update"
-        
     End If
-    
-    'Update_Button_Enable = False 'Remove ' if you want to require searching again after an update.
-    
 End Sub
 
 Sub MSG_Verify_Update()
@@ -528,7 +527,6 @@ Sub MSG_Verify_Update()
     Else
         Gage_Number = GN_Verify
     End If
-    
 End Sub
 
 Private Sub Clear_Form()
@@ -619,13 +617,13 @@ Private Sub Clear_Form()
     calAV = ""
     calRR = ""
     calScore = ""
+    txtGageRRStatus = ""
     
 End Sub
 
 Private Sub btnClear_Click()
     Update_Button_Enable = False
     Clear_Form
-    Gage_Number.SetFocus
 End Sub
 
 Private Sub btnClose_Click()
