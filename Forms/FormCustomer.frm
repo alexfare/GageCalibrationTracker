@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} FormCustomer 
    Caption         =   "Customer Manager"
-   ClientHeight    =   3690
+   ClientHeight    =   3555
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   5820
+   ClientWidth     =   5220
    OleObjectBlob   =   "FormCustomer.frx":0000
    StartUpPosition =   1  'CenterOwner
 End

@@ -83,20 +83,24 @@ Public Sub Search_Button_Click()
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
         PartNumbertxt = ws.Cells(r, "B")
+        Descriptiontxt = ws.Cells(r, "C")
+        comboGageType = ws.Cells(r, "D")
+        Customer = ws.Cells(r, "E")
+        Insp_Date = ws.Cells(r, "F")
+        Due_Date = ws.Cells(r, "G")
+        Department = ws.Cells(r, "I")
+        Comments = ws.Cells(r, "J")
+        Revtxt = ws.Cells(r, "K")
         lblDateAdded = ws.Cells(r, "AK")
         lblDateEdit = ws.Cells(r, "AL")
         lblSearchedDate = ws.Cells(r, "AM")
         lastUser = ws.Cells(r, "AN")
-        Insp_Date = ws.Cells(r, "F")
-        Department = ws.Cells(r, "I")
-        comboGageType = ws.Cells(r, "D")
-        Due_Date = ws.Cells(r, "G")
         Ownertxt = ws.Cells(r, "M")
-        Revtxt = ws.Cells(r, "K")
+        comboStatus = ws.Cells(r, "Z")
         
         '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Searching"
+        statusLabelLog.Caption = "Searching..."
         Status
         
         '/ Serial Number /'
@@ -149,15 +153,22 @@ Private Sub Update_Worksheet()
         '/------- Gage Info -------/'
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
+        ws.Cells(r, "C") = Descriptiontxt
+        ws.Cells(r, "D") = comboGageType
+        ws.Cells(r, "E") = Customer
+        ws.Cells(r, "I") = Department
         ws.Cells(r, "K") = Revtxt
         ws.Cells(r, "L") = serialNumberTxt
         ws.Cells(r, "AK") = lblDateAdded        'Date Added
+        ws.Cells(r, "AL") = lblDateEdit
+        ws.Cells(r, "AM") = lblSearchedDate
+        ws.Cells(r, "AN") = lastUser
         ws.Cells(r, "M") = Ownertxt
-        ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "Z") = comboStatus
         
         '/Status/'
         statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Updated"
+        statusLabelLog.Caption = "Updating..."
         Status
         
     Else
@@ -198,6 +209,12 @@ Private Sub Clear_Form()
     lastUser = ""
     Ownertxt = ""
     Revtxt = ""
+    Descriptiontxt = ""
+    comboGageType = ""
+    Customer = ""
+    Department = ""
+    Comments = ""
+    comboStatus = ""
 End Sub
 
 '/------- Clear Button -------/'

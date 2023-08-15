@@ -25,7 +25,7 @@ Private Sub btnBack_click()
 End Sub
     
 Sub btnFormatConfirm_Click()
-    Application.Run "Clear_All.Clear_Run"
+    Clear_All.Clear_Run
     Unload Format_Form
     Unload AdminForm
 End Sub

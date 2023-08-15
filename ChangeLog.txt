@@ -1,3 +1,9 @@
+'Update - 4.1.5
+' Added version display to main menu.
+' Updated Customer Profile layout.
+' Fixed Formatting Error.
+' Updated Admin Panel to include more Gage Info.
+'
 'Update - 4.1.4
 ' Fixed Due Date Format on Menu.
 ' Updated back button on Admin Panel to reopen Main Menu.
