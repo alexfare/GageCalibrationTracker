@@ -71,7 +71,6 @@ Public Sub Search_Button_Click()
     ' ---------------------------------------------------------
     
     Dim ws As Worksheet
-    
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
@@ -231,7 +230,6 @@ End Sub
 
 Private Sub btnClose_Click()
     Unload AdminForm
-    'Menu.Show
 End Sub
 
 Private Sub btnCreateAccount_click()
@@ -269,8 +267,7 @@ Private Sub Status()
     Dim elapsedTime As Long
     Dim waitTimeInSeconds As Long
     
-    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
-    
+    waitTimeInSeconds = 2
     startTime = Now
     Do While elapsedTime < waitTimeInSeconds
         DoEvents 'allow the program to process any pending events

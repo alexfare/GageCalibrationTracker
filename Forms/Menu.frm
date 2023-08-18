@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   9705.001
+   ClientHeight    =   9675.001
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10185
+   ClientWidth     =   10230
    OleObjectBlob   =   "Menu.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -50,6 +50,7 @@ Private Sub UserForm_Initialize()
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
+    vDisplay = ws.Range("Z1")
 End Sub
 
 Private Sub UserForm_Activate()
@@ -419,8 +420,7 @@ Private Sub Status()
     Dim elapsedTime As Long
     Dim waitTimeInSeconds As Long
     
-    waitTimeInSeconds = 2 'change this to the desired wait time in seconds
-    
+    waitTimeInSeconds = 2
     startTime = Now
     Do While elapsedTime < waitTimeInSeconds
         DoEvents 'allow the program to process any pending events
@@ -469,5 +469,4 @@ Else
     MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
 End If
 End Sub
-
 
