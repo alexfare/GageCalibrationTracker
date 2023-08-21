@@ -1,3 +1,10 @@
+'Update - 4.1.7
+' Minor updates to Customer form code.
+' Minor layout updates to Admin Panel.
+' Added version display to Admin Panel.
+' Fixed crashed that happened if you tried to login without entering any information.
+' Fixed Error Message when failing to login. (Message sligtly different depending if password or username was wrong.)
+'
 'Update - 4.1.6
 ' Updated Menu Layout/Format.
 ' Updated Change Password Form Layout.

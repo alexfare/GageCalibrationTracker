@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   6915
+   ClientHeight    =   6540
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   10695
+   ClientWidth     =   10305
    OleObjectBlob   =   "AdminForm.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -42,7 +42,7 @@ Private Sub UserForm_Initialize()
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
-    
+    vDisplay = ws.Range("Z1")
 End Sub
 
 Private Sub UserForm_Activate()

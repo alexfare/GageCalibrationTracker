@@ -10,7 +10,6 @@ Attribute VB_Exposed = True
 Private Sub Workbook_Open()
     Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
     Dim WorkBookCount As Integer
-
     Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
