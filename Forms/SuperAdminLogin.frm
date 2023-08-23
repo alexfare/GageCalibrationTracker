@@ -1,14 +1,14 @@
 VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} LoginForm 
-   Caption         =   "Admin Login"
-   ClientHeight    =   2025
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} SuperAdminLogin 
+   Caption         =   "Super Admin Login"
+   ClientHeight    =   1335
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3825
-   OleObjectBlob   =   "LoginForm.frx":0000
-   StartUpPosition =   2  'CenterScreen
+   ClientWidth     =   4560
+   OleObjectBlob   =   "SuperAdminLogin.frx":0000
+   StartUpPosition =   1  'CenterOwner
 End
-Attribute VB_Name = "LoginForm"
+Attribute VB_Name = "SuperAdminLogin"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -30,7 +30,7 @@ End Sub
 
 Private Sub btnLogin_Click()
     ' Check if the user provided input
-    If inputUser <> "" And inputPass <> "" Then
+    If inputPass <> "" Then
     Login_Sub
     Else
         Failed_Login
@@ -59,24 +59,12 @@ Private Sub Login_Sub()
     Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
     
     savePass = sH
-    '/ Hash /'
-    
-    'User set up
-    If inputUser.Value = "" Then
-        MsgBox "User Cannot be Blank.", vbInformation, ""
-        Exit Sub
-    End If
-    
-    'Password set up
-    If inputPass.Value = "" Then
-        MsgBox "Password Cannot be Blank!", vbInformation, ""
-        Exit Sub
-    End If
+    '/ End Hash /'
     
     Dim inputUsername As String
     Dim Password As Variant
     
-    inputUsername = inputUser.Value
+    inputUsername = "SuperAdmin"
     
     Dim searchValue As String
     Dim lastRow As Long
@@ -114,32 +102,17 @@ Private Sub Login_Sub()
     End If
     
     If Password = PassCompare Then
-        Unload LoginForm
-        Sheets("CreatedByAlexFare").Activate
-        AdminForm.Show
-        
-        '/Add to the login count /'
-        Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
-        Dim LoginCount As Integer
-        
-        Dim List_Select
-        List_Select = "Admin"        ' Tab name
-        Set ws = Sheets(List_Select)
-        Set Worksheet_Set = ws
-        
-        LoginCount = ws.Range("B48")
-        LoginCountPlusOne = LoginCount + 1
-        ws.Range("B48") = LoginCountPlusOne
-        ws.Range("B52") = inputUsername
-        ws.Range("B55") = "2"
+        Unload SuperAdminLogin
+        SuperAdminMenu.Show
     End If
 End Sub
 
 Private Sub btnBack_click()
-    Unload LoginForm
-    Menu.Show
+    Unload SuperAdminLogin
+    AdminForm.Show
 End Sub
 
 Private Sub Failed_Login()
     MsgBox "Login Failed, Wrong Username Or Password.", vbInformation, "Failed Login"
 End Sub
+

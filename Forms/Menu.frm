@@ -60,8 +60,17 @@ Private Sub UserForm_Activate()
 '/End Positioning /'
 End Sub
 
-'/------- Add Gage -------/'
 Private Sub Add_Button_Click()
+    ' Check if the user provided input
+    If Gage_Number <> "" Then
+    AddNewGage
+    Else
+        ErrMsg_NoGageID
+    End If
+End Sub
+
+'/------- Add Gage -------/'
+Private Sub AddNewGage()
     Dim ws As Worksheet
     Dim List_Select
     List_Select = "CreatedByAlexFare"        ' Tab name
@@ -142,11 +151,6 @@ Private Sub btnClear_Click()
     Clear_Form
 End Sub
 
-'/------- Done Button -------/'
-Private Sub Done_Button_Click()
-    Unload Menu
-End Sub
-
 '/------- Press Enter -------/'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
@@ -173,7 +177,7 @@ Public Sub Search_Button_Click()
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         Update_Button_Enable = False
-        ErrMsg
+        ErrMsg_NoGageID
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
@@ -214,7 +218,6 @@ Public Sub Search_Button_Click()
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Searching..."
         Status
-        
     End If
 End Sub
 
@@ -227,7 +230,7 @@ Private Sub Update_Button_Click()
             MSG_Verify_Update
         End If
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        ErrMsg_Search
     End If
 End Sub
 
@@ -302,23 +305,14 @@ Private Sub Update_Worksheet()
     '/ End Audit Log /'
     
     '/Status/'
-        statusLabel.Caption = "Status:"
-        statusLabelLog.Caption = "Updating..."
-        Status
+    statusLabel.Caption = "Status:"
+    statusLabelLog.Caption = "Updating..."
+    Status
         
     Search_Button_Click
 Else
-    MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+    ErrMsg_Search
 End If
-End Sub
-
-'/------- Error Handling -------/'
-Sub ErrMsg()
-    MsgBox ("Gage Number Not Found"), , "Not Found"
-End Sub
-
-Sub ErrMsg_Duplicate()
-    MsgBox ("Gage number already in use"), , "Duplicate"
 End Sub
 
 '/------- Clear Form -------/'
@@ -353,7 +347,7 @@ End Sub
 
 Sub MSG_Verify_Update()
     
-    MSG1 = MsgBox("Are you sure you want To change the Gage ID?", vbYesNo, "Verify")
+    MSG1 = MsgBox("Are you sure you want to change the Gage ID?", vbYesNo, "Verify")
     
     If MSG1 = vbYes Then
         Update_Worksheet
@@ -437,7 +431,7 @@ If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
     Due_Date = Date_Due_6mos
 Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+    ErrMsg_InvalidDate
 End If
 End Sub
 
@@ -447,7 +441,7 @@ If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
     Due_Date = Date_Due_1yr
 Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+    ErrMsg_InvalidDate
 End If
 End Sub
 
@@ -457,7 +451,7 @@ If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
     Due_Date = Date_Due_2yr
 Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+    ErrMsg_InvalidDate
 End If
 End Sub
 
@@ -466,7 +460,28 @@ If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due = Format(Due_Date, "m/d/yyyy")
     Due_Date = Date_Due
 Else
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."
+    ErrMsg_InvalidDate
 End If
+End Sub
+
+'/------- Error Handling -------/'
+Sub ErrMsg()
+    MsgBox ("Gage Number Not Found."), vbInformation, "Not Found"
+End Sub
+
+Sub ErrMsg_Duplicate()
+    MsgBox ("Gage number already in use."), vbInformation, "Duplicate"
+End Sub
+
+Sub ErrMsg_InvalidDate()
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format.", vbInformation, "Error"
+End Sub
+
+Sub ErrMsg_NoGageID()
+    MsgBox "Please Provide A Gage Name.", vbInformation, "Error"
+End Sub
+
+Sub ErrMsg_Search()
+    MsgBox ("Must search for entry before updating."), vbInformation, "Error"
 End Sub
 

@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   6540
+   ClientHeight    =   6510
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   10305
+   ClientWidth     =   11655
    OleObjectBlob   =   "AdminForm.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -298,3 +298,14 @@ Private Sub btnSave_click()
         Status
 End Sub
 
+Private Sub btnReleaseNotes_click()
+    Dim url         As String
+    url = "https://github.com/alexfare/GageCalibrationTracker/releases/tag/v4.1.7"
+    ActiveWorkbook.FollowHyperlink url
+End Sub
+
+Private Sub SuperAdminBTN_click()
+    Unload AdminForm
+    SuperAdminLogin.Show
+    'MsgBox "Coming Soon!"
+End Sub

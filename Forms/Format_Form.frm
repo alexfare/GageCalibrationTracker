@@ -24,8 +24,19 @@ Private Sub btnBack_click()
     Unload Format_Form
 End Sub
     
-Sub btnFormatConfirm_Click()
+Sub FormatConfirmed()
     Clear_All.Clear_Run
     Unload Format_Form
     Unload AdminForm
+End Sub
+
+Sub btnFormatConfirm_Click()
+
+    MSG1 = MsgBox("WARNING: THERE IS NO RETURN ONCE THE WORKBOOK IS SAVED!!", vbYesNo, "WARNING")
+    
+    If MSG1 = vbYes Then
+        FormatConfirmed
+    Else
+        Unload Format_Form
+    End If
 End Sub
