@@ -47,53 +47,17 @@ Private Sub Login_Sub()
     'Password to be converted
     sIn = s
     sSecret = "G4g3Tr4ck3r"        'secret key for StrToSHA512Salt only
-    
-    'select         as required
-    'b64 = False   'output hex
+
     b64 = True        'output base-64
     
     sH = SHA512(sIn, b64)
-    'sH = StrToSHA512Salt(sIn, sSecretKey, b64) 'Add salt to the encryption
-    
-    'message box and immediate window outputs
-    Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
     
     savePass = sH
     '/ End Hash /'
     
-    Dim inputUsername As String
     Dim Password As Variant
-    
-    inputUsername = "SuperAdmin"
-    
-    Dim searchValue As String
-    Dim lastRow As Long
-    Dim i As Long
-    Dim ws As Worksheet
-    Dim une As Boolean
-    
-    'Set the worksheet to search in
-    Set ws = ThisWorkbook.Worksheets("Credentials")
-    une = False
-    
-    'Set the value to search for
-    searchValue = inputUsername
-    
-    'Get the last row in Column A
-    lastRow = ws.Cells(Rows.Count, "A").End(xlUp).Row
-    
-    'Loop through each cell in Column A and check if the value matches the search value
-    For i = 1 To lastRow
-        If ws.Cells(i, "A").Value = searchValue Then
-            une = True
-        End If
-    Next i
-    If une = False Then
-        Failed_Login
-    Exit Sub
-    End If
-        
-    Password = Application.WorksheetFunction.VLookup(inputUsername, Sheets("Credentials").Range("A:B"), 2, 0)
+
+    Password = "5a6WKkpPucxU75yOvrlND6xY549SrkucxhEg+SukLGzG4pdyY5I1X+51fP5BpkMC1RwXMRw9VZTFXXpXcWeemQ=="
     PassCompare = savePass
     
     If Password <> PassCompare Then

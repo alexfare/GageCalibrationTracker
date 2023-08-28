@@ -167,14 +167,13 @@ End Sub
 Public Sub Search_Button_Click()
     
     ' clear previous data from form, except "Gage Number"
-    ' --------------------------------------------------------
     Gage_Number_Save = Gage_Number
     Clear_Form
     Gage_Number = Gage_Number_Save
+    ' --------------------------------------------------------
+    
+    
     '/ Calculation --------------------------------------------
-    
-    ' ---------------------------------------------------------
-    
     Dim ws          As Worksheet
     
     List_Select = "GageRnR"
@@ -340,8 +339,8 @@ Set rng = ws.Range("C3:E17")
 On Error Resume Next ' Ignore errors and continue execution
 For Each cell In rng
     If IsNumeric(cell.Value) Then
-        cell.Value = Val(cell.Value)
-    End If
+    cell.Value = CDbl(cell.Value) ' Convert to Double or appropriate numeric type
+End If
 Next cell
 On Error GoTo 0 ' Disable error handling
 

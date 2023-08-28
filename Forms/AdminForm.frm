@@ -300,12 +300,64 @@ End Sub
 
 Private Sub btnReleaseNotes_click()
     Dim url         As String
-    url = "https://github.com/alexfare/GageCalibrationTracker/releases/tag/v4.1.7"
+    url = "https://github.com/alexfare/GageCalibrationTracker/releases/latest"
     ActiveWorkbook.FollowHyperlink url
 End Sub
 
 Private Sub SuperAdminBTN_click()
     Unload AdminForm
     SuperAdminLogin.Show
-    'MsgBox "Coming Soon!"
 End Sub
+
+Private Sub btnExport_click()
+    ExportGCTData
+End Sub
+Sub ExportGCTData()
+    Dim FilePath As Variant
+    Dim ws As Worksheet
+    Dim defaultFileName As String
+    
+    ' Set the worksheet to export data from
+    Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
+    
+    ' Generate default file name with "GageTracker" and today's date
+    defaultFileName = "GageTracker_" & Format(Date, "yyyy-mm-dd") & ".csv"
+    
+    ' Show the Save As dialog with the default file name
+    FilePath = Application.GetSaveAsFilename(InitialFileName:=defaultFileName, FileFilter:="CSV Files (*.csv), *.csv")
+    
+    ' Check if the user selected a file
+    If FilePath <> "False" Then
+        ' Export data to CSV format
+        ws.SaveAs FilePath, xlCSV
+    End If
+End Sub
+Private Sub btnImport_click()
+    MsgBox "Coming Soon"
+End Sub
+
+Sub ImportDataWithFileDialog()
+    Dim FilePath As Variant
+    Dim ws As Worksheet
+    
+    ' Set the worksheet to import data into
+    Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
+    
+    ' Show the Open dialog to choose the import file
+    FilePath = Application.GetOpenFilename(FileFilter:="CSV Files (*.csv), *.csv")
+    
+    ' Check if the user selected a file
+    If FilePath <> "False" Then
+        ' Clear existing data in the worksheet
+        ws.Cells.Clear
+        
+        ' Import data from CSV file
+        With ws.QueryTables.Add(Connection:="TEXT;" & FilePath, Destination:=ws.Range("A1"))
+            .TextFileParseType = xlDelimited
+            .TextFileCommaDelimiter = True ' Change to appropriate delimiter if needed
+            .TextFileColumnDataTypes = Array(1) ' Use Array(1, 2, 3, ...) for different data types
+            .Refresh
+        End With
+    End If
+End Sub
+

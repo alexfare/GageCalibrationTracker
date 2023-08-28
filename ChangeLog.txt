@@ -1,3 +1,13 @@
+'Update - 4.2.1
+' Fixed SuperAdminMenu to default to typing.
+' Fixed SuperAdminMenu Password being able to be changed by any Admin.
+' Fixed Release Notes link.
+' Fixed Gage RnR Calculation being editable.
+' Added Export to Admin Panel.
+' Updated how GageRnR Handles cell value.
+' Updated Menu Layout. (Removing labels under buttons, Hover over the button for the label.)
+' Removed more unused forms.
+'
 'Update - 4.2.0
 ' Fixed ReportIssue requiring Email.
 ' Fixed Adding blank Gage Name no longer creates new gages.
