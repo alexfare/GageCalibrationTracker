@@ -1,3 +1,16 @@
+'Update - 4.2.2
+' Updated Menu Layout. (Brought back the labels upon request).
+' Updated SuperAdminMenu button captions.
+' Updated CreateAccount layout.
+' Updated LabelSetup layout.
+' Updated LoginForm layout.
+' Updated CompanyProfile layout.
+' Updated Import Feature - This is a WIP and has a lot of issues. Use at own risk.
+' Added Protection password back. (Due to requests to prevent operators from editing code).
+' Fixed CreateAccount error caused by setfocus code.
+' Fixed Import/Export button captions.
+' Fixed Customer Profile button caption.
+'
 'Update - 4.2.1
 ' Fixed SuperAdminMenu to default to typing.
 ' Fixed SuperAdminMenu Password being able to be changed by any Admin.

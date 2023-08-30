@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} CreateAccount 
    Caption         =   "Create Account"
-   ClientHeight    =   5610
+   ClientHeight    =   6375
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   5175
+   ClientWidth     =   5370
    OleObjectBlob   =   "CreateAccount.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -56,9 +56,7 @@ Private Sub btnCreate_Click()
         
         sH = SHA512(sIn, b64)
         
-        'message box and immediate window outputs
         Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
-        ' MsgBox sH & vbNewLine & Len(sH) & " characters in length"
         savePass = sH
         '/ Hash /'
         
@@ -69,11 +67,6 @@ Private Sub btnCreate_Click()
         ws.Cells(r, "E") = userAddress
         ws.Cells(r, "F") = userPosition
         ws.Cells(r, "G") = userEmail
-        
-        Clear_Form
-        inputUser.SetFocus
-        Unload CreateAccount
-        AdminForm.Show
         
         '/Add to Users count/'
         Dim AddUser As Integer
@@ -91,6 +84,14 @@ Private Sub btnCreate_Click()
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
         
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Creating Account..."
+        Status
+        
+        MsgBox ("Account Created.")
+        Clear_Form
+        
     Else
         ErrMsg_Duplicate
     End If
@@ -98,13 +99,11 @@ Private Sub btnCreate_Click()
 End Sub
 
 Sub ErrMsg()
-    MsgBox ("Username Not Found"), , "Not Found"
-    inputUser.SetFocus
+    MsgBox ("Username Not Found."), , "Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
-    MsgBox ("Username Taken"), , "Duplicate"
-    inputUser.SetFocus
+    MsgBox ("Username Taken."), , "Duplicate"
 End Sub
 
 Private Sub Clear_Form()

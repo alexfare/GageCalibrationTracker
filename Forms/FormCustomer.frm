@@ -25,9 +25,6 @@ Private Sub UserForm_Activate()
 '/End Positioning /'
 End Sub
 
-Private Sub btnBack_click()
-    Unload Me
-End Sub
 Private Sub Add_Button_Click()
     Dim ws As Worksheet
     Dim List_Select
@@ -75,6 +72,10 @@ Private Sub Add_Button_Click()
     Else
         'ErrMsg_Duplicate
     End If
+End Sub
+
+Private Sub btnBack_click()
+    Unload Me
 End Sub
 
 '/ Clear Button

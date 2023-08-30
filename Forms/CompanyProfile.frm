@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} CompanyProfile 
    Caption         =   "Company Profile"
-   ClientHeight    =   3660
+   ClientHeight    =   5070
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   7425
+   ClientWidth     =   5910
    OleObjectBlob   =   "CompanyProfile.frx":0000
    StartUpPosition =   1  'CenterOwner
 End

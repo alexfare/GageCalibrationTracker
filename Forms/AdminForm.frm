@@ -309,9 +309,14 @@ Private Sub SuperAdminBTN_click()
     SuperAdminLogin.Show
 End Sub
 
+Private Sub btnPassword_click()
+    MsgBox "Broadcast-190"
+End Sub
+
 Private Sub btnExport_click()
     ExportGCTData
 End Sub
+
 Sub ExportGCTData()
     Dim FilePath As Variant
     Dim ws As Worksheet
@@ -332,32 +337,60 @@ Sub ExportGCTData()
         ws.SaveAs FilePath, xlCSV
     End If
 End Sub
-Private Sub btnImport_click()
-    MsgBox "Coming Soon"
+
+Sub btnImport_click()
+
+    MSG1 = MsgBox("Importing is a WIP, Current state will not import certain formatting conditions.", vbYesNo, "WARNING")
+    
+    If MSG1 = vbYes Then
+        ImportGCTData
+    Else
+    End If
 End Sub
 
-Sub ImportDataWithFileDialog()
-    Dim FilePath As Variant
+Sub ImportGCTData()
+    Dim FilePath As String
     Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastCol As Long
     
     ' Set the worksheet to import data into
     Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
     
-    ' Show the Open dialog to choose the import file
-    FilePath = Application.GetOpenFilename(FileFilter:="CSV Files (*.csv), *.csv")
+    ' Open file dialog to select CSV file
+    With Application.FileDialog(msoFileDialogFilePicker)
+        .Title = "Select CSV File to Import"
+        .Filters.Clear
+        .Filters.Add "CSV Files", "*.csv"
+        If .Show = -1 Then
+            FilePath = .SelectedItems(1)
+        End If
+    End With
     
-    ' Check if the user selected a file
-    If FilePath <> "False" Then
-        ' Clear existing data in the worksheet
-        ws.Cells.Clear
+    ' Check if a file was selected
+    If FilePath <> "" Then
+        ' Clear existing data and formatting
+        ws.Cells.ClearContents
+        ws.Cells.FormatConditions.Delete
         
-        ' Import data from CSV file
-        With ws.QueryTables.Add(Connection:="TEXT;" & FilePath, Destination:=ws.Range("A1"))
+        ' Import data from CSV
+        With ws.QueryTables.Add(Connection:="TEXT;" & FilePath, Destination:=ws.Cells(1, 1))
             .TextFileParseType = xlDelimited
-            .TextFileCommaDelimiter = True ' Change to appropriate delimiter if needed
-            .TextFileColumnDataTypes = Array(1) ' Use Array(1, 2, 3, ...) for different data types
-            .Refresh
+            .TextFileConsecutiveDelimiter = False
+            .TextFileTabDelimiter = False
+            .TextFileSemicolonDelimiter = False
+            .TextFileCommaDelimiter = True
+            .TextFileSpaceDelimiter = False
+            .TextFileTrailingMinusNumbers = True
+            .Refresh BackgroundQuery:=False
         End With
+        
+        ' Apply conditional formatting here if needed
+        ' ws.Cells.FormatConditions.AddColorScale ...
+        
+        ' Adjust column widths to fit content
+        ws.Cells.EntireColumn.AutoFit
     End If
 End Sub
+
 

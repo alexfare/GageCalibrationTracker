@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   9675.001
+   ClientHeight    =   9780.001
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10230
+   ClientWidth     =   10155
    OleObjectBlob   =   "Menu.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -63,7 +63,7 @@ End Sub
 Private Sub Add_Button_Click()
     ' Check if the user provided input
     If Gage_Number <> "" Then
-    AddNewGage
+        AddNewGage
     Else
         ErrMsg_NoGageID
     End If
@@ -405,6 +405,7 @@ End Sub
 
 '/------- Gage R&R -------/'
 Private Sub btnGageRR_Click()
+    MsgBox "Gage R&R has been causing some issues crashing when searching for Gages that do not have all inputs. Please save and use at your own risk until this issue has been resolved."
     GageRnR.Show
 End Sub
 
