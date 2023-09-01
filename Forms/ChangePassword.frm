@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ChangePassword 
    Caption         =   "Change Password"
-   ClientHeight    =   2550
+   ClientHeight    =   3660
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4710
+   ClientWidth     =   3945
    OleObjectBlob   =   "ChangePassword.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -17,6 +17,7 @@ Dim r As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim btnUpdate_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
+Dim PassMatch As Boolean
 
 Private Sub UserForm_Activate()
 '/Positioning /'
@@ -32,12 +33,6 @@ Private Sub inputUser_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shif
 End Sub
 
 Public Sub Search_Button_Click()
-    
-    ' clear previous data from form, except "Gage Number"
-    ' --------------------------------------------------------
-    inputPass = ""
-    ' ---------------------------------------------------------
-    
     Dim ws As Worksheet
     
     List_Select = "Credentials"
@@ -60,28 +55,28 @@ Public Sub Search_Button_Click()
 End Sub
 
 Private Sub btnUpdate_Click()
+    If inputUser <> "" And inputPass <> "" And inputPassx2 <> "" Then
+        Search_Button_Click
+    Else
+        MsgBox "Username and Password fields cannot be empty.", vbInformation, "Error"
+    End If
+    If inputPass = inputPassx2 Then
+        PassMatch = True
+    Else
+        PassMatch = False
+    End If
     If btnUpdate_Enable = True Then
         If GN_Verify = inputUser Then
-            Update_Worksheet
+            If PassMatch = True Then
+                Update_Worksheet
+            Else
+                MsgBox "Passwords do not match.", vbInformation, "Error"
+            End If
         Else
             MSG_Verify_Update
         End If
     Else
-        MsgBox ("Must search for user before updating password."), , "Nothing To Update"
     End If
-End Sub
-
-Sub ErrMsg()
-    MsgBox ("Username not found."), , "Not Found"
-End Sub
-
-Sub ErrMsg_Duplicate()
-    MsgBox ("Username already in use."), , "Duplicate"
-End Sub
-
-Private Sub Clear_Form()
-    inputUser = ""
-    inputPass = ""
 End Sub
 
 Private Sub Update_Worksheet()
@@ -120,10 +115,24 @@ Private Sub Update_Worksheet()
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Password Updated!"
         Status
-        
+        Clear_Form
     Else
-        MsgBox ("Must search for user before updating password."), , "Nothing To Update"
+        ErrMsg
     End If
+End Sub
+
+Sub ErrMsg()
+    MsgBox ("Username not found."), , "Not Found"
+End Sub
+
+Sub ErrMsg_Duplicate()
+    MsgBox ("Username already in use."), , "Duplicate"
+End Sub
+
+Private Sub Clear_Form()
+    inputUser = ""
+    inputPass = ""
+    inputPassx2 = ""
 End Sub
 
 Sub MSG_Verify_Update()

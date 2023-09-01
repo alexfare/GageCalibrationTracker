@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} CreateAccount 
    Caption         =   "Create Account"
-   ClientHeight    =   6375
+   ClientHeight    =   8325.001
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   5370
+   ClientWidth     =   4410
    OleObjectBlob   =   "CreateAccount.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -15,12 +15,31 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim r As Long ' variable used for storing row number
 Dim Worksheet_Set ' variable used for selecting and storing the active worksheet
+Dim PassMatch As Boolean
 
 Private Sub UserForm_Activate()
 '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
+End Sub
+
+Private Sub CreateConfirm_Click()
+    If inputPass <> "" And inputPassx2 <> "" Then
+        If inputPass = inputPassx2 Then
+        PassMatch = True
+    Else
+        PassMatch = False
+    End If
+    Else
+        MsgBox ("Username or Password cannot be blank."), , "Error"
+        Exit Sub
+    End If
+    If PassMatch = True Then
+        btnCreate_Click
+    Else
+        MsgBox ("Passwords do not match."), , "Error"
+    End If
 End Sub
 
 Private Sub btnCreate_Click()
@@ -109,6 +128,7 @@ End Sub
 Private Sub Clear_Form()
     inputUser = ""
     inputPass = ""
+    inputPassx2 = ""
     userName = ""
     userPhone = ""
     userAddress = ""

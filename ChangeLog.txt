@@ -1,3 +1,18 @@
+Update - 4.2.3
+1. Updated password display on AdminPanel. (Saved as B64)
+2. Updated Protection password.
+3. Updated AdminPanel layout.
+4. Added MessageBox notifying when formatting has completed.
+5. Updated PasswordChange form, Requiring password to be entered twice.
+6. Updated PasswordChange form, No longer need to manually search for the username.
+7. Fixed PasswordChange form crashing when attempting to update to a blank password.
+8. Updated AccountCreation form, Requiring password to be entered twice.
+9. Fixed AccountCreation form crashing when attempting to create user with a blank password.
+10. Updated AccountCreation form layout and tab layout.
+11. Updated AdminPanel, Error message when searching for blank Gage ID.
+
+----Changing Log Format----
+
 'Update - 4.2.2
 ' Updated Menu Layout. (Brought back the labels upon request).
 ' Updated SuperAdminMenu button captions.

@@ -59,6 +59,14 @@ Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Sh
     End If
 End Sub
 
+Private Sub Search_Confirm_Click()
+    If Gage_Number <> "" Then
+    Search_Button_Click
+    Else
+        ErrMsg_Blank
+    End If
+End Sub
+
 '/------- Search Button -------/'
 Public Sub Search_Button_Click()
     
@@ -126,6 +134,14 @@ Sub ErrMsg_Duplicate()
     MsgBox ("Gage number already in use"), , "Duplicate"
 End Sub
 
+Sub ErrMsg_Search()
+    MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+End Sub
+
+Sub ErrMsg_Blank()
+    MsgBox ("Gage ID cannot be blank."), , "Nothing To Update"
+End Sub
+
 '/------- Update Button -------/'
 Private Sub Update_Button_Click()
     If Update_Button_Enable = True Then
@@ -135,7 +151,7 @@ Private Sub Update_Button_Click()
             MSG_Verify_Update
         End If
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        ErrMsg_Search
     End If
 End Sub
 
@@ -171,7 +187,7 @@ Private Sub Update_Worksheet()
         Status
         
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        ErrMsg_Search
     End If
 End Sub
 
@@ -183,7 +199,7 @@ Private Sub Update_Button_Log_Click()
             MSG_Verify_Update
         End If
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        ErrMsg_Search
     End If
 End Sub
 
@@ -310,7 +326,9 @@ Private Sub SuperAdminBTN_click()
 End Sub
 
 Private Sub btnPassword_click()
-    MsgBox "Broadcast-190"
+    Dim msgBoxPW As String
+    msgBoxPW = Base64DecodeString("UmVwdXJwb3NlNSE=")
+    MsgBox msgBoxPW
 End Sub
 
 Private Sub btnExport_click()

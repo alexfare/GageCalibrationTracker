@@ -5,6 +5,7 @@ Sub Clear_Run()
     Clear_Customers
     Clear_Credentials
     Clear_GageRR
+    Clear_completed
 End Sub
 
 Sub Delete_Rows()
@@ -76,4 +77,8 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
+End Sub
+
+Sub Clear_completed()
+    MsgBox "Formatting has completed."
 End Sub
