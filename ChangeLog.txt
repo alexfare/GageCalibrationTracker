@@ -1,3 +1,9 @@
+Update - 4.2.4
+1. Updated ReportIssue code.
+2. Temporarily removed Gage R&R due to on going issues.
+3. Updated Label form to stop blank printers from opening.
+4. Updated CustomerForm to no longer allow adding blank inputs.
+
 Update - 4.2.3
 1. Updated password display on AdminPanel. (Saved as B64)
 2. Updated Protection password.

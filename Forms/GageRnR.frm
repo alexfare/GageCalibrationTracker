@@ -13,6 +13,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
@@ -167,13 +168,14 @@ End Sub
 Public Sub Search_Button_Click()
     
     ' clear previous data from form, except "Gage Number"
+    ' --------------------------------------------------------
     Gage_Number_Save = Gage_Number
     Clear_Form
     Gage_Number = Gage_Number_Save
-    ' --------------------------------------------------------
-    
-    
     '/ Calculation --------------------------------------------
+    
+    ' ---------------------------------------------------------
+    
     Dim ws          As Worksheet
     
     List_Select = "GageRnR"
@@ -339,8 +341,8 @@ Set rng = ws.Range("C3:E17")
 On Error Resume Next ' Ignore errors and continue execution
 For Each cell In rng
     If IsNumeric(cell.Value) Then
-    cell.Value = CDbl(cell.Value) ' Convert to Double or appropriate numeric type
-End If
+        cell.Value = Val(cell.Value)
+    End If
 Next cell
 On Error GoTo 0 ' Disable error handling
 

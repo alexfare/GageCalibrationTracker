@@ -32,8 +32,13 @@ Private Sub btnLargeLabel_Click()
     Dim x As Variant
     Dim Path As String
         Path = ws.Range("B27")
+        
+    If Path <> "" Then
         x = Shell("explorer.exe " + Path, vbNormalFocus) 'explorer.exe is needed due to vba expecting a .exe
         Unload Me
+    Else
+        Err_NoPrinter
+    End If
 End Sub
 
 Private Sub btnSmallLabel_Click()
@@ -46,8 +51,13 @@ Private Sub btnSmallLabel_Click()
     Dim x As Variant
     Dim Path As String
         Path = ws.Range("B26")
+        
+    If Path <> "" Then
         x = Shell("explorer.exe " + Path, vbNormalFocus) 'explorer.exe is needed due to vba expecting a .exe
         Unload Me
+    Else
+        Err_NoPrinter
+    End If
 End Sub
 
 Private Sub btnSetUp_Click()
@@ -61,4 +71,8 @@ End Sub
 
 Private Sub btnCert_Click()
     MsgBox ("Coming Soon!")
+End Sub
+
+Sub Err_NoPrinter()
+    MsgBox ("No Printer Set up.")
 End Sub

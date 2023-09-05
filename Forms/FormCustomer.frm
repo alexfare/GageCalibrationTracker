@@ -25,6 +25,14 @@ Private Sub UserForm_Activate()
 '/End Positioning /'
 End Sub
 
+Private Sub Add_Button_Confirm_Click()
+    If Customer_Name <> "" Then
+            Add_Button_Click
+        Else
+            Err_Blank
+        End If
+End Sub
+
 Private Sub Add_Button_Click()
     Dim ws As Worksheet
     Dim List_Select
@@ -85,11 +93,11 @@ Clear_Form
 End Sub
 
 Sub ErrMsg()
-MsgBox ("Customer Not Found"), , "Not Found"
+MsgBox ("Customer Not Found."), , "Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
-MsgBox ("Customer already added"), , "Duplicate"
+MsgBox ("Customer already added."), , "Duplicate"
 End Sub
 
 Private Sub Clear_Form()
@@ -97,6 +105,10 @@ Private Sub Clear_Form()
         inCAddress = ""
         inCPhoneNumber = ""
         inCWebsite = ""
+End Sub
+
+Sub Err_Blank()
+    MsgBox ("Customer name cannot be blank."), , "Error"
 End Sub
 
 '/------- Status -------/'

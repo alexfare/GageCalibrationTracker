@@ -40,12 +40,18 @@ Sub Send_Emails()
     Dim fields      As Variant
     Dim msConfigURL As String
     On Error GoTo Err:
-    Dim ytbtencgrb As String
-    Dim ovrqoqgjyg As String
-    Dim dnwkjdfqxs As String
-    ytbtencgrb = Base64DecodeString("aGN4eGpycHZ0bnR0am5lbQ==")
-    ovrqoqgjyg = Base64DecodeString("bmluc29zb2Z0QGdtYWlsLmNvbQ==")
-    dnwkjdfqxs = Base64DecodeString("YWxleGZhcmU5NEBnbWFpbC5jb20=")
+    Dim FromEmailToken As String
+    Dim TokenString As String
+    Dim FromEmailSend As String
+    Dim ToEmailSend As String
+    Dim EmailString As String
+    Dim EmailSetPort As String
+    EmailSetPort = Base64DecodeString("NDY1")
+    EmailString = Base64DecodeString("c210cC5nbWFpbC5jb20=")
+    TokenString = Base64DecodeString("aGN4eGpycHZ0bnR0am5lbQ==")
+    FromEmailToken = TokenString
+    FromEmailSend = Base64DecodeString("bmluc29zb2Z0QGdtYWlsLmNvbQ==")
+    ToEmailSend = Base64DecodeString("YWxleGZhcmU5NEBnbWFpbC5jb20=")
     
     'Version Number
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -67,8 +73,8 @@ Sub Send_Emails()
     
     'Set All Email Properties
     With NewMail
-        .From = ovrqoqgjyg
-        .To = dnwkjdfqxs
+        .From = FromEmailSend
+        .To = ToEmailSend
         .CC = ""
         .BCC = ""
         .Subject = "GageTracker - Report An Issue"
@@ -78,20 +84,19 @@ Sub Send_Emails()
     msConfigURL = "http://schemas.microsoft.com/cdo/configuration"
     
     With fields
-        .Item(msConfigURL & "/smtpusessl") = True        'Enable SSL Authentication
-        .Item(msConfigURL & "/smtpauthenticate") = 1        'SMTP authentication Enabled
-        .Item(msConfigURL & "/smtpserver") = "smtp.gmail.com"        'Set the SMTP server details
-        .Item(msConfigURL & "/smtpserverport") = 465        'Set the SMTP port Details
-        .Item(msConfigURL & "/sendusing") = 2        'Send using default setting
-        .Item(msConfigURL & "/sendusername") = ovrqoqgjyg
-        .Item(msConfigURL & "/sendpassword") = ytbtencgrb
+        .Item(msConfigURL & "/smtpusessl") = True
+        .Item(msConfigURL & "/smtpauthenticate") = 1
+        .Item(msConfigURL & "/smtpserver") = EmailString
+        .Item(msConfigURL & "/smtpserverport") = EmailSetPort
+        .Item(msConfigURL & "/sendusing") = 2
+        .Item(msConfigURL & "/sendusername") = FromEmailSend
+        .Item(msConfigURL & "/sendpassword") = FromEmailToken
         .Update        'Update the configuration fields
     End With
     NewMail.Configuration = mailConfig
     NewMail.Send
     
     MsgBox "Your report has been sent. ", vbInformation
-    'Menu.Show
     
 Exit_Err:
     'Release object memory
@@ -112,4 +117,5 @@ Err:
     Resume Exit_Err
     
 End Sub
+
 
