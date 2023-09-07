@@ -1,3 +1,7 @@
+Update - 4.2.5
+1. Fixed Issue with Gage R&R Calculation.
+2. Gage R&R is now working again.
+
 Update - 4.2.4
 1. Updated ReportIssue code.
 2. Temporarily removed Gage R&R due to on going issues.

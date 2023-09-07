@@ -405,9 +405,9 @@ End Sub
 
 '/------- Gage R&R -------/'
 Private Sub btnGageRR_Click()
-    'MsgBox "Gage R&R has been causing some issues crashing when searching for Gages that do not have all inputs. Please save and use at your own risk until this issue has been resolved."
-    'GageRnR.Show
-    MsgBox "Gage R&R has been temporarily removed due to ongoing issues."
+    MsgBox "Gage R&R has been causing some issues crashing when searching for Gages that do not have all inputs. Please save and use at your own risk until this issue has been resolved."
+    GageRnR.Show
+    'MsgBox "Gage R&R has been temporarily removed due to ongoing issues."
 End Sub
 
 '/------- Status -------/'

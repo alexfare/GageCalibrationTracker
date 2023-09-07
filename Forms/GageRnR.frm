@@ -36,6 +36,21 @@ Private Sub UserForm_Activate()
     '/End Positioning /'
 End Sub
 
+'/ Pressing Enter will instantly search /'
+Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
+    If KeyCode = vbKeyReturn Then
+        Search_Button_Click
+    End If
+End Sub
+
+Private Sub Add_Button_Confirm_Click()
+    If Gage_Number <> "" Then
+        Add_Button_Click
+    Else
+        ErrMsg_Blank
+    End If
+End Sub
+
 '/ Add Gage
 Private Sub Add_Button_Click()
     Dim ws          As Worksheet
@@ -158,13 +173,6 @@ Private Sub Add_Button_Click()
     End If
 End Sub
 
-'/ Pressing Enter will instantly search /'
-Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
-    If KeyCode = vbKeyReturn Then
-        Search_Button_Click
-    End If
-End Sub
-
 Public Sub Search_Button_Click()
     
     ' clear previous data from form, except "Gage Number"
@@ -173,8 +181,6 @@ Public Sub Search_Button_Click()
     Clear_Form
     Gage_Number = Gage_Number_Save
     '/ Calculation --------------------------------------------
-    
-    ' ---------------------------------------------------------
     
     Dim ws          As Worksheet
     
@@ -405,14 +411,6 @@ On Error GoTo 0 ' Disable error handling
 End If
 End Sub
 
-Sub ErrMsg()
-    MsgBox ("Gage Number Not Found"), , "Not Found"
-End Sub
-
-Sub ErrMsg_Duplicate()
-    MsgBox ("Gage number already in use"), , "Duplicate"
-End Sub
-
 Private Sub Update_Button_Click()
     If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then
@@ -421,7 +419,7 @@ Private Sub Update_Button_Click()
             MSG_Verify_Update
         End If
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        ErrMsg_Search
     End If
 End Sub
 
@@ -434,6 +432,11 @@ Private Sub Update_Worksheet()
         Else
             gnString = Gage_Number
         End If
+        Dim List_Select
+        List_Select = "GageRnR"        ' Tab name
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
+        
         '/ Audit
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
@@ -515,7 +518,7 @@ Private Sub Update_Worksheet()
         Status
         Search_Button_Click
     Else
-        MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+        ErrMsg_Search
     End If
 End Sub
 
@@ -647,4 +650,19 @@ Private Sub Status()
         statusLabelLog.Caption = ""
 End Sub
 
+'/------- Error Handling -------/'
+Sub ErrMsg()
+    MsgBox ("Gage ID Not Found"), , "Not Found"
+End Sub
 
+Sub ErrMsg_Duplicate()
+    MsgBox ("Gage ID already in use"), , "Duplicate"
+End Sub
+
+Sub ErrMsg_Search()
+    MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+End Sub
+
+Private Sub ErrMsg_Blank()
+    MsgBox "Gage ID cannot be blank.", vbInformation, "Error"
+End Sub
