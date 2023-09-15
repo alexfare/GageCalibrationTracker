@@ -1,3 +1,9 @@
+Update - 4.2.6
+1. Updated layout issues on the menu.
+2. Removed Serial # off Admin Panel. (Used for internal Sticker, Not needed).
+3. Updated Logout button on Admin Panel.
+4. Updated SuperAdmin Panel - Added Warning.
+
 Update - 4.2.5
 1. Fixed Issue with Gage R&R Calculation.
 2. Gage R&R is now working again.
