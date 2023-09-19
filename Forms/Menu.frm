@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   9780.001
+   ClientHeight    =   9675.001
    ClientLeft      =   45
    ClientTop       =   375
    ClientWidth     =   10155
@@ -407,6 +407,7 @@ End Sub
 Private Sub btnGageRR_Click()
     MsgBox "Gage R&R has been causing some issues crashing when searching for Gages that do not have all inputs. Please save and use at your own risk until this issue has been resolved."
     GageRnR.Show
+    'MsgBox "Gage R&R has been temporarily removed due to ongoing issues."
 End Sub
 
 '/------- Status -------/'

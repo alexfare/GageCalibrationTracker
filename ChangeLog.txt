@@ -1,3 +1,6 @@
+Update - 4.2.7
+1. Fixed 4.2.6 updating error.
+
 Update - 4.2.6
 1. Updated layout issues on the menu.
 2. Removed Serial # off Admin Panel. (Used for internal Sticker, Not needed).
