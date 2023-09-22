@@ -1,3 +1,8 @@
+Update - 4.3.0
+1. Updated New Gage Button to Add Gage Button.
+2. Added NIST Serial #.
+3. Updated Main Menu Layout (Added Tabs).
+
 Update - 4.2.7
 1. Fixed 4.2.6 updating error.
 

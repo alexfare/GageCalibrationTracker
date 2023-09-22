@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   9675.001
+   ClientHeight    =   8325.001
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10155
+   ClientWidth     =   10440
    OleObjectBlob   =   "Menu.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -100,6 +100,7 @@ Private Sub AddNewGage()
         ws.Cells(r, "I") = Department
         ws.Cells(r, "J") = Comments
         ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "N") = nistinput
         ws.Cells(r, "Z") = comboStatus
         ws.Cells(r, "AA") = aN1
         ws.Cells(r, "AB") = aA1
@@ -192,6 +193,7 @@ Public Sub Search_Button_Click()
         Department = ws.Cells(r, "I")
         Comments = ws.Cells(r, "J")
         Revtxt = ws.Cells(r, "K")
+        nistinput = ws.Cells(r, "N")
         comboStatus = ws.Cells(r, "Z")
         aN1 = ws.Cells(r, "AA")
         aA1 = ws.Cells(r, "AB")
@@ -253,6 +255,7 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "I") = Department
         ws.Cells(r, "J") = Comments
         ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "N") = nistinput
         ws.Cells(r, "Z") = comboStatus
         ws.Cells(r, "AA") = aN1
         ws.Cells(r, "AB") = aA1
@@ -328,6 +331,7 @@ Private Sub Clear_Form()
     Department = ""
     Comments = ""
     Revtxt = ""
+    nistinput = ""
     comboStatus = ""
     aN1 = ""
     aA1 = ""
