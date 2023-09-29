@@ -1,3 +1,8 @@
+Update - 4.3.1
+1. Updated Format Form.
+2. Updated Menu to setfocus for Gage Number when Menu opens.
+3. Updated Menu Error Messages.
+
 Update - 4.3.0
 1. Updated New Gage Button to Add Gage Button.
 2. Added NIST Serial #.
