@@ -34,6 +34,7 @@ Private Sub UserForm_Initialize()
     Dim LoginCount  As Integer 'Track login counts
     Dim ws          As Worksheet
     Dim List_Select
+    Gage_Number.SetFocus
     
 '/ Start code confirm /'
     List_Select = "Admin"        ' Tab name
@@ -178,7 +179,7 @@ Public Sub Search_Button_Click()
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         Update_Button_Enable = False
-        ErrMsg_NoGageID
+        ErrMsg
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
@@ -491,3 +492,14 @@ Sub ErrMsg_Search()
     MsgBox ("Must search for entry before updating."), vbInformation, "Error"
 End Sub
 
+Sub ErrMsg_Blank()
+    MsgBox ("Gage number cannot be blank."), vbInformation, "Error"
+End Sub
+
+Public Sub Search_Confirm_Click()
+    If Gage_Number <> "" Then
+        Search_Button_Click
+    Else
+        ErrMsg_Blank
+    End If
+End Sub
