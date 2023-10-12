@@ -1,3 +1,9 @@
+Update - 4.3.2
+1. Updated Report Issue layout.
+2. Updated Due Date color scheme. Green = Calibrated, Yellow = Due within 3 months, and Red = Past due date.
+3. Added Serial Number back (Manually set this time).
+4. Updated various layout/code.
+
 Update - 4.3.1
 1. Updated Format Form.
 2. Updated Menu to setfocus for Gage Number when Menu opens.

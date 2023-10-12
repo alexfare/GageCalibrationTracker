@@ -98,6 +98,7 @@ Public Sub Search_Button_Click()
         Department = ws.Cells(r, "I")
         Comments = ws.Cells(r, "J")
         Revtxt = ws.Cells(r, "K")
+        serialInput = ws.Cells(r, "L")
         lblDateAdded = ws.Cells(r, "AK")
         lblDateEdit = ws.Cells(r, "AL")
         lblSearchedDate = ws.Cells(r, "AM")
@@ -173,7 +174,7 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "E") = Customer
         ws.Cells(r, "I") = Department
         ws.Cells(r, "K") = Revtxt
-        ws.Cells(r, "L") = serialNumberTxt
+        ws.Cells(r, "L") = serialInput
         ws.Cells(r, "AK") = lblDateAdded        'Date Added
         ws.Cells(r, "AL") = lblDateEdit
         ws.Cells(r, "AM") = lblSearchedDate
@@ -224,6 +225,7 @@ Private Sub Clear_Form()
     lastUser = ""
     Ownertxt = ""
     Revtxt = ""
+    serialInput = ""
     Descriptiontxt = ""
     comboGageType = ""
     Customer = ""

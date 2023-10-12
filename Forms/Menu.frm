@@ -59,6 +59,9 @@ Private Sub UserForm_Activate()
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
+
+'/Startup Script /'
+    DueDateColorRange
 End Sub
 
 Private Sub Add_Button_Click()
@@ -101,6 +104,7 @@ Private Sub AddNewGage()
         ws.Cells(r, "I") = Department
         ws.Cells(r, "J") = Comments
         ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "L") = serialInput
         ws.Cells(r, "N") = nistinput
         ws.Cells(r, "Z") = comboStatus
         ws.Cells(r, "AA") = aN1
@@ -194,6 +198,7 @@ Public Sub Search_Button_Click()
         Department = ws.Cells(r, "I")
         Comments = ws.Cells(r, "J")
         Revtxt = ws.Cells(r, "K")
+        serialInput = ws.Cells(r, "L")
         nistinput = ws.Cells(r, "N")
         comboStatus = ws.Cells(r, "Z")
         aN1 = ws.Cells(r, "AA")
@@ -256,6 +261,7 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "I") = Department
         ws.Cells(r, "J") = Comments
         ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "L") = serialInput
         ws.Cells(r, "N") = nistinput
         ws.Cells(r, "Z") = comboStatus
         ws.Cells(r, "AA") = aN1
@@ -332,6 +338,7 @@ Private Sub Clear_Form()
     Department = ""
     Comments = ""
     Revtxt = ""
+    serialInput = ""
     nistinput = ""
     comboStatus = ""
     aN1 = ""
@@ -471,6 +478,46 @@ Else
 End If
 End Sub
 
+Public Sub Search_Confirm_Click()
+    If Gage_Number <> "" Then
+        Search_Button_Click
+    Else
+        ErrMsg_Blank
+    End If
+End Sub
+
+Sub DueDateColorRange()
+    Dim ws As Worksheet
+    Dim rng As Range
+    Dim cell As Range
+    Dim targetDate As Date
+    Dim currentDate As Date
+    Dim Worksheet_Set
+    Dim List_Select
+    List_Select = "CreatedByAlexFare"
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+
+    targetDate = Range("I1").Value
+    Set rng = ws.Range("G3:G2000")
+    
+    For Each cell In rng
+        If IsDate(cell.Value) Then
+            currentDate = cell.Value
+            
+            monthsDiff = DateDiff("m", targetDate, currentDate)
+            
+            If currentDate < targetDate Then
+                cell.Interior.Color = RGB(255, 0, 0) ' Red
+            ElseIf monthsDiff <= 3 Then
+                cell.Interior.Color = RGB(255, 255, 0) ' Yellow
+            Else
+                cell.Interior.Color = RGB(0, 255, 0) ' Green
+            End If
+        End If
+    Next cell
+End Sub
+
 '/------- Error Handling -------/'
 Sub ErrMsg()
     MsgBox ("Gage Number Not Found."), vbInformation, "Not Found"
@@ -494,12 +541,4 @@ End Sub
 
 Sub ErrMsg_Blank()
     MsgBox ("Gage number cannot be blank."), vbInformation, "Error"
-End Sub
-
-Public Sub Search_Confirm_Click()
-    If Gage_Number <> "" Then
-        Search_Button_Click
-    Else
-        ErrMsg_Blank
-    End If
 End Sub
