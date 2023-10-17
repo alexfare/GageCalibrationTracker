@@ -1,10 +1,10 @@
 Attribute VB_Name = "Clear_All"
 Sub Clear_Run()
-    Delete_Rows
     Clear_Admin
     Clear_Customers
     Clear_Credentials
     Clear_GageRR
+    Delete_Rows
     Clear_completed
 End Sub
 
@@ -21,6 +21,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
+MsgBox "Rows Deleted!"
 End Sub
 
 Sub Clear_Admin()
@@ -35,6 +36,7 @@ Dim List_Select
     For i = 2 To 999
         ws.Range("B" & i).ClearContents
     Next i
+MsgBox "Admin Settings Cleared."
 End Sub
 
 Sub Clear_Customers()
@@ -49,6 +51,7 @@ Dim List_Select
     For i = 999 To 2 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
+MsgBox "Customers Cleared."
 End Sub
 
 Sub Clear_Credentials()
@@ -63,6 +66,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
+MsgBox "Credentials Deleted."
 End Sub
 
 Sub Clear_GageRR()
@@ -77,6 +81,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
+MsgBox "Gage R&R Deleted."
 End Sub
 
 Sub Clear_completed()

@@ -1,3 +1,10 @@
+Update - 4.3.3
+1. Updated DueDate color map to update in real time, and on form exit.
+2. Some Menu tab corrections.
+3. Updated formatting order.
+4. Updated various form layouts / text.
+5. Updates to Import. WIP and has issues with formatting.
+
 Update - 4.3.2
 1. Updated Report Issue layout.
 2. Updated Due Date color scheme. Green = Calibrated, Yellow = Due within 3 months, and Red = Past due date.

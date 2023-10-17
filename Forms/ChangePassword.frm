@@ -4,7 +4,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ChangePassword
    ClientHeight    =   3660
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3945
+   ClientWidth     =   3540
    OleObjectBlob   =   "ChangePassword.frx":0000
    StartUpPosition =   2  'CenterScreen
 End

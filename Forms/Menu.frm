@@ -427,6 +427,7 @@ Private Sub Status()
     Dim startTime As Date
     Dim elapsedTime As Long
     Dim waitTimeInSeconds As Long
+    DueDateColorRange
     
     waitTimeInSeconds = 2
     startTime = Now
@@ -542,3 +543,8 @@ End Sub
 Sub ErrMsg_Blank()
     MsgBox ("Gage number cannot be blank."), vbInformation, "Error"
 End Sub
+
+Private Sub UserForm_Terminate()
+    DueDateColorRange
+End Sub
+
