@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   6510
+   ClientHeight    =   5295
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   11655
+   ClientWidth     =   12330
    OleObjectBlob   =   "AdminForm.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -265,10 +265,6 @@ Private Sub btnEditLists_Click()
     Worksheets("Lists").Activate
 End Sub
 
-Private Sub btnAbout_Click()
-    MsgBox "Gage Calibration Tracker, a simple yet sophisticated gage calibration management software solution designed to simplify the task of maintaining tool calibration records. This user-friendly software is seamlessly integrated with Microsoft Excel, offering a highly efficient and free-running experience."
-End Sub
-
 Private Sub btnCustomers_Click()
     Unload AdminForm
     Worksheets("Customers").Activate
@@ -342,7 +338,6 @@ Sub ExportGCTData()
     Dim ws As Worksheet
     Dim defaultFileName As String
     
-    ' Set the worksheet to export data from
     Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
     
     ' Generate default file name with "GageTracker" and today's date
@@ -351,9 +346,7 @@ Sub ExportGCTData()
     ' Show the Save As dialog with the default file name
     FilePath = Application.GetSaveAsFilename(InitialFileName:=defaultFileName, FileFilter:="CSV Files (*.csv), *.csv")
     
-    ' Check if the user selected a file
     If FilePath <> "False" Then
-        ' Export data to CSV format
         ws.SaveAs FilePath, xlCSV
     End If
 End Sub
@@ -374,7 +367,6 @@ Sub ImportGCTData()
     Dim lastRow As Long
     Dim lastCol As Long
     
-    ' Set the worksheet to import data into
     Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
     
     ' Open file dialog to select CSV file
@@ -404,9 +396,6 @@ Sub ImportGCTData()
             .TextFileTrailingMinusNumbers = True
             .Refresh BackgroundQuery:=False
         End With
-        
-        ' Apply conditional formatting here if needed
-        ' ws.Cells.FormatConditions.AddColorScale ...
         
         ' Adjust column widths to fit content
         ws.Cells.EntireColumn.AutoFit

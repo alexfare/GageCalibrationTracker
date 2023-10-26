@@ -1,3 +1,12 @@
+Update - 4.3.4
+1. Added Audit Log.
+2. Removed redundant and unused code fromt he main menu (WIP)
+3. Updated layouts for Menu and Admin Panel.
+4. Added DueDateEmailer (WIP).
+5. Updated LeadTime default Timeframe to 1 month.
+6. LeadTime Timeframe now editable within the Admin Settings (SuperAdmin).
+7. Updated Login Form.
+
 Update - 4.3.3
 1. Updated DueDate color map to update in real time, and on form exit.
 2. Some Menu tab corrections.

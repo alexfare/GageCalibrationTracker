@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   8325.001
+   ClientHeight    =   7725
    ClientLeft      =   45
    ClientTop       =   375
    ClientWidth     =   10440
@@ -25,43 +25,22 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
-Dim currentUser As String
+Dim ActionLog As String
+Dim AuditTime As String
+Dim AuditUser As String
 
 '/Start up script /'
 Private Sub UserForm_Initialize()
-    Dim CodeCompare As Integer 'Compare user key (Production use only)
-    Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
-    Dim LoginCount  As Integer 'Track login counts
-    Dim ws          As Worksheet
-    Dim List_Select
-    Gage_Number.SetFocus
-    
-'/ Start code confirm /'
-    List_Select = "Admin"        ' Tab name
-    Set ws = Sheets(List_Select)
-    Set Worksheet_Set = ws
-    CodeCompare = ws.Range("B56")
-    If CodeCompare = "1" Then
-        Unload Menu
-        CodeConfirm.Show
-    End If
-'/ End code confirm /'
-
-'/Prevent Issues in the future, Call back the main page/'
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
-    Set Worksheet_Set = ws
     vDisplay = ws.Range("Z1")
-End Sub
-
-Private Sub UserForm_Activate()
+    Gage_Number.SetFocus
+    DueDateColorRange
+    
 '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
-
-'/Startup Script /'
-    DueDateColorRange
 End Sub
 
 Private Sub Add_Button_Click()
@@ -92,7 +71,6 @@ Private Sub AddNewGage()
         Else
             gnString = Gage_Number
         End If
-        
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = PartNumbertxt
         ws.Cells(r, "C") = Descriptiontxt
@@ -120,9 +98,10 @@ Private Sub AddNewGage()
         ws.Cells(r, "AK") = Now
         
         '/ Audit Log
-        currentUser = Application.userName
-        lastUser = currentUser
+        lastUser = Application.userName
         ws.Cells(r, "AN") = lastUser
+        ActionLog = "Added Gage"
+        auditLog
         
         Clear_Form
         
@@ -142,7 +121,7 @@ Private Sub AddNewGage()
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
         
-        '/Status/'
+        '/Status /'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Adding..."
         Status
@@ -151,21 +130,23 @@ Private Sub AddNewGage()
     End If
 End Sub
 
-'/------- Clear Button -------/'
-Private Sub btnClear_Click()
-    Update_Button_Enable = False
-    Clear_Form
-End Sub
-
 '/------- Press Enter -------/'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
-        Search_Button_Click
+        Search_Button
     End If
 End Sub
 
 '/------- Search Button -------/'
-Public Sub Search_Button_Click()
+Public Sub Search_Confirm_Click()
+    If Gage_Number <> "" Then
+        Search_Button
+    Else
+        ErrMsg_Blank
+    End If
+End Sub
+
+Public Sub Search_Button()
     Dim ws          As Worksheet
     Dim DateEdit 'Update Last searched
     Dim Gage_Number_Save
@@ -221,6 +202,8 @@ Public Sub Search_Button_Click()
         lblDateEdit = ws.Cells(r, "AL")
         lblSearchedDate = DateEdit 'Update Last searched
         lastUser = ws.Cells(r, "AN")
+        ActionLog = "Searched"
+        auditLog
                 
         '/Status/'
         statusLabel.Caption = "Status:"
@@ -277,8 +260,7 @@ Private Sub Update_Worksheet()
         ws.Cells(r, "AL") = Now        'Update Last edited
         
         '/ Audit Log
-        currentUser = Application.userName
-        lastUser = currentUser
+        lastUser = Application.userName
         ws.Cells(r, "AN") = lastUser
         
         If Option1_6 = True Then        ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
@@ -308,24 +290,32 @@ Private Sub Update_Worksheet()
     UpdateCountPlusOne = UpdateCount + 1
     ws.Range("B50") = UpdateCountPlusOne
     
+    ActionLog = "Updated Gage"
+    auditLog
+    
     '/Prevent Issues in the future, Call back the main page/'
     List_Select = "CreatedByAlexFare"        ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     '/ End Audit Log /'
     
-    '/Status/'
+    '/Status /'
     statusLabel.Caption = "Status:"
     statusLabelLog.Caption = "Updating..."
     Status
         
-    Search_Button_Click
+    Search_Button
 Else
     ErrMsg_Search
 End If
 End Sub
 
 '/------- Clear Form -------/'
+Private Sub btnClear_Click()
+    Update_Button_Enable = False
+    Clear_Form
+End Sub
+
 Private Sub Clear_Form()
     Gage_Number = ""
     PartNumbertxt = ""
@@ -419,7 +409,6 @@ End Sub
 Private Sub btnGageRR_Click()
     MsgBox "Gage R&R has been causing some issues crashing when searching for Gages that do not have all inputs. Please save and use at your own risk until this issue has been resolved."
     GageRnR.Show
-    'MsgBox "Gage R&R has been temporarily removed due to ongoing issues."
 End Sub
 
 '/------- Status -------/'
@@ -479,14 +468,6 @@ Else
 End If
 End Sub
 
-Public Sub Search_Confirm_Click()
-    If Gage_Number <> "" Then
-        Search_Button_Click
-    Else
-        ErrMsg_Blank
-    End If
-End Sub
-
 Sub DueDateColorRange()
     Dim ws As Worksheet
     Dim rng As Range
@@ -495,9 +476,16 @@ Sub DueDateColorRange()
     Dim currentDate As Date
     Dim Worksheet_Set
     Dim List_Select
-    List_Select = "CreatedByAlexFare"
-    Set ws = Sheets(List_Select)
+    Dim ColorRangeLeadTime As Integer
+    
+    List_Select = "Admin"
     Set Worksheet_Set = ws
+    Set ws = Sheets(List_Select)
+    ColorRangeLeadTime = ws.Range("B63")
+    
+    List_Select = "CreatedByAlexFare"
+    Set Worksheet_Set = ws
+    Set ws = Sheets(List_Select)
 
     targetDate = Range("I1").Value
     Set rng = ws.Range("G3:G2000")
@@ -509,14 +497,34 @@ Sub DueDateColorRange()
             monthsDiff = DateDiff("m", targetDate, currentDate)
             
             If currentDate < targetDate Then
-                cell.Interior.Color = RGB(255, 0, 0) ' Red
-            ElseIf monthsDiff <= 3 Then
-                cell.Interior.Color = RGB(255, 255, 0) ' Yellow
+                cell.Interior.Color = RGB(255, 0, 0) 'Red
+            ElseIf monthsDiff <= ColorRangeLeadTime Then
+                cell.Interior.Color = RGB(255, 255, 0) 'Yellow
             Else
-                cell.Interior.Color = RGB(0, 255, 0) ' Green
+                cell.Interior.Color = RGB(0, 255, 0) 'Green
             End If
         End If
     Next cell
+End Sub
+
+'/ ------- Audit Log ------- /'
+Private Sub auditLog()
+    Dim ws As Worksheet
+    Dim auditLog As String
+    Dim auditAdd As String
+    Dim auditDate As String
+    
+    Set ws = ThisWorkbook.Sheets("Audit")
+    
+    AuditTime = Now
+    AuditUser = Application.userName
+
+    auditLog = ws.Range("A2").Value
+    auditDate = Now
+    auditAdd = " | Date: " & auditDate & vbCrLf & " User: " & AuditUser & vbCrLf & " Action: " & ActionLog & " | " & vbCrLf & " "
+    auditLog = auditLog & vbCrLf & auditAdd
+    
+    ws.Range("A2").Value = auditLog
 End Sub
 
 '/------- Error Handling -------/'

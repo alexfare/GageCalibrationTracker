@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} SuperAdminMenu 
    Caption         =   "Super Admin Menu"
-   ClientHeight    =   2430
+   ClientHeight    =   3315
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   6240
@@ -48,6 +48,11 @@ End Sub
 Private Sub btnGageRRCal_Click()
     Unload SuperAdminMenu
     Worksheets("Calculations").Activate
+End Sub
+
+Private Sub btnAudit_Click()
+    Unload SuperAdminMenu
+    Worksheets("Audit").Activate
 End Sub
 
 Private Sub btnBack_click()
