@@ -20,8 +20,13 @@ Dim GN_Verify
 Dim currentUser    As String
 Dim rlStatus As Integer
 
-Private Sub UserForm_Initialize()
-    '/ Display Admin Audit Log/'
+Private Sub UserForm_Activate()
+'/Positioning /'
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
+
+'/ Display Admin Audit Log/'
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim ws          As Worksheet
     Dim List_Select
@@ -45,13 +50,6 @@ Private Sub UserForm_Initialize()
     vDisplay = ws.Range("Z1")
 End Sub
 
-Private Sub UserForm_Activate()
-'/Positioning /'
-    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
-    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
-'/End Positioning /'
-End Sub
-
 '/ Pressing Enter will instantly search /'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
@@ -70,13 +68,7 @@ End Sub
 '/------- Search Button -------/'
 Public Sub Search_Button_Click()
     
-    ' clear previous data from form, except "Gage Number"
-    ' --------------------------------------------------------
-    Dim Gage_Number_Save
-    Gage_Number_Save = Gage_Number
-    Clear_Form
-    Gage_Number = Gage_Number_Save
-    ' ---------------------------------------------------------
+    Clear_Form ' clear previous data from form, except "Gage Number"
     
     Dim ws As Worksheet
     List_Select = "CreatedByAlexFare"
@@ -216,7 +208,6 @@ End Sub
 
 '/------- Clear -------/'
 Private Sub Clear_Form()
-    Gage_Number = ""
     PartNumbertxt = ""
     serialNumberTxt = ""
     lblDateAdded = ""
@@ -237,6 +228,7 @@ End Sub
 '/------- Clear Button -------/'
 Private Sub btnClear_Click()
     Update_Button_Enable = False
+    Gage_Number = ""
     Clear_Form
 End Sub
 

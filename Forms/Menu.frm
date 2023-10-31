@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   7725
+   ClientHeight    =   7920
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10440
+   ClientWidth     =   10575
    OleObjectBlob   =   "Menu.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -30,17 +30,18 @@ Dim AuditTime As String
 Dim AuditUser As String
 
 '/Start up script /'
-Private Sub UserForm_Initialize()
+Private Sub UserForm_Activate()
+'/Positioning /'
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
+
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
     vDisplay = ws.Range("Z1")
     Gage_Number.SetFocus
     DueDateColorRange
-    
-'/Positioning /'
-    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
-    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
-'/End Positioning /'
+    lblPCUser = Application.userName
 End Sub
 
 Private Sub Add_Button_Click()
@@ -151,12 +152,7 @@ Public Sub Search_Button()
     Dim DateEdit 'Update Last searched
     Dim Gage_Number_Save
     
-    ' clear previous data from form, except "Gage Number"
-    ' --------------------------------------------------------
-    Gage_Number_Save = Gage_Number
-    Clear_Form
-    Gage_Number = Gage_Number_Save
-    ' ---------------------------------------------------------
+    Clear_Form ' clear previous data from form, except "Gage Number"
     
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
@@ -313,11 +309,11 @@ End Sub
 '/------- Clear Form -------/'
 Private Sub btnClear_Click()
     Update_Button_Enable = False
+    Gage_Number = ""
     Clear_Form
 End Sub
 
 Private Sub Clear_Form()
-    Gage_Number = ""
     PartNumbertxt = ""
     Descriptiontxt = ""
     comboGageType = ""

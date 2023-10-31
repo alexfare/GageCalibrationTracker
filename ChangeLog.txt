@@ -1,3 +1,11 @@
+Update - 4.3.5
+1. Updated LabelSetUp Form.
+2. Various small coding / layout updates throughout.
+3. Fixed Main Menu not centering on secondary screen.
+4. Fixed graphical glitch when opening main menu.
+6. Added logged in user to MainMenu.
+7. Updated how the program handles clearing inputed data.
+
 Update - 4.3.4
 1. Added Audit Log.
 2. Removed redundant and unused code fromt he main menu (WIP)
