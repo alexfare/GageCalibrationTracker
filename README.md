@@ -13,12 +13,12 @@ Gage Calibration Tracker<br>
 ![image](https://user-images.githubusercontent.com/40654995/216606990-a387920d-f55f-42d6-a73b-12f4bbfadc9c.png)
 <br>
 Menu<br>
-![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/7685b73e-c073-457b-8e03-f3b91c616744)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/d42115c9-99d4-4162-a186-dde516a94842)
 <br>
 Admin Panel w/ Login<br>
-![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/38a0422d-18d3-4cfe-92f0-7e48ed12b710)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/8dc68f84-be95-4d58-a13b-fe19763056f2)
 <br>
-![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/8b16b16e-6576-4341-b35f-815f2b55e69c)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/a2149984-5d7d-45a7-88bb-2c6e9379d5f0)
 <br>
 Gage R&R <br>
 ![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/b7a09091-aa7b-49a5-9926-abbac4f5ad55)
