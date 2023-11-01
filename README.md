@@ -10,7 +10,7 @@ Export / Import:
 Now featuring an export option designed to export all essential Gage data and information. While the export feature is readily available, we are still working on perfecting the import feature.
 
 Gage Calibration Tracker<br>
-![image](https://user-images.githubusercontent.com/40654995/216606990-a387920d-f55f-42d6-a73b-12f4bbfadc9c.png)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/c050fac8-e9a1-46ac-be11-bfc57ee86a64)
 <br>
 Menu<br>
 ![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/d42115c9-99d4-4162-a186-dde516a94842)
