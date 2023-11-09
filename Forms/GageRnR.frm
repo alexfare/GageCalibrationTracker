@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} GageRnR 
    Caption         =   "Gage R&R"
-   ClientHeight    =   6705
+   ClientHeight    =   6645
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   7245
+   ClientWidth     =   7260
    OleObjectBlob   =   "GageRnR.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -13,7 +13,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
 Dim r               As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search

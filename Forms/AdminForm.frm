@@ -118,23 +118,6 @@ Public Sub Search_Button_Click()
     End If
 End Sub
 
-'/------- Error Handling -------/'
-Sub ErrMsg()
-    MsgBox ("Gage Number Not Found"), , "Not Found"
-End Sub
-
-Sub ErrMsg_Duplicate()
-    MsgBox ("Gage number already in use"), , "Duplicate"
-End Sub
-
-Sub ErrMsg_Search()
-    MsgBox ("Must search For entry before updating"), , "Nothing To Update"
-End Sub
-
-Sub ErrMsg_Blank()
-    MsgBox ("Gage ID cannot be blank."), , "Nothing To Update"
-End Sub
-
 '/------- Update Button -------/'
 Private Sub Update_Button_Click()
     If Update_Button_Enable = True Then
@@ -332,10 +315,8 @@ Sub ExportGCTData()
     
     Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
     
-    ' Generate default file name with "GageTracker" and today's date
     defaultFileName = "GageTracker_" & Format(Date, "yyyy-mm-dd") & ".csv"
     
-    ' Show the Save As dialog with the default file name
     FilePath = Application.GetSaveAsFilename(InitialFileName:=defaultFileName, FileFilter:="CSV Files (*.csv), *.csv")
     
     If FilePath <> "False" Then
@@ -361,7 +342,6 @@ Sub ImportGCTData()
     
     Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
     
-    ' Open file dialog to select CSV file
     With Application.FileDialog(msoFileDialogFilePicker)
         .Title = "Select CSV File to Import"
         .Filters.Clear
@@ -371,13 +351,10 @@ Sub ImportGCTData()
         End If
     End With
     
-    ' Check if a file was selected
     If FilePath <> "" Then
-        ' Clear existing data and formatting
         ws.Cells.ClearContents
         ws.Cells.FormatConditions.Delete
         
-        ' Import data from CSV
         With ws.QueryTables.Add(Connection:="TEXT;" & FilePath, Destination:=ws.Cells(1, 1))
             .TextFileParseType = xlDelimited
             .TextFileConsecutiveDelimiter = False
@@ -389,9 +366,25 @@ Sub ImportGCTData()
             .Refresh BackgroundQuery:=False
         End With
         
-        ' Adjust column widths to fit content
         ws.Cells.EntireColumn.AutoFit
     End If
+End Sub
+
+'/------- Error Handling -------/'
+Sub ErrMsg()
+    MsgBox ("Gage Number Not Found"), , "Not Found"
+End Sub
+
+Sub ErrMsg_Duplicate()
+    MsgBox ("Gage number already in use"), , "Duplicate"
+End Sub
+
+Sub ErrMsg_Search()
+    MsgBox ("Must search For entry before updating"), , "Nothing To Update"
+End Sub
+
+Sub ErrMsg_Blank()
+    MsgBox ("Gage ID cannot be blank."), , "Nothing To Update"
 End Sub
 
 

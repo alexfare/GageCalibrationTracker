@@ -1,3 +1,11 @@
+Update - 4.3.6
+1. Updated AdminPanel Layout.
+2. Corrections to SuperAdmin Panel Text.
+3. SuperAdmin Login Layout Updated.
+4. Login Layout Updated.
+5. Various coding cleanup / organization updates.
+6. Small layout adjustments across multiple forms.
+
 Update - 4.3.5
 1. Updated LabelSetUp Form.
 2. Various small coding / layout updates throughout.

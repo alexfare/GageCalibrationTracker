@@ -25,16 +25,17 @@ Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
-Dim ActionLog As String
-Dim AuditTime As String
-Dim AuditUser As String
+Dim ActionLog As String 'Audit Log
+Dim AuditTime As String 'Audit Log
+Dim AuditUser As String 'Audit Log
+Dim auditDate As String 'Audit Log
 
 '/Start up script /'
 Private Sub UserForm_Activate()
-'/Positioning /'
+'/ Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
-'/End Positioning /'
+'/ End Positioning /'
 
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
@@ -364,7 +365,7 @@ Private Sub btnSave_click()
         Status
 End Sub
 
-'/------- Admin Panel - Bring up admin menu to edit audit dates -------/'
+'/------- Admin Panel -------/'
 Private Sub btnAdmin_click()
     '/Add to the login count /'
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
@@ -424,46 +425,7 @@ Private Sub Status()
         statusLabelLog.Caption = ""
 End Sub
 
-'/Auto Due Date
-Private Sub Option1_6_Click()        ' auto format for 6 month interval
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due_6mos = DateAdd("m", 6, Insp_Date)
-    Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
-    Due_Date = Date_Due_6mos
-Else
-    ErrMsg_InvalidDate
-End If
-End Sub
-
-Private Sub Option2_12_Click()        ' auto format for 1 year interval
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
-    Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
-    Due_Date = Date_Due_1yr
-Else
-    ErrMsg_InvalidDate
-End If
-End Sub
-
-Private Sub Option3_24_Click()
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
-    Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
-    Due_Date = Date_Due_2yr
-Else
-    ErrMsg_InvalidDate
-End If
-End Sub
-
-Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
-If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
-    Date_Due = Format(Due_Date, "m/d/yyyy")
-    Due_Date = Date_Due
-Else
-    ErrMsg_InvalidDate
-End If
-End Sub
-
+'/------- Update Due Date Color -------/'
 Sub DueDateColorRange()
     Dim ws As Worksheet
     Dim rng As Range
@@ -523,13 +485,53 @@ Private Sub auditLog()
     ws.Range("A2").Value = auditLog
 End Sub
 
+'/ -------  Auto Due Date ------- /'
+Private Sub Option1_6_Click()        ' auto format for 6 month interval
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due_6mos = DateAdd("m", 6, Insp_Date)
+    Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
+    Due_Date = Date_Due_6mos
+Else
+    ErrMsg_InvalidDate
+End If
+End Sub
+
+Private Sub Option2_12_Click()        ' auto format for 1 year interval
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
+    Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
+    Due_Date = Date_Due_1yr
+Else
+    ErrMsg_InvalidDate
+End If
+End Sub
+
+Private Sub Option3_24_Click()
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
+    Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
+    Due_Date = Date_Due_2yr
+Else
+    ErrMsg_InvalidDate
+End If
+End Sub
+
+Private Sub Option4_Custom_Click()        ' formatting for either original record, or new custom date
+If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
+    Date_Due = Format(Due_Date, "m/d/yyyy")
+    Due_Date = Date_Due
+Else
+    ErrMsg_InvalidDate
+End If
+End Sub
+
 '/------- Error Handling -------/'
 Sub ErrMsg()
     MsgBox ("Gage Number Not Found."), vbInformation, "Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
-    MsgBox ("Gage number already in use."), vbInformation, "Duplicate"
+    MsgBox "Gage number already exists. Please use a different Gage number.", vbInformation, "Duplicate Gage Number"
 End Sub
 
 Sub ErrMsg_InvalidDate()
@@ -551,4 +553,3 @@ End Sub
 Private Sub UserForm_Terminate()
     DueDateColorRange
 End Sub
-
