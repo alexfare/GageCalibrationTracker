@@ -173,13 +173,9 @@ Private Sub Add_Button_Click()
 End Sub
 
 Public Sub Search_Button_Click()
+    On Error GoTo Err_Search
     
-    ' clear previous data from form, except "Gage Number"
-    ' --------------------------------------------------------
-    Gage_Number_Save = Gage_Number
-    Clear_Form
-    Gage_Number = Gage_Number_Save
-    '/ Calculation --------------------------------------------
+    Clear_Form ' clear previous data from form, except "Gage Number"
     
     Dim ws          As Worksheet
     
@@ -189,7 +185,7 @@ Public Sub Search_Button_Click()
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         Update_Button_Enable = False
-        ErrMsg
+        ErrMsg_NotFound
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
@@ -343,16 +339,13 @@ Dim cell As Range
 
 Set rng = ws.Range("C3:E17")
 
-On Error Resume Next ' Ignore errors and continue execution
 For Each cell In rng
     If IsNumeric(cell.Value) Then
         cell.Value = Val(cell.Value)
     End If
 Next cell
-On Error GoTo 0 ' Disable error handling
 
 ' Calculations
-On Error Resume Next ' Ignore errors and continue execution
 calR = ws.Range("B25")
 cald2 = ws.Range("B26")
 calk1 = ws.Range("B27")
@@ -368,12 +361,11 @@ On Error GoTo 0 ' Disable error handling
 
 '/ Convert score to percentage
 Dim pScore As Double
-On Error Resume Next ' Ignore errors and continue execution
+
 pScore = ws.Range("B39")
 If Not IsError(pScore) Then
     calScore = FormatPercent(pScore, 2)
 End If
-On Error GoTo 0 ' Disable error handling
 
 '/ Score
 Dim scoreCal As Double
@@ -397,7 +389,6 @@ Status
 On Error GoTo 0 ' Disable error handling
 
 '/ Change back to GageRnR Worksheet
-On Error Resume Next ' Ignore errors and continue execution
 List_Select = "GageRnR" ' Tab name
 Set ws = Sheets(List_Select)
 If Not ws Is Nothing Then
@@ -406,8 +397,13 @@ Else
     ' Handle the case when the worksheet is not found
     MsgBox "Worksheet 'GageRnR' not found!"
 End If
-On Error GoTo 0 ' Disable error handling
 End If
+
+ExitSub:
+    Exit Sub
+
+Err_Search:
+    Resume ExitSub
 End Sub
 
 Private Sub Update_Button_Click()
@@ -533,7 +529,6 @@ Sub MSG_Verify_Update()
 End Sub
 
 Private Sub Clear_Form()
-    Gage_Number = ""
     PartNumbertxt = ""
     '/ Gage R&R Appraiser 1 /*
     Ap1Name = ""
@@ -626,6 +621,7 @@ End Sub
 
 Private Sub btnClear_Click()
     Update_Button_Enable = False
+    Gage_Number = ""
     Clear_Form
 End Sub
 
@@ -650,7 +646,7 @@ Private Sub Status()
 End Sub
 
 '/------- Error Handling -------/'
-Sub ErrMsg()
+Sub ErrMsg_NotFound()
     MsgBox ("Gage ID Not Found"), , "Not Found"
 End Sub
 

@@ -1,3 +1,8 @@
+Update - 4.4.0
+1. Removed old Serial number gen code from Admin Panel.
+2. Various coding cleanup / organization updates.
+3. Fixed GageR&R crash issue
+
 Update - 4.3.6
 1. Updated AdminPanel Layout.
 2. Corrections to SuperAdmin Panel Text.

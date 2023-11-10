@@ -161,7 +161,7 @@ Public Sub Search_Button()
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         Update_Button_Enable = False
-        ErrMsg
+        ErrMsg_NotFound
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
@@ -404,7 +404,6 @@ End Sub
 
 '/------- Gage R&R -------/'
 Private Sub btnGageRR_Click()
-    MsgBox "Gage R&R has been causing some issues crashing when searching for Gages that do not have all inputs. Please save and use at your own risk until this issue has been resolved."
     GageRnR.Show
 End Sub
 
@@ -526,7 +525,7 @@ End If
 End Sub
 
 '/------- Error Handling -------/'
-Sub ErrMsg()
+Sub ErrMsg_NotFound()
     MsgBox ("Gage Number Not Found."), vbInformation, "Not Found"
 End Sub
 

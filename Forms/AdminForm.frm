@@ -77,7 +77,7 @@ Public Sub Search_Button_Click()
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
         Update_Button_Enable = False
-        ErrMsg
+        ErrMsg_NotFound
     Else
         r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
         GN_Verify = Gage_Number
@@ -102,16 +102,6 @@ Public Sub Search_Button_Click()
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Searching..."
         Status
-        
-        '/ Serial Number /'
-        Dim serialNumberGen As String
-        Dim iDate As String
-        Dim calDate As String
-        
-        iDate = Insp_Date
-        calDate = Due_Date
-        serialNumberGen = Gage_Number_Save + "-" + PartNumbertxt + "-" + comboGageType + "-" + Department + "-" + iDate + "-" + calDate
-        serialNumberTxt = serialNumberGen
         
         Update_Button_Enable = True
         Option4_Custom = True
@@ -371,7 +361,7 @@ Sub ImportGCTData()
 End Sub
 
 '/------- Error Handling -------/'
-Sub ErrMsg()
+Sub ErrMsg_NotFound()
     MsgBox ("Gage Number Not Found"), , "Not Found"
 End Sub
 
