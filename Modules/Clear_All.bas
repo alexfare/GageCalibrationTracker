@@ -70,6 +70,7 @@ MsgBox "Credentials Deleted."
 End Sub
 
 Sub Clear_GageRR()
+On Error GoTo Err
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim ws As Worksheet
 Dim List_Select
@@ -82,6 +83,12 @@ Dim List_Select
         ws.Rows(i).EntireRow.Delete
     Next i
 MsgBox "Gage R&R Deleted."
+
+ExitSub:
+    Exit Sub
+
+Err:
+    Resume ExitSub
 End Sub
 
 Sub Clear_completed()

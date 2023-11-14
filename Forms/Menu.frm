@@ -6,7 +6,6 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu
    ClientTop       =   375
    ClientWidth     =   10575
    OleObjectBlob   =   "Menu.frx":0000
-   StartUpPosition =   2  'CenterScreen
 End
 Attribute VB_Name = "Menu"
 Attribute VB_GlobalNameSpace = False
@@ -149,9 +148,8 @@ Public Sub Search_Confirm_Click()
 End Sub
 
 Public Sub Search_Button()
-    Dim ws          As Worksheet
+    Dim ws As Worksheet
     Dim DateEdit 'Update Last searched
-    Dim Gage_Number_Save
     
     Clear_Form ' clear previous data from form, except "Gage Number"
     
@@ -209,7 +207,7 @@ Public Sub Search_Button()
     End If
 End Sub
 
-'/------- Update Button
+'/------- Update Button -------/'
 Private Sub Update_Button_Click()
     If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then

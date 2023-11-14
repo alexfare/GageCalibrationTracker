@@ -22,4 +22,5 @@ Private Sub Workbook_Open()
      ws.Range("B52") = "" 'Clears logged in user.
      ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
      ws.Range("B64") = "1" 'Clears Persistent Login From Last Session
+     ThisWorkbook.Save
 End Sub

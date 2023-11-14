@@ -1,3 +1,11 @@
+Update - 4.4.1
+1. Removed unused code from CreateAccount.
+2. Fixed tab order in CompanyProfile form.
+3. MainMenu Layout adjustments & removed unused code.
+4. Added an auto save on start up to keep audit log more accurate.
+5. Updated CreateAccount Password match code.
+6. Fixed Gage R&R Crash Issue On Format.
+
 Update - 4.4.0
 1. Removed old Serial number gen code from Admin Panel.
 2. Various coding cleanup / organization updates.

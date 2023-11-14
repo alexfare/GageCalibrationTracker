@@ -26,19 +26,17 @@ End Sub
 
 Private Sub CreateConfirm_Click()
     If inputPass <> "" And inputPassx2 <> "" Then
-        If inputPass = inputPassx2 Then
-        PassMatch = True
-    Else
-        PassMatch = False
-    End If
+        PasswordMatch
     Else
         MsgBox ("Username or Password cannot be blank."), , "Error"
-        Exit Sub
     End If
-    If PassMatch = True Then
-        btnCreate_Click
+End Sub
+
+Private Sub PasswordMatch()
+    If inputPass = inputPassx2 Then
+       btnCreate_Click
     Else
-        MsgBox ("Passwords do not match."), , "Error"
+       MsgBox ("Passwords do not match."), , "Error"
     End If
 End Sub
 
@@ -115,10 +113,6 @@ Private Sub btnCreate_Click()
         ErrMsg_Duplicate
     End If
     
-End Sub
-
-Sub ErrMsg()
-    MsgBox ("Username Not Found."), , "Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
