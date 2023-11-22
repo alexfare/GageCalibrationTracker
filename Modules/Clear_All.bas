@@ -21,7 +21,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
-MsgBox "Rows Deleted!"
+MsgBox "Rows Deleted!", vbInformation + vbApplicationModal, "Format Status"
 End Sub
 
 Sub Clear_Admin()
@@ -36,7 +36,7 @@ Dim List_Select
     For i = 2 To 999
         ws.Range("B" & i).ClearContents
     Next i
-MsgBox "Admin Settings Cleared."
+MsgBox "Admin Settings Cleared.", vbInformation + vbApplicationModal, "Format Status"
 End Sub
 
 Sub Clear_Customers()
@@ -51,7 +51,7 @@ Dim List_Select
     For i = 999 To 2 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
-MsgBox "Customers Cleared."
+MsgBox "Customers Cleared.", vbInformation + vbApplicationModal, "Format Status"
 End Sub
 
 Sub Clear_Credentials()
@@ -66,7 +66,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
-MsgBox "Credentials Deleted."
+MsgBox "Credentials Deleted.", vbInformation + vbApplicationModal, "Format Status"
 End Sub
 
 Sub Clear_GageRR()
@@ -82,7 +82,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
-MsgBox "Gage R&R Deleted."
+MsgBox "Gage R&R Deleted.", vbInformation + vbApplicationModal, "Format Status"
 
 ExitSub:
     Exit Sub

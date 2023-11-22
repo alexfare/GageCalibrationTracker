@@ -114,10 +114,6 @@ Private Sub Login_Sub()
     End If
     
     If Password = PassCompare Then
-        Unload LoginForm
-        Sheets("CreatedByAlexFare").Activate
-        AdminForm.Show
-        
         '/Add to the login count /'
         Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
         Dim LoginCount As Integer
@@ -132,6 +128,10 @@ Private Sub Login_Sub()
         ws.Range("B48") = LoginCountPlusOne
         ws.Range("B52") = inputUsername
         ws.Range("B55") = "2"
+        
+        Unload LoginForm
+        Sheets("CreatedByAlexFare").Activate
+        AdminForm.Show
     End If
 End Sub
 

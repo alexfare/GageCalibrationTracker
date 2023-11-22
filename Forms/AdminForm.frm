@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   5295
+   ClientHeight    =   5325
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   12330
+   ClientWidth     =   12495
    OleObjectBlob   =   "AdminForm.frx":0000
 End
 Attribute VB_Name = "AdminForm"
@@ -283,8 +283,36 @@ Private Sub btnReleaseNotes_click()
 End Sub
 
 Private Sub SuperAdminBTN_click()
-    Unload AdminForm
-    SuperAdminLogin.Show
+    Dim isSuperAdmin As Boolean
+    Dim loggedUser As String
+    Dim ws As Worksheet
+    Dim List_Select
+    List_Select = "Admin" ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    loggedUser = ws.Range("B52")
+
+    List_Select = "Credentials"
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    
+    If IsError(Application.Match(IIf(IsNumeric(loggedUser), Val(loggedUser), loggedUser), ws.Columns(1), 0)) Then
+        btnUpdate_Enable = False
+        ErrMsg_UserError
+        Exit Sub
+    Else
+        r = Application.Match(IIf(IsNumeric(loggedUser), Val(loggedUser), loggedUser), ws.Columns(1), 0)
+        GN_Verify = loggedUser
+        btnUpdate_Enable = True
+        isSuperAdmin = ws.Cells(r, "H")
+    End If
+    
+    If isSuperAdmin = True Then
+        Unload AdminForm
+        SuperAdminMenu.Show
+    Else
+        ErrMsg_NotSuperAdmin
+    End If
 End Sub
 
 Private Sub btnPassword_click()
@@ -374,6 +402,20 @@ End Sub
 
 Sub ErrMsg_Blank()
     MsgBox ("Gage ID cannot be blank."), , "Nothing To Update"
+End Sub
+
+Sub ErrMsg_NotSuperAdmin()
+    MSG1 = MsgBox("User not Super Admin, Sign in with a password?", vbYesNo, "Admin Error")
+    
+    If MSG1 = vbYes Then
+        Unload AdminForm
+        SuperAdminLogin.Show
+    Else
+    End If
+End Sub
+
+Sub ErrMsg_UserError()
+    MsgBox ("Having Issues Logging In, Please Try Again."), , "Admin Error"
 End Sub
 
 

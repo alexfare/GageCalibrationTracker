@@ -1,3 +1,11 @@
+Update - 4.4.2
+	Updated AdminPanel
+		Slight layout correction.
+	Updated SuperAdmin Login
+		SuperAdmin automatically logs in based on if the account is a super admin account, No longer need a password.
+	Updated LoginForm
+		Fixed Issue updating logged in user right away.
+
 Update - 4.4.1
 1. Removed unused code from CreateAccount.
 2. Fixed tab order in CompanyProfile form.
