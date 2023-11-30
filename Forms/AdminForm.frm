@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   5325
+   ClientHeight    =   8460.001
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   12495
+   ClientWidth     =   11025
    OleObjectBlob   =   "AdminForm.frx":0000
 End
 Attribute VB_Name = "AdminForm"
@@ -156,18 +156,6 @@ Private Sub Update_Worksheet()
     End If
 End Sub
 
-Private Sub Update_Button_Log_Click()
-    If Update_Button_Enable = True Then
-        If GN_Verify = Gage_Number Then
-            Update_Worksheet
-        Else
-            MSG_Verify_Update
-        End If
-    Else
-        ErrMsg_Search
-    End If
-End Sub
-
 Sub MSG_Verify_Update()
     MSG1 = MsgBox("Are you sure you want To change the Gage ID?", vbYesNo, "Verify")
     
@@ -212,6 +200,7 @@ End Sub
 
 Private Sub btnClose_Click()
     Unload AdminForm
+    Menu.Show
 End Sub
 
 Private Sub btnCreateAccount_click()

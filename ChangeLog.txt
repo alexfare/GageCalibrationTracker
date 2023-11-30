@@ -1,3 +1,8 @@
+Update - 4.5.0
+	Updated AdminPanel Layout.
+	Updated SuperAdminMenu Symbol.
+	Updated Customer Manager Menu Layout.
+
 Update - 4.4.2
 	Updated AdminPanel
 		Slight layout correction.

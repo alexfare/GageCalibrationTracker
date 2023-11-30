@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} FormCustomer 
    Caption         =   "Customer Manager"
-   ClientHeight    =   3555
+   ClientHeight    =   5160
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   5220
+   ClientWidth     =   5655
    OleObjectBlob   =   "FormCustomer.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -92,23 +92,11 @@ Update_Button_Enable = False
 Clear_Form
 End Sub
 
-Sub ErrMsg()
-MsgBox ("Customer Not Found."), , "Not Found"
-End Sub
-
-Sub ErrMsg_Duplicate()
-MsgBox ("Customer already added."), , "Duplicate"
-End Sub
-
 Private Sub Clear_Form()
         Customer_Name = ""
         inCAddress = ""
         inCPhoneNumber = ""
         inCWebsite = ""
-End Sub
-
-Sub Err_Blank()
-    MsgBox ("Customer name cannot be blank."), , "Error"
 End Sub
 
 '/------- Status -------/'
@@ -126,4 +114,17 @@ Private Sub Status()
     Loop
         statusLabel.Caption = ""
         statusLabelLog.Caption = ""
+End Sub
+
+'/------- Error Codes -------/'
+Sub Err_Blank()
+    MsgBox ("Customer name cannot be blank."), , "Error"
+End Sub
+
+Sub ErrMsg()
+MsgBox ("Customer Not Found."), , "Not Found"
+End Sub
+
+Sub ErrMsg_Duplicate()
+MsgBox ("Customer already added."), , "Duplicate"
 End Sub
