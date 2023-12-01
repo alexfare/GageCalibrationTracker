@@ -1,3 +1,10 @@
+Update - 4.5.1
+	Update how SuperAdmin password is stored.
+	Added ability to change SuperAdmin password.
+	Updated MainMenu layout (Added border).
+	Updated AdminMenu layout (Added border).
+	Updated ReportIssue layout (Added border).
+
 Update - 4.5.0
 	Updated AdminPanel Layout.
 	Updated SuperAdminMenu Symbol.

@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ReportIssue 
    Caption         =   "Report Issue"
-   ClientHeight    =   4575
+   ClientHeight    =   4860
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4695
+   ClientWidth     =   4875
    OleObjectBlob   =   "ReportIssue.frx":0000
    StartUpPosition =   2  'CenterScreen
 End

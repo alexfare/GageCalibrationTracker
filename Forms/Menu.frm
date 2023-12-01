@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   7920
+   ClientHeight    =   8190
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10575
+   ClientWidth     =   10590
    OleObjectBlob   =   "Menu.frx":0000
 End
 Attribute VB_Name = "Menu"
@@ -31,11 +31,11 @@ Dim auditDate As String 'Audit Log
 
 '/Start up script /'
 Private Sub UserForm_Activate()
-'/ Positioning /'
+    '/ Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
-'/ End Positioning /'
-
+    '/ End Positioning /'
+    
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
     vDisplay = ws.Range("Z1")

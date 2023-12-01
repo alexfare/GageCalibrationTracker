@@ -14,12 +14,23 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '/Admin Panel Login /'
+Dim SAP As String
 
 Private Sub UserForm_Activate()
 '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
+
+'/Retrieve password /'
+    Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
+    Dim ws As Worksheet
+    Dim List_Select
+    List_Select = "Admin" ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+
+    SAP = ws.Range("B65")
 End Sub
 
 Private Sub inputPass_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
@@ -57,7 +68,7 @@ Private Sub Login_Sub()
     
     Dim Password As Variant
 
-    Password = "5a6WKkpPucxU75yOvrlND6xY549SrkucxhEg+SukLGzG4pdyY5I1X+51fP5BpkMC1RwXMRw9VZTFXXpXcWeemQ=="
+    Password = SAP
     PassCompare = savePass
     
     If Password <> PassCompare Then
@@ -68,6 +79,17 @@ Private Sub Login_Sub()
     If Password = PassCompare Then
         Unload SuperAdminLogin
         SuperAdminMenu.Show
+        
+        '/Add to the login count /'
+        Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
+        Dim LoginCount As Integer
+        
+        Dim List_Select
+        List_Select = "Admin"        ' Tab name
+        Set ws = Sheets(List_Select)
+        Set Worksheet_Set = ws
+        
+        ws.Range("B64") = "2"
     End If
 End Sub
 
