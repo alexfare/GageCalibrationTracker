@@ -1,10 +1,9 @@
 # GageCalibrationTracker
 Introducing Gage Calibration Tracker, a simple yet sophisticated gage calibration management software solution designed to simplify the task of maintaining tool calibration records. This user-friendly software is seamlessly integrated with Microsoft Excel, offering a highly efficient and free-running experience.
 
-Default Username: Admin<br>
-Default Password: Admin<br>
-
-Default SuperAdmin Password: "SuperAdmin" (This will be changable in the future)
+Default Username: "Admin"<br>
+Default Password: "Admin"<br>
+Default SuperAdmin Password: "SuperAdmin"
 
 Export / Import:
 Now featuring an export option designed to export all essential Gage data and information. While the export feature is readily available, we are still working on perfecting the import feature.
@@ -22,5 +21,3 @@ Admin Panel w/ Login<br>
 <br>
 Gage R&R <br>
 ![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/b7a09091-aa7b-49a5-9926-abbac4f5ad55)
-<br>
-*Some users are experiencing crashing on the initial start up. If this issue persists, please submit a report here or using the built in reporting system.
