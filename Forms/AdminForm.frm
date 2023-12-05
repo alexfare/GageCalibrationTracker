@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   8670.001
+   ClientHeight    =   8550.001
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   11220
@@ -47,6 +47,8 @@ Private Sub UserForm_Activate()
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     vDisplay = ws.Range("Z1")
+    
+    Gage_Number.SetFocus
 End Sub
 
 '/ Pressing Enter will instantly search /'
@@ -304,14 +306,9 @@ Private Sub SuperAdminBTN_click()
     End If
 End Sub
 
-Private Sub btnPassword_click()
-    Dim msgBoxPW As String
-    msgBoxPW = Base64DecodeString("UmVwdXJwb3NlNSE=")
-    MsgBox msgBoxPW
-End Sub
-
 Private Sub btnExport_click()
-    ExportGCTData
+    'ExportGCTData
+    MsgBox ("Exporting has been temporarily disabled.")
 End Sub
 
 Sub ExportGCTData()

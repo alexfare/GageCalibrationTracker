@@ -402,6 +402,7 @@ End Sub
 
 '/------- Gage R&R -------/'
 Private Sub btnGageRR_Click()
+    Unload Menu
     GageRnR.Show
 End Sub
 

@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} GageRnR 
    Caption         =   "Gage R&R"
-   ClientHeight    =   6645
+   ClientHeight    =   6855
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   7260
+   ClientWidth     =   7455
    OleObjectBlob   =   "GageRnR.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -18,21 +18,22 @@ Dim Worksheet_Set        ' variable used for selecting and storing the active wo
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
 Dim currrentUser    As String
-
-'/Positioning /'
-Private Sub UserForm_Initialize()
-    Dim ws          As Worksheet
-    Dim List_Select
-    List_Select = "GageRnR"        ' Tab name
-    Set ws = Sheets(List_Select)
-    Set Worksheet_Set = ws
-End Sub
+Dim ws          As Worksheet
+Dim List_Select
 
 Private Sub UserForm_Activate()
     '/Positioning /'
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
     '/End Positioning /'
+    
+    List_Select = "CreatedByAlexFare"
+    Set ws = Sheets(List_Select)
+    vDisplay = ws.Range("Z1")
+    
+    List_Select = "GageRnR"        ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
 End Sub
 
 '/ Pressing Enter will instantly search /'
@@ -627,6 +628,7 @@ End Sub
 
 Private Sub btnClose_Click()
     Unload GageRnR
+    Menu.Show
 End Sub
 
 Private Sub Status()

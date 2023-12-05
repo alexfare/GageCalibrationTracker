@@ -1,3 +1,11 @@
+Update - 4.5.2
+	Updated Gage R&R layout.
+	Updated Gage R&R & Main Menu. (Menu now closes when opening Gage R&R Screen).
+	Updated SuperAdminMenu & AdminMenu. (Moved Dev Password to SuperAdminMenu).
+	Fixed some layout & tab order issues on AdminMenu.
+	Exporting under AdminMenu has been temporarily disabled.
+	Added Scroll bar under Comments on the Main Menu.
+
 Update - 4.5.1
 	Update how SuperAdmin password is stored.
 	Added ability to change SuperAdmin password.
