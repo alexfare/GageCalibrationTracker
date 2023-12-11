@@ -18,6 +18,8 @@ Private Sub UserForm_Activate()
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
+
+inputName.SetFocus
 End Sub
 
 Private Sub btnBack_click()
@@ -28,7 +30,7 @@ End Sub
 Private Sub btnSubmit_Click()
     ' Check if the user provided input
     If inputName <> "" And inputDescription <> "" Then
-    Send_Emails
+        Send_Emails
     Else
         MsgBox "Please provide all the required information.", vbExclamation
     End If

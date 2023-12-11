@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Label 
    Caption         =   "Print Labels"
-   ClientHeight    =   2370
+   ClientHeight    =   1740
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3930
+   ClientWidth     =   3870
    OleObjectBlob   =   "Label.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -67,10 +67,6 @@ End Sub
 
 Private Sub btnBack_click()
     Unload Me
-End Sub
-
-Private Sub btnCert_Click()
-    MsgBox ("Coming Soon!")
 End Sub
 
 Sub Err_NoPrinter()

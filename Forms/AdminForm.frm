@@ -222,7 +222,6 @@ End Sub
 
 Private Sub btnCustomers_Click()
     Unload AdminForm
-    Worksheets("Customers").Activate
     FormCustomer.Show
 End Sub
 
@@ -307,8 +306,7 @@ Private Sub SuperAdminBTN_click()
 End Sub
 
 Private Sub btnExport_click()
-    'ExportGCTData
-    MsgBox ("Exporting has been temporarily disabled.")
+    ExportGCTData
 End Sub
 
 Sub ExportGCTData()
@@ -322,10 +320,13 @@ Sub ExportGCTData()
     
     FilePath = Application.GetSaveAsFilename(InitialFileName:=defaultFileName, FileFilter:="CSV Files (*.csv), *.csv")
     
-    If FilePath <> "False" Then
-        ws.SaveAs FilePath, xlCSV
+    If FilePath <> False Then
+        ws.Copy
+        ActiveWorkbook.SaveAs FilePath, xlCSV
+        ActiveWorkbook.Close SaveChanges:=False
     End If
 End Sub
+
 
 Sub btnImport_click()
 

@@ -8,6 +8,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Private Sub Workbook_Open()
+    On Error GoTo Err_Save
     Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
     Dim WorkBookCount As Integer
     Dim ws As Worksheet
@@ -15,12 +16,19 @@ Private Sub Workbook_Open()
     List_Select = "Admin" ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
+    
+    WorkBookCount = ws.Range("B47")
+    WorkBookPlusOne = WorkBookCount + 1
+    ws.Range("B47") = WorkBookPlusOne
+    ws.Range("B52") = "" 'Clears logged in user.
+    ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
+    ws.Range("B64") = "1" 'Clears Persistent Login From Last Session
+    Worksheets("CreatedByAlexFare").Activate
+    ThisWorkbook.Save
+    
+ExitSub:
+    Exit Sub
 
-     WorkBookCount = ws.Range("B47")
-     WorkBookPlusOne = WorkBookCount + 1
-     ws.Range("B47") = WorkBookPlusOne
-     ws.Range("B52") = "" 'Clears logged in user.
-     ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
-     ws.Range("B64") = "1" 'Clears Persistent Login From Last Session
-     ThisWorkbook.Save
+Err_Save:
+    Resume ExitSub
 End Sub

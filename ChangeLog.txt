@@ -1,3 +1,11 @@
+Update - 4.5.3
+	Updated error handling on LoginForm.
+	Updated Label Form, Removed Cert (May bring back in the future).
+	Updated ReportIssue adding setfocus.
+	Fixed Exporting Issue. (Exporting is still WIP).
+	Fixed Crashing Issue - On open when saved under Customer worksheet.
+	Updated Customer Form.
+
 Update - 4.5.2
 	Updated Gage R&R layout.
 	Updated Gage R&R & Main Menu. (Menu now closes when opening Gage R&R Screen).

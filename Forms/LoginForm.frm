@@ -20,6 +20,8 @@ Private Sub UserForm_Activate()
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
+
+inputUser.SetFocus
 End Sub
 
 Private Sub inputPass_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
@@ -31,9 +33,9 @@ End Sub
 Private Sub btnLogin_Click()
     ' Check if the user provided input
     If inputUser <> "" And inputPass <> "" Then
-    Login_Sub
+        Login_Sub
     Else
-        Failed_Login
+        Err_Blank
     End If
 End Sub
 
@@ -60,18 +62,6 @@ Private Sub Login_Sub()
     
     savePass = sH
     '/ Hash /'
-    
-    'User set up
-    If inputUser.Value = "" Then
-        MsgBox "User Cannot be Blank.", vbInformation, ""
-        Exit Sub
-    End If
-    
-    'Password set up
-    If inputPass.Value = "" Then
-        MsgBox "Password Cannot be Blank!", vbInformation, ""
-        Exit Sub
-    End If
     
     Dim inputUsername As String
     Dim Password As Variant
@@ -142,4 +132,8 @@ End Sub
 
 Private Sub Failed_Login()
     MsgBox "Login Failed, Wrong Username Or Password.", vbInformation, "Failed Login"
+End Sub
+
+Private Sub Err_Blank()
+    MsgBox "Username or Password cannot be blank.", vbInformation, "Failed Login"
 End Sub
