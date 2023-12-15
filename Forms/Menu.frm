@@ -368,7 +368,6 @@ Private Sub btnAdmin_click()
     '/Add to the login count /'
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim LoginCount  As Integer
-    
     Dim ws          As Worksheet
     Dim List_Select
     Dim TempLogin   As Integer
@@ -377,15 +376,13 @@ Private Sub btnAdmin_click()
     Set Worksheet_Set = ws
     Persistent_Login = ws.Range("B55")
     
-    If Persistent_Login = "1" Then
-        Unload Menu
-        LoginForm.Show
-    End If
-    
     If Persistent_Login = "2" Then
         Sheets("CreatedByAlexFare").Activate
         Unload Menu
         AdminForm.Show
+    Else
+        Unload Menu
+        LoginForm.Show
     End If
 End Sub
 

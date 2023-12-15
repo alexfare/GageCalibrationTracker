@@ -216,8 +216,9 @@ Private Sub btnUpdateUser_click()
 End Sub
 
 Private Sub btnEditLists_Click()
-    Unload AdminForm
-    Worksheets("Lists").Activate
+    'Unload AdminForm
+    'Worksheets("Lists").Activate
+    List_Form.Show
 End Sub
 
 Private Sub btnCustomers_Click()

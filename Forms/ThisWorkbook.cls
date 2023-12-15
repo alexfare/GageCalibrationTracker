@@ -11,6 +11,7 @@ Private Sub Workbook_Open()
     On Error GoTo Err_Save
     Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
     Dim WorkBookCount As Integer
+    Dim WorkBookPlusOne As Integer
     Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
@@ -23,6 +24,7 @@ Private Sub Workbook_Open()
     ws.Range("B52") = "" 'Clears logged in user.
     ws.Range("B55") = "1" 'Clears Persistent Login From Last Session
     ws.Range("B64") = "1" 'Clears Persistent Login From Last Session
+    ws.Range("B66") = ""
     Worksheets("CreatedByAlexFare").Activate
     ThisWorkbook.Save
     

@@ -1,3 +1,10 @@
+Update - 4.5.4
+	Updated Formating to auto save & close.
+	Updated SuperAdmin Menu Dev Password.
+	Updated how loging in is handled on the menu. (Updating to Boolean eventually)
+	Updated ReportIssue Form. Added Scrolling & Multiline to comment.
+	Removed unused worksheets.
+	
 Update - 4.5.3
 	Updated error handling on LoginForm.
 	Updated Label Form, Removed Cert (May bring back in the future).
@@ -15,7 +22,7 @@ Update - 4.5.2
 	Added Scroll bar under Comments on the Main Menu.
 
 Update - 4.5.1
-	Update how SuperAdmin password is stored.
+	Updated how SuperAdmin password is stored.
 	Added ability to change SuperAdmin password.
 	Updated MainMenu layout (Added border).
 	Updated AdminMenu layout (Added border).

@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} ReportIssue 
    Caption         =   "Report Issue"
-   ClientHeight    =   4860
+   ClientHeight    =   5070
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   4875
@@ -19,7 +19,10 @@ Private Sub UserForm_Activate()
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
 
-inputName.SetFocus
+    List_Select = "CreatedByAlexFare"
+    Set ws = Sheets(List_Select)
+    vDisplay = ws.Range("Z1")
+    inputName.SetFocus
 End Sub
 
 Private Sub btnBack_click()
@@ -117,7 +120,7 @@ Err:
     End Select
     
     Resume Exit_Err
-    
+
 End Sub
 
 

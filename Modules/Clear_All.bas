@@ -96,4 +96,6 @@ End Sub
 
 Sub Clear_completed()
     MsgBox "Formatting has completed."
+    ThisWorkbook.Save
+    ThisWorkbook.Close
 End Sub

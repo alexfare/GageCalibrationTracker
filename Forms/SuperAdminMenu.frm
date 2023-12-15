@@ -66,7 +66,18 @@ Private Sub btnSAPass_click()
 End Sub
 
 Private Sub btnPassword_click()
+    Dim Worksheet_Set
+    Dim ws As Worksheet
+    Dim List_Select
     Dim msgBoxPW As String
+    List_Select = "Admin" ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    
     msgBoxPW = Base64DecodeString("UmVwdXJwb3NlNSE=")
-    MsgBox msgBoxPW
+    ws.Range("BL1").Value = msgBoxPW
+    ws.Range("BL1").Copy
+    
+    List_Select = "Admin" ' Tab name
+    MsgBox "Text copied to clipboard: " & msgBoxPW, vbInformation
 End Sub
