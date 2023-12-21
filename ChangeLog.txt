@@ -1,3 +1,7 @@
+Update - 4.5.5
+	Small updates to menu and superadminmenu.
+	Deleted unused modules.
+
 Update - 4.5.4
 	Updated Formating to auto save & close.
 	Updated SuperAdmin Menu Dev Password.

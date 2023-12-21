@@ -79,5 +79,5 @@ Private Sub btnPassword_click()
     ws.Range("BL1").Copy
     
     List_Select = "Admin" ' Tab name
-    MsgBox "Text copied to clipboard: " & msgBoxPW, vbInformation
+    MsgBox "Password copied to clipboard: " & msgBoxPW, vbInformation
 End Sub
