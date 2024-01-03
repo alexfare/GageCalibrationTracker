@@ -134,7 +134,7 @@ End Sub
 '/------- Press Enter -------/'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
-        Search_Button
+        Search_Confirm_Click
     End If
 End Sub
 

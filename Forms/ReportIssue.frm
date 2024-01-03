@@ -25,9 +25,11 @@ Private Sub UserForm_Activate()
     inputName.SetFocus
 End Sub
 
-Private Sub btnBack_click()
-    Unload Me
-    Menu.Show
+'/------- Press Enter -------/'
+Private Sub inputName_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
+    If KeyCode = vbKeyReturn Then
+        btnSubmit_Click
+    End If
 End Sub
 
 Private Sub btnSubmit_Click()
@@ -123,4 +125,7 @@ Err:
 
 End Sub
 
-
+Private Sub btnBack_click()
+    Unload Me
+    Menu.Show
+End Sub

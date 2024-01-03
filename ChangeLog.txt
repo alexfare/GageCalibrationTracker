@@ -1,3 +1,9 @@
+Update - 4.5.6
+	Corrections to Menu and AdminMenu.
+	Updated Admin Menu Layout.
+	Moved Format under SuperAdminMenu.
+	Updated ReportIssue form.
+
 Update - 4.5.5
 	Small updates to menu and superadminmenu.
 	Deleted unused modules.

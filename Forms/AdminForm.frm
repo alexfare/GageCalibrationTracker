@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
    Caption         =   "Admin Panel  - Created By Alex Fare"
-   ClientHeight    =   8550.001
+   ClientHeight    =   9270.001
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   11220
+   ClientWidth     =   9870.001
    OleObjectBlob   =   "AdminForm.frx":0000
 End
 Attribute VB_Name = "AdminForm"
@@ -54,7 +54,7 @@ End Sub
 '/ Pressing Enter will instantly search /'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
-        Search_Button_Click
+        Search_Confirm_Click
     End If
 End Sub
 
@@ -216,9 +216,8 @@ Private Sub btnUpdateUser_click()
 End Sub
 
 Private Sub btnEditLists_Click()
-    'Unload AdminForm
-    'Worksheets("Lists").Activate
-    List_Form.Show
+    Unload AdminForm
+    Worksheets("Lists").Activate
 End Sub
 
 Private Sub btnCustomers_Click()
@@ -244,10 +243,6 @@ Private Sub Status()
     Loop
         statusLabel.Caption = ""
         statusLabelLog.Caption = ""
-End Sub
-
-Private Sub btnFormat_Click()
-    Format_Form.Show
 End Sub
 
 Private Sub btnLogout_Click()

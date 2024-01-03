@@ -81,3 +81,7 @@ Private Sub btnPassword_click()
     List_Select = "Admin" ' Tab name
     MsgBox "Password copied to clipboard: " & msgBoxPW, vbInformation
 End Sub
+
+Private Sub btnFormat_Click()
+    Format_Form.Show
+End Sub
