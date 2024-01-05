@@ -1,3 +1,8 @@
+Update - 4.5.7
+	Fixed Issue on Menu when adding new gage, It would clear everything but Gage Number.
+	Updated Menu Code - Moved AddGageCount to its own sub.
+	Updated Menu code on how it handles checks for errors.
+
 Update - 4.5.6
 	Corrections to Menu and AdminMenu.
 	Updated Admin Menu Layout.
