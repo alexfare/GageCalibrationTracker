@@ -19,21 +19,15 @@ Dim r As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
 Dim GN_Verify
-
-'/Date/'
 Dim Due_Date_Original
 Dim Date_Due_6mos
 Dim Date_Due_1yr
 Dim Date_Due_2yr
 Dim Date_Due
-'/Date/'
-
-'/Audit Log/'
-Dim ActionLog As String
-Dim AuditTime As String
-Dim AuditUser As String
-Dim auditDate As String
-'/Audit Log/'
+Dim ActionLog As String 'Audit Log
+Dim AuditTime As String 'Audit Log
+Dim AuditUser As String 'Audit Log
+Dim auditDate As String 'Audit Log
 
 '/Start up script /'
 Private Sub UserForm_Activate()
@@ -50,6 +44,78 @@ Private Sub UserForm_Activate()
     lblPCUser = Application.userName
 End Sub
 
+Private Sub Add_Button_Click()
+    ' Check if the user provided input
+    If Gage_Number <> "" Then
+        AddNewGage
+    Else
+        ErrMsg_NoGageID
+    End If
+End Sub
+
+'/------- Add Gage -------/'
+Private Sub AddNewGage()
+    Dim ws As Worksheet
+    Dim List_Select
+    List_Select = "CreatedByAlexFare"        ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    
+    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
+        
+        Dim lLastRow As Long        ' lLastRow = variable to store the result of the row count calculation
+        lLastRow = ws.ListObjects.Item(1).ListRows.Count
+        r = lLastRow + 3        ' Add number for every header tab created
+        Dim gnString As String
+        If IsNumeric(Gage_Number) Then
+            gnString = Val(Gage_Number.Value)
+        Else
+            gnString = Gage_Number
+        End If
+        ws.Cells(r, "A") = gnString
+        ws.Cells(r, "B") = PartNumbertxt
+        ws.Cells(r, "C") = Descriptiontxt
+        ws.Cells(r, "D") = comboGageType
+        ws.Cells(r, "E") = Customer
+        ws.Cells(r, "F") = Insp_Date
+        ws.Cells(r, "G") = Due_Date
+        ws.Cells(r, "H") = Initials
+        ws.Cells(r, "I") = Department
+        ws.Cells(r, "J") = Comments
+        ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "L") = serialInput
+        ws.Cells(r, "N") = nistinput
+        ws.Cells(r, "Z") = comboStatus
+        ws.Cells(r, "AA") = aN1
+        ws.Cells(r, "AB") = aA1
+        ws.Cells(r, "AC") = aN2
+        ws.Cells(r, "AD") = aA2
+        ws.Cells(r, "AE") = aN3
+        ws.Cells(r, "AF") = aA3
+        ws.Cells(r, "AG") = aN4
+        ws.Cells(r, "AH") = aA4
+        ws.Cells(r, "AI") = aN5
+        ws.Cells(r, "AJ") = aA5
+        ws.Cells(r, "AK") = Now
+        
+        '/ Audit Log
+        lastUser = Application.userName
+        ws.Cells(r, "AN") = lastUser
+        ActionLog = "Added Gage"
+        auditLog
+        
+        btnClear_Click
+        AddGageCount
+        
+        '/Status /'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Adding..."
+        Status
+    Else
+        ErrMsg_Duplicate
+    End If
+End Sub
+
 '/------- Press Enter -------/'
 Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
@@ -57,135 +123,72 @@ Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Sh
     End If
 End Sub
 
-'/------- Add Gage -------/'
-Private Sub Add_Button_Click()
-    Dim ws As Worksheet
-    Dim List_Select
-    List_Select = "CreatedByAlexFare" ' Tab name
-    Set ws = Sheets(List_Select)
-    Set Worksheet_Set = ws
-
+'/------- Search Button -------/'
+Public Sub Search_Confirm_Click()
     If Gage_Number <> "" Then
-        If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
-            Dim lLastRow As Long ' lLastRow = variable to store the result of the row count calculation
-            lLastRow = ws.ListObjects.Item(1).ListRows.Count
-            r = lLastRow + 3 ' Add number for every header tab created
-            Dim gnString As String
-            If IsNumeric(Gage_Number) Then
-                gnString = Val(Gage_Number.Value)
-            Else
-                gnString = Gage_Number
-            End If
-
-            ws.Cells(r, "A") = gnString
-            ws.Cells(r, "B") = PartNumbertxt
-            ws.Cells(r, "C") = Descriptiontxt
-            ws.Cells(r, "D") = comboGageType
-            ws.Cells(r, "E") = Customer
-            ws.Cells(r, "F") = Insp_Date
-            ws.Cells(r, "G") = Due_Date
-            ws.Cells(r, "H") = Initials
-            ws.Cells(r, "I") = Department
-            ws.Cells(r, "J") = Comments
-            ws.Cells(r, "K") = Revtxt
-            ws.Cells(r, "L") = serialInput
-            ws.Cells(r, "N") = nistinput
-            ws.Cells(r, "Z") = comboStatus
-            ws.Cells(r, "AA") = aN1
-            ws.Cells(r, "AB") = aA1
-            ws.Cells(r, "AC") = aN2
-            ws.Cells(r, "AD") = aA2
-            ws.Cells(r, "AE") = aN3
-            ws.Cells(r, "AF") = aA3
-            ws.Cells(r, "AG") = aN4
-            ws.Cells(r, "AH") = aA4
-            ws.Cells(r, "AI") = aN5
-            ws.Cells(r, "AJ") = aA5
-            ws.Cells(r, "AK") = Now
-
-            '/ Audit Log
-            lastUser = Application.userName
-            ws.Cells(r, "AN") = lastUser
-            ActionLog = "Added Gage"
-            auditLog
-
-            btnClear_Click
-            AddGageCount
-
-            '/Status /'
-            statusLabel.Caption = "Status:"
-            statusLabelLog.Caption = "Adding..."
-            Status
-        Else
-            ErrMsg_Duplicate
-        End If
+        Search_Button
     Else
-        ErrMsg_NoGageID
+        ErrMsg_Blank
     End If
 End Sub
 
-'/------- Search Button -------/'
-Public Sub Search_Confirm_Click()
+Public Sub Search_Button()
     Dim ws As Worksheet
     Dim DateEdit 'Update Last searched
-
-    If Gage_Number <> "" Then
-        Clear_Form ' clear previous data from form, except "Gage Number"
-
-        List_Select = "CreatedByAlexFare"
-        Set ws = Sheets(List_Select)
-        Set Worksheet_Set = ws
-
-        If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
-            Update_Button_Enable = False
-            ErrMsg_NotFound
-        Else
-            r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
-            GN_Verify = Gage_Number
-            PartNumbertxt = ws.Cells(r, "B")
-            Descriptiontxt = ws.Cells(r, "C")
-            comboGageType = ws.Cells(r, "D")
-            Customer = ws.Cells(r, "E")
-            Insp_Date = ws.Cells(r, "F")
-            Due_Date_Original = ws.Cells(r, "G")
-            Due_Date = Format(Due_Date_Original, "m/d/yyyy")
-            Initials = ws.Cells(r, "H")
-            Department = ws.Cells(r, "I")
-            Comments = ws.Cells(r, "J")
-            Revtxt = ws.Cells(r, "K")
-            serialInput = ws.Cells(r, "L")
-            nistinput = ws.Cells(r, "N")
-            comboStatus = ws.Cells(r, "Z")
-            aN1 = ws.Cells(r, "AA")
-            aA1 = ws.Cells(r, "AB")
-            aN2 = ws.Cells(r, "AC")
-            aA2 = ws.Cells(r, "AD")
-            aN3 = ws.Cells(r, "AE")
-            aA3 = ws.Cells(r, "AF")
-            aN4 = ws.Cells(r, "AG")
-            aA4 = ws.Cells(r, "AH")
-            aN5 = ws.Cells(r, "AI")
-            aA5 = ws.Cells(r, "AJ")
-            DateEdit = ws.Cells(r, "AM") 'Update Last searched
-            ws.Cells(r, "AM") = Now 'Update Last searched
-            Update_Button_Enable = True
-            Interval_Custom = True
-
-            '/ Audit Log
-            lblDateAdded = ws.Cells(r, "AK")
-            lblDateEdit = ws.Cells(r, "AL")
-            lblSearchedDate = DateEdit 'Update Last searched
-            lastUser = ws.Cells(r, "AN")
-            ActionLog = "Searched"
-            auditLog
-
-            '/Status/'
-            statusLabel.Caption = "Status:"
-            statusLabelLog.Caption = "Searching..."
-            Status
-        End If
+    
+    Clear_Form ' clear previous data from form, except "Gage Number"
+    
+    List_Select = "CreatedByAlexFare"
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    
+    If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
+        Update_Button_Enable = False
+        ErrMsg_NotFound
     Else
-        ErrMsg_Blank
+        r = Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)
+        GN_Verify = Gage_Number
+        PartNumbertxt = ws.Cells(r, "B")
+        Descriptiontxt = ws.Cells(r, "C")
+        comboGageType = ws.Cells(r, "D")
+        Customer = ws.Cells(r, "E")
+        Insp_Date = ws.Cells(r, "F")
+        Due_Date_Original = ws.Cells(r, "G")
+        Due_Date = Format(Due_Date_Original, "m/d/yyyy")
+        Initials = ws.Cells(r, "H")
+        Department = ws.Cells(r, "I")
+        Comments = ws.Cells(r, "J")
+        Revtxt = ws.Cells(r, "K")
+        serialInput = ws.Cells(r, "L")
+        nistinput = ws.Cells(r, "N")
+        comboStatus = ws.Cells(r, "Z")
+        aN1 = ws.Cells(r, "AA")
+        aA1 = ws.Cells(r, "AB")
+        aN2 = ws.Cells(r, "AC")
+        aA2 = ws.Cells(r, "AD")
+        aN3 = ws.Cells(r, "AE")
+        aA3 = ws.Cells(r, "AF")
+        aN4 = ws.Cells(r, "AG")
+        aA4 = ws.Cells(r, "AH")
+        aN5 = ws.Cells(r, "AI")
+        aA5 = ws.Cells(r, "AJ")
+        DateEdit = ws.Cells(r, "AM") 'Update Last searched
+        ws.Cells(r, "AM") = Now        'Update Last searched
+        Update_Button_Enable = True
+        Interval_Custom = True
+        
+        '/ Audit Log
+        lblDateAdded = ws.Cells(r, "AK")
+        lblDateEdit = ws.Cells(r, "AL")
+        lblSearchedDate = DateEdit 'Update Last searched
+        lastUser = ws.Cells(r, "AN")
+        ActionLog = "Searched"
+        auditLog
+                
+        '/Status/'
+        statusLabel.Caption = "Status:"
+        statusLabelLog.Caption = "Searching..."
+        Status
     End If
 End Sub
 
@@ -193,89 +196,7 @@ End Sub
 Private Sub Update_Button_Click()
     If Update_Button_Enable = True Then
         If GN_Verify = Gage_Number Then
-            Dim gnString As String
-            Set ws = Worksheet_Set
-
-            If IsNumeric(Gage_Number) Then
-                gnString = Val(Gage_Number.Value)
-            Else
-                gnString = Gage_Number
-            End If
-
-            ws.Cells(r, "A") = gnString
-            ws.Cells(r, "B") = PartNumbertxt
-            ws.Cells(r, "C") = Descriptiontxt
-            ws.Cells(r, "D") = comboGageType
-            ws.Cells(r, "E") = Customer
-            ws.Cells(r, "F") = Insp_Date
-            ws.Cells(r, "H") = Initials
-            ws.Cells(r, "I") = Department
-            ws.Cells(r, "J") = Comments
-            ws.Cells(r, "K") = Revtxt
-            ws.Cells(r, "L") = serialInput
-            ws.Cells(r, "N") = nistinput
-            ws.Cells(r, "Z") = comboStatus
-            ws.Cells(r, "AA") = aN1
-            ws.Cells(r, "AB") = aA1
-            ws.Cells(r, "AC") = aN2
-            ws.Cells(r, "AD") = aA2
-            ws.Cells(r, "AE") = aN3
-            ws.Cells(r, "AF") = aA3
-            ws.Cells(r, "AG") = aN4
-            ws.Cells(r, "AH") = aA4
-            ws.Cells(r, "AI") = aN5
-            ws.Cells(r, "AJ") = aA5
-            ws.Cells(r, "AL") = Now 'Update Last edited
-
-            '/ Audit Log
-            lastUser = Application.userName
-            ws.Cells(r, "AN") = lastUser
-
-            If Interval_6 = True Then ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
-                Due_Date = Date_Due_6mos
-            End If
-
-            If Interval_1 = True Then
-                Due_Date = Date_Due_1yr
-            End If
-
-            If Interval_2 = True Then
-                Due_Date = Date_Due_2yr
-            End If
-
-            If Interval_Custom = True Then
-                Interval_Custom_Click
-                Due_Date = Date_Due
-            End If
-
-            ws.Cells(r, "G") = Due_Date
-
-            '/Audit Log/
-            Dim UpdateCount As Integer
-
-            List_Select = "Admin" ' Tab name
-            Set ws = Sheets(List_Select)
-            Set Worksheet_Set = ws
-
-            UpdateCount = ws.Range("B50")
-            UpdateCountPlusOne = UpdateCount + 1
-            ws.Range("B50") = UpdateCountPlusOne
-
-            ActionLog = "Updated Gage"
-            auditLog
-
-            '/Prevent Issues in the future, Call back the main page/
-            List_Select = "CreatedByAlexFare" ' Tab name
-            Set ws = Sheets(List_Select)
-            Set Worksheet_Set = ws
-            '/ End Audit Log /
-
-            '/Status /
-            statusLabel.Caption = "Status:"
-            statusLabelLog.Caption = "Updating..."
-            Status
-
-            Search_Confirm_Click
+            Update_Worksheet
         Else
             MSG_Verify_Update
         End If
@@ -284,14 +205,89 @@ Private Sub Update_Button_Click()
     End If
 End Sub
 
-Sub MSG_Verify_Update()
-    MSG1 = MsgBox("Are you sure you want to change the Gage ID?", vbYesNo, "Verify")
-    
-    If MSG1 = vbYes Then
-        Update_Button_Click
-    Else
-        Gage_Number = GN_Verify
+Private Sub Update_Worksheet()
+    If Update_Button_Enable = True Then
+        Dim gnString As String
+        Set ws = Worksheet_Set
+        If IsNumeric(Gage_Number) Then
+            gnString = Val(Gage_Number.Value)
+        Else
+            gnString = Gage_Number
+        End If
+        ws.Cells(r, "A") = gnString
+        ws.Cells(r, "B") = PartNumbertxt
+        ws.Cells(r, "C") = Descriptiontxt
+        ws.Cells(r, "D") = comboGageType
+        ws.Cells(r, "E") = Customer
+        ws.Cells(r, "F") = Insp_Date
+        ws.Cells(r, "H") = Initials
+        ws.Cells(r, "I") = Department
+        ws.Cells(r, "J") = Comments
+        ws.Cells(r, "K") = Revtxt
+        ws.Cells(r, "L") = serialInput
+        ws.Cells(r, "N") = nistinput
+        ws.Cells(r, "Z") = comboStatus
+        ws.Cells(r, "AA") = aN1
+        ws.Cells(r, "AB") = aA1
+        ws.Cells(r, "AC") = aN2
+        ws.Cells(r, "AD") = aA2
+        ws.Cells(r, "AE") = aN3
+        ws.Cells(r, "AF") = aA3
+        ws.Cells(r, "AG") = aN4
+        ws.Cells(r, "AH") = aA4
+        ws.Cells(r, "AI") = aN5
+        ws.Cells(r, "AJ") = aA5
+        ws.Cells(r, "AL") = Now        'Update Last edited
+        
+        '/ Audit Log
+        lastUser = Application.userName
+        ws.Cells(r, "AN") = lastUser
+        
+        If Interval_6 = True Then        ' option1 = 1month, option2 = 6months, option3 = 1year, option4 = custom or original
+        Due_Date = Date_Due_6mos
     End If
+    If Interval_1 = True Then
+        Due_Date = Date_Due_1yr
+    End If
+    If Interval_2 = True Then
+        Due_Date = Date_Due_2yr
+    End If
+    If Interval_Custom = True Then
+        Interval_Custom_Click
+        Due_Date = Date_Due
+    End If
+    
+    ws.Cells(r, "G") = Due_Date
+    
+    '/Audit Log/'
+    Dim UpdateCount As Integer
+    
+    List_Select = "Admin"        ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    
+    UpdateCount = ws.Range("B50")
+    UpdateCountPlusOne = UpdateCount + 1
+    ws.Range("B50") = UpdateCountPlusOne
+    
+    ActionLog = "Updated Gage"
+    auditLog
+    
+    '/Prevent Issues in the future, Call back the main page/'
+    List_Select = "CreatedByAlexFare"        ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    '/ End Audit Log /'
+    
+    '/Status /'
+    statusLabel.Caption = "Status:"
+    statusLabelLog.Caption = "Updating..."
+    Status
+        
+    Search_Button
+Else
+    ErrMsg_Search
+End If
 End Sub
 
 '/------- Clear Form -------/'
@@ -329,6 +325,18 @@ Private Sub Clear_Form()
     lblDateEdit = ""
     lblSearchedDate = ""
     lastUser = ""
+End Sub
+
+Sub MSG_Verify_Update()
+    
+    MSG1 = MsgBox("Are you sure you want to change the Gage ID?", vbYesNo, "Verify")
+    
+    If MSG1 = vbYes Then
+        Update_Worksheet
+    Else
+        Gage_Number = GN_Verify
+    End If
+    
 End Sub
 
 Private Sub btnSave_click()
@@ -497,10 +505,6 @@ Else
 End If
 End Sub
 
-Private Sub dueDateInterval_Click()
-    MsgBox ("Test")
-End Sub
-
 Private Sub AddGageCount()
 '/Add to Gage Number count/'
         Dim AddCount As Integer
@@ -518,6 +522,7 @@ Private Sub AddGageCount()
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
 End Sub
+
 '/------- Error Handling -------/'
 Sub ErrMsg_NotFound()
     MsgBox ("Gage Number Not Found."), vbInformation, "Not Found"
@@ -546,5 +551,4 @@ End Sub
 Private Sub UserForm_Terminate()
     DueDateColorRange
 End Sub
-
 

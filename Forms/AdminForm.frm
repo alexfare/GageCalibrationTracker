@@ -58,6 +58,7 @@ Private Sub Gage_Number_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Sh
     End If
 End Sub
 
+'/------- Search Button -------/'
 Private Sub Search_Confirm_Click()
     If Gage_Number <> "" Then
     Search_Button_Click
@@ -66,7 +67,6 @@ Private Sub Search_Confirm_Click()
     End If
 End Sub
 
-'/------- Search Button -------/'
 Public Sub Search_Button_Click()
     
     Clear_Form ' clear previous data from form, except "Gage Number"
@@ -98,14 +98,12 @@ Public Sub Search_Button_Click()
         lastUser = ws.Cells(r, "AN")
         Ownertxt = ws.Cells(r, "M")
         comboStatus = ws.Cells(r, "Z")
+        Update_Button_Enable = True
         
         '/Status/'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Searching..."
         Status
-        
-        Update_Button_Enable = True
-        Option4_Custom = True
     End If
 End Sub
 

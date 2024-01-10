@@ -1,3 +1,7 @@
+Update - 4.5.8
+	Reverted 4.5.7 changes to Menu code on handling errors due to breaking gage renaming.
+	Updated Gage Calculation Sheet - Added back button to prevent superadmin from being stuck.
+	
 Update - 4.5.7
 	Fixed Issue on Menu when adding new gage, It would clear everything but Gage Number.
 	Updated Menu Code - Moved AddGageCount to its own sub.
