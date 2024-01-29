@@ -1,3 +1,7 @@
+Update - 4.6.0
+	Updated layout colors.
+	Fixed 6 month calibration interval issue.
+
 Update - 4.5.9
 	Updated LabelSetUp
 

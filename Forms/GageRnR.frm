@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} GageRnR 
    Caption         =   "Gage R&R"
-   ClientHeight    =   6855
+   ClientHeight    =   6750
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   7455

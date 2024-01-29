@@ -4,7 +4,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu
    ClientHeight    =   8190
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10590
+   ClientWidth     =   10710
    OleObjectBlob   =   "Menu.frx":0000
 End
 Attribute VB_Name = "Menu"
@@ -466,7 +466,7 @@ Private Sub auditLog()
 End Sub
 
 '/ -------  Auto Due Date ------- /'
-Private Sub Interval_6_Click()        ' auto format for 6 month interval
+Private Sub Interval_6_Click()        ' auto format for 1 year interval
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
     Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
@@ -546,6 +546,10 @@ End Sub
 
 Sub ErrMsg_Blank()
     MsgBox ("Gage number cannot be blank."), vbInformation, "Error"
+End Sub
+
+Sub errorHandler()
+    MsgBox ("Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."), vbInformation, "Error"
 End Sub
 
 Private Sub UserForm_Terminate()
