@@ -26,7 +26,7 @@ Private Sub UserForm_Activate()
 End Sub
 
 '/------- Press Enter -------/'
-Private Sub inputName_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
+Private Sub inputDescription_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
     If KeyCode = vbKeyReturn Then
         btnSubmit_Click
     End If

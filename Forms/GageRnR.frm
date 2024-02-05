@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} GageRnR 
    Caption         =   "Gage R&R"
-   ClientHeight    =   6750
+   ClientHeight    =   7320
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   7455
+   ClientWidth     =   7560
    OleObjectBlob   =   "GageRnR.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -34,6 +34,7 @@ Private Sub UserForm_Activate()
     List_Select = "GageRnR"        ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
+    Gage_Number.SetFocus
 End Sub
 
 '/ Pressing Enter will instantly search /'
@@ -631,6 +632,11 @@ Private Sub btnClose_Click()
     Menu.Show
 End Sub
 
+Private Sub restartGageRnR()
+    Unload GageRnR
+    GageRnR.Show
+End Sub
+
 Private Sub Status()
     Dim startTime As Date
     Dim elapsedTime As Long
@@ -650,6 +656,7 @@ End Sub
 '/------- Error Handling -------/'
 Sub ErrMsg_NotFound()
     MsgBox ("Gage ID Not Found"), , "Not Found"
+    restartGageRnR
 End Sub
 
 Sub ErrMsg_Duplicate()

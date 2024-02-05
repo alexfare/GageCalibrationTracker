@@ -1,3 +1,11 @@
+Update - 4.6.1
+	Updated Report Issue form on how it handles the enter key.
+	Updated GageR&R Layout.
+	Updated GageR&R on how it handles the enter key.
+	Updated AdminForm layout.
+	Updated Menu caption.
+	Updated Worksheet layout.
+
 Update - 4.6.0
 	Updated layout colors.
 	Fixed 6 month calibration interval issue.
