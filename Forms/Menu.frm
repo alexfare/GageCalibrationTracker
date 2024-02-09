@@ -466,43 +466,55 @@ Private Sub auditLog()
 End Sub
 
 '/ -------  Auto Due Date ------- /'
-Private Sub Interval_6_Click()        ' auto format for 1 year interval
+Private Sub Interval_6_Click() ' auto format for 1 year interval
+On Error GoTo Err
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_6mos = DateAdd("m", 6, Insp_Date)
     Date_Due_6mos = Format(Date_Due_6mos, "m/d/yyyy")
     Due_Date = Date_Due_6mos
-Else
-    ErrMsg_InvalidDate
+    Exit Sub
 End If
+
+Err:
+    ErrMsg_InvalidDate
 End Sub
 
-Private Sub Interval_1_Click()        ' auto format for 1 year interval
+Private Sub Interval_1_Click() ' auto format for 1 year interval
+On Error GoTo Err
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_1yr = DateAdd("yyyy", 1, Insp_Date)
     Date_Due_1yr = Format(Date_Due_1yr, "m/d/yyyy")
     Due_Date = Date_Due_1yr
-Else
-    ErrMsg_InvalidDate
+    Exit Sub
 End If
+
+Err:
+    ErrMsg_InvalidDate
 End Sub
 
-Private Sub Interval_2_Click()
+Private Sub Interval_2_Click() ' auto format for 2 year interval
+On Error GoTo Err
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due_2yr = DateAdd("yyyy", 2, Insp_Date)
     Date_Due_2yr = Format(Date_Due_2yr, "m/d/yyyy")
     Due_Date = Date_Due_2yr
-Else
-    ErrMsg_InvalidDate
+    Exit Sub
 End If
+
+Err:
+    ErrMsg_InvalidDate
 End Sub
 
-Private Sub Interval_Custom_Click()        ' formatting for either original record, or new custom date
+Private Sub Interval_Custom_Click() ' formatting for either original record, or new custom date
+On Error GoTo Err
 If IsDate(Insp_Date) Then 'check if Insp_Date is a valid date
     Date_Due = Format(Due_Date, "m/d/yyyy")
     Due_Date = Date_Due
-Else
-    ErrMsg_InvalidDate
+    Exit Sub
 End If
+
+Err:
+    ErrMsg_InvalidDate
 End Sub
 
 Private Sub AddGageCount()
@@ -546,10 +558,6 @@ End Sub
 
 Sub ErrMsg_Blank()
     MsgBox ("Gage number cannot be blank."), vbInformation, "Error"
-End Sub
-
-Sub errorHandler()
-    MsgBox ("Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format."), vbInformation, "Error"
 End Sub
 
 Private Sub UserForm_Terminate()

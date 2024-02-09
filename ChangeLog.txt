@@ -1,3 +1,8 @@
+Update - 4.6.2
+	Removed unused / duplicate errorhandler on Menu.
+	Updated Menu text.
+	Updated error handling for invalid date.
+	
 Update - 4.6.1
 	Updated Report Issue form on how it handles the enter key.
 	Updated GageR&R Layout.
