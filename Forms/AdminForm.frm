@@ -193,9 +193,8 @@ Private Sub btnClear_Click()
 End Sub
 
 Sub CheckForUpdate_Click()
-    Dim url         As String
-    url = "https://github.com/alexfare/GageCalibrationTracker"
-    ActiveWorkbook.FollowHyperlink url
+    MsgBox ("Updater is a WIP and has been disabled. Launching GitHub.")
+    Updater.CheckUpdate
 End Sub
 
 Private Sub btnClose_Click()
@@ -258,12 +257,6 @@ Private Sub btnSave_click()
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Saving..."
         Status
-End Sub
-
-Private Sub btnReleaseNotes_click()
-    Dim url         As String
-    url = "https://github.com/alexfare/GageCalibrationTracker/releases/latest"
-    ActiveWorkbook.FollowHyperlink url
 End Sub
 
 Private Sub SuperAdminBTN_click()

@@ -1,3 +1,8 @@
+Update - 4.6.3
+	Updated Check For Update button on AdminPanel. (Currently disabled WIP, See modules)
+	Fixed xml error when saving occasionally.
+	Updates to AdminPanel Layout.
+
 Update - 4.6.2
 	Removed unused / duplicate errorhandler on Menu.
 	Updated Menu text.
