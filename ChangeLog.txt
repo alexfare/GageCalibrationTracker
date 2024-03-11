@@ -1,3 +1,9 @@
+Update - 4.6.4
+	Added Enter Key to CustomerForm.
+	Updated Shortcuts on Main Menu.
+	Slight layout change to Main Menu.
+	Removed not needed hashes used for testing.
+
 Update - 4.6.3
 	Updated Check For Update button on AdminPanel. (Currently disabled WIP, See modules)
 	Fixed xml error when saving occasionally.

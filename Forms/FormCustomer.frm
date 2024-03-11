@@ -29,6 +29,13 @@ Private Sub UserForm_Activate()
 
 End Sub
 
+'/------- Press Enter -------/'
+Private Sub Customer_Name_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
+    If KeyCode = vbKeyReturn Then
+        Search_Customer_Click
+    End If
+End Sub
+
 '/------- Search Button -------/'
 Private Sub Search_Customer_Click()
     If Customer_Name <> "" Then

@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   8190
+   ClientHeight    =   8175
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10710
+   ClientWidth     =   10575
    OleObjectBlob   =   "Menu.frx":0000
 End
 Attribute VB_Name = "Menu"
