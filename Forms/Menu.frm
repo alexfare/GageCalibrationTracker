@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "GageTracker - Created By Alex Fare"
-   ClientHeight    =   8175
+   ClientHeight    =   8295.001
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10575
+   ClientWidth     =   10695
    OleObjectBlob   =   "Menu.frx":0000
 End
 Attribute VB_Name = "Menu"
@@ -28,6 +28,10 @@ Dim ActionLog As String 'Audit Log
 Dim AuditTime As String 'Audit Log
 Dim AuditUser As String 'Audit Log
 Dim auditDate As String 'Audit Log
+Dim GageList As String
+Dim AdminList As String
+Dim List_Select
+Dim ws As Worksheet
 
 '/Start up script /'
 Private Sub UserForm_Activate()
@@ -36,7 +40,11 @@ Private Sub UserForm_Activate()
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
     '/ End Positioning /'
     
-    List_Select = "CreatedByAlexFare"
+    '/ Setup /'
+    GageList = "CreatedByAlexFare"
+    AdminList = "Admin"
+    
+    List_Select = GageList
     Set ws = Sheets(List_Select)
     vDisplay = ws.Range("Z1")
     Gage_Number.SetFocus
@@ -57,12 +65,11 @@ End Sub
 Private Sub AddNewGage()
     Dim ws As Worksheet
     Dim List_Select
-    List_Select = "CreatedByAlexFare"        ' Tab name
+    List_Select = GageList
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     
     If IsError(Application.Match(IIf(IsNumeric(Gage_Number), Val(Gage_Number), Gage_Number), ws.Columns(1), 0)) Then
-        
         Dim lLastRow As Long        ' lLastRow = variable to store the result of the row count calculation
         lLastRow = ws.ListObjects.Item(1).ListRows.Count
         r = lLastRow + 3        ' Add number for every header tab created
@@ -135,10 +142,8 @@ End Sub
 Public Sub Search_Button()
     Dim ws As Worksheet
     Dim DateEdit 'Update Last searched
-    
     Clear_Form ' clear previous data from form, except "Gage Number"
-    
-    List_Select = "CreatedByAlexFare"
+    List_Select = GageList
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     
@@ -262,7 +267,7 @@ Private Sub Update_Worksheet()
     '/Audit Log/'
     Dim UpdateCount As Integer
     
-    List_Select = "Admin"        ' Tab name
+    List_Select = AdminList
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     
@@ -274,7 +279,7 @@ Private Sub Update_Worksheet()
     auditLog
     
     '/Prevent Issues in the future, Call back the main page/'
-    List_Select = "CreatedByAlexFare"        ' Tab name
+    List_Select = GageList
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     '/ End Audit Log /'
@@ -348,20 +353,24 @@ Private Sub btnSave_click()
         Status
 End Sub
 
+Private Sub bgSave()
+    ThisWorkbook.Save
+End Sub
+
 '/------- Admin Panel -------/'
 Private Sub btnAdmin_click()
     '/Add to the login count /'
     Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
     Dim LoginCount  As Integer
-    Dim ws          As Worksheet
+    Dim ws As Worksheet
     Dim List_Select
     Dim TempLogin   As Integer
-    List_Select = "Admin"        ' Tab name
+    List_Select = AdminList
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
     Persistent_Login = ws.Range("B55")
     
-    If Persistent_Login = "2" Then
+    If Persistent_Login = True Then
         Sheets("CreatedByAlexFare").Activate
         Unload Menu
         AdminForm.Show
@@ -394,8 +403,9 @@ Private Sub Status()
     Dim elapsedTime As Long
     Dim waitTimeInSeconds As Long
     DueDateColorRange
+    bgSave
     
-    waitTimeInSeconds = 2
+    waitTimeInSeconds = 1
     startTime = Now
     Do While elapsedTime < waitTimeInSeconds
         DoEvents 'allow the program to process any pending events
@@ -416,12 +426,12 @@ Sub DueDateColorRange()
     Dim List_Select
     Dim ColorRangeLeadTime As Integer
     
-    List_Select = "Admin"
+    List_Select = AdminList
     Set Worksheet_Set = ws
     Set ws = Sheets(List_Select)
     ColorRangeLeadTime = ws.Range("B63")
     
-    List_Select = "CreatedByAlexFare"
+    List_Select = GageList
     Set Worksheet_Set = ws
     Set ws = Sheets(List_Select)
 
@@ -521,7 +531,7 @@ Private Sub AddGageCount()
 '/Add to Gage Number count/'
         Dim AddCount As Integer
         
-        List_Select = "Admin"        ' Tab name
+        List_Select = AdminList
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
         
@@ -530,7 +540,7 @@ Private Sub AddGageCount()
         ws.Range("B49") = AddCountPlusOne
         
         '/Prevent Issues in the future, Call back the main page/'
-        List_Select = "CreatedByAlexFare"        ' Tab name
+        List_Select = GageList
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
 End Sub

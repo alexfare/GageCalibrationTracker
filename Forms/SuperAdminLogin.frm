@@ -89,13 +89,13 @@ Private Sub Login_Sub()
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
         
-        ws.Range("B64") = "2"
+        ws.Range("B64") = True '/True remains logged in & False means login required
     End If
 End Sub
 
 Private Sub btnBack_click()
     Unload SuperAdminLogin
-    AdminForm.Show
+    'AdminForm.Show '/Removed for now - Prevents users from accessing Admin Panel without Admin Access
 End Sub
 
 Private Sub Failed_Login()

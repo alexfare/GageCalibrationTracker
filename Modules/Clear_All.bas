@@ -39,7 +39,7 @@ Dim List_Select
         ws.Range("B" & i).ClearContents
     Next i
 ws.Range("B65") = SuperAdmin
-MsgBox "Admin Settings Cleared.", vbInformation + vbApplicationModal, "Format Status"
+MsgBox "Admin Settings Cleared & Super Admin Password Set To Default.", vbInformation + vbApplicationModal, "Format Status"
 End Sub
 
 Sub Clear_Customers()

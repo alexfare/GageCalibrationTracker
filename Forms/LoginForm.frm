@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} LoginForm 
    Caption         =   "Admin Login"
-   ClientHeight    =   2670
+   ClientHeight    =   3495
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3765
+   ClientWidth     =   3870
    OleObjectBlob   =   "LoginForm.frx":0000
    StartUpPosition =   2  'CenterScreen
 End
@@ -117,7 +117,7 @@ Private Sub Login_Sub()
         LoginCountPlusOne = LoginCount + 1
         ws.Range("B48") = LoginCountPlusOne
         ws.Range("B52") = inputUsername
-        ws.Range("B55") = "2"
+        ws.Range("B55") = True
         
         Unload LoginForm
         Sheets("CreatedByAlexFare").Activate
@@ -128,6 +128,11 @@ End Sub
 Private Sub btnBack_click()
     Unload LoginForm
     Menu.Show
+End Sub
+
+Private Sub SALogin_Click()
+    Unload LoginForm
+    SuperAdminLogin.Show
 End Sub
 
 Private Sub Failed_Login()
