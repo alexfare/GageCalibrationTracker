@@ -246,7 +246,7 @@ Private Sub btnLogout_Click()
         List_Select = "Admin"        ' Tab name
         Set ws = Sheets(List_Select)
         Set Worksheet_Set = ws
-        ws.Range("B55") = "1"
+        ws.Range("B55") = "False"
         Unload AdminForm
 End Sub
 

@@ -56,8 +56,21 @@ Private Sub btnAudit_Click()
 End Sub
 
 Private Sub btnBack_click()
-    Unload SuperAdminMenu
-    AdminForm.Show
+    Dim isAdmin As Boolean
+    Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
+    Dim List_Select
+    List_Select = "Admin"        ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    isAdmin = ws.Range("B55")
+    
+    If isAdmin = True Then
+        Unload SuperAdminMenu
+        AdminForm.Show
+    Else
+       Unload SuperAdminMenu
+       Menu.Show
+    End If
 End Sub
 
 Private Sub btnSAPass_click()

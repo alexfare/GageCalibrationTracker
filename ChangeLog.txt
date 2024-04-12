@@ -1,3 +1,10 @@
+Update - 4.6.6
+	Fixed logout error on the backend. 
+	Fied SuperAdmin back button to now check for Admin login.
+	Updated Menu layout. (Switched Gage R&R and Admin Menu around)
+	Updated Admin layout. (Moved Save to the right side)
+	Updated Wording on Gage display
+
 Update - 4.6.5
 	Updated Menu layout.
 	Updated AdminMenu layout.
