@@ -48,7 +48,7 @@ Private Sub UserForm_Activate()
     Set ws = Sheets(List_Select)
     vDisplay = ws.Range("Z1")
     Gage_Number.SetFocus
-    DueDateColorRange
+    SettingsModule.DueDateColor
     lblPCUser = Application.userName
 End Sub
 
@@ -402,7 +402,7 @@ Private Sub Status()
     Dim startTime As Date
     Dim elapsedTime As Long
     Dim waitTimeInSeconds As Long
-    DueDateColorRange
+    SettingsModule.DueDateColor
     bgSave
     
     waitTimeInSeconds = 1
@@ -413,46 +413,6 @@ Private Sub Status()
     Loop
         statusLabel.Caption = ""
         statusLabelLog.Caption = ""
-End Sub
-
-'/------- Update Due Date Color -------/'
-Sub DueDateColorRange()
-    Dim ws As Worksheet
-    Dim rng As Range
-    Dim cell As Range
-    Dim targetDate As Date
-    Dim currentDate As Date
-    Dim Worksheet_Set
-    Dim List_Select
-    Dim ColorRangeLeadTime As Integer
-    
-    List_Select = AdminList
-    Set Worksheet_Set = ws
-    Set ws = Sheets(List_Select)
-    ColorRangeLeadTime = ws.Range("B63")
-    
-    List_Select = GageList
-    Set Worksheet_Set = ws
-    Set ws = Sheets(List_Select)
-
-    targetDate = Range("I1").Value
-    Set rng = ws.Range("G3:G2000")
-    
-    For Each cell In rng
-        If IsDate(cell.Value) Then
-            currentDate = cell.Value
-            
-            monthsDiff = DateDiff("m", targetDate, currentDate)
-            
-            If currentDate < targetDate Then
-                cell.Interior.Color = RGB(255, 0, 0) 'Red
-            ElseIf monthsDiff <= ColorRangeLeadTime Then
-                cell.Interior.Color = RGB(255, 255, 0) 'Yellow
-            Else
-                cell.Interior.Color = RGB(0, 255, 0) 'Green
-            End If
-        End If
-    Next cell
 End Sub
 
 '/ ------- Audit Log ------- /'
@@ -571,6 +531,5 @@ Sub ErrMsg_Blank()
 End Sub
 
 Private Sub UserForm_Terminate()
-    DueDateColorRange
+    SettingsModule.DueDateColor
 End Sub
-

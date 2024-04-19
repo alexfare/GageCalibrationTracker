@@ -26,6 +26,7 @@ Private Sub Workbook_Open()
     ws.Range("B64") = "1" 'Clears Persistent Login From Last Session
     ws.Range("B66") = ""
     Worksheets("CreatedByAlexFare").Activate
+    SettingsModule.DueDateColor
     ThisWorkbook.Save
     
 ExitSub:

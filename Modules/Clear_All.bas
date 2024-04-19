@@ -5,7 +5,7 @@ Sub Clear_Run()
     Clear_Credentials
     Clear_GageRR
     Delete_Rows
-    Clear_completed
+    Clear_Completed
 End Sub
 
 Sub Delete_Rows()
@@ -69,7 +69,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
-MsgBox "Credentials Deleted.", vbInformation + vbApplicationModal, "Format Status"
+MsgBox "Credentials Cleared.", vbInformation + vbApplicationModal, "Format Status"
 End Sub
 
 Sub Clear_GageRR()
@@ -85,7 +85,7 @@ Dim List_Select
     For i = 999 To 3 Step -1
         ws.Rows(i).EntireRow.Delete
     Next i
-MsgBox "Gage R&R Deleted.", vbInformation + vbApplicationModal, "Format Status"
+MsgBox "Gage R&R Cleared.", vbInformation + vbApplicationModal, "Format Status"
 
 ExitSub:
     Exit Sub
@@ -94,7 +94,7 @@ Err:
     Resume ExitSub
 End Sub
 
-Sub Clear_completed()
+Sub Clear_Completed()
     MsgBox "Formatting has completed."
     ThisWorkbook.Save
     ThisWorkbook.Close

@@ -231,6 +231,7 @@ Private Sub Status()
     Dim startTime As Date
     Dim elapsedTime As Long
     Dim waitTimeInSeconds As Long
+    SettingsModule.DueDateColor
     
     waitTimeInSeconds = 2
     startTime = Now

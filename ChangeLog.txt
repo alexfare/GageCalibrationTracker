@@ -1,16 +1,22 @@
+Update - 4.6.7
+	Removed unused Modules.
+	Updated how DueDateColor range is handled.
+	Fixed DueDateColor not updating on startup.
+	Added DueDateColor updater to admin menu.
+	
 Update - 4.6.6
 	Fixed logout error on the backend. 
-	Fied SuperAdmin back button to now check for Admin login.
-	Updated Menu layout. (Switched Gage R&R and Admin Menu around)
-	Updated Admin layout. (Moved Save to the right side)
-	Updated Wording on Gage display
+	Fixed SuperAdmin back button to now check for Admin login.
+	Updated Menu layout. (Switched Gage R&R and Admin Menu around).
+	Updated Admin layout. (Moved Save to the right side).
+	Updated Wording on Gage display.
 
 Update - 4.6.5
 	Updated Menu layout.
 	Updated AdminMenu layout.
 	Added background save after each operation.
-	Sped up the status timer
-	Updated Persistent Login to a Boolean
+	Sped up the status timer.
+	Updated Persistent Login to a Boolean.
 	
 Update - 4.6.4
 	Added Enter Key to CustomerForm.
