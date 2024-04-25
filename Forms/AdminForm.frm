@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
-   Caption         =   "Admin Panel  - Created By Alex Fare"
+   Caption         =   "Gage Calibration Tracker - Admin Panel"
    ClientHeight    =   10935
    ClientLeft      =   120
    ClientTop       =   465
@@ -294,71 +294,16 @@ Private Sub SuperAdminBTN_click()
 End Sub
 
 Private Sub btnExport_click()
-    ExportGCTData
+    SettingsModule.ExportGCTData
 End Sub
-
-Sub ExportGCTData()
-    Dim FilePath As Variant
-    Dim ws As Worksheet
-    Dim defaultFileName As String
-    
-    Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
-    
-    defaultFileName = "GageTracker_" & Format(Date, "yyyy-mm-dd") & ".csv"
-    
-    FilePath = Application.GetSaveAsFilename(InitialFileName:=defaultFileName, FileFilter:="CSV Files (*.csv), *.csv")
-    
-    If FilePath <> False Then
-        ws.Copy
-        ActiveWorkbook.SaveAs FilePath, xlCSV
-        ActiveWorkbook.Close SaveChanges:=False
-    End If
-End Sub
-
 
 Sub btnImport_click()
 
     MSG1 = MsgBox("Importing is a WIP, Current state will not import certain formatting conditions.", vbYesNo, "WARNING")
     
     If MSG1 = vbYes Then
-        ImportGCTData
+        SettingsModule.ImportGCTData
     Else
-    End If
-End Sub
-
-Sub ImportGCTData()
-    Dim FilePath As String
-    Dim ws As Worksheet
-    Dim lastRow As Long
-    Dim lastCol As Long
-    
-    Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
-    
-    With Application.FileDialog(msoFileDialogFilePicker)
-        .Title = "Select CSV File to Import"
-        .Filters.Clear
-        .Filters.Add "CSV Files", "*.csv"
-        If .Show = -1 Then
-            FilePath = .SelectedItems(1)
-        End If
-    End With
-    
-    If FilePath <> "" Then
-        ws.Cells.ClearContents
-        ws.Cells.FormatConditions.Delete
-        
-        With ws.QueryTables.Add(Connection:="TEXT;" & FilePath, Destination:=ws.Cells(1, 1))
-            .TextFileParseType = xlDelimited
-            .TextFileConsecutiveDelimiter = False
-            .TextFileTabDelimiter = False
-            .TextFileSemicolonDelimiter = False
-            .TextFileCommaDelimiter = True
-            .TextFileSpaceDelimiter = False
-            .TextFileTrailingMinusNumbers = True
-            .Refresh BackgroundQuery:=False
-        End With
-        
-        ws.Cells.EntireColumn.AutoFit
     End If
 End Sub
 

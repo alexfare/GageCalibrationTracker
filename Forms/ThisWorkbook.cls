@@ -14,6 +14,7 @@ Private Sub Workbook_Open()
     Dim WorkBookPlusOne As Integer
     Dim ws As Worksheet
     Dim List_Select
+    
     List_Select = "Admin" ' Tab name
     Set ws = Sheets(List_Select)
     Set Worksheet_Set = ws
@@ -27,6 +28,7 @@ Private Sub Workbook_Open()
     ws.Range("B66") = ""
     Worksheets("CreatedByAlexFare").Activate
     SettingsModule.DueDateColor
+    SettingsModule.GetCurrentVersion
     ThisWorkbook.Save
     
 ExitSub:

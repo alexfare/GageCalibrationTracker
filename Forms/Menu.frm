@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
-   Caption         =   "GageTracker - Created By Alex Fare"
+   Caption         =   "Gage Calibration Tracker - Menu"
    ClientHeight    =   8295.001
    ClientLeft      =   45
    ClientTop       =   375
@@ -35,10 +35,10 @@ Dim ws As Worksheet
 
 '/Start up script /'
 Private Sub UserForm_Activate()
-    '/ Positioning /'
-    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
-    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
-    '/ End Positioning /'
+    '/Positioning /'
+        Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+        Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+    '/End Positioning /'
     
     '/ Setup /'
     GageList = "CreatedByAlexFare"
@@ -50,6 +50,8 @@ Private Sub UserForm_Activate()
     Gage_Number.SetFocus
     SettingsModule.DueDateColor
     lblPCUser = Application.userName
+    SettingsModule.GetCurrentVersion
+    
 End Sub
 
 Private Sub Add_Button_Click()

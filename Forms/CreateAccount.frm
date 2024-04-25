@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} CreateAccount 
    Caption         =   "Create Account"
-   ClientHeight    =   8325.001
+   ClientHeight    =   8580.001
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   4410
@@ -42,40 +42,42 @@ End Sub
 
 Private Sub btnCreate_Click()
     Dim ws As Worksheet
-    Dim List_Select
+    Dim List_Select As String
+    Dim lLastRow As Long
+    Dim r As Long
+    Dim gnString As String
+    Dim s As String
+    Dim savePass As String
+    Dim AddUser As Integer
+    Dim AddUserPlusOne As Integer
+    
     List_Select = "Credentials" ' Tab name
     Set ws = Sheets(List_Select)
-    Set Worksheet_Set = ws
     
     If IsError(Application.Match(IIf(IsNumeric(inputUser), Val(inputUser), inputUser), ws.Columns(1), 0)) Then
-        
-        Dim lLastRow As Long ' lLastRow = variable to store the result of the row count calculation
         lLastRow = ws.ListObjects.Item(1).ListRows.Count
         r = lLastRow + 2 ' Add number for every header tab created
-        Dim gnString As String
+        
         If IsNumeric(inputUser) Then
             gnString = inputUser.Value
         Else
             gnString = inputUser
         End If
         
-        '/ Hash /'
         s = inputPass
         
         Dim sIn As String, sOut As String, b64 As Boolean
         Dim sH As String, sSecret As String
         
-        'Password to be converted
+        ' Password to be converted
         sIn = s
-        sSecret = "" 'secret key for StrToSHA512Salt only
-        
-        b64 = True 'output base-64
+        sSecret = "" ' Secret key for StrToSHA512Salt only
+        b64 = True ' Output base-64
         
         sH = SHA512(sIn, b64)
         
         Debug.Print sH & vbNewLine & Len(sH) & " characters in length"
         savePass = sH
-        '/ Hash /'
         
         ws.Cells(r, "A") = gnString
         ws.Cells(r, "B") = savePass
@@ -85,34 +87,34 @@ Private Sub btnCreate_Click()
         ws.Cells(r, "F") = userPosition
         ws.Cells(r, "G") = userEmail
         
-        '/Add to Users count/'
-        Dim AddUser As Integer
+        If CheckBoxAdmin.Value = True Then
+            ws.Cells(r, "H") = True
+        Else
+            ws.Cells(r, "H") = False
+        End If
         
-        List_Select = "Admin"        ' Tab name
+        ' Add to Users count
+        List_Select = "Admin" ' Tab name
         Set ws = Sheets(List_Select)
-        Set Worksheet_Set = ws
-        
         AddUser = ws.Range("B51")
         AddUserPlusOne = AddUser + 1
         ws.Range("B51") = AddUserPlusOne
         
-        '/Prevent Issues in the future, Call back the Credentials page/'
-        List_Select = "Credentials"        ' Tab name
+        ' Prevent Issues in the future, Call back the Credentials page
+        List_Select = "Credentials" ' Tab name
         Set ws = Sheets(List_Select)
-        Set Worksheet_Set = ws
         
-        '/Status/'
+        ' Status
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Creating Account..."
         Status
         
-        MsgBox ("Account Created.")
+        MsgBox "Account Created."
         Clear_Form
         
     Else
         ErrMsg_Duplicate
     End If
-    
 End Sub
 
 Sub ErrMsg_Duplicate()
@@ -128,6 +130,7 @@ Private Sub Clear_Form()
     userAddress = ""
     userPosition = ""
     userEmail = ""
+    CheckBoxAdmin.Value = False
 End Sub
 
 Private Sub btnBack_click()

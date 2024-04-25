@@ -1,3 +1,11 @@
+Update - 4.6.8
+	Updated Clear Module
+	Updated Import/Export (Moved from Admin Panel)
+	Print Menu title update
+	Menu and Admin Panel title updates
+	Updated CreateAccount form (Can now create super users)
+	Updated how program version display is handled.
+
 Update - 4.6.7
 	Removed unused Modules.
 	Updated how DueDateColor range is handled.

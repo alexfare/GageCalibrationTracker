@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Label 
-   Caption         =   "Print Labels"
+   Caption         =   "Print Menu"
    ClientHeight    =   1740
    ClientLeft      =   120
    ClientTop       =   465

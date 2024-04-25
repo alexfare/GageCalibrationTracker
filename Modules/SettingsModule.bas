@@ -35,3 +35,78 @@ Public Sub DueDateColor()
         End If
     Next cell
 End Sub
+
+'/------- Import Data -------/'
+Sub ImportGCTData()
+    Dim FilePath As String
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastCol As Long
+    
+    Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
+    
+    With Application.FileDialog(msoFileDialogFilePicker)
+        .Title = "Select CSV File to Import"
+        .Filters.Clear
+        .Filters.Add "CSV Files", "*.csv"
+        If .Show = -1 Then
+            FilePath = .SelectedItems(1)
+        End If
+    End With
+    
+    If FilePath <> "" Then
+        ws.Cells.ClearContents
+        ws.Cells.FormatConditions.Delete
+        
+        With ws.QueryTables.Add(Connection:="TEXT;" & FilePath, Destination:=ws.Cells(1, 1))
+            .TextFileParseType = xlDelimited
+            .TextFileConsecutiveDelimiter = False
+            .TextFileTabDelimiter = False
+            .TextFileSemicolonDelimiter = False
+            .TextFileCommaDelimiter = True
+            .TextFileSpaceDelimiter = False
+            .TextFileTrailingMinusNumbers = True
+            .Refresh BackgroundQuery:=False
+        End With
+        
+        ws.Cells.EntireColumn.AutoFit
+    End If
+End Sub
+
+'/------- Export Data -------/'
+Sub ExportGCTData()
+    Dim FilePath As Variant
+    Dim ws As Worksheet
+    Dim defaultFileName As String
+    
+    Set ws = ThisWorkbook.Worksheets("CreatedByAlexFare")
+    
+    defaultFileName = "GageTracker_" & Format(Date, "yyyy-mm-dd") & ".csv"
+    
+    FilePath = Application.GetSaveAsFilename(InitialFileName:=defaultFileName, FileFilter:="CSV Files (*.csv), *.csv")
+    
+    If FilePath <> False Then
+        ws.Copy
+        ActiveWorkbook.SaveAs FilePath, xlCSV
+        ActiveWorkbook.Close SaveChanges:=False
+    End If
+End Sub
+
+Public Sub GetCurrentVersion()
+    Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
+    Dim ws As Worksheet
+    Dim List_Select
+    List_Select = "Admin"        ' Tab name
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    Dim CurrentVersion As String
+    Dim CurrentVersionV As String
+
+    CurrentVersion = ws.Range("B68")
+    
+    List_Select = "CreatedByAlexFare"
+    Set ws = Sheets(List_Select)
+    Set Worksheet_Set = ws
+    CurrentVersionV = "v" + CurrentVersion
+    ws.Range("Z1") = CurrentVersionV
+End Sub
