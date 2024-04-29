@@ -213,17 +213,17 @@ End Sub
 
 '/------- Error Codes -------/'
 Sub Err_Blank()
-    MsgBox ("Customer name cannot be blank."), , "Error"
+    MsgBox ("Customer name cannot be blank."), , "Error - Blank"
 End Sub
 
 Sub ErrMsg()
-    MsgBox ("Customer Not Found."), , "Not Found"
+    MsgBox ("Customer Not Found."), , "Error - Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
-    MsgBox ("Customer already added."), , "Duplicate"
+    MsgBox ("Customer already added."), , "Error - Duplicate"
 End Sub
 
 Sub ErrMsg_Search()
-    MsgBox ("Must search for entry before updating."), , "Search Error"
+    MsgBox ("Must search for entry before updating."), , "Error - Search Error"
 End Sub

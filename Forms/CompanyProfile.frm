@@ -15,7 +15,12 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim Worksheet_Set       ' variable used for selecting and storing the active worksheet
 
-Private Sub UserForm_Initialize()
+Private Sub UserForm_Activate()
+'/Positioning /'
+    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
+    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
+'/End Positioning /'
+
     Dim ws As Worksheet
     Dim List_Select
     List_Select = "Admin" ' Tab name
@@ -26,13 +31,6 @@ Private Sub UserForm_Initialize()
     inputCPhone = ws.Range("B3")
     inputCAddress = ws.Range("B4")
     inputCWebsite = ws.Range("B5")
-End Sub
-
-Private Sub UserForm_Activate()
-'/Positioning /'
-    Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
-    Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
-'/End Positioning /'
 End Sub
 
 Private Sub btnBack_click()

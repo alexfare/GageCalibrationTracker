@@ -32,7 +32,7 @@ End Sub
 
 Sub btnFormatConfirm_Click()
 
-    MSG1 = MsgBox("WARNING: THERE IS NO RETURN ONCE THE WORKBOOK IS SAVED!!", vbYesNo, "WARNING")
+    MSG1 = MsgBox("WARNING: THIS WILL AUTOSAVE AT THE END, YOUR DATA WILL BE LOST!", vbYesNo, "WARNING - Formatting")
     
     If MSG1 = vbYes Then
         FormatConfirmed

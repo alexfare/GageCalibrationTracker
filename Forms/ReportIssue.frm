@@ -25,13 +25,6 @@ Private Sub UserForm_Activate()
     inputName.SetFocus
 End Sub
 
-'/------- Press Enter -------/'
-Private Sub inputDescription_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
-    If KeyCode = vbKeyReturn Then
-        btnSubmit_Click
-    End If
-End Sub
-
 Private Sub btnSubmit_Click()
     ' Check if the user provided input
     If inputName <> "" And inputDescription <> "" Then
@@ -85,7 +78,7 @@ Sub Send_Emails()
         .CC = ""
         .BCC = ""
         .Subject = "GageTracker - Report An Issue"
-        .TextBody = "Name: " + inputName + " | Email: " + inputEmail + " | Description: " + inputDescription + " | GageTracker version: " + GTVersion
+        .TextBody = "Name: " + inputName + " | Email: " + inputEmail + " | GageTracker version: " + GTVersion + " | Description: " + inputDescription
     End With
     
     msConfigURL = "http://schemas.microsoft.com/cdo/configuration"

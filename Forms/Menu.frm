@@ -51,7 +51,6 @@ Private Sub UserForm_Activate()
     SettingsModule.DueDateColor
     lblPCUser = Application.userName
     SettingsModule.GetCurrentVersion
-    
 End Sub
 
 Private Sub Add_Button_Click()
@@ -509,27 +508,27 @@ End Sub
 
 '/------- Error Handling -------/'
 Sub ErrMsg_NotFound()
-    MsgBox ("Gage Number Not Found."), vbInformation, "Not Found"
+    MsgBox ("Gage Number Not Found."), vbInformation, "Error - Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
-    MsgBox "Gage number already exists. Please use a different Gage number.", vbInformation, "Duplicate Gage Number"
+    MsgBox "Gage number already exists. Please use a different Gage number.", vbInformation, "Error - Duplicate"
 End Sub
 
 Sub ErrMsg_InvalidDate()
-    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format.", vbInformation, "Error"
+    MsgBox "Invalid date format. Please enter the date in mm/dd/yyyy or m/d/yyyy format.", vbInformation, "Error - Date"
 End Sub
 
 Sub ErrMsg_NoGageID()
-    MsgBox "Please Provide A Gage Name.", vbInformation, "Error"
+    MsgBox "Please Provide A Gage Name.", vbInformation, "Error - Blank"
 End Sub
 
 Sub ErrMsg_Search()
-    MsgBox ("Must search for entry before updating."), vbInformation, "Error"
+    MsgBox ("Must search for entry before updating."), vbInformation, "Error - Search"
 End Sub
 
 Sub ErrMsg_Blank()
-    MsgBox ("Gage number cannot be blank."), vbInformation, "Error"
+    MsgBox ("Gage number cannot be blank."), vbInformation, "Error - Blank"
 End Sub
 
 Private Sub UserForm_Terminate()

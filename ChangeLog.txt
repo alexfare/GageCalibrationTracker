@@ -1,9 +1,16 @@
+Update - 4.6.9
+	Changed "Inspected Date" to "Calibration Date" on Menu.
+	Updated CompanyProfile code.
+	Updated Error codes and various code & layout updates. (AdminForm, Format_Form, FormCustomer, Menu, SuperAdminLogin).
+	Updated ReportIssue - Removed Enter key, Doing Shift Enter in comment box would send the report and not put the cursor on a new line.)
+	Updated the "Status" list.
+	
 Update - 4.6.8
 	Updated Clear Module
-	Updated Import/Export (Moved from Admin Panel)
-	Print Menu title update
-	Menu and Admin Panel title updates
-	Updated CreateAccount form (Can now create super users)
+	Updated Import/Export (Moved from Admin Panel).
+	Print Menu title update.
+	Menu and Admin Panel title updates.
+	Updated CreateAccount form (Can now create super users).
 	Updated how program version display is handled.
 
 Update - 4.6.7

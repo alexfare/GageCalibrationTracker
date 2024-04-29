@@ -307,35 +307,32 @@ Sub btnImport_click()
     End If
 End Sub
 
-'/------- Error Handling -------/'
-Sub ErrMsg_NotFound()
-    MsgBox ("Gage Number Not Found"), , "Not Found"
-End Sub
-
-Sub ErrMsg_Duplicate()
-    MsgBox ("Gage number already in use"), , "Duplicate"
-End Sub
-
-Sub ErrMsg_Search()
-    MsgBox ("Must search For entry before updating"), , "Nothing To Update"
-End Sub
-
-Sub ErrMsg_Blank()
-    MsgBox ("Gage ID cannot be blank."), , "Nothing To Update"
-End Sub
-
 Sub ErrMsg_NotSuperAdmin()
     MSG1 = MsgBox("User not Super Admin, Sign in with a password?", vbYesNo, "Admin Error")
     
     If MSG1 = vbYes Then
         Unload AdminForm
         SuperAdminLogin.Show
-    Else
     End If
 End Sub
 
-Sub ErrMsg_UserError()
-    MsgBox ("Having Issues Logging In, Please Try Again."), , "Admin Error"
+'/------- Error Handling -------/'
+Sub ErrMsg_NotFound()
+    MsgBox ("Gage Number Not Found"), , "Error - Not Found"
 End Sub
 
+Sub ErrMsg_Duplicate()
+    MsgBox ("Gage number already in use"), , "Error - In Use"
+End Sub
 
+Sub ErrMsg_Search()
+    MsgBox ("Must search For entry before updating"), , "Error - Search"
+End Sub
+
+Sub ErrMsg_Blank()
+    MsgBox ("Gage ID cannot be blank."), , "Error - Blank"
+End Sub
+
+Sub ErrMsg_UserError()
+    MsgBox ("Having Issues Logging In, Please Try Again."), , "Error - Admin Error"
+End Sub
