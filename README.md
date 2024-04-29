@@ -15,7 +15,7 @@ Menu<br>
 ![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/a4a5adf2-1c7f-4973-a90a-f19c46185512)
 <br>
 Admin Panel w/ Login<br>
-![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/d3b04cbd-c6b7-462d-a845-909c345560ee)
+![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/fe991ba9-c542-4c30-89cd-e8374922bad9)
 <br>
 ![image](https://github.com/alexfare/GageCalibrationTracker/assets/40654995/eb6609f6-8b6d-40aa-bb91-7e1c4ee995b2)
 <br>
