@@ -508,11 +508,11 @@ End Sub
 
 '/------- Error Handling -------/'
 Sub ErrMsg_NotFound()
-    MsgBox ("Gage Number Not Found."), vbInformation, "Error - Not Found"
+    MsgBox ("Gage number not found."), vbInformation, "Error - Not Found"
 End Sub
 
 Sub ErrMsg_Duplicate()
-    MsgBox "Gage number already exists. Please use a different Gage number.", vbInformation, "Error - Duplicate"
+    MsgBox "Gage number already exists. Please use a different gage number.", vbInformation, "Error - Duplicate"
 End Sub
 
 Sub ErrMsg_InvalidDate()
@@ -520,7 +520,7 @@ Sub ErrMsg_InvalidDate()
 End Sub
 
 Sub ErrMsg_NoGageID()
-    MsgBox "Please Provide A Gage Name.", vbInformation, "Error - Blank"
+    MsgBox "Please provide a gage name.", vbInformation, "Error - Blank"
 End Sub
 
 Sub ErrMsg_Search()

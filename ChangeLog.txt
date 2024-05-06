@@ -1,3 +1,7 @@
+Update - 4.6.10
+	Updated Error code wording in the Menu.
+	Updated ChangePassword, Added drop down box.
+
 Update - 4.6.9
 	Changed "Inspected Date" to "Calibration Date" on Menu.
 	Updated CompanyProfile code.

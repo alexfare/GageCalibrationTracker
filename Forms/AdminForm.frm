@@ -318,15 +318,11 @@ End Sub
 
 '/------- Error Handling -------/'
 Sub ErrMsg_NotFound()
-    MsgBox ("Gage Number Not Found"), , "Error - Not Found"
-End Sub
-
-Sub ErrMsg_Duplicate()
-    MsgBox ("Gage number already in use"), , "Error - In Use"
+    MsgBox ("Gage number not found"), , "Error - Not Found"
 End Sub
 
 Sub ErrMsg_Search()
-    MsgBox ("Must search For entry before updating"), , "Error - Search"
+    MsgBox ("Must search for entry before updating"), , "Error - Search"
 End Sub
 
 Sub ErrMsg_Blank()
@@ -334,5 +330,5 @@ Sub ErrMsg_Blank()
 End Sub
 
 Sub ErrMsg_UserError()
-    MsgBox ("Having Issues Logging In, Please Try Again."), , "Error - Admin Error"
+    MsgBox ("Having issues logging in, please try again."), , "Error - Admin Error"
 End Sub
