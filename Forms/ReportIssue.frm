@@ -18,7 +18,7 @@ Private Sub UserForm_Activate()
     Me.Left = Application.Left + (0.5 * Application.Width) - (0.5 * Me.Width)
     Me.Top = Application.Top + (0.5 * Application.Height) - (0.5 * Me.Height)
 '/End Positioning /'
-
+    ReportPasswordUpdater
     List_Select = "CreatedByAlexFare"
     Set ws = Sheets(List_Select)
     vDisplay = ws.Range("Z1")
@@ -78,7 +78,7 @@ Sub Send_Emails()
         .CC = ""
         .BCC = ""
         .Subject = "GageTracker - Report An Issue"
-        .TextBody = "Name: " + inputName + " | Email: " + inputEmail + " | GageTracker version: " + GTVersion + " | Description: " + inputDescription
+        .TextBody = "Name: " + inputName + " | Email: " + inputEmail + " | Description: " + inputDescription + " | GageTracker version: " + GTVersion
     End With
     
     msConfigURL = "http://schemas.microsoft.com/cdo/configuration"

@@ -1,3 +1,8 @@
+Update - 4.6.11
+	Updated "Calibrated By" input on Menu to a drop down box. (Can still type in the box).
+	Updated "Owner" input on AdminForm to a drop down box. (Can still type in the box).
+	Updated ReportIssue Email Layout.
+	
 Update - 4.6.10
 	Updated Error code wording in the Menu.
 	Updated ChangePassword, Added drop down box.
