@@ -12,9 +12,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-' Gage Tracker
-' Created By: Alex Fare
-
 Dim r As Long        ' variable used for storing row number
 Dim Worksheet_Set        ' variable used for selecting and storing the active worksheet
 Dim Update_Button_Enable As Boolean        ' to store update enable flag after search
@@ -109,6 +106,8 @@ Private Sub AddNewGage()
         End Select
 
         ws.Cells(r, "G") = Date_Due
+        ws.Cells(r, "O") = cboInterval.Text
+
         ws.Cells(r, "H") = Initials
         ws.Cells(r, "I") = Department
         ws.Cells(r, "J") = Comments
@@ -200,6 +199,7 @@ Public Sub Search_Button()
         aA4 = ws.Cells(r, "AH")
         aN5 = ws.Cells(r, "AI")
         aA5 = ws.Cells(r, "AJ")
+        cboInterval = ws.Cells(r, "O")
         DateEdit = ws.Cells(r, "AM") 'Update Last searched
         ws.Cells(r, "AM") = Now        'Update Last searched
         Update_Button_Enable = True
@@ -282,6 +282,7 @@ Private Sub Update_Worksheet()
         End Select
 
         ws.Cells(r, "G") = Date_Due
+        ws.Cells(r, "O") = cboInterval.Text
 
         '/ Audit Log
         lastUser = Application.userName
@@ -453,7 +454,6 @@ Private Sub cboInterval_Change()
     On Error GoTo Err
 
     If Not IsDate(Insp_Date) Then
-        ErrMsg_InvalidDate
         Exit Sub
     End If
 

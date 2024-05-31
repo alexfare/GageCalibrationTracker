@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Label 
    Caption         =   "Print Menu"
-   ClientHeight    =   1740
+   ClientHeight    =   2415
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   3870
+   ClientWidth     =   4830
    OleObjectBlob   =   "Label.frx":0000
    StartUpPosition =   2  'CenterScreen
 End

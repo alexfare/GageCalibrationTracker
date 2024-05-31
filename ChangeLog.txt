@@ -1,3 +1,8 @@
+Update - 4.6.13
+	Fixed Calibration Interval saving. (Added to Column O).
+	Fixed Invalid date error.
+	Updated Print Menu layout.
+	
 Update - 4.6.12
 	Fixed Gage update issue with the new calibration interval.
 	Updated ReportIssue layout. 
