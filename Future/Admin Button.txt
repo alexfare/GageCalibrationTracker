@@ -1,0 +1,28 @@
+Private Sub BtnAdmin_Click(sender As Object, e As EventArgs) Handles BtnAdmin.Click
+    If String.IsNullOrEmpty(GlobalVars.LoggedInUser) Then
+        ' User is not logged in; show the LoginForm
+        Dim loginForm As New LoginForm()
+        loginForm.ShowDialog()
+
+        ' Re-check after login form is closed if the user is logged in
+        If Not String.IsNullOrEmpty(GlobalVars.LoggedInUser) Then
+            ' Now, user is logged in. Check if they are an admin
+            If GlobalVars.IsUserAdmin Then
+                ' Launch the AdminPanel
+                Dim adminMenu As New AdminMenu()
+                adminMenu.Show()
+            Else
+                MessageBox.Show("You do not have admin privileges.")
+            End If
+        End If
+    Else
+        ' User is already logged in; check their admin status
+        If GlobalVars.IsUserAdmin Then
+            ' Launch the AdminPanel
+            Dim adminMenu As New AdminMenu()
+            adminMenu.Show()
+        Else
+            MessageBox.Show("You do not have admin privileges.")
+        End If
+    End If
+End Sub
