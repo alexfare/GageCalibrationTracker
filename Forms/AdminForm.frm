@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AdminForm 
-   Caption         =   "Gage Calibration Tracker - Admin Panel"
+   Caption         =   "Gage Tracker - Admin Panel"
    ClientHeight    =   10935
    ClientLeft      =   120
    ClientTop       =   465
@@ -193,8 +193,13 @@ Private Sub btnClear_Click()
 End Sub
 
 Sub CheckForUpdate_Click()
-    MsgBox ("Updater is a WIP and has been disabled. Launching GitHub.")
-    Updater.CheckUpdate
+    MSG1 = MsgBox("Upgrade to Version 5 requires new database, Would you like to update? (Or you can continue to use version 4 and any future version 4 updates.)", vbYesNo, "Updating")
+    
+    If MSG1 = vbYes Then
+        Updater.UpdateVersion
+    Else
+        Updater.CheckUpdate
+    End If
 End Sub
 
 Private Sub btnClose_Click()
