@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Menu 
    Caption         =   "Gage Tracker - Menu"
-   ClientHeight    =   8295.001
+   ClientHeight    =   8550.001
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   10695
+   ClientWidth     =   10725
    OleObjectBlob   =   "Menu.frx":0000
 End
 Attribute VB_Name = "Menu"
@@ -139,7 +139,7 @@ Private Sub AddNewGage()
         '/Status /'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Adding..."
-        Status
+        status
     Else
         ErrMsg_Duplicate
     End If
@@ -215,7 +215,7 @@ Public Sub Search_Button()
         '/Status/'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Searching..."
-        Status
+        status
     End If
 End Sub
 
@@ -300,7 +300,7 @@ Private Sub Update_Worksheet()
         '/Status /'
         statusLabel.Caption = "Status:"
         statusLabelLog.Caption = "Updating..."
-        Status
+        status
 
         Search_Button
     Else
@@ -364,7 +364,7 @@ Private Sub btnSave_click()
     '/Status/'
     statusLabel.Caption = "Status:"
     statusLabelLog.Caption = "Saving..."
-    Status
+    status
 End Sub
 
 Private Sub bgSave()
@@ -412,7 +412,7 @@ Private Sub btnGageRR_Click()
 End Sub
 
 '/------- Status -------/'
-Private Sub Status()
+Private Sub status()
     Dim startTime As Date
     Dim elapsedTime As Long
     Dim waitTimeInSeconds As Long
