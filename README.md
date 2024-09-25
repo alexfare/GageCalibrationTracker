@@ -1,7 +1,7 @@
 # GageCalibrationTracker
 *GageCalibrationTracker has an updated version! Check out [Version 5](https://github.com/alexfare/GageTracker), now called GageTracker. This is a complete standalone rewrite. It no longer runs through Excel and only requires an Access database. GageCalibrationTracker will still receive updates, mostly related to performance fixes, bugs, etc.
 <br>
-[Version 5](https://github.com/alexfare/GageTracker) is currently in the active development, with updates releasing weekly.
+[Version 5](https://github.com/alexfare/GageTracker) is currently in active development, with updates releasing weekly.
 <br>
 
 Introducing Gage Calibration Tracker, a simple yet sophisticated gage calibration management software solution designed to simplify the task of maintaining tool calibration records. This user-friendly software is seamlessly integrated with Microsoft Excel, offering a highly efficient and free-running experience.
