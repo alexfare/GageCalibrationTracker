@@ -27,10 +27,11 @@ End Sub
 
 Private Sub btnSubmit_Click()
     ' Check if the user provided input
-    If inputName <> "" And inputDescription <> "" Then
+    If inputDescription <> "" Then
         Send_Emails
     Else
         MsgBox "Please provide all the required information.", vbExclamation
+        inputDescription.SetFocus
     End If
 End Sub
 
@@ -48,7 +49,7 @@ Sub Send_Emails()
     Dim EmailSetPort As String
     EmailSetPort = Base64DecodeString("NDY1")
     EmailString = Base64DecodeString("c210cC5nbWFpbC5jb20=")
-    TokenString = Base64DecodeString("aGN4eGpycHZ0bnR0am5lbQ==")
+    TokenString = Base64DecodeString("ZGltaCBhb3V6IGJid3ogeWlybA==")
     FromEmailToken = TokenString
     FromEmailSend = Base64DecodeString("bmluc29zb2Z0QGdtYWlsLmNvbQ==")
     ToEmailSend = Base64DecodeString("YWxleGZhcmU5NEBnbWFpbC5jb20=")
@@ -107,11 +108,11 @@ Exit_Err:
 Err:
     Select Case Err.Number
         Case -2147220973        'Could be because of Internet Connection
-            MsgBox "Check your internet connection." & vbNewLine & Err.Number & ": " & Err.Description
+            MsgBox "Check your internet connection." & vbNewLine & Err.Number & ": " & Err.description
         Case -2147220975        'Incorrect credentials User ID or password
-            MsgBox "Check your login credentials And try again." & vbNewLine & Err.Number & ": " & Err.Description
+            MsgBox "Check your login credentials And try again." & vbNewLine & Err.Number & ": " & Err.description
         Case Else        'Report other errors
-            MsgBox "Error encountered While sending email." & vbNewLine & Err.Number & ": " & Err.Description
+            MsgBox "Error encountered While sending email." & vbNewLine & Err.Number & ": " & Err.description
     End Select
     
     Resume Exit_Err

@@ -1,3 +1,10 @@
+Update - 4.6.17
+	Updated ReportIssue; No longer requiring name.
+	Fixed ReportIssue breaking. (All previous versions will no longer work.) Not currently fixing this issue for any future breaks, See GageTracker5 for a more advanced calibration tracker.
+	
+Update - 4.6.16
+	Updated ReportIssue.
+	
 Update - 4.6.15
 	Updated Menu layout.
 
